@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "protocol_version": "task1_rouge_l_v1",
+  "generated_utc": "2026-08-14T03:48:18.839546+00:00",
+  "scope": "test_only",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "task1_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+  "task1_manifest_sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "e39121338f903798052f897cc3702f91750c44fee5db87e2c4b0002a3dae4072",
+  "test_video_count": 66,
+  "test_task1_case_count": 184,
+  "metric": {
+    "name": "ROUGE-L",
+    "variant": "rougeL",
+    "tokenizer": "lowercase ASCII alphanumeric tokens; no stemming; ROUGE-L sentence-level longest-common-subsequence precision/recall/F1",
+    "stemming": false,
+    "aggregation": "item_macro",
+    "reference": "reference_conclusion",
+    "scope": "THE CONCLUSION, NOT THE WHOLE RESPONSE. The candidate is the extracted conclusion from the *_conclusiononly derived run, which is exactly the text task1_judge_v14 scores; the role table that also appears in the full response is scored by neither. This number is not a similarity score for a whole tumor board simulation output.",
+    "format_failure_rule": "an empty candidate scores 0 on precision, recall and F1 and stays in the denominator, matching the judge's floor rule",
+    "candidate_verification": "byte-checked against candidate_sha256 in /rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/deepseek_v4_flash_api_t1_judge_20260814/results/task1.per_item.jsonl",
+    "task1_has_no_qa_type": "type_macro and per_qa_type are null: Task 1 has no question-type dimension to macro-average over"
+  },
+  "results": [
+    {
+      "task": "task1",
+      "model": {
+        "key": "deepseek_v4_flash_api",
+        "model_id": "deepseek-ai/DeepSeek-V4-Flash",
+        "display_name": "DeepSeek-V4-Flash [API]",
+        "organization": "DeepSeek",
+        "revision": "60d8d70770c6776ff598c94bb586a859a38244f1"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.16677159602581976,
+            "standard_deviation": 0.041152288727798726,
+            "minimum": 0.08139534883720931,
+            "maximum": 0.3088235294117647
+          },
+          "recall": {
+            "mean": 0.17577235456032989,
+            "standard_deviation": 0.04760745197240888,
+            "minimum": 0.08130081300813008,
+            "maximum": 0.3541666666666667
+          },
+          "f1": {
+            "mean": 0.1682377070434107,
+            "standard_deviation": 0.03739875860627418,
+            "minimum": 0.09523809523809525,
+            "maximum": 0.2818791946308724
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_task1_test_v3_xsfixed_20260814_max4096_conclusiononly/responses.jsonl",
+      "response_sha256": "1b8aa68fff4032f25fe20e4cdae4c0760518055b9c25dddb2d17f2816ce49cb9",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_task1_test_v3_xsfixed_20260814_max4096_conclusiononly/run_config.json",
+      "run_config_sha256": "62dc0dd71f9331fa076bfc4f232a92061571d699981d29f854fa0b727bc5ae9b",
+      "per_item_output": "per_item/deepseek_v4_flash_api.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "deepseek_v4_flash_api_reasoning",
+        "model_id": "deepseek-ai/DeepSeek-V4-Flash",
+        "display_name": "DeepSeek-V4-Flash [API]",
+        "organization": "DeepSeek",
+        "revision": "60d8d70770c6776ff598c94bb586a859a38244f1"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 5,
+      "candidates_verified_against_judge": 179,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.1576641442261777,
+            "standard_deviation": 0.04755216784128674,
+            "minimum": 0.0,
+            "maximum": 0.3333333333333333
+          },
+          "recall": {
+            "mean": 0.1569501655436942,
+            "standard_deviation": 0.055288579521665694,
+            "minimum": 0.0,
+            "maximum": 0.4523809523809524
+          },
+          "f1": {
+            "mean": 0.15472077766490636,
+            "standard_deviation": 0.045164817655619825,
+            "minimum": 0.0,
+            "maximum": 0.32
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task1_test_v3_xsfixed_20260814_max8192_conclusiononly/responses.jsonl",
+      "response_sha256": "413a4f13b09b0ba84257b7d045153bbb7d245e2efaa6558178f89314d973590f",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task1_test_v3_xsfixed_20260814_max8192_conclusiononly/run_config.json",
+      "run_config_sha256": "9c58bae002f8da95341b195a7ca0a7d1f8d85844336a015f0c75d2f34405d112",
+      "per_item_output": "per_item/deepseek_v4_flash_api_reasoning.jsonl",
+      "format_failures": [
+        {
+          "simulation_id": "sim_09a245e203b1bfd047ed84b3",
+          "video_uid": "video_8b3258f5f741462e",
+          "case_id": "case_001"
+        },
+        {
+          "simulation_id": "sim_0df88c63e926fbf222eda253",
+          "video_uid": "video_7222a348a38a0ceb",
+          "case_id": "case_001"
+        },
+        {
+          "simulation_id": "sim_77b1a952519f09da5133e13c",
+          "video_uid": "video_f1798a5205f1b522",
+          "case_id": "case_001"
+        },
+        {
+          "simulation_id": "sim_99c050ac1fb30b477e9be448",
+          "video_uid": "video_e564b4c3d66f68bf",
+          "case_id": "case_005"
+        },
+        {
+          "simulation_id": "sim_e4689870bc16cf4a02a8d858",
+          "video_uid": "video_35b15590e9bd56e2",
+          "case_id": "case_002"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "protocol_version": "task1_rouge_l_v1",
+  "generated_utc": "2026-08-15T20:55:16.632595+00:00",
+  "scope": "test_only",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "task1_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+  "task1_manifest_sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "4ce173dce12f69771fd3c18aacdebda6ea8c05c3101c75b6ca5f45dc0c55356a",
+  "test_video_count": 66,
+  "test_task1_case_count": 184,
+  "metric": {
+    "name": "ROUGE-L",
+    "variant": "rougeL",
+    "tokenizer": "lowercase ASCII alphanumeric tokens; no stemming; ROUGE-L sentence-level longest-common-subsequence precision/recall/F1",
+    "stemming": false,
+    "aggregation": "item_macro",
+    "reference": "reference_conclusion",
+    "scope": "THE CONCLUSION, NOT THE WHOLE RESPONSE. The candidate is the extracted conclusion from the *_conclusiononly derived run, which is exactly the text task1_judge_v14 scores; the role table that also appears in the full response is scored by neither. This number is not a similarity score for a whole tumor board simulation output.",
+    "format_failure_rule": "an empty candidate scores 0 on precision, recall and F1 and stays in the denominator, matching the judge's floor rule",
+    "candidate_verification": "byte-checked against candidate_sha256 in /rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/qwen3_8_task1_judge_v22_images_20260815/results/task1.per_item.jsonl",
+    "task1_has_no_qa_type": "type_macro and per_qa_type are null: Task 1 has no question-type dimension to macro-average over"
+  },
+  "results": [
+    {
+      "task": "task1",
+      "model": {
+        "key": "mm_qwen3_8_27b",
+        "model_id": "Qwen/Qwen3.8-27B",
+        "display_name": "Qwen3.8-27B [multimodal]",
+        "organization": "Qwen",
+        "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 11,
+      "candidates_verified_against_judge": 173,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.17669124253422022,
+            "standard_deviation": 0.0639577940646984,
+            "minimum": 0.0,
+            "maximum": 0.34285714285714286
+          },
+          "recall": {
+            "mean": 0.15620103128504595,
+            "standard_deviation": 0.05672299233382365,
+            "minimum": 0.0,
+            "maximum": 0.3333333333333333
+          },
+          "f1": {
+            "mean": 0.16314602777840184,
+            "standard_deviation": 0.055329395740312017,
+            "minimum": 0.0,
+            "maximum": 0.2807017543859649
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_task1_test_v3_xsfixed_multimodal_20260815_max4096_conclusiononly_judgeinput/responses.jsonl",
+      "response_sha256": "3cde4878709c6c5423245cbd126bc151688ab4340de05484626f5eaa5705e29f",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_task1_test_v3_xsfixed_multimodal_20260815_max4096_conclusiononly_judgeinput/run_config.json",
+      "run_config_sha256": "d7ccf577d694543940ff76f95c0c7f2b652756b14fbe0b912f9914ff1fd94f09",
+      "per_item_output": "per_item/mm_qwen3_8_27b.jsonl",
+      "format_failures": [
+        {
+          "simulation_id": "sim_18505977fa2d0931d85bab1c",
+          "video_uid": "video_61478b5b7483315b",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_3015ca52ebe29749452a6559",
+          "video_uid": "video_43242c4515a3889d",
+          "case_id": "case_001"
+        },
+        {
+          "simulation_id": "sim_33f476c1f329acc3c69173e5",
+          "video_uid": "video_a96ee8d9c8cbeecf",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_828fde2554154fcd9c137462",
+          "video_uid": "video_99087c73389d6fd0",
+          "case_id": "case_004"
+        },
+        {
+          "simulation_id": "sim_8cf50773ac9ec518c437da37",
+          "video_uid": "video_a45088356c06db13",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_9aaefb661e1c02c7bbb8cf92",
+          "video_uid": "video_323bde85b93f32c1",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_9ce05ed28e577c3a59e9eae3",
+          "video_uid": "video_a45088356c06db13",
+          "case_id": "case_003"
+        },
+        {
+          "simulation_id": "sim_b5dfb9423a3f6da5e3a65fa0",
+          "video_uid": "video_99087c73389d6fd0",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_bc54d928bfcf295a7f16d05f",
+          "video_uid": "video_e395a0a0d585a667",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_bd499109aef0039ad71483ef",
+          "video_uid": "video_b144e5da35a63a59",
+          "case_id": "case_001"
+        },
+        {
+          "simulation_id": "sim_c42e0dda77beb29ff54a3200",
+          "video_uid": "video_53ed49e40cf97860",
+          "case_id": "case_004"
+        }
+      ]
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "mm_qwen3_8_27b_reasoning",
+        "model_id": "Qwen/Qwen3.8-27B",
+        "display_name": "Qwen3.8-27B [multimodal]",
+        "organization": "Qwen",
+        "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.11873838612183162,
+            "standard_deviation": 0.030763882134824307,
+            "minimum": 0.05042016806722689,
+            "maximum": 0.2569444444444444
+          },
+          "recall": {
+            "mean": 0.19195251319785064,
+            "standard_deviation": 0.04620628840453215,
+            "minimum": 0.12048192771084337,
+            "maximum": 0.4523809523809524
+          },
+          "f1": {
+            "mean": 0.14427139275252268,
+            "standard_deviation": 0.030620458621024985,
+            "minimum": 0.07792207792207793,
+            "maximum": 0.2995951417004048
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_reasoning_task1_test_v3_xsfixed_multimodal_20260815_max24576_conclusiononly_judgeinput/responses.jsonl",
+      "response_sha256": "5b64f72fc684e18075ae1abb8e7a70aa7c0f1cba8334e9d3140b60a321db026f",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_reasoning_task1_test_v3_xsfixed_multimodal_20260815_max24576_conclusiononly_judgeinput/run_config.json",
+      "run_config_sha256": "3accf214f84a0b33b7b98766e7390044593b883204c6730eccda584ba7006ddf",
+      "per_item_output": "per_item/mm_qwen3_8_27b_reasoning.jsonl",
+      "format_failures": []
+    }
+  ]
+}

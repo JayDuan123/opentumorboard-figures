@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "protocol_version": "task2_rouge_l_v1",
+  "generated_utc": "2026-08-13T12:22:53.837499+00:00",
+  "scope": "test_only",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "task2_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_20260809.jsonl",
+  "task2_manifest_sha256": "4ce83eb441cced77464091a4d264fe8a0b12c23d5dce135aea8744e18c2d7db4",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "2e92c3aa10e10bb60aacc8d413b83f668ab4cf59b85354e0384b88c599af183f",
+  "test_video_count": 66,
+  "test_task2_qa_count": 4844,
+  "split_task2_qa_pairs": 4993,
+  "task2_screened_out": 149,
+  "test_task2_qa_type_counts": {
+    "agreement_or_support": 178,
+    "clarification_question": 178,
+    "clinical_trial_suggestion": 73,
+    "eligibility_assessment": 322,
+    "evidence_discussion": 677,
+    "findings_interpretation": 1284,
+    "next_action_suggestion": 654,
+    "treatment_recommendation": 1139,
+    "uncertainty": 339
+  },
+  "metric": {
+    "name": "ROUGE-L",
+    "variant": "rougeL",
+    "tokenizer": "lowercase ASCII alphanumeric tokens; no stemming; ROUGE-L sentence-level longest-common-subsequence precision/recall/F1",
+    "stemming": false,
+    "aggregation": "item_macro"
+  },
+  "results": [
+    {
+      "task": "task2",
+      "model": {
+        "key": "meditron3_70b",
+        "model_id": "OpenMeditron/Meditron3-70B",
+        "display_name": "Meditron3 70B",
+        "organization": "EPFL LiGHT / OpenMeditron",
+        "revision": "1ec3a7ee2355e384149df2e4dd42fed41e7fd08f"
+      },
+      "split": "test",
+      "test_count": 4844,
+      "scored_count": 4844,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 649,
+      "recovered_fallback_count": 649,
+      "format_failure_count": 0,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.17667045167418988,
+            "standard_deviation": 0.11713314734490736,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "recall": {
+            "mean": 0.34166320767581476,
+            "standard_deviation": 0.16098840983203275,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "f1": {
+            "mean": 0.21692774683796945,
+            "standard_deviation": 0.11214907132956607,
+            "minimum": 0.0,
+            "maximum": 1.0
+          }
+        }
+      },
+      "type_macro": {
+        "rouge_l": {
+          "precision": 0.1849206856772293,
+          "recall": 0.34042639605022207,
+          "f1": 0.22285505695331168
+        }
+      },
+      "per_qa_type": {
+        "agreement_or_support": {
+          "test_count": 178,
+          "scored_count": 178,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.1496987884843247,
+              "standard_deviation": 0.10918639310814506,
+              "minimum": 0.02702702702702703,
+              "maximum": 0.9230769230769231
+            },
+            "recall": {
+              "mean": 0.34303155670839947,
+              "standard_deviation": 0.14311839805272575,
+              "minimum": 0.1,
+              "maximum": 0.9
+            },
+            "f1": {
+              "mean": 0.19440534183001218,
+              "standard_deviation": 0.0966111051607669,
+              "minimum": 0.05,
+              "maximum": 0.6857142857142856
+            }
+          }
+        },
+        "clarification_question": {
+          "test_count": 178,
+          "scored_count": 178,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.28574198463994965,
+              "standard_deviation": 0.20082745710336664,
+              "minimum": 0.04,
+              "maximum": 1.0
+            },
+            "recall": {
+              "mean": 0.3885666998603141,
+              "standard_deviation": 0.19737398945851714,
+              "minimum": 0.043478260869565216,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.303632106564437,
+              "standard_deviation": 0.17565486602632188,
+              "minimum": 0.041666666666666664,
+              "maximum": 1.0
+            }
+          }
+        },
+        "clinical_trial_suggestion": {
+          "test_count": 73,
+          "scored_count": 73,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.1840649418979537,
+              "standard_deviation": 0.11094259387697376,
+              "minimum": 0.046153846153846156,
+              "maximum": 0.6774193548387096
+            },
+            "recall": {
+              "mean": 0.30361042211994393,
+              "standard_deviation": 0.1125342431938983,
+              "minimum": 0.07692307692307693,
+              "maximum": 0.6363636363636364
+            },
+            "f1": {
+              "mean": 0.22021556015289512,
+              "standard_deviation": 0.09912868784029123,
+              "minimum": 0.07407407407407408,
+              "maximum": 0.6176470588235294
+            }
+          }
+        },
+        "eligibility_assessment": {
+          "test_count": 322,
+          "scored_count": 322,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.2018305534949083,
+              "standard_deviation": 0.13047421422201808,
+              "minimum": 0.035211267605633804,
+              "maximum": 1.0
+            },
+            "recall": {
+              "mean": 0.3658942996443274,
+              "standard_deviation": 0.1705136991397094,
+              "minimum": 0.08333333333333333,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.2415462818209832,
+              "standard_deviation": 0.12067254087417098,
+              "minimum": 0.05714285714285714,
+              "maximum": 0.9565217391304348
+            }
+          }
+        },
+        "evidence_discussion": {
+          "test_count": 677,
+          "scored_count": 677,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.15685831294946723,
+              "standard_deviation": 0.08975934178280036,
+              "minimum": 0.0,
+              "maximum": 0.875
+            },
+            "recall": {
+              "mean": 0.30721390541654015,
+              "standard_deviation": 0.13733677631962002,
+              "minimum": 0.0,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.1961613872971461,
+              "standard_deviation": 0.08889686043907674,
+              "minimum": 0.0,
+              "maximum": 0.8108108108108109
+            }
+          }
+        },
+        "findings_interpretation": {
+          "test_count": 1284,
+          "scored_count": 1284,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.18996218541642515,
+              "standard_deviation": 0.12812761359031274,
+              "minimum": 0.0,
+              "maximum": 0.9285714285714286
+            },
+            "recall": {
+              "mean": 0.36689811348934503,
+              "standard_deviation": 0.16975155450115575,
+              "minimum": 0.0,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.2344764385839713,
+              "standard_deviation": 0.12679672792777902,
+              "minimum": 0.0,
+              "maximum": 0.9166666666666666
+            }
+          }
+        },
+        "next_action_suggestion": {
+          "test_count": 654,
+          "scored_count": 654,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.18115204867589743,
+              "standard_deviation": 0.11622363632278068,
+              "minimum": 0.0,
+              "maximum": 0.7692307692307693
+            },
+            "recall": {
+              "mean": 0.3403731787046962,
+              "standard_deviation": 0.16186558346825897,
+              "minimum": 0.0,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.21842853391075517,
+              "standard_deviation": 0.11051092601517057,
+              "minimum": 0.0,
+              "maximum": 0.6666666666666666
+            }
+          }
+        },
+        "treatment_recommendation": {
+          "test_count": 1139,
+          "scored_count": 1139,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.15562718000934628,
+              "standard_deviation": 0.08895662182726892,
+              "minimum": 0.02127659574468085,
+              "maximum": 0.8
+            },
+            "recall": {
+              "mean": 0.3292112121845499,
+              "standard_deviation": 0.15698896276245372,
+              "minimum": 0.0625,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.19630888793940882,
+              "standard_deviation": 0.08702313062773998,
+              "minimum": 0.03508771929824561,
+              "maximum": 0.6896551724137931
+            }
+          }
+        },
+        "uncertainty": {
+          "test_count": 339,
+          "scored_count": 339,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.15935017552679126,
+              "standard_deviation": 0.09139697367269124,
+              "minimum": 0.014084507042253521,
+              "maximum": 0.6875
+            },
+            "recall": {
+              "mean": 0.31903817632388254,
+              "standard_deviation": 0.14413510284745368,
+              "minimum": 0.06666666666666667,
+              "maximum": 0.8461538461538461
+            },
+            "f1": {
+              "mean": 0.20052097448019632,
+              "standard_deviation": 0.09201555566848203,
+              "minimum": 0.023255813953488372,
+              "maximum": 0.6875
+            }
+          }
+        }
+      },
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/meditron3_70b_task2_test_v3_xsfixed_20260813_max384/responses.jsonl",
+      "response_sha256": "25b20bdddbdd96c0cdead7d6cd77929754ea34b4b04a7eadc26ecb305ac4f3d6",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/meditron3_70b_task2_test_v3_xsfixed_20260813_max384/run_config.json",
+      "run_config_sha256": "d97413211faa607b7dceb6021511c8ce6caae49435f6c6f2945dc7eb6a96557b",
+      "per_item_output": "per_item/meditron3_70b.jsonl",
+      "format_failures": []
+    }
+  ]
+}

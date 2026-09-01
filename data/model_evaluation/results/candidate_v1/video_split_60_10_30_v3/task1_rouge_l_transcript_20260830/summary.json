@@ -1,0 +1,866 @@
+{
+  "schema_version": 1,
+  "protocol_version": "task1_rouge_l_v1",
+  "generated_utc": "2026-08-31T04:46:34.937040+00:00",
+  "scope": "test_only",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "task1_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+  "task1_manifest_sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "0223812620b6f7d4ec503e5465adb00d5b39f51e490d0d4c0530fc5886188c12",
+  "test_video_count": 66,
+  "test_task1_case_count": 184,
+  "metric": {
+    "name": "ROUGE-L",
+    "variant": "rougeL",
+    "tokenizer": "lowercase ASCII alphanumeric tokens; no stemming; ROUGE-L sentence-level longest-common-subsequence precision/recall/F1",
+    "stemming": false,
+    "aggregation": "item_macro",
+    "reference": "reference_conclusion",
+    "scope": "THE CONCLUSION, NOT THE WHOLE RESPONSE. The candidate is the extracted conclusion from the *_conclusiononly derived run, which is exactly the text task1_judge_v14 scores; the role table that also appears in the full response is scored by neither. This number is not a similarity score for a whole tumor board simulation output.",
+    "format_failure_rule": "an empty candidate scores 0 on precision, recall and F1 and stays in the denominator, matching the judge's floor rule",
+    "candidate_verification": "byte-checked against candidate_sha256 in /rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/board17_transcript3_task1_judge_v31_images_20260830/results/task1.per_item.jsonl",
+    "task1_has_no_qa_type": "type_macro and per_qa_type are null: Task 1 has no question-type dimension to macro-average over"
+  },
+  "results": [
+    {
+      "task": "task1",
+      "model": {
+        "key": "deepseek_v4_flash_api",
+        "model_id": "deepseek-ai/DeepSeek-V4-Flash",
+        "display_name": "DeepSeek-V4-Flash",
+        "organization": "DeepSeek",
+        "revision": "60d8d70770c6776ff598c94bb586a859a38244f1"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.16520545192391567,
+            "standard_deviation": 0.041982603813294155,
+            "minimum": 0.07368421052631578,
+            "maximum": 0.3037974683544304
+          },
+          "recall": {
+            "mean": 0.17458915069516606,
+            "standard_deviation": 0.04866635499658829,
+            "minimum": 0.08433734939759036,
+            "maximum": 0.38095238095238093
+          },
+          "f1": {
+            "mean": 0.16667578356417118,
+            "standard_deviation": 0.03796701868938143,
+            "minimum": 0.08092485549132948,
+            "maximum": 0.27499999999999997
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "response_sha256": "0b92fd5a82863861375fa1adda8c7451ae17e7a89bb9b8685227fbbadab5c201",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "f21e558d7bc83f59cdb99f757f7bd9af2d77626a1568336ce61dcfcc65c7f0cc",
+      "per_item_output": "per_item/deepseek_v4_flash_api.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "deepseek_v4_flash_api_reasoning",
+        "model_id": "deepseek-ai/DeepSeek-V4-Flash",
+        "display_name": "DeepSeek-V4-Flash",
+        "organization": "DeepSeek",
+        "revision": "60d8d70770c6776ff598c94bb586a859a38244f1"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.159794330565559,
+            "standard_deviation": 0.043369066102295684,
+            "minimum": 0.033112582781456956,
+            "maximum": 0.3142857142857143
+          },
+          "recall": {
+            "mean": 0.1792928057918717,
+            "standard_deviation": 0.05650263320098723,
+            "minimum": 0.08403361344537816,
+            "maximum": 0.5
+          },
+          "f1": {
+            "mean": 0.16529981733088983,
+            "standard_deviation": 0.04108529323888957,
+            "minimum": 0.06092254134029591,
+            "maximum": 0.302158273381295
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "response_sha256": "b7eda5eb44f5a6d6af844b3cd405445f243d5b589bd33a556f75cd5a5f774d7e",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "70648badba713c5aa66888913cd4b275adfbef05d0e76c1849a6f52977c04f98",
+      "per_item_output": "per_item/deepseek_v4_flash_api_reasoning.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "deepseek_v4_pro",
+        "model_id": "deepseek-ai/DeepSeek-V4-Pro",
+        "display_name": "DeepSeek-V4-Pro",
+        "organization": "DeepSeek",
+        "revision": "b5968e9190ef611bbf34a7229255be88a0e937c1"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.16995899297095096,
+            "standard_deviation": 0.04725664045760127,
+            "minimum": 0.08333333333333333,
+            "maximum": 0.43037974683544306
+          },
+          "recall": {
+            "mean": 0.19387692027020453,
+            "standard_deviation": 0.05823487726738027,
+            "minimum": 0.08695652173913043,
+            "maximum": 0.40476190476190477
+          },
+          "f1": {
+            "mean": 0.17746745406959064,
+            "standard_deviation": 0.043101464449272646,
+            "minimum": 0.0898876404494382,
+            "maximum": 0.3736263736263737
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "response_sha256": "db41a819aa224755503efc8555f0487130c4c44a7a9e3b3238c9f13feeff0139",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "6835abd66270e31f63bcdc8c896773027b5a2287b9a9e3fa1a3ab36d73f84961",
+      "per_item_output": "per_item/deepseek_v4_pro.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "deepseek_v4_pro_reasoning",
+        "model_id": "deepseek-ai/DeepSeek-V4-Pro",
+        "display_name": "DeepSeek-V4-Pro",
+        "organization": "DeepSeek",
+        "revision": "b5968e9190ef611bbf34a7229255be88a0e937c1"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.15744388086004218,
+            "standard_deviation": 0.0403986186057177,
+            "minimum": 0.08547008547008547,
+            "maximum": 0.34831460674157305
+          },
+          "recall": {
+            "mean": 0.1887835216290577,
+            "standard_deviation": 0.051202508002140795,
+            "minimum": 0.09782608695652174,
+            "maximum": 0.36666666666666664
+          },
+          "f1": {
+            "mean": 0.1692445602496627,
+            "standard_deviation": 0.039558045826465014,
+            "minimum": 0.1019108280254777,
+            "maximum": 0.34444444444444444
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "response_sha256": "07320a38379dcdaa30f43c72f672d88a74658736cb2db91c39d3495691924eee",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "42473cc6fb4618c9c0fece4e796b86679710b376e7d814dac0af8613859d119e",
+      "per_item_output": "per_item/deepseek_v4_pro_reasoning.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "gemma4_31b_it",
+        "model_id": "google/gemma-4-31b-it",
+        "display_name": "Gemma 4 31B IT",
+        "organization": "Google",
+        "revision": "842da3794eaa0b77d5f08bae87a17459d91ff475"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.20128179943449284,
+            "standard_deviation": 0.054961712965549116,
+            "minimum": 0.07462686567164178,
+            "maximum": 0.40425531914893614
+          },
+          "recall": {
+            "mean": 0.16919544477361692,
+            "standard_deviation": 0.04901101359763635,
+            "minimum": 0.08450704225352113,
+            "maximum": 0.38461538461538464
+          },
+          "f1": {
+            "mean": 0.18106610948918453,
+            "standard_deviation": 0.045502092129439585,
+            "minimum": 0.09655172413793102,
+            "maximum": 0.3389830508474576
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_31b_it_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "response_sha256": "b7c2dff065a1c703f2484f717ff95e644dde01bab2ad4cfdba8298d520747e1a",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_31b_it_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "adfc3a1a91a21a34aee62b7c6bec6bd60e3f597aad6095ee20b8d0ace95bb22a",
+      "per_item_output": "per_item/gemma4_31b_it.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "gemma4_31b_it_reasoning",
+        "model_id": "google/gemma-4-31b-it",
+        "display_name": "Gemma 4 31B IT",
+        "organization": "Google",
+        "revision": "842da3794eaa0b77d5f08bae87a17459d91ff475"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.2015067522877721,
+            "standard_deviation": 0.05785815507011788,
+            "minimum": 0.09230769230769231,
+            "maximum": 0.4107142857142857
+          },
+          "recall": {
+            "mean": 0.16948453689443016,
+            "standard_deviation": 0.05267919496908553,
+            "minimum": 0.08247422680412371,
+            "maximum": 0.36666666666666664
+          },
+          "f1": {
+            "mean": 0.18102357135180314,
+            "standard_deviation": 0.0485929139724994,
+            "minimum": 0.08955223880597016,
+            "maximum": 0.3709677419354839
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_31b_it_reasoning_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "response_sha256": "8482859e104c0c2518fd6aa04aa85821e625de2b2276ea352e608e37e6f05be1",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_31b_it_reasoning_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "68800a530d8cea53e159966879d5ce7195e8ddbaa8d93b3bc3183a7d3fb75f8c",
+      "per_item_output": "per_item/gemma4_31b_it_reasoning.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "huatuogpt_3_32b",
+        "model_id": "FreedomIntelligence/HuatuoGPT-3-32B",
+        "display_name": "HuatuoGPT-3-32B",
+        "organization": "FreedomIntelligence",
+        "revision": "2f080fedb7d9cffa33b555f7d42563fa44960fec"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.09344923442666957,
+            "standard_deviation": 0.026951131931364895,
+            "minimum": 0.03488372093023256,
+            "maximum": 0.17777777777777778
+          },
+          "recall": {
+            "mean": 0.10540575914110051,
+            "standard_deviation": 0.032876706155394814,
+            "minimum": 0.043478260869565216,
+            "maximum": 0.2692307692307692
+          },
+          "f1": {
+            "mean": 0.09752425915939768,
+            "standard_deviation": 0.025999712080587652,
+            "minimum": 0.038709677419354833,
+            "maximum": 0.18604651162790697
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max32768_conclusiononly2/responses.jsonl",
+      "response_sha256": "a0f027f687b9b91db0b4501a60012f894b0cecc2bcf623c5133a5db378644613",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max32768_conclusiononly2/run_config.json",
+      "run_config_sha256": "08922e659e7127d8dfd9d8b27c1adb77168a97d816cc0c52f2b96a876bd56712",
+      "per_item_output": "per_item/huatuogpt_3_32b.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "huatuogpt_3_32b_reasoning",
+        "model_id": "FreedomIntelligence/HuatuoGPT-3-32B",
+        "display_name": "HuatuoGPT-3-32B",
+        "organization": "FreedomIntelligence",
+        "revision": "2f080fedb7d9cffa33b555f7d42563fa44960fec"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.08551463286503062,
+            "standard_deviation": 0.023546867549317962,
+            "minimum": 0.03225806451612903,
+            "maximum": 0.15789473684210525
+          },
+          "recall": {
+            "mean": 0.099674016258527,
+            "standard_deviation": 0.02794102789085037,
+            "minimum": 0.03333333333333333,
+            "maximum": 0.21153846153846154
+          },
+          "f1": {
+            "mean": 0.09064036572744182,
+            "standard_deviation": 0.02255408001888716,
+            "minimum": 0.03278688524590164,
+            "maximum": 0.16666666666666669
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max32768_conclusiononly2/responses.jsonl",
+      "response_sha256": "5295080654451686484997cbae698a43966e6be3902b4492d0fdaa9b0e7a2d09",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max32768_conclusiononly2/run_config.json",
+      "run_config_sha256": "f42c8d1cc9d375f44959c0837974192840910e39e05400833db4704e79664e75",
+      "per_item_output": "per_item/huatuogpt_3_32b_reasoning.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "llama4_scout",
+        "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+        "display_name": "Llama 4 Scout 17B-16E Instruct",
+        "organization": "Meta",
+        "revision": "92f3b1597a195b523d8d9e5700e57e4fbb8f20d3"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.1973508935410557,
+            "standard_deviation": 0.056303268315416724,
+            "minimum": 0.1,
+            "maximum": 0.4186046511627907
+          },
+          "recall": {
+            "mean": 0.15364693055451226,
+            "standard_deviation": 0.04755410167577576,
+            "minimum": 0.04424778761061947,
+            "maximum": 0.3387096774193548
+          },
+          "f1": {
+            "mean": 0.16908858763414428,
+            "standard_deviation": 0.04424077567458404,
+            "minimum": 0.06289308176100629,
+            "maximum": 0.35294117647058826
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/llama4_scout_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "response_sha256": "bd08f288bcad963a0e5522251da65e6fc1691c52300163d665c41609f8a7dc53",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/llama4_scout_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "120356227d691e8229215c502c7cd80a267ebeb9be26b2292b305f9e764b898a",
+      "per_item_output": "per_item/llama4_scout.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "medgemma_27b_it",
+        "model_id": "google/medgemma-27b-it",
+        "display_name": "MedGemma 27B IT",
+        "organization": "Google",
+        "revision": "2d3e00ea38b50018bf5dd3aa1009457cd2d5a48f"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.1793092834662056,
+            "standard_deviation": 0.05083061430978075,
+            "minimum": 0.09183673469387756,
+            "maximum": 0.3380281690140845
+          },
+          "recall": {
+            "mean": 0.1757016544426833,
+            "standard_deviation": 0.05630157608274478,
+            "minimum": 0.07964601769911504,
+            "maximum": 0.4
+          },
+          "f1": {
+            "mean": 0.1737918218292659,
+            "standard_deviation": 0.04593991573758461,
+            "minimum": 0.0989010989010989,
+            "maximum": 0.36641221374045807
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medgemma_27b_it_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "response_sha256": "536f33cabc14d76f9cb853b789712bc839b1a63886622ca223fbc9576cc91913",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medgemma_27b_it_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "bac9866aa0e3fc0c010c0015a3c2e2a343b6839a78c9c11ab466a6b9c1c1d88b",
+      "per_item_output": "per_item/medgemma_27b_it.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "medreason_8b",
+        "model_id": "UCSC-VLAA/MedReason-8B",
+        "display_name": "MedReason-8B",
+        "organization": "UCSC-VLAA",
+        "revision": "2730640542b2629e26bdc31938da7ee2a85ebd03"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 9,
+      "candidates_verified_against_judge": 175,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.1480901103671717,
+            "standard_deviation": 0.07262277078021337,
+            "minimum": 0.0,
+            "maximum": 0.4375
+          },
+          "recall": {
+            "mean": 0.09544635643329548,
+            "standard_deviation": 0.046858250759407666,
+            "minimum": 0.0,
+            "maximum": 0.3269230769230769
+          },
+          "f1": {
+            "mean": 0.11334989310907063,
+            "standard_deviation": 0.0516328187529174,
+            "minimum": 0.0,
+            "maximum": 0.3366336633663366
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medreason_8b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "response_sha256": "16c9618fd56842e7b70892b0d02cbbc24506f1b66bd027894cb534583eb28732",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medreason_8b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "fa2b81c300f96734a64d9b548ca2c939bafa1a33f47c315e8cbbea783b3b3c67",
+      "per_item_output": "per_item/medreason_8b.jsonl",
+      "format_failures": [
+        {
+          "simulation_id": "sim_0b1aec507dc9d05685f7ce58",
+          "video_uid": "video_8b3258f5f741462e",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_0df9412160ca0012a4fba5a7",
+          "video_uid": "video_e50309973a2f3321",
+          "case_id": "case_003"
+        },
+        {
+          "simulation_id": "sim_18505977fa2d0931d85bab1c",
+          "video_uid": "video_61478b5b7483315b",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_1d6b52376c4194337a38c27d",
+          "video_uid": "video_a02ca6a1f94d6bb9",
+          "case_id": "case_003"
+        },
+        {
+          "simulation_id": "sim_91b725fcb6f1fe3f8cb894f9",
+          "video_uid": "video_43242c4515a3889d",
+          "case_id": "case_003"
+        },
+        {
+          "simulation_id": "sim_a01dc943b16782c0d6b114e8",
+          "video_uid": "video_e50309973a2f3321",
+          "case_id": "case_005"
+        },
+        {
+          "simulation_id": "sim_b276f97062da0e6cbf81b332",
+          "video_uid": "video_99617184cf65279f",
+          "case_id": "case_004"
+        },
+        {
+          "simulation_id": "sim_d868af781acf602fc2ef7033",
+          "video_uid": "video_125b35230f0ae41c",
+          "case_id": "case_004"
+        },
+        {
+          "simulation_id": "sim_ee252902a06d6e418e313956",
+          "video_uid": "video_a12039c1f00abe4a",
+          "case_id": "case_004"
+        }
+      ]
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "meditron3_70b",
+        "model_id": "OpenMeditron/Meditron3-70B",
+        "display_name": "Meditron3 70B",
+        "organization": "EPFL LiGHT / OpenMeditron",
+        "revision": "1ec3a7ee2355e384149df2e4dd42fed41e7fd08f"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 4,
+      "candidates_verified_against_judge": 180,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.1733587683075396,
+            "standard_deviation": 0.0652893512397592,
+            "minimum": 0.0,
+            "maximum": 0.4864864864864865
+          },
+          "recall": {
+            "mean": 0.16418831934984116,
+            "standard_deviation": 0.06303212797669722,
+            "minimum": 0.0,
+            "maximum": 0.55
+          },
+          "f1": {
+            "mean": 0.163109176263712,
+            "standard_deviation": 0.05346300782498824,
+            "minimum": 0.0,
+            "maximum": 0.4177215189873417
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/meditron3_70b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "response_sha256": "6e9339e4bf680046b5cb479c9c586c583cfe386e0b82c1cc7c9aacc6dee81639",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/meditron3_70b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "c1fb1acf1f61f31b70aa833a38403d0512f316d85158fa1d64109c3dd8714ee2",
+      "per_item_output": "per_item/meditron3_70b.jsonl",
+      "format_failures": [
+        {
+          "simulation_id": "sim_8a90a3a2aea5d805c5d3ffe7",
+          "video_uid": "video_61478b5b7483315b",
+          "case_id": "case_001"
+        },
+        {
+          "simulation_id": "sim_d2da718bda6d564601dbc28a",
+          "video_uid": "video_792addbba3a29ae4",
+          "case_id": "case_003"
+        },
+        {
+          "simulation_id": "sim_d334580c704ad2847c98afe1",
+          "video_uid": "video_1d346def8e3db615",
+          "case_id": "case_002"
+        },
+        {
+          "simulation_id": "sim_fa0401093f0405f1a2b199d4",
+          "video_uid": "video_629b5b6a55dbd4f7",
+          "case_id": "case_001"
+        }
+      ]
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "ministral_3_14b_instruct_2512",
+        "model_id": "mistralai/Ministral-3-14B-Instruct-2512",
+        "display_name": "Ministral 3 14B Instruct 2512",
+        "organization": "Mistral AI",
+        "revision": "29439f81c2be264d8d393273f99e7db9c0961120"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.14400471402040704,
+            "standard_deviation": 0.03357062903734061,
+            "minimum": 0.07547169811320754,
+            "maximum": 0.2871287128712871
+          },
+          "recall": {
+            "mean": 0.19749258785070684,
+            "standard_deviation": 0.049632342330020875,
+            "minimum": 0.08421052631578947,
+            "maximum": 0.38095238095238093
+          },
+          "f1": {
+            "mean": 0.16357728727603874,
+            "standard_deviation": 0.032680070478417096,
+            "minimum": 0.09580838323353293,
+            "maximum": 0.2901554404145078
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/ministral_3_14b_instruct_2512_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "response_sha256": "ddbf17c97f8a9a14ebeb497c50a59f46a786dff7b190158bd7c39eb8176b51eb",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/ministral_3_14b_instruct_2512_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "436a4f7338a245e48b7c237af3f7c8d63fd7c5f6ab945c6791c602365b0ca35a",
+      "per_item_output": "per_item/ministral_3_14b_instruct_2512.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "nemotron_3_5_lightning",
+        "model_id": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+        "display_name": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+        "organization": "NVIDIA",
+        "revision": "ce38b6ab8b252b4b8ee7165b4605e93191cafd73"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.06154291277446813,
+            "standard_deviation": 0.09660971415138084,
+            "minimum": 0.0,
+            "maximum": 0.6666666666666666
+          },
+          "recall": {
+            "mean": 0.36606905320363514,
+            "standard_deviation": 0.2563657062885435,
+            "minimum": 0.0,
+            "maximum": 0.828125
+          },
+          "f1": {
+            "mean": 0.03382154999969748,
+            "standard_deviation": 0.028773711987885305,
+            "minimum": 0.0,
+            "maximum": 0.18292682926829268
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "response_sha256": "15a916c26d8ce0ff5832d8210764c6b072c18530a17132c2a30f55cb39dcee59",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "829e147d874ed256aa5cb4deed55f0a60b65783cf335813b3f33c373bf976c9c",
+      "per_item_output": "per_item/nemotron_3_5_lightning.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "nemotron_3_5_lightning_reasoning",
+        "model_id": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+        "display_name": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+        "organization": "NVIDIA",
+        "revision": "ce38b6ab8b252b4b8ee7165b4605e93191cafd73"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.13517643392994175,
+            "standard_deviation": 0.03547379677498735,
+            "minimum": 0.06349206349206349,
+            "maximum": 0.2328767123287671
+          },
+          "recall": {
+            "mean": 0.15705768879099863,
+            "standard_deviation": 0.04240904650810931,
+            "minimum": 0.06542056074766354,
+            "maximum": 0.3157894736842105
+          },
+          "f1": {
+            "mean": 0.14238542101384896,
+            "standard_deviation": 0.03219307960251134,
+            "minimum": 0.07291666666666666,
+            "maximum": 0.24615384615384617
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "response_sha256": "caabcf5125e125a2ff7628ffd5b53d62e077b3033626e4d86fd67e1a622068e2",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "79339c3e1580570416643dd12d2d504f1750e9a0fc9e4b182a95799c5156b477",
+      "per_item_output": "per_item/nemotron_3_5_lightning_reasoning.jsonl",
+      "format_failures": []
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "qwen3_8_27b",
+        "model_id": "Qwen/Qwen3.8-27B",
+        "display_name": "Qwen3.8-27B",
+        "organization": "Qwen",
+        "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 1,
+      "candidates_verified_against_judge": 183,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.08528191068631108,
+            "standard_deviation": 0.05596622631196122,
+            "minimum": 0.0,
+            "maximum": 0.232
+          },
+          "recall": {
+            "mean": 0.1854542876712433,
+            "standard_deviation": 0.12958050161006415,
+            "minimum": 0.0,
+            "maximum": 0.7333333333333333
+          },
+          "f1": {
+            "mean": 0.10778241501674952,
+            "standard_deviation": 0.06595550312647211,
+            "minimum": 0.0,
+            "maximum": 0.24786324786324784
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "response_sha256": "9dd9c943ec22d81c7b86595427d24d8c883c450b3edc72bcef8b22d5cdd569cd",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "12ef9b8c3d8bf5597c443b8eaeff141505b063d07bab07be43331623a4ac0fb2",
+      "per_item_output": "per_item/qwen3_8_27b.jsonl",
+      "format_failures": [
+        {
+          "simulation_id": "sim_740ec6462107f4fed5384234",
+          "video_uid": "video_125b35230f0ae41c",
+          "case_id": "case_002"
+        }
+      ]
+    },
+    {
+      "task": "task1",
+      "model": {
+        "key": "qwen3_8_27b_reasoning",
+        "model_id": "Qwen/Qwen3.8-27B",
+        "display_name": "Qwen3.8-27B",
+        "organization": "Qwen",
+        "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.11429034906960159,
+            "standard_deviation": 0.028726204181014518,
+            "minimum": 0.044444444444444446,
+            "maximum": 0.2109375
+          },
+          "recall": {
+            "mean": 0.20070207855260375,
+            "standard_deviation": 0.04867965773131611,
+            "minimum": 0.09009009009009009,
+            "maximum": 0.42857142857142855
+          },
+          "f1": {
+            "mean": 0.14327343773725215,
+            "standard_deviation": 0.02981314620509875,
+            "minimum": 0.07058823529411765,
+            "maximum": 0.23076923076923075
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_reasoning_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "response_sha256": "e070fa18e1007a18442432d0b912eea5043bc31da2298fd56791f29955ec2191",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_reasoning_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "8ca69bdf4af03c1af432fe0ba2d63e704d1dc47aae8d1307ca13123105c0811e",
+      "per_item_output": "per_item/qwen3_8_27b_reasoning.jsonl",
+      "format_failures": []
+    }
+  ]
+}

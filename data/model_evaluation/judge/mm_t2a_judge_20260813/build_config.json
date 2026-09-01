@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "protocol_version": "llm_judge_task1_v14_task2_v3",
+  "task_protocol_versions": {
+    "task1": "v14",
+    "task2": "v3"
+  },
+  "created_utc": "2026-08-13T22:36:51.871727+00:00",
+  "scope": "test_only",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": "medium",
+  "selection_seed": "judge_mm_t2a_judge_20260813",
+  "task1_cases": 0,
+  "task2_per_type": 0,
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "2e92c3aa10e10bb60aacc8d413b83f668ab4cf59b85354e0384b88c599af183f",
+  "prompts": {
+    "task1": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/prompts/task1_judge_v14.txt",
+      "sha256": "ea9494ea0866777319859a939160c96e5463c24b9bff601466149aa677cd3713"
+    },
+    "task2": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/prompts/task2_judge_v3.txt",
+      "sha256": "ff2369b3a76f2b014d7ff3e758221aac78270cf956d2e2877c82417b0872c0b4"
+    }
+  },
+  "schemas": {
+    "task1": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/schemas/task1_judge_v14.json",
+      "sha256": "8928bba33d8ca4f56dce0655b279e765ed641d50c2f3d852222ded2314e39e9a"
+    },
+    "task2": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/schemas/task2_judge_v3.json",
+      "sha256": "d829ff4a90bd1f41bc851cabeb52c7d09b6816f2f225dfed34d6859f4180cb6a"
+    }
+  },
+  "candidate_runs": {
+    "task2:mm_llama4_scout": {
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_llama4_scout_task2_test_v3_xsfixed_multimodal_20260813_max16384_judgeinput/responses.jsonl",
+      "responses_sha256": "adda81210b167e66a821e1d11a81530816d1407699270c95c413215032160473",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_llama4_scout_task2_test_v3_xsfixed_multimodal_20260813_max16384_judgeinput/run_config.json",
+      "run_config_sha256": "af847c6e486117c28f88f18595bf8832451121b5398630cdcb5f5dab666dde7f"
+    },
+    "task2:mm_gemma4_31b_it_reasoning": {
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_gemma4_31b_it_reasoning_task2_test_v3_xsfixed_multimodal_20260813_max16384_judgeinput/responses.jsonl",
+      "responses_sha256": "e70a3d3eaccbd49e3cfb3f9ab3845455f3819b699e7fe5f5662aa049b89b3d4a",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_gemma4_31b_it_reasoning_task2_test_v3_xsfixed_multimodal_20260813_max16384_judgeinput/run_config.json",
+      "run_config_sha256": "3316999d67b6dad305145c1f33d744f45e14d7b1acff82439c3b523c695fd2b5"
+    },
+    "task2:mm_gemma4_31b_it": {
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_gemma4_31b_it_task2_test_v3_xsfixed_multimodal_20260813_max16384_judgeinput/responses.jsonl",
+      "responses_sha256": "b4e3882accb6c0d2fb517f2ec18937f26f190a6e81fbbec63b61b2d8b5b3ab9d",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_gemma4_31b_it_task2_test_v3_xsfixed_multimodal_20260813_max16384_judgeinput/run_config.json",
+      "run_config_sha256": "75d81b0f5d96c1116f2fcf751a52b9559a7488931ffac25c8602411b3e164ebf"
+    }
+  },
+  "outputs": {
+    "task2": {
+      "selected_source_records": 4844,
+      "batch_requests": 14532,
+      "manifest_records": 14532,
+      "candidate_format_failures": 0,
+      "batch": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/mm_t2a_judge_20260813/task2.batch.jsonl",
+      "batch_sha256": "e35b1fd55077dc2b918f66e2b98768900d9c15fe057ec07c9ec99b80d1f1b2d6",
+      "judge_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/mm_t2a_judge_20260813/task2.judge_manifest.jsonl",
+      "judge_manifest_sha256": "ee780b0b044ad9c497646f690657a993edc3d53f56b3e1dd0bc999dbb2a49153"
+    }
+  }
+}

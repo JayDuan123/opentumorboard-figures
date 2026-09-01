@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-13T23:27:22.765896+00:00",
+  "scope": "test_only",
+  "protocol_version": "llm_judge_task1_v14_task2_v3",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": null,
+  "batch_template_reasoning_effort": "medium",
+  "execution": {
+    "task2": {
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/cap8192_t2_judge_20260813/task2.output.local_run_config.json",
+      "run_config_sha256": "c9e0ebe8889ef58f3b96c56b14bccea727113641b6b63d6a98b338bdc1313f93",
+      "base_url": "http://127.0.0.1:8071/v1",
+      "endpoint": "/chat/completions",
+      "resolved_model": "Qwen/Qwen3.6-27B",
+      "model_revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "seed": 0,
+        "thinking": "disabled",
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "max_output_tokens": [
+          1024
+        ],
+        "structured_output": "strict_json_schema",
+        "structured_output_whitespace": "disabled"
+      },
+      "wire_translation": {
+        "source": "frozen Responses Batch request",
+        "target": "local vLLM chat completions",
+        "messages_changed": false,
+        "json_schema_changed": false,
+        "source_reasoning_field_ignored": true
+      }
+    }
+  },
+  "build_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/cap8192_t2_judge_20260813/build_config.json",
+  "build_config_sha256": "95826eedbe91b3d249b93a1b74be5dfb9e4783c0ca3f9d0c101e9668e79384ed",
+  "validation": {
+    "task2": {
+      "response_rows": 14532,
+      "scored": 14531,
+      "candidate_format_failures": 0,
+      "api_errors": 0,
+      "invalid_judge_outputs": 1,
+      "missing_ids": [],
+      "extra_ids": [],
+      "duplicate_response_ids": []
+    }
+  },
+  "results": {
+    "task1": [],
+    "task2": [
+      {
+        "model_key": "deepseek_v4_flash",
+        "test_records": 4844,
+        "scored_records": 4844,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "item_macro_clinical_equivalence": 3.7091246903385633,
+        "item_macro_clinical_equivalence_all_responses": 3.7091246903385633,
+        "candidate_format_failure_score": 1,
+        "type_macro_clinical_equivalence": 3.724015546133247,
+        "critical_error_rate": 0.1009496284062758,
+        "unsupported_claim_rate": 0.10528488852188274,
+        "per_qa_type": {
+          "agreement_or_support": {
+            "count": 178,
+            "clinical_equivalence": 3.893258426966292,
+            "critical_error_rate": 0.1348314606741573,
+            "unsupported_claim_rate": 0.07865168539325842
+          },
+          "clarification_question": {
+            "count": 178,
+            "clinical_equivalence": 3.904494382022472,
+            "critical_error_rate": 0.0898876404494382,
+            "unsupported_claim_rate": 0.07303370786516854
+          },
+          "clinical_trial_suggestion": {
+            "count": 73,
+            "clinical_equivalence": 3.6164383561643834,
+            "critical_error_rate": 0.0547945205479452,
+            "unsupported_claim_rate": 0.1506849315068493
+          },
+          "eligibility_assessment": {
+            "count": 322,
+            "clinical_equivalence": 3.7577639751552794,
+            "critical_error_rate": 0.12422360248447205,
+            "unsupported_claim_rate": 0.06521739130434782
+          },
+          "evidence_discussion": {
+            "count": 677,
+            "clinical_equivalence": 3.4564254062038406,
+            "critical_error_rate": 0.0915805022156573,
+            "unsupported_claim_rate": 0.15066469719350073
+          },
+          "findings_interpretation": {
+            "count": 1284,
+            "clinical_equivalence": 4.043613707165109,
+            "critical_error_rate": 0.050623052959501556,
+            "unsupported_claim_rate": 0.10514018691588785
+          },
+          "next_action_suggestion": {
+            "count": 654,
+            "clinical_equivalence": 3.7217125382262997,
+            "critical_error_rate": 0.09480122324159021,
+            "unsupported_claim_rate": 0.0963302752293578
+          },
+          "treatment_recommendation": {
+            "count": 1139,
+            "clinical_equivalence": 3.4056189640035117,
+            "critical_error_rate": 0.17120280948200176,
+            "unsupported_claim_rate": 0.10623353819139596
+          },
+          "uncertainty": {
+            "count": 339,
+            "clinical_equivalence": 3.7168141592920354,
+            "critical_error_rate": 0.061946902654867256,
+            "unsupported_claim_rate": 0.08849557522123894
+          }
+        }
+      },
+      {
+        "model_key": "huatuogpt_3_32b",
+        "test_records": 4844,
+        "scored_records": 4843,
+        "judge_coverage": 0.999793559042114,
+        "candidate_format_failures": 0,
+        "judge_failures": 1,
+        "item_macro_clinical_equivalence": 3.5046458806524883,
+        "item_macro_clinical_equivalence_all_responses": 3.5046458806524883,
+        "candidate_format_failure_score": 1,
+        "type_macro_clinical_equivalence": 3.537606149665966,
+        "critical_error_rate": 0.1340078463762131,
+        "unsupported_claim_rate": 0.24014040883749743,
+        "per_qa_type": {
+          "agreement_or_support": {
+            "count": 178,
+            "clinical_equivalence": 3.747191011235955,
+            "critical_error_rate": 0.15168539325842698,
+            "unsupported_claim_rate": 0.16292134831460675
+          },
+          "clarification_question": {
+            "count": 178,
+            "clinical_equivalence": 3.803370786516854,
+            "critical_error_rate": 0.10112359550561797,
+            "unsupported_claim_rate": 0.1404494382022472
+          },
+          "clinical_trial_suggestion": {
+            "count": 73,
+            "clinical_equivalence": 3.356164383561644,
+            "critical_error_rate": 0.1232876712328767,
+            "unsupported_claim_rate": 0.3835616438356164
+          },
+          "eligibility_assessment": {
+            "count": 322,
+            "clinical_equivalence": 3.531055900621118,
+            "critical_error_rate": 0.14596273291925466,
+            "unsupported_claim_rate": 0.19875776397515527
+          },
+          "evidence_discussion": {
+            "count": 677,
+            "clinical_equivalence": 3.3146233382570163,
+            "critical_error_rate": 0.14180206794682423,
+            "unsupported_claim_rate": 0.32644017725258495
+          },
+          "findings_interpretation": {
+            "count": 1284,
+            "clinical_equivalence": 3.8216510903426792,
+            "critical_error_rate": 0.07866043613707165,
+            "unsupported_claim_rate": 0.20950155763239875
+          },
+          "next_action_suggestion": {
+            "count": 654,
+            "clinical_equivalence": 3.4831804281345566,
+            "critical_error_rate": 0.1162079510703364,
+            "unsupported_claim_rate": 0.23394495412844038
+          },
+          "treatment_recommendation": {
+            "count": 1138,
+            "clinical_equivalence": 3.1528998242530757,
+            "critical_error_rate": 0.218804920913884,
+            "unsupported_claim_rate": 0.2680140597539543
+          },
+          "uncertainty": {
+            "count": 339,
+            "clinical_equivalence": 3.6283185840707963,
+            "critical_error_rate": 0.07669616519174041,
+            "unsupported_claim_rate": 0.20353982300884957
+          }
+        }
+      },
+      {
+        "model_key": "nemotron_3_5_lightning",
+        "test_records": 4844,
+        "scored_records": 4844,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "item_macro_clinical_equivalence": 3.504335260115607,
+        "item_macro_clinical_equivalence_all_responses": 3.504335260115607,
+        "candidate_format_failure_score": 1,
+        "type_macro_clinical_equivalence": 3.5372886219828765,
+        "critical_error_rate": 0.12758051197357556,
+        "unsupported_claim_rate": 0.19322873658133774,
+        "per_qa_type": {
+          "agreement_or_support": {
+            "count": 178,
+            "clinical_equivalence": 3.797752808988764,
+            "critical_error_rate": 0.11235955056179775,
+            "unsupported_claim_rate": 0.15168539325842698
+          },
+          "clarification_question": {
+            "count": 178,
+            "clinical_equivalence": 3.696629213483146,
+            "critical_error_rate": 0.12921348314606743,
+            "unsupported_claim_rate": 0.16853932584269662
+          },
+          "clinical_trial_suggestion": {
+            "count": 73,
+            "clinical_equivalence": 3.3835616438356166,
+            "critical_error_rate": 0.1095890410958904,
+            "unsupported_claim_rate": 0.3013698630136986
+          },
+          "eligibility_assessment": {
+            "count": 322,
+            "clinical_equivalence": 3.5559006211180124,
+            "critical_error_rate": 0.13664596273291926,
+            "unsupported_claim_rate": 0.16770186335403728
+          },
+          "evidence_discussion": {
+            "count": 677,
+            "clinical_equivalence": 3.2540620384047267,
+            "critical_error_rate": 0.1536189069423929,
+            "unsupported_claim_rate": 0.2658788774002954
+          },
+          "findings_interpretation": {
+            "count": 1284,
+            "clinical_equivalence": 3.7889408099688473,
+            "critical_error_rate": 0.08644859813084112,
+            "unsupported_claim_rate": 0.16199376947040497
+          },
+          "next_action_suggestion": {
+            "count": 654,
+            "clinical_equivalence": 3.521406727828746,
+            "critical_error_rate": 0.09938837920489296,
+            "unsupported_claim_rate": 0.20030581039755352
+          },
+          "treatment_recommendation": {
+            "count": 1139,
+            "clinical_equivalence": 3.2001755926251096,
+            "critical_error_rate": 0.19051799824407376,
+            "unsupported_claim_rate": 0.20280948200175591
+          },
+          "uncertainty": {
+            "count": 339,
+            "clinical_equivalence": 3.6371681415929205,
+            "critical_error_rate": 0.07669616519174041,
+            "unsupported_claim_rate": 0.15634218289085547
+          }
+        }
+      }
+    ]
+  }
+}

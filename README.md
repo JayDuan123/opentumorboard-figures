@@ -19,12 +19,33 @@ are not optional: Fig 3 in particular carries no legend text on the canvas.
 
 ## Quick start
 
-    pip install -r requirements.txt
-    python scripts/collect_inputs.py --workspace <benchmark workspace> --dest ./otb_inputs
-    W=./otb_inputs
-    python -m scripts.paper.figure3_task2_heatmap --workspace $W --output-dir fig3_out
+The inputs are committed under `data/` (142 MB), so a clone reproduces every figure
+with no access to the source workspace:
 
-Full instructions, including moving to another machine, are below.
+    pip install -r requirements.txt
+
+    python -m scripts.paper.figure1_overview      --manifest-dir data/model_evaluation/manifests --output-dir fig1_out
+    python -m scripts.paper.figure2b_statistics   --manifest-dir data/model_evaluation/manifests --output-dir fig2b_out
+    python -m scripts.paper.figure3_task2_heatmap --workspace data --output-dir fig3_out
+    python -m scripts.paper.figure4_task1_results --workspace data --output-dir fig4_out
+
+All four have been run from a clean checkout on the default font and reproduce the
+committed figures.
+
+### About `data/`
+
+145 files: the benchmark manifests, the result catalog and model registry, and every
+judge / ROUGE / BERTScore / generation-cost summary the catalog lists as active. It is
+the benchmark's evaluation record, not the raw corpus — no video, no slide images.
+
+`scripts/collect_inputs.py` is what produced it and refreshes it. **The catalog moves.**
+Task 1's published rubric went v25 -> v31 during this work and took the judge batch,
+the candidate runs and every auxiliary metric with it, so `data/` is a snapshot. Each
+provenance file records the catalog SHA-256 it was built against; re-run the collector
+against the live workspace to resync.
+
+One file, `expert_qa_trainval_...jsonl`, is 66 MB. That is under GitHub's 100 MB hard
+limit but over its 50 MB warning threshold, so a push prints a warning and succeeds.
 
 ---
 

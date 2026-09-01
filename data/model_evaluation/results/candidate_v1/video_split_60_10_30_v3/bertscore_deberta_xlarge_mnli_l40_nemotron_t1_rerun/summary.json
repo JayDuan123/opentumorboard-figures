@@ -1,0 +1,126 @@
+{
+  "schema_version": 3,
+  "created_utc": "2026-08-13T04:53:28.445363+00:00",
+  "scope": "test_only",
+  "split_name": "video_split_60_10_30_v3",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "dc24100aab468f0bf853de0c7be5661a1eda384f44ab09082756d89ef0ad5a74",
+  "test_video_count": 66,
+  "test_task1_case_count": 184,
+  "test_task2_qa_count": 4844,
+  "split_task2_qa_pairs": 4993,
+  "task2_screened_out": 149,
+  "test_task2_qa_type_counts": {
+    "agreement_or_support": 178,
+    "clarification_question": 178,
+    "clinical_trial_suggestion": 73,
+    "eligibility_assessment": 322,
+    "evidence_discussion": 677,
+    "findings_interpretation": 1284,
+    "next_action_suggestion": 654,
+    "treatment_recommendation": 1139,
+    "uncertainty": 339
+  },
+  "metric": {
+    "name": "BERTScore",
+    "package": "bert-score",
+    "package_version": "0.3.13",
+    "encoder": "microsoft/deberta-xlarge-mnli",
+    "num_layers": 40,
+    "idf": false,
+    "reported_scales": [
+      "raw",
+      "rescaled_with_official_baseline"
+    ],
+    "raw_scorer_hash": "microsoft/deberta-xlarge-mnli_L40_no-idf_version=0.3.12(hug_trans=5.14.1)",
+    "rescaled_scorer_hash": "microsoft/deberta-xlarge-mnli_L40_no-idf_version=0.3.12(hug_trans=5.14.1)-rescaled",
+    "baseline": {
+      "language": "en",
+      "path": "/scratch/al318/OpenTumorBoard_envs/opentumorboard-vllm-clean/lib/python3.12/site-packages/bert_score/rescale_baseline/en/microsoft/deberta-xlarge-mnli.tsv",
+      "sha256": "e9ea1c46dddcf57e19f6e6a57eabcfc38eefa85d4377b39e6b810741be9c2129",
+      "layer_values": {
+        "precision": 0.5169066190719604,
+        "recall": 0.51702880859375,
+        "f1": 0.5150191783905029
+      },
+      "formula": "(raw - baseline) / (1 - baseline)"
+    },
+    "device": "cuda",
+    "batch_size": 16,
+    "maximum_tokens_per_text": 512
+  },
+  "task1_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+  "task1_manifest_sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402",
+  "task2_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_20260809.jsonl",
+  "task2_manifest_sha256": "4ce83eb441cced77464091a4d264fe8a0b12c23d5dce135aea8744e18c2d7db4",
+  "results": [
+    {
+      "model": {
+        "key": "nemotron_3_5_lightning_reasoning",
+        "model_id": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+        "display_name": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+        "organization": "NVIDIA",
+        "revision": "ce38b6ab8b252b4b8ee7165b4605e93191cafd73"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.5871685440449611,
+            "standard_deviation": 0.028030530115093592,
+            "minimum": 0.49613872170448303,
+            "maximum": 0.6843140125274658
+          },
+          "recall": {
+            "mean": 0.6013578762826712,
+            "standard_deviation": 0.030035583031157186,
+            "minimum": 0.515320897102356,
+            "maximum": 0.692481517791748
+          },
+          "f1": {
+            "mean": 0.5938984797052715,
+            "standard_deviation": 0.025937743667554528,
+            "minimum": 0.5226896405220032,
+            "maximum": 0.6742347478866577
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.1454417049515872,
+            "standard_deviation": 0.0580230059481377,
+            "minimum": -0.04298940574921881,
+            "maximum": 0.34653216140927
+          },
+          "recall": {
+            "mean": 0.17460475736323586,
+            "standard_deviation": 0.06218918139548582,
+            "minimum": -0.003536259557058006,
+            "maximum": 0.36327779445216735
+          },
+          "f1": {
+            "mean": 0.16264416611979268,
+            "standard_deviation": 0.0534819986932172,
+            "minimum": 0.015816011251835526,
+            "maximum": 0.32829250642895313
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task1_test_v3_xsfixed_20260813_max65536/responses.jsonl",
+      "responses_sha256": "54727e8753af6bc9af128fcf6487c9586f39cbe14e6731b6dfebc0efaf227856",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task1_test_v3_xsfixed_20260813_max65536/run_config.json",
+      "run_config_sha256": "feab797bd539277f6421b22ecf2b86481d95e935caaaa264939a1fec2e32469c",
+      "per_item_output": "per_item/task1/nemotron_3_5_lightning_reasoning.jsonl"
+    }
+  ]
+}

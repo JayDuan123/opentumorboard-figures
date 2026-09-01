@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-14T06:33:37.720434+00:00",
+  "metric": "generation_cost",
+  "task": "task2",
+  "cost_axis": "output_tokens.mean",
+  "responses_per_configuration": [
+    4844
+  ],
+  "prompt_tokens_mean_spread": 17045.9,
+  "results": [
+    {
+      "model_key": "mm_qwen3_6_27b_reasoning",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 2727.1,
+        "median": 2029.0,
+        "p90": 5302.0,
+        "max": 16384,
+        "total": 13209927
+      },
+      "prompt_tokens_mean": 13999.3,
+      "serving_latency_seconds": {
+        "mean": 137.49,
+        "median": 96.27,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_6_27b_reasoning_task2_test_v3_xsfixed_multimodal_20260813_max16384/responses.jsonl",
+      "responses_sha256": "49980379f6d1f81ac84b01a2e0b40268a837a050d5467af723075b710c5423db"
+    },
+    {
+      "model_key": "nemotron_3_5_lightning_reasoning",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 1844.0,
+        "median": 1746.0,
+        "p90": 2674.0,
+        "max": 7895,
+        "total": 8932226
+      },
+      "prompt_tokens_mean": 1318.0,
+      "serving_latency_seconds": {
+        "mean": 25.72,
+        "median": 24.38,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task2_test_v3_xsfixed_20260812_max8192/responses.jsonl",
+      "responses_sha256": "8712e88b822f0bb0a9e61ee384ed1d3886f0a3c819c3fcd674a8e975588a03b6"
+    },
+    {
+      "model_key": "huatuogpt_3_32b_reasoning",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 1384.4,
+        "median": 1353.0,
+        "p90": 1910.0,
+        "max": 3395,
+        "total": 6706241
+      },
+      "prompt_tokens_mean": 1348.9,
+      "serving_latency_seconds": {
+        "mean": 30.76,
+        "median": 30.07,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_reasoning_task2_test_v3_xsfixed_20260809_max8192/responses.jsonl",
+      "responses_sha256": "67e81647379909c3f2c23cc7d3d94f828867499fbe22887ee58c8ae6e53af881"
+    },
+    {
+      "model_key": "mm_gemma4_31b_it_reasoning",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 770.7,
+        "median": 603.0,
+        "p90": 1263.0,
+        "max": 6250,
+        "total": 3733361
+      },
+      "prompt_tokens_mean": 3765.4,
+      "serving_latency_seconds": {
+        "mean": 35.84,
+        "median": 26.57,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_gemma4_31b_it_reasoning_task2_test_v3_xsfixed_multimodal_20260813_max16384/responses.jsonl",
+      "responses_sha256": "a6c5c6949bfc247867ed35d4be909294d4a7076f731d0eb4865249e9b2b23dd3"
+    },
+    {
+      "model_key": "medreason_8b",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 698.7,
+        "median": 701.0,
+        "p90": 836.0,
+        "max": 1357,
+        "total": 3384583
+      },
+      "prompt_tokens_mean": 1353.8,
+      "serving_latency_seconds": {
+        "mean": 4.52,
+        "median": 4.52,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medreason_8b_task2_test_v3_xsfixed_20260809_max8192/responses.jsonl",
+      "responses_sha256": "45a8aa0223fd0bfc6340a6eb68784fde46a06046fd3ab40bfd14812f6a8fc5d5"
+    },
+    {
+      "model_key": "deepseek_v4_flash_api_reasoning",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 324.6,
+        "median": 239.0,
+        "p90": 491.0,
+        "max": 8192,
+        "total": 1572398
+      },
+      "prompt_tokens_mean": 1351.2,
+      "serving_latency_seconds": {
+        "mean": 5.0,
+        "median": 3.99,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task2_test_v3_xsfixed_20260814_max8192/responses.jsonl",
+      "responses_sha256": "3ddeed8db10494661455c20bfd3f32562a1d427ba36c1ffb7ca1c4faa6cccb14"
+    },
+    {
+      "model_key": "ministral_3_14b_instruct_2512",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 114.1,
+        "median": 115.0,
+        "p90": 154.0,
+        "max": 379,
+        "total": 552562
+      },
+      "prompt_tokens_mean": 1307.0,
+      "serving_latency_seconds": {
+        "mean": 1.27,
+        "median": 1.26,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/ministral_3_14b_instruct_2512_task2_test_v3_xsfixed_20260809_max384/responses.jsonl",
+      "responses_sha256": "6a4af1a443b583b7d1f03af94b269bbefdcf23d5bbe13b4099ffe7badff7552d"
+    },
+    {
+      "model_key": "deepseek_v4_flash_api",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 94.5,
+        "median": 93.0,
+        "p90": 126.0,
+        "max": 207,
+        "total": 457706
+      },
+      "prompt_tokens_mean": 1272.2,
+      "serving_latency_seconds": {
+        "mean": 2.42,
+        "median": 2.26,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_task2_test_v3_xsfixed_20260814_max8192/responses.jsonl",
+      "responses_sha256": "f59171dcd7a2cac9879e28c90dc48714f156725c9b26a6014b828e22ab6cd5c6"
+    },
+    {
+      "model_key": "huatuogpt_3_32b",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 94.0,
+        "median": 94.0,
+        "p90": 121.0,
+        "max": 176,
+        "total": 455510
+      },
+      "prompt_tokens_mean": 1352.9,
+      "serving_latency_seconds": {
+        "mean": 3.27,
+        "median": 3.23,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_task2_test_v3_xsfixed_20260813_max8192/responses.jsonl",
+      "responses_sha256": "7db4956fcb333222951198f66aaa704fd8615900cbe5125aeea3fa408a6f1a5f"
+    },
+    {
+      "model_key": "mm_medgemma_27b_it",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 81.0,
+        "median": 74.0,
+        "p90": 113.0,
+        "max": 16384,
+        "total": 392424
+      },
+      "prompt_tokens_mean": 3713.4,
+      "serving_latency_seconds": {
+        "mean": 3.16,
+        "median": 2.66,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_medgemma_27b_it_task2_test_v3_xsfixed_multimodal_20260813_max16384/responses.jsonl",
+      "responses_sha256": "0338610b24ec72158129de1251fc198163f3bda564b72ee6e3840dbba419f91a"
+    },
+    {
+      "model_key": "mm_qwen3_6_27b",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 79.4,
+        "median": 78.5,
+        "p90": 102.0,
+        "max": 181,
+        "total": 384633
+      },
+      "prompt_tokens_mean": 14001.3,
+      "serving_latency_seconds": {
+        "mean": 49.12,
+        "median": 34.5,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_6_27b_task2_test_v3_xsfixed_multimodal_20260813_max16384/responses.jsonl",
+      "responses_sha256": "acc791e53dd647bb068c9d21a5694c04c946c29aeafac58004b2bec7b07e40e7"
+    },
+    {
+      "model_key": "meditron3_70b",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 75.2,
+        "median": 74.0,
+        "p90": 111.0,
+        "max": 340,
+        "total": 364343
+      },
+      "prompt_tokens_mean": 1333.8,
+      "serving_latency_seconds": {
+        "mean": 3.09,
+        "median": 3.01,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/meditron3_70b_task2_test_v3_xsfixed_20260813_max384/responses.jsonl",
+      "responses_sha256": "25b20bdddbdd96c0cdead7d6cd77929754ea34b4b04a7eadc26ecb305ac4f3d6"
+    },
+    {
+      "model_key": "nemotron_3_5_lightning",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 68.7,
+        "median": 64.0,
+        "p90": 95.0,
+        "max": 8192,
+        "total": 332838
+      },
+      "prompt_tokens_mean": 1318.0,
+      "serving_latency_seconds": {
+        "mean": 1.59,
+        "median": 1.52,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_task2_test_v3_xsfixed_20260813_max8192/responses.jsonl",
+      "responses_sha256": "99efde42e789a7202929b6de067a642e2baf64597379d2982c7a4663d5e942b0"
+    },
+    {
+      "model_key": "mm_gemma4_31b_it",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 63.0,
+        "median": 64.0,
+        "p90": 83.0,
+        "max": 127,
+        "total": 305327
+      },
+      "prompt_tokens_mean": 3767.4,
+      "serving_latency_seconds": {
+        "mean": 10.04,
+        "median": 5.4,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_gemma4_31b_it_task2_test_v3_xsfixed_multimodal_20260813_max16384/responses.jsonl",
+      "responses_sha256": "d2a474e7783e8a62571762749391cfa1ef9f907f7380a7559acedd08e896058f"
+    },
+    {
+      "model_key": "mm_llama4_scout",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 62.9,
+        "median": 61.0,
+        "p90": 89.0,
+        "max": 400,
+        "total": 304608
+      },
+      "prompt_tokens_mean": 18318.1,
+      "serving_latency_seconds": {
+        "mean": 8.83,
+        "median": 5.7,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_llama4_scout_task2_test_v3_xsfixed_multimodal_20260813_max16384/responses.jsonl",
+      "responses_sha256": "8936bf118ed4cd0880376f27201733da1a1ad037f4d41d135a25896845e417cc"
+    }
+  ]
+}

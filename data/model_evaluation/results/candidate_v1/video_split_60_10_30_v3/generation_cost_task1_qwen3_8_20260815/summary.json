@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-15T23:47:46.248107+00:00",
+  "metric": "generation_cost",
+  "task": "task1",
+  "cost_axis": "output_tokens.mean",
+  "responses_per_configuration": [
+    184
+  ],
+  "prompt_tokens_mean_spread": 36.0,
+  "results": [
+    {
+      "model_key": "mm_qwen3_8_27b_reasoning",
+      "task": "task1",
+      "responses": 184,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 8112.3,
+        "median": 7624.0,
+        "p90": 11379.0,
+        "max": 17970,
+        "total": 1492663
+      },
+      "prompt_tokens_mean": 12373.9,
+      "serving_latency_seconds": {
+        "mean": null,
+        "median": null,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_reasoning_task1_test_v3_xsfixed_multimodal_20260815_max24576/responses.jsonl",
+      "responses_sha256": "860b929e8c8e98cb2cb4a93bc560cc1a2b0d888b0a285c282f920f3d3bd5d30f"
+    },
+    {
+      "model_key": "mm_qwen3_8_27b",
+      "task": "task1",
+      "responses": 184,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 611.5,
+        "median": 599.0,
+        "p90": 758.0,
+        "max": 977,
+        "total": 112513
+      },
+      "prompt_tokens_mean": 12337.9,
+      "serving_latency_seconds": {
+        "mean": null,
+        "median": null,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_task1_test_v3_xsfixed_multimodal_20260815_max4096/responses.jsonl",
+      "responses_sha256": "480568d74743de136af1ee1d5bb639e4419c9a203b4707cc35d7be0c56df9193"
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "schema_version": 3,
+  "created_utc": "2026-08-14T03:07:08.306454+00:00",
+  "scope": "test_only",
+  "split_name": "video_split_60_10_30_v3",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "e39121338f903798052f897cc3702f91750c44fee5db87e2c4b0002a3dae4072",
+  "test_video_count": 66,
+  "test_task1_case_count": 184,
+  "test_task2_qa_count": 4844,
+  "split_task2_qa_pairs": 4993,
+  "task2_screened_out": 149,
+  "test_task2_qa_type_counts": {
+    "agreement_or_support": 178,
+    "clarification_question": 178,
+    "clinical_trial_suggestion": 73,
+    "eligibility_assessment": 322,
+    "evidence_discussion": 677,
+    "findings_interpretation": 1284,
+    "next_action_suggestion": 654,
+    "treatment_recommendation": 1139,
+    "uncertainty": 339
+  },
+  "metric": {
+    "name": "BERTScore",
+    "package": "bert-score",
+    "package_version": "0.3.13",
+    "encoder": "microsoft/deberta-xlarge-mnli",
+    "num_layers": 40,
+    "idf": false,
+    "reported_scales": [
+      "raw",
+      "rescaled_with_official_baseline"
+    ],
+    "raw_scorer_hash": "microsoft/deberta-xlarge-mnli_L40_no-idf_version=0.3.12(hug_trans=5.14.1)",
+    "rescaled_scorer_hash": "microsoft/deberta-xlarge-mnli_L40_no-idf_version=0.3.12(hug_trans=5.14.1)-rescaled",
+    "baseline": {
+      "language": "en",
+      "path": "/scratch/al318/OpenTumorBoard_envs/opentumorboard-vllm-clean/lib/python3.12/site-packages/bert_score/rescale_baseline/en/microsoft/deberta-xlarge-mnli.tsv",
+      "sha256": "e9ea1c46dddcf57e19f6e6a57eabcfc38eefa85d4377b39e6b810741be9c2129",
+      "layer_values": {
+        "precision": 0.5169066190719604,
+        "recall": 0.51702880859375,
+        "f1": 0.5150191783905029
+      },
+      "formula": "(raw - baseline) / (1 - baseline)"
+    },
+    "device": "cuda",
+    "batch_size": 16,
+    "maximum_tokens_per_text": 512
+  },
+  "task1_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+  "task1_manifest_sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402",
+  "task2_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_20260809.jsonl",
+  "task2_manifest_sha256": "4ce83eb441cced77464091a4d264fe8a0b12c23d5dce135aea8744e18c2d7db4",
+  "results": [
+    {
+      "model": {
+        "key": "deepseek_v4_pro",
+        "model_id": "deepseek-ai/DeepSeek-V4-Pro",
+        "display_name": "DeepSeek-V4-Pro",
+        "organization": "DeepSeek",
+        "revision": "b5968e9190ef611bbf34a7229255be88a0e937c1"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.614530126037805,
+            "standard_deviation": 0.030435900230754435,
+            "minimum": 0.536910891532898,
+            "maximum": 0.6955220699310303
+          },
+          "recall": {
+            "mean": 0.6269905035910399,
+            "standard_deviation": 0.031026129672563234,
+            "minimum": 0.5630606412887573,
+            "maximum": 0.7227751016616821
+          },
+          "f1": {
+            "mean": 0.6203737994251044,
+            "standard_deviation": 0.027204746882583068,
+            "minimum": 0.5552900433540344,
+            "maximum": 0.6905163526535034
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.2020799928541896,
+            "standard_deviation": 0.06300210566389046,
+            "minimum": 0.04140870740664793,
+            "maximum": 0.36973276370697356
+          },
+          "recall": {
+            "mean": 0.22767754465254617,
+            "standard_deviation": 0.06424012492800152,
+            "minimum": 0.09530968619676482,
+            "maximum": 0.4260011709370656
+          },
+          "f1": {
+            "mean": 0.21723461287595452,
+            "standard_deviation": 0.056094479761692774,
+            "minimum": 0.08303599476343271,
+            "maximum": 0.3618641530619318
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_task1_test_v3_xsfixed_20260814_max4096/responses.jsonl",
+      "responses_sha256": "0315e8b8de86072f6cf4b0e352deaa8486c39847fa7dcef5652304fc67b044cb",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_task1_test_v3_xsfixed_20260814_max4096/run_config.json",
+      "run_config_sha256": "8e1a1b3c542ea6bf5bd3c45df65a57b927195305388ca28100a3bd7321af46b9",
+      "per_item_output": "per_item/task1/deepseek_v4_pro.jsonl"
+    },
+    {
+      "model": {
+        "key": "deepseek_v4_pro_reasoning",
+        "model_id": "deepseek-ai/DeepSeek-V4-Pro",
+        "display_name": "DeepSeek-V4-Pro",
+        "organization": "DeepSeek",
+        "revision": "b5968e9190ef611bbf34a7229255be88a0e937c1"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 182,
+      "semantic_coverage": 0.9891304347826086,
+      "raw_fallback_count": 2,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 2,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6055057631744133,
+            "standard_deviation": 0.029039535963107228,
+            "minimum": 0.5196061730384827,
+            "maximum": 0.6794530153274536
+          },
+          "recall": {
+            "mean": 0.6216715525139819,
+            "standard_deviation": 0.032416585646933706,
+            "minimum": 0.551051139831543,
+            "maximum": 0.7546275854110718
+          },
+          "f1": {
+            "mean": 0.6131575261498545,
+            "standard_deviation": 0.02721288396475781,
+            "minimum": 0.5467155575752258,
+            "maximum": 0.6988820433616638
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.18339962334456078,
+            "standard_deviation": 0.06011164116411872,
+            "minimum": 0.005588058278373174,
+            "maximum": 0.3364699303957255
+          },
+          "recall": {
+            "mean": 0.21666456671162387,
+            "standard_deviation": 0.06711908748127914,
+            "minimum": 0.07044381081764185,
+            "maximum": 0.49195227592253254
+          },
+          "f1": {
+            "mean": 0.20235511052511657,
+            "standard_deviation": 0.05611125791417257,
+            "minimum": 0.06535594351861729,
+            "maximum": 0.37911368198226586
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_reasoning_task1_test_v3_xsfixed_20260814_max8192/responses.jsonl",
+      "responses_sha256": "9839231e516142a281f7a344ccfa447f4a60d95c337b7e4d0ee37e5af1409727",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_reasoning_task1_test_v3_xsfixed_20260814_max8192/run_config.json",
+      "run_config_sha256": "87617218e62d41a132a0ad13a0067789cf3518b7a7dd078a6b7d5c222607e60d",
+      "per_item_output": "per_item/task1/deepseek_v4_pro_reasoning.jsonl"
+    }
+  ]
+}

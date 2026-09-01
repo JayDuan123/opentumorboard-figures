@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
-# The extracted benchmark inputs (~148 MB) are not committed; see README.
+# data/ IS committed - the repo reproduces the figures without the source workspace.
+# A re-extract lands here too; re-run collect_inputs.py to refresh it.
 otb_inputs/
 otb_inputs.tgz
 # Local renders. The committed copies in figures/ are the reviewed ones.

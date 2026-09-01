@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "protocol_version": "llm_judge_task1_v22_task2_v4",
+  "task_protocol_versions": {
+    "task1": "v22",
+    "task2": "v4"
+  },
+  "created_utc": "2026-08-19T18:29:39.294439+00:00",
+  "scope": "test_only",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": "medium",
+  "selection_seed": "judge_pilot_v1",
+  "task1_cases": 0,
+  "task2_per_type": 0,
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "04c4712b41b9a5b94dd0fe928cf92f7fc53253afdcf604a864ccbb623025606d",
+  "prompts": {
+    "task1": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/prompts/judge/task1_judge_v22.txt",
+      "sha256": "4b7bdd5ce2b198aa75ecb50e1dba6cf383f766716eed7d92580fc88f13bc6dd4"
+    },
+    "task2": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/prompts/judge/task2_judge_v4.txt",
+      "sha256": "1e2e73ee0db798387e6c4a3bf4676bbe9833fa7dcc95a99b8ede971038b173c3"
+    }
+  },
+  "schemas": {
+    "task1": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/schemas/judge/task1_judge_v22.json",
+      "sha256": "8928bba33d8ca4f56dce0655b279e765ed641d50c2f3d852222ded2314e39e9a"
+    },
+    "task2": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/schemas/judge/task2_judge_v4.json",
+      "sha256": "d829ff4a90bd1f41bc851cabeb52c7d09b6816f2f225dfed34d6859f4180cb6a"
+    }
+  },
+  "slide_images": {
+    "task1": {
+      "manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.sharegpt_multimodal_v1.jsonl",
+      "manifest_sha256": "4a1400d634dc516f921a392c632cbf7b21b0db4628c6c78e3271c345c4cef6df",
+      "cases": 184,
+      "images": 1341
+    },
+    "task2": {
+      "manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.sharegpt_multimodal_v1.jsonl",
+      "manifest_sha256": "4a1400d634dc516f921a392c632cbf7b21b0db4628c6c78e3271c345c4cef6df",
+      "cases": 184,
+      "images": 1341
+    }
+  },
+  "candidate_runs": {
+    "task1:deepseek_v4_flash_api_reasoning": {
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task1_test_v3_xsfixed_caption_only_v2v4_20260819_max65536_conclusiononly/responses.jsonl",
+      "responses_sha256": "8a74a5729898319352a47ef2716f1319e0a585b4f2506d340f583384be55c7dd",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task1_test_v3_xsfixed_caption_only_v2v4_20260819_max65536_conclusiononly/run_config.json",
+      "run_config_sha256": "fbbff64c5e81346bea18a05a3c551841960490e8a98b5c60679a9572fa84cfd6"
+    }
+  },
+  "outputs": {
+    "task1": {
+      "selected_source_records": 184,
+      "batch_requests": 184,
+      "manifest_records": 184,
+      "candidate_format_failures": 0,
+      "batch": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/deepseek_v4_flash_api_reasoning_v2v4_task1_judge_v22_images_20260819/task1.batch.jsonl",
+      "batch_sha256": "c44a608ecf935564142ae2058f1faf5ba541befa52a78c97cfe29fb49c5971a3",
+      "judge_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/deepseek_v4_flash_api_reasoning_v2v4_task1_judge_v22_images_20260819/task1.judge_manifest.jsonl",
+      "judge_manifest_sha256": "d192483173a87746a1c12c2d93905c8ba80d5598504d819efd69c4d0e41d71ea"
+    }
+  }
+}

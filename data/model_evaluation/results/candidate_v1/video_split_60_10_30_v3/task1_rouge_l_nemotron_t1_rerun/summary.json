@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "protocol_version": "task1_rouge_l_v1",
+  "generated_utc": "2026-08-13T04:53:29.686438+00:00",
+  "scope": "test_only",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "task1_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+  "task1_manifest_sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "dc24100aab468f0bf853de0c7be5661a1eda384f44ab09082756d89ef0ad5a74",
+  "test_video_count": 66,
+  "test_task1_case_count": 184,
+  "metric": {
+    "name": "ROUGE-L",
+    "variant": "rougeL",
+    "tokenizer": "lowercase ASCII alphanumeric tokens; no stemming; ROUGE-L sentence-level longest-common-subsequence precision/recall/F1",
+    "stemming": false,
+    "aggregation": "item_macro",
+    "reference": "reference_conclusion",
+    "scope": "THE CONCLUSION, NOT THE WHOLE RESPONSE. The candidate is the extracted conclusion from the *_conclusiononly derived run, which is exactly the text task1_judge_v14 scores; the role table that also appears in the full response is scored by neither. This number is not a similarity score for a whole tumor board simulation output.",
+    "format_failure_rule": "an empty candidate scores 0 on precision, recall and F1 and stays in the denominator, matching the judge's floor rule",
+    "candidate_verification": "byte-checked against candidate_sha256 in /rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/nemotron_t1_rerun_judge_20260813/results/task1.per_item.jsonl",
+    "task1_has_no_qa_type": "type_macro and per_qa_type are null: Task 1 has no question-type dimension to macro-average over"
+  },
+  "results": [
+    {
+      "task": "task1",
+      "model": {
+        "key": "nemotron_3_5_lightning_reasoning",
+        "model_id": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+        "display_name": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+        "organization": "NVIDIA",
+        "revision": "ce38b6ab8b252b4b8ee7165b4605e93191cafd73"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.12913554768915878,
+            "standard_deviation": 0.033824157620285275,
+            "minimum": 0.07142857142857142,
+            "maximum": 0.23376623376623376
+          },
+          "recall": {
+            "mean": 0.14588430827831889,
+            "standard_deviation": 0.03566405813194824,
+            "minimum": 0.0707070707070707,
+            "maximum": 0.27941176470588236
+          },
+          "f1": {
+            "mean": 0.13464397314422535,
+            "standard_deviation": 0.02891103180351487,
+            "minimum": 0.0837696335078534,
+            "maximum": 0.2360248447204969
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task1_test_v3_xsfixed_20260813_max65536_conclusiononly/responses.jsonl",
+      "response_sha256": "31d04df3951701f4e394564b91cc92bc78940350002d1a7a832cff6fad6b6853",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task1_test_v3_xsfixed_20260813_max65536_conclusiononly/run_config.json",
+      "run_config_sha256": "feab797bd539277f6421b22ecf2b86481d95e935caaaa264939a1fec2e32469c",
+      "per_item_output": "per_item/nemotron_3_5_lightning_reasoning.jsonl",
+      "format_failures": []
+    }
+  ]
+}

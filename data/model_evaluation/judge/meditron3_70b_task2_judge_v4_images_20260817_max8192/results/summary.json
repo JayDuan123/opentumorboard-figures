@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-17T17:48:58.236604+00:00",
+  "scope": "test_only",
+  "protocol_version": "llm_judge_task1_v22_task2_v4",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": null,
+  "batch_template_reasoning_effort": "medium",
+  "execution": {
+    "task2": {
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/meditron3_70b_task2_judge_v4_images_20260817_max8192/task2.output.local_run_config.json",
+      "run_config_sha256": "64f397b01efd23bb97cc07706f5d99e01dd9ae60aa0189b4593bc10b0f2def10",
+      "base_url": "http://127.0.0.1:8090/v1",
+      "endpoint": "/chat/completions",
+      "resolved_model": "Qwen/Qwen3.6-27B",
+      "model_revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "seed": 0,
+        "thinking": "disabled",
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "max_output_tokens": [
+          1024
+        ],
+        "structured_output": "strict_json_schema",
+        "structured_output_whitespace": "disabled"
+      },
+      "wire_translation": {
+        "source": "frozen Responses Batch request",
+        "target": "local vLLM chat completions",
+        "messages_changed": false,
+        "json_schema_changed": false,
+        "source_reasoning_field_ignored": true
+      }
+    }
+  },
+  "build_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/meditron3_70b_task2_judge_v4_images_20260817_max8192/build_config.json",
+  "build_config_sha256": "19523a376d8c2e239d1f50bbe5e7e9df18d18cfcfc6bb5210d09c1aaa2004b77",
+  "validation": {
+    "task2": {
+      "response_rows": 4844,
+      "scored": 4844,
+      "candidate_format_failures": 0,
+      "api_errors": 0,
+      "invalid_judge_outputs": 0,
+      "missing_ids": [],
+      "extra_ids": [],
+      "duplicate_response_ids": []
+    }
+  },
+  "results": {
+    "task1": [],
+    "task2": [
+      {
+        "model_key": "meditron3_70b",
+        "test_records": 4844,
+        "scored_records": 4844,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "item_macro_clinical_equivalence": 3.541081750619323,
+        "item_macro_clinical_equivalence_all_responses": 3.541081750619323,
+        "candidate_format_failure_score": 1,
+        "type_macro_clinical_equivalence": 3.5674070382031227,
+        "critical_error_rate": 0.11787778695293147,
+        "unsupported_claim_rate": 0.17052023121387283,
+        "per_qa_type": {
+          "agreement_or_support": {
+            "count": 178,
+            "clinical_equivalence": 3.842696629213483,
+            "critical_error_rate": 0.11235955056179775,
+            "unsupported_claim_rate": 0.1797752808988764
+          },
+          "clarification_question": {
+            "count": 178,
+            "clinical_equivalence": 3.702247191011236,
+            "critical_error_rate": 0.1348314606741573,
+            "unsupported_claim_rate": 0.09550561797752809
+          },
+          "clinical_trial_suggestion": {
+            "count": 73,
+            "clinical_equivalence": 3.452054794520548,
+            "critical_error_rate": 0.0958904109589041,
+            "unsupported_claim_rate": 0.2876712328767123
+          },
+          "eligibility_assessment": {
+            "count": 322,
+            "clinical_equivalence": 3.549689440993789,
+            "critical_error_rate": 0.14596273291925466,
+            "unsupported_claim_rate": 0.17391304347826086
+          },
+          "evidence_discussion": {
+            "count": 677,
+            "clinical_equivalence": 3.293943870014771,
+            "critical_error_rate": 0.14032496307237813,
+            "unsupported_claim_rate": 0.25997045790251105
+          },
+          "findings_interpretation": {
+            "count": 1284,
+            "clinical_equivalence": 3.764018691588785,
+            "critical_error_rate": 0.0763239875389408,
+            "unsupported_claim_rate": 0.14330218068535824
+          },
+          "next_action_suggestion": {
+            "count": 654,
+            "clinical_equivalence": 3.573394495412844,
+            "critical_error_rate": 0.10856269113149847,
+            "unsupported_claim_rate": 0.1452599388379205
+          },
+          "treatment_recommendation": {
+            "count": 1139,
+            "clinical_equivalence": 3.3327480245829677,
+            "critical_error_rate": 0.16330114135206322,
+            "unsupported_claim_rate": 0.17208077260755048
+          },
+          "uncertainty": {
+            "count": 339,
+            "clinical_equivalence": 3.5958702064896757,
+            "critical_error_rate": 0.06784660766961652,
+            "unsupported_claim_rate": 0.14454277286135694
+          }
+        }
+      }
+    ]
+  }
+}

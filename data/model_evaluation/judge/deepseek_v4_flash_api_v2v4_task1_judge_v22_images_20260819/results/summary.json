@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-19T18:29:32.321350+00:00",
+  "scope": "test_only",
+  "protocol_version": "llm_judge_task1_v22_task2_v4",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": null,
+  "batch_template_reasoning_effort": "medium",
+  "execution": {
+    "task1": {
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/deepseek_v4_flash_api_v2v4_task1_judge_v22_images_20260819/task1.output.local_run_config.json",
+      "run_config_sha256": "55e9c5d07fce676ccfeee6965a9f5b1f703c7a79048341488b099076ce47d103",
+      "base_url": "http://127.0.0.1:8095/v1",
+      "endpoint": "/chat/completions",
+      "resolved_model": "Qwen/Qwen3.6-27B",
+      "model_revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "seed": 0,
+        "thinking": "disabled",
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "max_output_tokens": [
+          1200
+        ],
+        "structured_output": "strict_json_schema",
+        "structured_output_whitespace": "disabled"
+      },
+      "wire_translation": {
+        "source": "frozen Responses Batch request",
+        "target": "local vLLM chat completions",
+        "messages_changed": false,
+        "json_schema_changed": false,
+        "source_reasoning_field_ignored": true
+      }
+    }
+  },
+  "build_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/deepseek_v4_flash_api_v2v4_task1_judge_v22_images_20260819/build_config.json",
+  "build_config_sha256": "b81aab86b4b0f5a536c68db9757fd08233b2079f6e3c10a09158e541b6539284",
+  "validation": {
+    "task1": {
+      "response_rows": 184,
+      "scored": 184,
+      "candidate_format_failures": 0,
+      "api_errors": 0,
+      "invalid_judge_outputs": 0,
+      "missing_ids": [],
+      "extra_ids": [],
+      "duplicate_response_ids": []
+    }
+  },
+  "results": {
+    "task1": [
+      {
+        "model_key": "deepseek_v4_flash_api",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.5
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.5
+        },
+        "candidate_format_failure_score": 1,
+        "major_error_rate": 0.06521739130434782
+      }
+    ],
+    "task2": []
+  }
+}

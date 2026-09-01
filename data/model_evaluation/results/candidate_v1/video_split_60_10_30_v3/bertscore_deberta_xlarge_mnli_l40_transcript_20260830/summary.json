@@ -1,0 +1,1182 @@
+{
+  "schema_version": 3,
+  "created_utc": "2026-08-31T04:51:28.878242+00:00",
+  "scope": "test_only",
+  "split_name": "video_split_60_10_30_v3",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "0223812620b6f7d4ec503e5465adb00d5b39f51e490d0d4c0530fc5886188c12",
+  "test_video_count": 66,
+  "test_task1_case_count": 184,
+  "test_task2_qa_count": 4844,
+  "split_task2_qa_pairs": 4993,
+  "task2_screened_out": 149,
+  "test_task2_qa_type_counts": {
+    "agreement_or_support": 178,
+    "clarification_question": 178,
+    "clinical_trial_suggestion": 73,
+    "eligibility_assessment": 322,
+    "evidence_discussion": 677,
+    "findings_interpretation": 1284,
+    "next_action_suggestion": 654,
+    "treatment_recommendation": 1139,
+    "uncertainty": 339
+  },
+  "metric": {
+    "name": "BERTScore",
+    "package": "bert-score",
+    "package_version": "0.3.13",
+    "encoder": "microsoft/deberta-xlarge-mnli",
+    "num_layers": 40,
+    "idf": false,
+    "reported_scales": [
+      "raw",
+      "rescaled_with_official_baseline"
+    ],
+    "raw_scorer_hash": "microsoft/deberta-xlarge-mnli_L40_no-idf_version=0.3.12(hug_trans=5.14.1)",
+    "rescaled_scorer_hash": "microsoft/deberta-xlarge-mnli_L40_no-idf_version=0.3.12(hug_trans=5.14.1)-rescaled",
+    "baseline": {
+      "language": "en",
+      "path": "/scratch/al318/OpenTumorBoard_envs/bertscore-repro/lib/python3.12/site-packages/bert_score/rescale_baseline/en/microsoft/deberta-xlarge-mnli.tsv",
+      "sha256": "e9ea1c46dddcf57e19f6e6a57eabcfc38eefa85d4377b39e6b810741be9c2129",
+      "layer_values": {
+        "precision": 0.5169066190719604,
+        "recall": 0.51702880859375,
+        "f1": 0.5150191783905029
+      },
+      "formula": "(raw - baseline) / (1 - baseline)"
+    },
+    "device": "cuda",
+    "batch_size": 32,
+    "maximum_tokens_per_text": 512
+  },
+  "task1_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+  "task1_manifest_sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402",
+  "task2_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_slidealigned_20260814.jsonl",
+  "task2_manifest_sha256": "c03444ba7f36ed7dbddc2bfa4761acd3009906366f7555a7d5246c8e4be0ebbe",
+  "results": [
+    {
+      "model": {
+        "key": "deepseek_v4_flash_api",
+        "model_id": "deepseek-ai/DeepSeek-V4-Flash",
+        "display_name": "DeepSeek-V4-Flash",
+        "organization": "DeepSeek",
+        "revision": "60d8d70770c6776ff598c94bb586a859a38244f1"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6208409828984219,
+            "standard_deviation": 0.03204032872195019,
+            "minimum": 0.5314497947692871,
+            "maximum": 0.7298810482025146
+          },
+          "recall": {
+            "mean": 0.625447464701922,
+            "standard_deviation": 0.033196993370634524,
+            "minimum": 0.5473804473876953,
+            "maximum": 0.744257926940918
+          },
+          "f1": {
+            "mean": 0.6227513917762301,
+            "standard_deviation": 0.02862143149256262,
+            "minimum": 0.5463892221450806,
+            "maximum": 0.7136853933334351
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.2151434234656659,
+            "standard_deviation": 0.06632326168576266,
+            "minimum": 0.030104274393883648,
+            "maximum": 0.44085561412872754
+          },
+          "recall": {
+            "mean": 0.224482656600062,
+            "standard_deviation": 0.06873493483943839,
+            "minimum": 0.0628435801845065,
+            "maximum": 0.47048172311386327
+          },
+          "f1": {
+            "mean": 0.22213705900410277,
+            "standard_deviation": 0.059015594467379535,
+            "minimum": 0.0646830603537485,
+            "maximum": 0.40963726005416495
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "responses_sha256": "0b92fd5a82863861375fa1adda8c7451ae17e7a89bb9b8685227fbbadab5c201",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "f21e558d7bc83f59cdb99f757f7bd9af2d77626a1568336ce61dcfcc65c7f0cc",
+      "per_item_output": "per_item/task1/deepseek_v4_flash_api.jsonl"
+    },
+    {
+      "model": {
+        "key": "deepseek_v4_flash_api_reasoning",
+        "model_id": "deepseek-ai/DeepSeek-V4-Flash",
+        "display_name": "DeepSeek-V4-Flash",
+        "organization": "DeepSeek",
+        "revision": "60d8d70770c6776ff598c94bb586a859a38244f1"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6142731879068457,
+            "standard_deviation": 0.03236378859641034,
+            "minimum": 0.5078973770141602,
+            "maximum": 0.7130893468856812
+          },
+          "recall": {
+            "mean": 0.6279232045230658,
+            "standard_deviation": 0.03723148960056513,
+            "minimum": 0.5313035249710083,
+            "maximum": 0.7800888419151306
+          },
+          "f1": {
+            "mean": 0.6205525897119356,
+            "standard_deviation": 0.030225501695381064,
+            "minimum": 0.5417984127998352,
+            "maximum": 0.7058401107788086
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.201548132677456,
+            "standard_deviation": 0.06699282141733831,
+            "minimum": -0.0186490695452983,
+            "maximum": 0.4060969070552089
+          },
+          "recall": {
+            "mean": 0.22960871766787694,
+            "standard_deviation": 0.07708842734938193,
+            "minimum": 0.02955604108745103,
+            "maximum": 0.5446702370703274
+          },
+          "f1": {
+            "mean": 0.2176032672203426,
+            "standard_deviation": 0.06232308649870368,
+            "minimum": 0.05521709976171947,
+            "maximum": 0.39346078006761526
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "responses_sha256": "b7eda5eb44f5a6d6af844b3cd405445f243d5b589bd33a556f75cd5a5f774d7e",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_flash_api_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "70648badba713c5aa66888913cd4b275adfbef05d0e76c1849a6f52977c04f98",
+      "per_item_output": "per_item/task1/deepseek_v4_flash_api_reasoning.jsonl"
+    },
+    {
+      "model": {
+        "key": "deepseek_v4_pro",
+        "model_id": "deepseek-ai/DeepSeek-V4-Pro",
+        "display_name": "DeepSeek-V4-Pro",
+        "organization": "DeepSeek",
+        "revision": "b5968e9190ef611bbf34a7229255be88a0e937c1"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6268330864284349,
+            "standard_deviation": 0.034981297102569864,
+            "minimum": 0.5466822385787964,
+            "maximum": 0.7338356375694275
+          },
+          "recall": {
+            "mean": 0.640522582375485,
+            "standard_deviation": 0.036501454997741246,
+            "minimum": 0.5522862672805786,
+            "maximum": 0.7646771669387817
+          },
+          "f1": {
+            "mean": 0.6331673724495847,
+            "standard_deviation": 0.03157822101820536,
+            "minimum": 0.5609612464904785,
+            "maximum": 0.7444940805435181
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.22754703685921313,
+            "standard_deviation": 0.07241104615296022,
+            "minimum": 0.06163532907372052,
+            "maximum": 0.449041587116633
+          },
+          "recall": {
+            "mean": 0.25569594207505947,
+            "standard_deviation": 0.07557687838784186,
+            "minimum": 0.07300116303867055,
+            "maximum": 0.5127601040218628
+          },
+          "f1": {
+            "mean": 0.2436141570856048,
+            "standard_deviation": 0.06511230879894857,
+            "minimum": 0.09472965951005749,
+            "maximum": 0.4731628384633045
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "responses_sha256": "db41a819aa224755503efc8555f0487130c4c44a7a9e3b3238c9f13feeff0139",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "6835abd66270e31f63bcdc8c896773027b5a2287b9a9e3fa1a3ab36d73f84961",
+      "per_item_output": "per_item/task1/deepseek_v4_pro.jsonl"
+    },
+    {
+      "model": {
+        "key": "deepseek_v4_pro_reasoning",
+        "model_id": "deepseek-ai/DeepSeek-V4-Pro",
+        "display_name": "DeepSeek-V4-Pro",
+        "organization": "DeepSeek",
+        "revision": "b5968e9190ef611bbf34a7229255be88a0e937c1"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6100406841091488,
+            "standard_deviation": 0.030677651720664518,
+            "minimum": 0.5364925861358643,
+            "maximum": 0.7015312314033508
+          },
+          "recall": {
+            "mean": 0.6316821455307629,
+            "standard_deviation": 0.03354136107545795,
+            "minimum": 0.564376711845398,
+            "maximum": 0.7295862436294556
+          },
+          "f1": {
+            "mean": 0.6203357700420462,
+            "standard_deviation": 0.028492834087538225,
+            "minimum": 0.562150239944458,
+            "maximum": 0.7107017636299133
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.19278687871540381,
+            "standard_deviation": 0.06350252959734547,
+            "minimum": 0.04054281809094232,
+            "maximum": 0.38217168692462716
+          },
+          "recall": {
+            "mean": 0.23739166844130152,
+            "standard_deviation": 0.06944795398209315,
+            "minimum": 0.0980346324876785,
+            "maximum": 0.4401037552919247
+          },
+          "f1": {
+            "mean": 0.21715619867612715,
+            "standard_deviation": 0.0587504346934371,
+            "minimum": 0.09718128934983877,
+            "maximum": 0.4034852029612267
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "responses_sha256": "07320a38379dcdaa30f43c72f672d88a74658736cb2db91c39d3495691924eee",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/deepseek_v4_pro_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "42473cc6fb4618c9c0fece4e796b86679710b376e7d814dac0af8613859d119e",
+      "per_item_output": "per_item/task1/deepseek_v4_pro_reasoning.jsonl"
+    },
+    {
+      "model": {
+        "key": "gemma4_31b_it",
+        "model_id": "google/gemma-4-31b-it",
+        "display_name": "Gemma 4 31B IT",
+        "organization": "Google",
+        "revision": "842da3794eaa0b77d5f08bae87a17459d91ff475"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6469264713966328,
+            "standard_deviation": 0.03922529514277239,
+            "minimum": 0.5637236833572388,
+            "maximum": 0.792513370513916
+          },
+          "recall": {
+            "mean": 0.6264445175943167,
+            "standard_deviation": 0.03557983693269427,
+            "minimum": 0.5372241735458374,
+            "maximum": 0.7416808009147644
+          },
+          "f1": {
+            "mean": 0.6361541009467581,
+            "standard_deviation": 0.033978846215739586,
+            "minimum": 0.550154983997345,
+            "maximum": 0.7613092064857483
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.26914020654743726,
+            "standard_deviation": 0.08119609311851718,
+            "minimum": 0.09691100340754219,
+            "maximum": 0.5705040936650906
+          },
+          "recall": {
+            "mean": 0.22654707143501648,
+            "standard_deviation": 0.0736686526355697,
+            "minimum": 0.04181484384872994,
+            "maximum": 0.46514574019809174
+          },
+          "f1": {
+            "mean": 0.24977260369646556,
+            "standard_deviation": 0.0700622472100538,
+            "minimum": 0.07244782482374762,
+            "maximum": 0.5078345722576969
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_31b_it_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "responses_sha256": "b7c2dff065a1c703f2484f717ff95e644dde01bab2ad4cfdba8298d520747e1a",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_31b_it_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "adfc3a1a91a21a34aee62b7c6bec6bd60e3f597aad6095ee20b8d0ace95bb22a",
+      "per_item_output": "per_item/task1/gemma4_31b_it.jsonl"
+    },
+    {
+      "model": {
+        "key": "gemma4_31b_it_reasoning",
+        "model_id": "google/gemma-4-31b-it",
+        "display_name": "Gemma 4 31B IT",
+        "organization": "Google",
+        "revision": "842da3794eaa0b77d5f08bae87a17459d91ff475"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6459664731569912,
+            "standard_deviation": 0.04032319569969006,
+            "minimum": 0.5617927312850952,
+            "maximum": 0.7726008892059326
+          },
+          "recall": {
+            "mean": 0.6263748523981675,
+            "standard_deviation": 0.03835914072694868,
+            "minimum": 0.533682644367218,
+            "maximum": 0.7853122353553772
+          },
+          "f1": {
+            "mean": 0.6356415146070978,
+            "standard_deviation": 0.036054918528029126,
+            "minimum": 0.5491693615913391,
+            "maximum": 0.7669059038162231
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.26715301674616654,
+            "standard_deviation": 0.08346873977496394,
+            "minimum": 0.09291394580258365,
+            "maximum": 0.5292853933183154
+          },
+          "recall": {
+            "mean": 0.2264028284710699,
+            "standard_deviation": 0.07942324803112943,
+            "minimum": 0.034482047935359535,
+            "maximum": 0.5554853613120814
+          },
+          "f1": {
+            "mean": 0.24871568285172124,
+            "standard_deviation": 0.07434297795194111,
+            "minimum": 0.07041553331429187,
+            "maximum": 0.5193746107109727
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_31b_it_reasoning_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "responses_sha256": "8482859e104c0c2518fd6aa04aa85821e625de2b2276ea352e608e37e6f05be1",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_31b_it_reasoning_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "68800a530d8cea53e159966879d5ce7195e8ddbaa8d93b3bc3183a7d3fb75f8c",
+      "per_item_output": "per_item/task1/gemma4_31b_it_reasoning.jsonl"
+    },
+    {
+      "model": {
+        "key": "huatuogpt_3_32b",
+        "model_id": "FreedomIntelligence/HuatuoGPT-3-32B",
+        "display_name": "HuatuoGPT-3-32B",
+        "organization": "FreedomIntelligence",
+        "revision": "2f080fedb7d9cffa33b555f7d42563fa44960fec"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.5454470098990462,
+            "standard_deviation": 0.024406214133020843,
+            "minimum": 0.4762076735496521,
+            "maximum": 0.6079806089401245
+          },
+          "recall": {
+            "mean": 0.5811814860157345,
+            "standard_deviation": 0.024326618338224304,
+            "minimum": 0.51908278465271,
+            "maximum": 0.6605193614959717
+          },
+          "f1": {
+            "mean": 0.5624713512218517,
+            "standard_deviation": 0.020970884371442507,
+            "minimum": 0.5072497129440308,
+            "maximum": 0.6196460127830505
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.059078414140675155,
+            "standard_deviation": 0.050520696611772324,
+            "minimum": -0.08424653934219556,
+            "maximum": 0.18852253718154385
+          },
+          "recall": {
+            "mean": 0.1328292009202317,
+            "standard_deviation": 0.050368673682985844,
+            "minimum": 0.004252792082648805,
+            "maximum": 0.2970996106091242
+          },
+          "f1": {
+            "mean": 0.09784340063978217,
+            "standard_deviation": 0.04324064671639347,
+            "minimum": -0.01602014987043773,
+            "maximum": 0.21573396252108368
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max32768_conclusiononly2/responses.jsonl",
+      "responses_sha256": "a0f027f687b9b91db0b4501a60012f894b0cecc2bcf623c5133a5db378644613",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max32768_conclusiononly2/run_config.json",
+      "run_config_sha256": "08922e659e7127d8dfd9d8b27c1adb77168a97d816cc0c52f2b96a876bd56712",
+      "per_item_output": "per_item/task1/huatuogpt_3_32b.jsonl"
+    },
+    {
+      "model": {
+        "key": "huatuogpt_3_32b_reasoning",
+        "model_id": "FreedomIntelligence/HuatuoGPT-3-32B",
+        "display_name": "HuatuoGPT-3-32B",
+        "organization": "FreedomIntelligence",
+        "revision": "2f080fedb7d9cffa33b555f7d42563fa44960fec"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.5408571898613287,
+            "standard_deviation": 0.026645154650088716,
+            "minimum": 0.46064627170562744,
+            "maximum": 0.6044841408729553
+          },
+          "recall": {
+            "mean": 0.5797363198969675,
+            "standard_deviation": 0.023820220642301843,
+            "minimum": 0.5221095085144043,
+            "maximum": 0.6497979164123535
+          },
+          "f1": {
+            "mean": 0.5593133209192235,
+            "standard_deviation": 0.021862040195094502,
+            "minimum": 0.5001602172851562,
+            "maximum": 0.6179838180541992
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.04957751800150596,
+            "standard_deviation": 0.05515528819480496,
+            "minimum": -0.11645853490738142,
+            "maximum": 0.181284872156094
+          },
+          "recall": {
+            "mean": 0.12983696008996787,
+            "standard_deviation": 0.04932016871015713,
+            "minimum": 0.010519674902059902,
+            "maximum": 0.274900677682295
+          },
+          "f1": {
+            "mean": 0.09133174046289573,
+            "standard_deviation": 0.04507815406502333,
+            "minimum": -0.030638244737254794,
+            "maximum": 0.21230662136698397
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max32768_conclusiononly2/responses.jsonl",
+      "responses_sha256": "5295080654451686484997cbae698a43966e6be3902b4492d0fdaa9b0e7a2d09",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/huatuogpt_3_32b_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max32768_conclusiononly2/run_config.json",
+      "run_config_sha256": "f42c8d1cc9d375f44959c0837974192840910e39e05400833db4704e79664e75",
+      "per_item_output": "per_item/task1/huatuogpt_3_32b_reasoning.jsonl"
+    },
+    {
+      "model": {
+        "key": "llama4_scout",
+        "model_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+        "display_name": "Llama 4 Scout 17B-16E Instruct",
+        "organization": "Meta",
+        "revision": "92f3b1597a195b523d8d9e5700e57e4fbb8f20d3"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6411515150381171,
+            "standard_deviation": 0.03599391000149351,
+            "minimum": 0.5572342276573181,
+            "maximum": 0.742965579032898
+          },
+          "recall": {
+            "mean": 0.6029467187497927,
+            "standard_deviation": 0.03499893243715445,
+            "minimum": 0.5158671140670776,
+            "maximum": 0.7056455612182617
+          },
+          "f1": {
+            "mean": 0.6210535022875537,
+            "standard_deviation": 0.0317700832929688,
+            "minimum": 0.5510584115982056,
+            "maximum": 0.7115904092788696
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.2571860863162269,
+            "standard_deviation": 0.07450714793969632,
+            "minimum": 0.08347787441816507,
+            "maximum": 0.46794050360754313
+          },
+          "recall": {
+            "mean": 0.17789448249672732,
+            "standard_deviation": 0.0724658800771311,
+            "minimum": -0.0024053081163907496,
+            "maximum": 0.39053416845696953
+          },
+          "f1": {
+            "mean": 0.21863611749668077,
+            "standard_deviation": 0.06550791676160307,
+            "minimum": 0.07431063580638073,
+            "maximum": 0.4053175344872593
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/llama4_scout_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "responses_sha256": "bd08f288bcad963a0e5522251da65e6fc1691c52300163d665c41609f8a7dc53",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/llama4_scout_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "120356227d691e8229215c502c7cd80a267ebeb9be26b2292b305f9e764b898a",
+      "per_item_output": "per_item/task1/llama4_scout.jsonl"
+    },
+    {
+      "model": {
+        "key": "medgemma_27b_it",
+        "model_id": "google/medgemma-27b-it",
+        "display_name": "MedGemma 27B IT",
+        "organization": "Google",
+        "revision": "2d3e00ea38b50018bf5dd3aa1009457cd2d5a48f"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6307349360507467,
+            "standard_deviation": 0.03718507545157322,
+            "minimum": 0.5370014905929565,
+            "maximum": 0.746174693107605
+          },
+          "recall": {
+            "mean": 0.6235250986140707,
+            "standard_deviation": 0.03731443480058391,
+            "minimum": 0.5295146107673645,
+            "maximum": 0.7761036157608032
+          },
+          "f1": {
+            "mean": 0.6266470425154852,
+            "standard_deviation": 0.03298983252978828,
+            "minimum": 0.5539319515228271,
+            "maximum": 0.7608449459075928
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.23562383893589695,
+            "standard_deviation": 0.07697285228818365,
+            "minimum": 0.041596246842366444,
+            "maximum": 0.4745833478306252
+          },
+          "recall": {
+            "mean": 0.22050236518298177,
+            "standard_deviation": 0.07726016678538694,
+            "minimum": 0.02585206404808543,
+            "maximum": 0.5364187590831543
+          },
+          "f1": {
+            "mean": 0.23016964620276092,
+            "standard_deviation": 0.06802296309430447,
+            "minimum": 0.08023569468826644,
+            "maximum": 0.5068772960985803
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medgemma_27b_it_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "responses_sha256": "536f33cabc14d76f9cb853b789712bc839b1a63886622ca223fbc9576cc91913",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medgemma_27b_it_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "bac9866aa0e3fc0c010c0015a3c2e2a343b6839a78c9c11ab466a6b9c1c1d88b",
+      "per_item_output": "per_item/task1/medgemma_27b_it.jsonl"
+    },
+    {
+      "model": {
+        "key": "meditron3_70b",
+        "model_id": "OpenMeditron/Meditron3-70B",
+        "display_name": "Meditron3 70B",
+        "organization": "EPFL LiGHT / OpenMeditron",
+        "revision": "1ec3a7ee2355e384149df2e4dd42fed41e7fd08f"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 180,
+      "semantic_coverage": 0.9782608695652174,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 4,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.620680319931772,
+            "standard_deviation": 0.03948562362189459,
+            "minimum": 0.5268964767456055,
+            "maximum": 0.7708755731582642
+          },
+          "recall": {
+            "mean": 0.6012750476598739,
+            "standard_deviation": 0.04025922667687767,
+            "minimum": 0.5080629587173462,
+            "maximum": 0.785433292388916
+          },
+          "f1": {
+            "mean": 0.6102500087685055,
+            "standard_deviation": 0.035068752435691894,
+            "minimum": 0.5288305282592773,
+            "maximum": 0.737602174282074
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.21481085222169388,
+            "standard_deviation": 0.08173497129279912,
+            "minimum": 0.020678937174535797,
+            "maximum": 0.5257140008799548
+          },
+          "recall": {
+            "mean": 0.17443325930233478,
+            "standard_deviation": 0.08335740804675391,
+            "minimum": -0.01856394343169468,
+            "maximum": 0.5557360119423733
+          },
+          "f1": {
+            "mean": 0.1963599922610584,
+            "standard_deviation": 0.07230956539541061,
+            "minimum": 0.028478136151732635,
+            "maximum": 0.45895216052644905
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/meditron3_70b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "responses_sha256": "6e9339e4bf680046b5cb479c9c586c583cfe386e0b82c1cc7c9aacc6dee81639",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/meditron3_70b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "c1fb1acf1f61f31b70aa833a38403d0512f316d85158fa1d64109c3dd8714ee2",
+      "per_item_output": "per_item/task1/meditron3_70b.jsonl"
+    },
+    {
+      "model": {
+        "key": "medreason_8b",
+        "model_id": "UCSC-VLAA/MedReason-8B",
+        "display_name": "MedReason-8B",
+        "organization": "UCSC-VLAA",
+        "revision": "2730640542b2629e26bdc31938da7ee2a85ebd03"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 175,
+      "semantic_coverage": 0.9510869565217391,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 9,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6157269307545253,
+            "standard_deviation": 0.044725805065664405,
+            "minimum": 0.5265797972679138,
+            "maximum": 0.7542098760604858
+          },
+          "recall": {
+            "mean": 0.5708887372698103,
+            "standard_deviation": 0.03953153132655401,
+            "minimum": 0.48710525035858154,
+            "maximum": 0.7047271132469177
+          },
+          "f1": {
+            "mean": 0.5920633574894496,
+            "standard_deviation": 0.03890431003557179,
+            "minimum": 0.5060739517211914,
+            "maximum": 0.7258805632591248
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.2045573704461186,
+            "standard_deviation": 0.09258211110188375,
+            "minimum": 0.020023412817974963,
+            "maximum": 0.4912161216795341
+          },
+          "recall": {
+            "mean": 0.11151789099312162,
+            "standard_deviation": 0.08185070254698103,
+            "minimum": -0.06195723216542399,
+            "maximum": 0.38863250643719194
+          },
+          "f1": {
+            "mean": 0.15886025934646567,
+            "standard_deviation": 0.0802182443141994,
+            "minimum": -0.018444495680520236,
+            "maximum": 0.4347829346505702
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medreason_8b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "responses_sha256": "16c9618fd56842e7b70892b0d02cbbc24506f1b66bd027894cb534583eb28732",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/medreason_8b_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "fa2b81c300f96734a64d9b548ca2c939bafa1a33f47c315e8cbbea783b3b3c67",
+      "per_item_output": "per_item/task1/medreason_8b.jsonl"
+    },
+    {
+      "model": {
+        "key": "ministral_3_14b_instruct_2512",
+        "model_id": "mistralai/Ministral-3-14B-Instruct-2512",
+        "display_name": "Ministral 3 14B Instruct 2512",
+        "organization": "Mistral AI",
+        "revision": "29439f81c2be264d8d393273f99e7db9c0961120"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.6103162940429605,
+            "standard_deviation": 0.031429818424040995,
+            "minimum": 0.5311226844787598,
+            "maximum": 0.7061759829521179
+          },
+          "recall": {
+            "mean": 0.6370715207379797,
+            "standard_deviation": 0.033668920474561034,
+            "minimum": 0.5499225854873657,
+            "maximum": 0.7488643527030945
+          },
+          "f1": {
+            "mean": 0.6230423207516256,
+            "standard_deviation": 0.02875376950276941,
+            "minimum": 0.5426254868507385,
+            "maximum": 0.7143417000770569
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.1933573893965525,
+            "standard_deviation": 0.06505950953760367,
+            "minimum": 0.029427158325973646,
+            "maximum": 0.39178629091660144
+          },
+          "recall": {
+            "mean": 0.24855046073184126,
+            "standard_deviation": 0.0697120678699871,
+            "minimum": 0.06810712000821433,
+            "maximum": 0.48001940536932897
+          },
+          "f1": {
+            "mean": 0.22273693628261046,
+            "standard_deviation": 0.05928846713431842,
+            "minimum": 0.05692247451892848,
+            "maximum": 0.41099052334701797
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/ministral_3_14b_instruct_2512_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "responses_sha256": "ddbf17c97f8a9a14ebeb497c50a59f46a786dff7b190158bd7c39eb8176b51eb",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/ministral_3_14b_instruct_2512_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "436a4f7338a245e48b7c237af3f7c8d63fd7c5f6ab945c6791c602365b0ca35a",
+      "per_item_output": "per_item/task1/ministral_3_14b_instruct_2512.jsonl"
+    },
+    {
+      "model": {
+        "key": "nemotron_3_5_lightning",
+        "model_id": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+        "display_name": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+        "organization": "NVIDIA",
+        "revision": "ce38b6ab8b252b4b8ee7165b4605e93191cafd73"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.464727892499903,
+            "standard_deviation": 0.05996346986324272,
+            "minimum": 0.30498766899108887,
+            "maximum": 0.5993358492851257
+          },
+          "recall": {
+            "mean": 0.5108163383505915,
+            "standard_deviation": 0.09475369711047268,
+            "minimum": 0.18511706590652466,
+            "maximum": 0.6496117115020752
+          },
+          "f1": {
+            "mean": 0.4793364849427472,
+            "standard_deviation": 0.05745912795069117,
+            "minimum": 0.25029027462005615,
+            "maximum": 0.6062444448471069
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": -0.10800960773219515,
+            "standard_deviation": 0.12412397319137505,
+            "minimum": -0.4386707797026069,
+            "maximum": 0.17062794372138945
+          },
+          "recall": {
+            "mean": -0.01286302444887017,
+            "standard_deviation": 0.19618912845418734,
+            "minimum": -0.6872288629075571,
+            "maximum": 0.2745151372741059
+          },
+          "f1": {
+            "mean": -0.07357547321012864,
+            "standard_deviation": 0.11847711371349201,
+            "minimum": -0.545854376038821,
+            "maximum": 0.18810077098277075
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "responses_sha256": "15a916c26d8ce0ff5832d8210764c6b072c18530a17132c2a30f55cb39dcee59",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "829e147d874ed256aa5cb4deed55f0a60b65783cf335813b3f33c373bf976c9c",
+      "per_item_output": "per_item/task1/nemotron_3_5_lightning.jsonl"
+    },
+    {
+      "model": {
+        "key": "nemotron_3_5_lightning_reasoning",
+        "model_id": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+        "display_name": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+        "organization": "NVIDIA",
+        "revision": "ce38b6ab8b252b4b8ee7165b4605e93191cafd73"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.5905950795049253,
+            "standard_deviation": 0.03014942781918299,
+            "minimum": 0.5127524733543396,
+            "maximum": 0.6794083118438721
+          },
+          "recall": {
+            "mean": 0.6061856594422589,
+            "standard_deviation": 0.030560912983012205,
+            "minimum": 0.5307129621505737,
+            "maximum": 0.7045798301696777
+          },
+          "f1": {
+            "mean": 0.5979597127955892,
+            "standard_deviation": 0.02696237536455339,
+            "minimum": 0.5404559969902039,
+            "maximum": 0.6663528084754944
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.1525346099576166,
+            "standard_deviation": 0.062409109727947144,
+            "minimum": -0.008599053271317002,
+            "maximum": 0.3363773944899433
+          },
+          "recall": {
+            "mean": 0.1846007638445558,
+            "standard_deviation": 0.06327688592362846,
+            "minimum": 0.028333270804372552,
+            "maximum": 0.3883275543409579
+          },
+          "f1": {
+            "mean": 0.17101817372867056,
+            "standard_deviation": 0.05559472491112915,
+            "minimum": 0.05244912265867384,
+            "maximum": 0.3120404423060757
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/responses.jsonl",
+      "responses_sha256": "caabcf5125e125a2ff7628ffd5b53d62e077b3033626e4d86fd67e1a622068e2",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/nemotron_3_5_lightning_reasoning_task1_test_v3_xsfixed_transcript_captiononly_v1_20260830_max65536_conclusiononly2/run_config.json",
+      "run_config_sha256": "79339c3e1580570416643dd12d2d504f1750e9a0fc9e4b182a95799c5156b477",
+      "per_item_output": "per_item/task1/nemotron_3_5_lightning_reasoning.jsonl"
+    },
+    {
+      "model": {
+        "key": "qwen3_8_27b",
+        "model_id": "Qwen/Qwen3.8-27B",
+        "display_name": "Qwen3.8-27B",
+        "organization": "Qwen",
+        "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 183,
+      "semantic_coverage": 0.9945652173913043,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 1,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.5303479112236877,
+            "standard_deviation": 0.07450327472782672,
+            "minimum": 0.2980484962463379,
+            "maximum": 0.6599918603897095
+          },
+          "recall": {
+            "mean": 0.5438519766747626,
+            "standard_deviation": 0.16340757846746912,
+            "minimum": 0.17565080523490906,
+            "maximum": 0.7008948922157288
+          },
+          "f1": {
+            "mean": 0.5276089121735161,
+            "standard_deviation": 0.1261444961892427,
+            "minimum": 0.24842846393585205,
+            "maximum": 0.6745712757110596
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.027823382978061324,
+            "standard_deviation": 0.15422126998449717,
+            "minimum": -0.45303481990415256,
+            "maximum": 0.29618547255372696
+          },
+          "recall": {
+            "mean": 0.055537822044649326,
+            "standard_deviation": 0.3383381480615461,
+            "minimum": -0.7068289153331543,
+            "maximum": 0.3806978281388222
+          },
+          "f1": {
+            "mean": 0.0259592404937413,
+            "standard_deviation": 0.26010202995369847,
+            "minimum": -0.5496933127580614,
+            "maximum": 0.32898640567075205
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "responses_sha256": "9dd9c943ec22d81c7b86595427d24d8c883c450b3edc72bcef8b22d5cdd569cd",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "12ef9b8c3d8bf5597c443b8eaeff141505b063d07bab07be43331623a4ac0fb2",
+      "per_item_output": "per_item/task1/qwen3_8_27b.jsonl"
+    },
+    {
+      "model": {
+        "key": "qwen3_8_27b_reasoning",
+        "model_id": "Qwen/Qwen3.8-27B",
+        "display_name": "Qwen3.8-27B",
+        "organization": "Qwen",
+        "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
+      },
+      "task": "task1",
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "semantic_coverage": 1.0,
+      "raw_fallback_count": 0,
+      "recovered_fallback_count": 0,
+      "format_failure_count": 0,
+      "item_macro": {
+        "raw": {
+          "precision": {
+            "mean": 0.5679571968705758,
+            "standard_deviation": 0.02842655215817012,
+            "minimum": 0.48229628801345825,
+            "maximum": 0.6540319919586182
+          },
+          "recall": {
+            "mean": 0.6277993052549984,
+            "standard_deviation": 0.029894925499243417,
+            "minimum": 0.5630066394805908,
+            "maximum": 0.7498461008071899
+          },
+          "f1": {
+            "mean": 0.5960254866791808,
+            "standard_deviation": 0.02520624405851324,
+            "minimum": 0.5308994054794312,
+            "maximum": 0.6810213327407837
+          }
+        },
+        "rescaled": {
+          "precision": {
+            "mean": 0.105674347474075,
+            "standard_deviation": 0.05884276887330086,
+            "minimum": -0.07164314897466514,
+            "maximum": 0.28384858559484916
+          },
+          "recall": {
+            "mean": 0.22935218214304234,
+            "standard_deviation": 0.06189794760262911,
+            "minimum": 0.09519787454189309,
+            "maximum": 0.48205213138190317
+          },
+          "f1": {
+            "mean": 0.1670299209355201,
+            "standard_deviation": 0.05197369243357239,
+            "minimum": 0.03274403106544874,
+            "maximum": 0.34228601823753035
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": {},
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_reasoning_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/responses.jsonl",
+      "responses_sha256": "e070fa18e1007a18442432d0b912eea5043bc31da2298fd56791f29955ec2191",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_reasoning_task1_test_v3_xsfixed_multimodal_v3_20260830_max65536_conclusiononly2_judgeinput/run_config.json",
+      "run_config_sha256": "8ca69bdf4af03c1af432fe0ba2d63e704d1dc47aae8d1307ca13123105c0811e",
+      "per_item_output": "per_item/task1/qwen3_8_27b_reasoning.jsonl"
+    }
+  ]
+}

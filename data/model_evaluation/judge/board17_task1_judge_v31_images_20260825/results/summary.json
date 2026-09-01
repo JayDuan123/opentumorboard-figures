@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-26T00:19:07.916366+00:00",
+  "scope": "test_only",
+  "protocol_version": "llm_judge_task1_v31_task2_v4",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": null,
+  "batch_template_reasoning_effort": "medium",
+  "execution": {
+    "task1": {
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/board17_task1_judge_v31_images_20260825/task1.output.local_run_config.json",
+      "run_config_sha256": "b3162c4adba615dcb1eef01275653101b44697d646d54ab6f62118f87fd0f755",
+      "base_url": [
+        "http://127.0.0.1:8090/v1",
+        "http://127.0.0.1:8091/v1",
+        "http://127.0.0.1:8092/v1",
+        "http://127.0.0.1:8093/v1"
+      ],
+      "endpoint": "/chat/completions",
+      "resolved_model": "Qwen/Qwen3.6-27B",
+      "model_revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "seed": 0,
+        "thinking": "disabled",
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "max_output_tokens": [
+          1200
+        ],
+        "structured_output": "strict_json_schema",
+        "structured_output_whitespace": "allow"
+      },
+      "wire_translation": {
+        "source": "frozen Responses Batch request",
+        "target": "local vLLM chat completions",
+        "messages_changed": false,
+        "json_schema_changed": false,
+        "source_reasoning_field_ignored": true
+      }
+    }
+  },
+  "build_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/board17_task1_judge_v31_images_20260825/build_config.json",
+  "build_config_sha256": "9e2281aad52c6ec22e8f22ea0c540c739932701ee6ed1b100044f9ecbea3bee9",
+  "validation": {
+    "task1": {
+      "response_rows": 3128,
+      "scored": 3090,
+      "candidate_format_failures": 38,
+      "api_errors": 0,
+      "invalid_judge_outputs": 0,
+      "missing_ids": [],
+      "extra_ids": [],
+      "duplicate_response_ids": []
+    }
+  },
+  "results": {
+    "task1": [
+      {
+        "model_key": "deepseek_v4_flash_api",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.25
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.25
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "deepseek_v4_flash_api_reasoning",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.2934782608695654
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.2934782608695654
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "deepseek_v4_pro",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.3152173913043477
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.3152173913043477
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "deepseek_v4_pro_reasoning",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.1739130434782608
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.1739130434782608
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "gemma4_31b_it",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.3315217391304346
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.3315217391304346
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "gemma4_31b_it_reasoning",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.375
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.375
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "huatuogpt_3_32b",
+        "test_records": 184,
+        "scored_records": 183,
+        "judge_coverage": 0.9945652173913043,
+        "candidate_format_failures": 1,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 1.650273224043716
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 1.6467391304347827
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "huatuogpt_3_32b_reasoning",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 1.6630434782608696
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 1.6630434782608696
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "llama4_scout",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 1.8043478260869565
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 1.8043478260869565
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "medgemma_27b_it",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 1.9293478260869565
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 1.9293478260869565
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "meditron3_70b",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 1.7119565217391304
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 1.7119565217391304
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "medreason_8b",
+        "test_records": 184,
+        "scored_records": 152,
+        "judge_coverage": 0.8260869565217391,
+        "candidate_format_failures": 32,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 1.7763157894736843
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 1.641304347826087
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "ministral_3_14b_instruct_2512",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.0
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.0
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "nemotron_3_5_lightning",
+        "test_records": 184,
+        "scored_records": 180,
+        "judge_coverage": 0.9782608695652174,
+        "candidate_format_failures": 4,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.077777777777778
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.0543478260869565
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "nemotron_3_5_lightning_reasoning",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 1.7391304347826086
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 1.7391304347826086
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "qwen3_8_27b",
+        "test_records": 184,
+        "scored_records": 183,
+        "judge_coverage": 0.9945652173913043,
+        "candidate_format_failures": 1,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.4918032786885247
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.483695652173913
+        },
+        "candidate_format_failure_score": 1
+      },
+      {
+        "model_key": "qwen3_8_27b_reasoning",
+        "test_records": 184,
+        "scored_records": 184,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.532608695652174
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.532608695652174
+        },
+        "candidate_format_failure_score": 1
+      }
+    ],
+    "task2": []
+  }
+}

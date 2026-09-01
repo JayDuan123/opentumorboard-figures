@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "protocol_version": "task1_rouge_l_v1",
+  "generated_utc": "2026-08-13T03:53:47.030299+00:00",
+  "scope": "test_only",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "task1_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+  "task1_manifest_sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "5715ba6ed612c7a46ae28547a8c381002193f116d53cc5627deb74c53d7dd4b7",
+  "test_video_count": 66,
+  "test_task1_case_count": 184,
+  "metric": {
+    "name": "ROUGE-L",
+    "variant": "rougeL",
+    "tokenizer": "lowercase ASCII alphanumeric tokens; no stemming; ROUGE-L sentence-level longest-common-subsequence precision/recall/F1",
+    "stemming": false,
+    "aggregation": "item_macro",
+    "reference": "reference_conclusion",
+    "scope": "THE CONCLUSION, NOT THE WHOLE RESPONSE. The candidate is the extracted conclusion from the *_conclusiononly derived run, which is exactly the text task1_judge_v14 scores; the role table that also appears in the full response is scored by neither. This number is not a similarity score for a whole tumor board simulation output.",
+    "format_failure_rule": "an empty candidate scores 0 on precision, recall and F1 and stays in the denominator, matching the judge's floor rule",
+    "candidate_verification": "byte-checked against candidate_sha256 in /rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/mm_t1_judge_b4_20260813/results/task1.per_item.jsonl",
+    "task1_has_no_qa_type": "type_macro and per_qa_type are null: Task 1 has no question-type dimension to macro-average over"
+  },
+  "results": [
+    {
+      "task": "task1",
+      "model": {
+        "key": "mm_gemma4_26b_a4b_reasoning",
+        "model_id": "google/gemma-4-26B-A4B-it",
+        "display_name": "Gemma 4 26B A4B IT [multimodal]",
+        "organization": "Google",
+        "revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52"
+      },
+      "split": "test",
+      "test_count": 184,
+      "scored_count": 184,
+      "format_failure_count": 0,
+      "candidates_verified_against_judge": 184,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.18306136264214837,
+            "standard_deviation": 0.0490525164322776,
+            "minimum": 0.08333333333333333,
+            "maximum": 0.3181818181818182
+          },
+          "recall": {
+            "mean": 0.1483410252893415,
+            "standard_deviation": 0.044586735623013886,
+            "minimum": 0.07079646017699115,
+            "maximum": 0.38095238095238093
+          },
+          "f1": {
+            "mean": 0.161164833938527,
+            "standard_deviation": 0.0404498116968232,
+            "minimum": 0.08391608391608392,
+            "maximum": 0.32323232323232326
+          }
+        }
+      },
+      "type_macro": null,
+      "per_qa_type": null,
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_26b_a4b_reasoning_task1_test_v3_xsfixed_multimodal_20260812_max24576_conclusiononly_judgeinput/responses.jsonl",
+      "response_sha256": "7210bb4f6b841d88b82126ec6b800dec48b913ea0611516b40f542d7b190ecc5",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/gemma4_26b_a4b_reasoning_task1_test_v3_xsfixed_multimodal_20260812_max24576_conclusiononly_judgeinput/run_config.json",
+      "run_config_sha256": "a4f909870ef1e359228e41b53ceddc46590d8f8012b5085bf06386cf484850e2",
+      "per_item_output": "per_item/mm_gemma4_26b_a4b_reasoning.jsonl",
+      "format_failures": []
+    }
+  ]
+}

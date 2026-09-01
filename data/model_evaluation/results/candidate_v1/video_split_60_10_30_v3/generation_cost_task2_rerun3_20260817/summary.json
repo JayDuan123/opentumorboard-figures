@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-17T20:37:32.642041+00:00",
+  "metric": "generation_cost",
+  "task": "task2",
+  "cost_axis": "output_tokens.mean",
+  "responses_per_configuration": [
+    4844
+  ],
+  "prompt_tokens_mean_spread": 13712.9,
+  "results": [
+    {
+      "model_key": "mm_qwen3_8_27b_reasoning",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 1242.5,
+        "median": 956.0,
+        "p90": 2100.0,
+        "max": 14068,
+        "total": 6018595
+      },
+      "prompt_tokens_mean": 14037.3,
+      "serving_latency_seconds": {
+        "mean": 35.76,
+        "median": 27.14,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_8_27b_reasoning_task2_test_v3_xsfixed_multimodal_20260817_max16384/responses.jsonl",
+      "responses_sha256": "6eabb0dd95981f22acf92bd28f2d81bb837421e1219b5e178159156a70429f80"
+    },
+    {
+      "model_key": "qo_qwen3_8_27b_reasoning",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 1148.1,
+        "median": 598.0,
+        "p90": 2451.0,
+        "max": 16384,
+        "total": 5561247
+      },
+      "prompt_tokens_mean": 324.4,
+      "serving_latency_seconds": {
+        "mean": null,
+        "median": null,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qo_qwen3_8_27b_reasoning_task2_test_v3_questiononly_20260817/responses.jsonl",
+      "responses_sha256": "1d2c809e0499bbf357b7ea2f3f1a95d4068f41c50689faa8aa1c81884c2cf031"
+    },
+    {
+      "model_key": "meditron3_70b",
+      "task": "task2",
+      "responses": 4844,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 75.3,
+        "median": 74.0,
+        "p90": 111.0,
+        "max": 340,
+        "total": 364939
+      },
+      "prompt_tokens_mean": 1332.8,
+      "serving_latency_seconds": {
+        "mean": 5.05,
+        "median": 5.0,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/meditron3_70b_task2_test_v3_xsfixed_20260817_max8192_slidealigned/responses.jsonl",
+      "responses_sha256": "803b80f14940f18b7539d3f8f82c6e5f4992f9febd91814fd46b090de110ace1"
+    }
+  ]
+}

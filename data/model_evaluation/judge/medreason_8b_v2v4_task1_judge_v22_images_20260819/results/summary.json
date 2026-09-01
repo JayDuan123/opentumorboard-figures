@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-19T20:12:01.445334+00:00",
+  "scope": "test_only",
+  "protocol_version": "llm_judge_task1_v22_task2_v4",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": null,
+  "batch_template_reasoning_effort": "medium",
+  "execution": {
+    "task1": {
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/medreason_8b_v2v4_task1_judge_v22_images_20260819/task1.output.local_run_config.json",
+      "run_config_sha256": "67fdc56ed6b28209e59e506dcf462173eee0cdda2a81ef95db1dab84b0819a13",
+      "base_url": "http://127.0.0.1:8095/v1",
+      "endpoint": "/chat/completions",
+      "resolved_model": "Qwen/Qwen3.6-27B",
+      "model_revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "seed": 0,
+        "thinking": "disabled",
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "max_output_tokens": [
+          1200
+        ],
+        "structured_output": "strict_json_schema",
+        "structured_output_whitespace": "disabled"
+      },
+      "wire_translation": {
+        "source": "frozen Responses Batch request",
+        "target": "local vLLM chat completions",
+        "messages_changed": false,
+        "json_schema_changed": false,
+        "source_reasoning_field_ignored": true
+      }
+    }
+  },
+  "build_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/medreason_8b_v2v4_task1_judge_v22_images_20260819/build_config.json",
+  "build_config_sha256": "2709444dabad425c386cd783ca9ef0f8737b474230cd5f4d7ffda21dc34c029c",
+  "validation": {
+    "task1": {
+      "response_rows": 184,
+      "scored": 152,
+      "candidate_format_failures": 32,
+      "api_errors": 0,
+      "invalid_judge_outputs": 0,
+      "missing_ids": [],
+      "extra_ids": [],
+      "duplicate_response_ids": []
+    }
+  },
+  "results": {
+    "task1": [
+      {
+        "model_key": "medreason_8b",
+        "test_records": 184,
+        "scored_records": 152,
+        "judge_coverage": 0.8260869565217391,
+        "candidate_format_failures": 32,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.0723684210526314
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 1.8858695652173914
+        },
+        "candidate_format_failure_score": 1,
+        "major_error_rate": 0.16447368421052633
+      }
+    ],
+    "task2": []
+  }
+}

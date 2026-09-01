@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "protocol_version": "task2_rouge_l_v1",
+  "generated_utc": "2026-08-14T01:16:38.737953+00:00",
+  "scope": "test_only",
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "task2_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_20260809.jsonl",
+  "task2_manifest_sha256": "4ce83eb441cced77464091a4d264fe8a0b12c23d5dce135aea8744e18c2d7db4",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "2e92c3aa10e10bb60aacc8d413b83f668ab4cf59b85354e0384b88c599af183f",
+  "test_video_count": 66,
+  "test_task2_qa_count": 4844,
+  "split_task2_qa_pairs": 4993,
+  "task2_screened_out": 149,
+  "test_task2_qa_type_counts": {
+    "agreement_or_support": 178,
+    "clarification_question": 178,
+    "clinical_trial_suggestion": 73,
+    "eligibility_assessment": 322,
+    "evidence_discussion": 677,
+    "findings_interpretation": 1284,
+    "next_action_suggestion": 654,
+    "treatment_recommendation": 1139,
+    "uncertainty": 339
+  },
+  "metric": {
+    "name": "ROUGE-L",
+    "variant": "rougeL",
+    "tokenizer": "lowercase ASCII alphanumeric tokens; no stemming; ROUGE-L sentence-level longest-common-subsequence precision/recall/F1",
+    "stemming": false,
+    "aggregation": "item_macro"
+  },
+  "results": [
+    {
+      "task": "task2",
+      "model": {
+        "key": "mm_qwen3_6_27b_reasoning",
+        "model_id": "Qwen/Qwen3.6-27B",
+        "display_name": "Qwen3.6-27B [multimodal]",
+        "organization": "Qwen",
+        "revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9"
+      },
+      "split": "test",
+      "test_count": 4844,
+      "scored_count": 4813,
+      "semantic_coverage": 0.9936003303055326,
+      "raw_fallback_count": 33,
+      "recovered_fallback_count": 2,
+      "format_failure_count": 31,
+      "item_macro": {
+        "rouge_l": {
+          "precision": {
+            "mean": 0.1432910021699344,
+            "standard_deviation": 0.09185192930080842,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "recall": {
+            "mean": 0.297241450449596,
+            "standard_deviation": 0.15193270126889705,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "f1": {
+            "mean": 0.18199459916988953,
+            "standard_deviation": 0.09510941642424314,
+            "minimum": 0.0,
+            "maximum": 0.8421052631578947
+          }
+        }
+      },
+      "type_macro": {
+        "rouge_l": {
+          "precision": 0.14631996656101182,
+          "recall": 0.2957313794437518,
+          "f1": 0.1840169979832239
+        }
+      },
+      "per_qa_type": {
+        "agreement_or_support": {
+          "test_count": 178,
+          "scored_count": 176,
+          "format_failure_count": 2,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.12130111694929177,
+              "standard_deviation": 0.07542618406400185,
+              "minimum": 0.011904761904761904,
+              "maximum": 0.5833333333333334
+            },
+            "recall": {
+              "mean": 0.28832355821672834,
+              "standard_deviation": 0.13238607838649158,
+              "minimum": 0.0784313725490196,
+              "maximum": 0.9
+            },
+            "f1": {
+              "mean": 0.16097155748130412,
+              "standard_deviation": 0.07625185133477408,
+              "minimum": 0.021978021978021973,
+              "maximum": 0.5098039215686274
+            }
+          }
+        },
+        "clarification_question": {
+          "test_count": 178,
+          "scored_count": 176,
+          "format_failure_count": 2,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.21755926630299782,
+              "standard_deviation": 0.15609505454755054,
+              "minimum": 0.037037037037037035,
+              "maximum": 1.0
+            },
+            "recall": {
+              "mean": 0.37789713425020044,
+              "standard_deviation": 0.1912763357959931,
+              "minimum": 0.07142857142857142,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.2547220416092821,
+              "standard_deviation": 0.14048996378678996,
+              "minimum": 0.04878048780487805,
+              "maximum": 0.8148148148148148
+            }
+          }
+        },
+        "clinical_trial_suggestion": {
+          "test_count": 73,
+          "scored_count": 70,
+          "format_failure_count": 3,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.13892944017023845,
+              "standard_deviation": 0.09073122461703109,
+              "minimum": 0.02,
+              "maximum": 0.6666666666666666
+            },
+            "recall": {
+              "mean": 0.24129972006837516,
+              "standard_deviation": 0.1298235577824916,
+              "minimum": 0.02564102564102564,
+              "maximum": 0.8571428571428571
+            },
+            "f1": {
+              "mean": 0.16947822515109073,
+              "standard_deviation": 0.10106930184935768,
+              "minimum": 0.03125,
+              "maximum": 0.75
+            }
+          }
+        },
+        "eligibility_assessment": {
+          "test_count": 322,
+          "scored_count": 322,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.14798422061317057,
+              "standard_deviation": 0.07695116922048172,
+              "minimum": 0.014285714285714285,
+              "maximum": 0.55
+            },
+            "recall": {
+              "mean": 0.3185113567164994,
+              "standard_deviation": 0.14918636369377364,
+              "minimum": 0.06666666666666667,
+              "maximum": 0.9090909090909091
+            },
+            "f1": {
+              "mean": 0.1914262799898832,
+              "standard_deviation": 0.08257145648448813,
+              "minimum": 0.02564102564102564,
+              "maximum": 0.6534653465346535
+            }
+          }
+        },
+        "evidence_discussion": {
+          "test_count": 677,
+          "scored_count": 677,
+          "format_failure_count": 0,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.12924375718295456,
+              "standard_deviation": 0.07232196711667409,
+              "minimum": 0.0,
+              "maximum": 0.6
+            },
+            "recall": {
+              "mean": 0.25834560750031993,
+              "standard_deviation": 0.12803653433920287,
+              "minimum": 0.0,
+              "maximum": 0.8571428571428571
+            },
+            "f1": {
+              "mean": 0.1646405366281013,
+              "standard_deviation": 0.07916770634128949,
+              "minimum": 0.0,
+              "maximum": 0.7058823529411764
+            }
+          }
+        },
+        "findings_interpretation": {
+          "test_count": 1284,
+          "scored_count": 1274,
+          "format_failure_count": 10,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.15408414510831475,
+              "standard_deviation": 0.10250597862830126,
+              "minimum": 0.01282051282051282,
+              "maximum": 0.8125
+            },
+            "recall": {
+              "mean": 0.32467376740316645,
+              "standard_deviation": 0.15965526145293507,
+              "minimum": 0.075,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.19762787152158187,
+              "standard_deviation": 0.1082587384012071,
+              "minimum": 0.02352941176470588,
+              "maximum": 0.8421052631578947
+            }
+          }
+        },
+        "next_action_suggestion": {
+          "test_count": 654,
+          "scored_count": 649,
+          "format_failure_count": 5,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.14598617627692,
+              "standard_deviation": 0.09314740756704797,
+              "minimum": 0.019230769230769232,
+              "maximum": 0.7
+            },
+            "recall": {
+              "mean": 0.29726630315883984,
+              "standard_deviation": 0.15292233024939886,
+              "minimum": 0.058823529411764705,
+              "maximum": 0.875
+            },
+            "f1": {
+              "mean": 0.18304984552572162,
+              "standard_deviation": 0.09516806087957429,
+              "minimum": 0.03333333333333334,
+              "maximum": 0.7777777777777777
+            }
+          }
+        },
+        "treatment_recommendation": {
+          "test_count": 1139,
+          "scored_count": 1132,
+          "format_failure_count": 7,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.1331750591138628,
+              "standard_deviation": 0.07571441035477004,
+              "minimum": 0.0,
+              "maximum": 0.8235294117647058
+            },
+            "recall": {
+              "mean": 0.28343665542736074,
+              "standard_deviation": 0.1468636539146925,
+              "minimum": 0.0,
+              "maximum": 1.0
+            },
+            "f1": {
+              "mean": 0.1693063532289713,
+              "standard_deviation": 0.07751511603650607,
+              "minimum": 0.0,
+              "maximum": 0.6538461538461539
+            }
+          }
+        },
+        "uncertainty": {
+          "test_count": 339,
+          "scored_count": 337,
+          "format_failure_count": 2,
+          "rouge_l": {
+            "precision": {
+              "mean": 0.1286165173313555,
+              "standard_deviation": 0.08164162152220897,
+              "minimum": 0.0,
+              "maximum": 0.6818181818181818
+            },
+            "recall": {
+              "mean": 0.2718283122522757,
+              "standard_deviation": 0.13482049048561137,
+              "minimum": 0.0,
+              "maximum": 0.875
+            },
+            "f1": {
+              "mean": 0.16493027071307886,
+              "standard_deviation": 0.08493630262835533,
+              "minimum": 0.0,
+              "maximum": 0.6976744186046512
+            }
+          }
+        }
+      },
+      "response_file": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_6_27b_reasoning_task2_test_v3_xsfixed_multimodal_20260813_max16384_judgeinput/responses.jsonl",
+      "response_sha256": "7d08fcc1617bf0ed989d255890f220da2fe91cce56dc158936a27a05584161b6",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_6_27b_reasoning_task2_test_v3_xsfixed_multimodal_20260813_max16384_judgeinput/run_config.json",
+      "run_config_sha256": "5b893e0fcbdff5a30ef6fbdacbcf0f28c90551d7300d071d6efc4d7f4785b621",
+      "per_item_output": "per_item/mm_qwen3_6_27b_reasoning.jsonl",
+      "format_failures": [
+        {
+          "qa_id": "qa_5c3665d19e83b3aa751fe303",
+          "qa_type": "next_action_suggestion",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_7515f65870e944b55b6ea8b3",
+          "qa_type": "clarification_question",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_a47127d17f0e8154bdd11c91",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_f4fa20db97b5fe661648a6e6",
+          "qa_type": "clinical_trial_suggestion",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_d349e5dcb37c4d82fc4b4b6b",
+          "qa_type": "treatment_recommendation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_876783c38629472bd6eb7633",
+          "qa_type": "treatment_recommendation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_c64d1294683f32aacb9ec1eb",
+          "qa_type": "treatment_recommendation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_37605ed01a0a361af54ec1b0",
+          "qa_type": "agreement_or_support",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_a8425f893b4b7f302a08cb02",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_d79b50f08c22887136031341",
+          "qa_type": "agreement_or_support",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_a30a71eb646dcd0d9cdf0978",
+          "qa_type": "treatment_recommendation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_c74eaf82e7f07bb577a31228",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_7f413dca0b75b6e44190e32b",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_bbf117492a466657f98fff0d",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_04b6bf0530bc88328e445414",
+          "qa_type": "clinical_trial_suggestion",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_ed2d03f278f9e06db1d89a23",
+          "qa_type": "uncertainty",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_3ac6e14fcf622648fe9fc4ee",
+          "qa_type": "next_action_suggestion",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_7af1e548f7ca7740ce257a01",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_060c78106e00cff8752caad0",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_f11dd2fed07938a0888ae666",
+          "qa_type": "uncertainty",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_828ad0a6e347497d82b60273",
+          "qa_type": "next_action_suggestion",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_f60ad30448a543e4e726f295",
+          "qa_type": "next_action_suggestion",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_e5776b332844e4e4333c3ebe",
+          "qa_type": "clarification_question",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_94305baf9ae19d7ac8be9a4b",
+          "qa_type": "next_action_suggestion",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_64be103c4b9626aaa2319f13",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_72ddc192c0d0fc32c7ff08f7",
+          "qa_type": "treatment_recommendation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_7c586bba407ce2869a5db93c",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_0b3e828d3cc8791e353fb4b4",
+          "qa_type": "treatment_recommendation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_6fa32dfcc9fb02b36d18f80f",
+          "qa_type": "findings_interpretation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_b8234c33adc7c12a95847625",
+          "qa_type": "clinical_trial_suggestion",
+          "extraction_method": "unrecoverable_reasoning_final"
+        },
+        {
+          "qa_id": "qa_7c6787ec513a9ec2339fa997",
+          "qa_type": "treatment_recommendation",
+          "extraction_method": "unrecoverable_reasoning_final"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1674 @@
+{
+  "schema_version": 1,
+  "task": "task2",
+  "metric": "clinical_equivalence_by_target_specialist_role",
+  "manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_slidealigned_20260814.jsonl",
+  "manifest_sha256": "c03444ba7f36ed7dbddc2bfa4761acd3009906366f7555a7d5246c8e4be0ebbe",
+  "underpowered_min_n": 100,
+  "role_counts": {
+    "surgeon": 1766,
+    "medical oncologist": 1347,
+    "radiation oncologist": 569,
+    "radiologist": 407,
+    "other": 307,
+    "molecular pathologist": 207,
+    "pathologist": 192,
+    "genetic counselor": 26,
+    "nurse navigator": 15,
+    "clinical trial specialist": 8
+  },
+  "models": 17,
+  "results": {
+    "task2": [
+      {
+        "model_key": "mm_llama4_scout",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.3969,
+            "standard_error": 0.0337,
+            "critical_error_rate": 0.1501,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.5056,
+            "standard_error": 0.0369,
+            "critical_error_rate": 0.1203,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.6731,
+            "standard_error": 0.0549,
+            "critical_error_rate": 0.0967,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.8354,
+            "standard_error": 0.0636,
+            "critical_error_rate": 0.0811,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.5603,
+            "standard_error": 0.0776,
+            "critical_error_rate": 0.127,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.4638,
+            "standard_error": 0.0992,
+            "critical_error_rate": 0.1401,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.7552,
+            "standard_error": 0.0892,
+            "critical_error_rate": 0.0625,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 3.6538,
+            "standard_error": 0.2823,
+            "critical_error_rate": 0.1538,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 3.8667,
+            "standard_error": 0.3382,
+            "critical_error_rate": 0.1333,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.25,
+            "standard_error": 0.3853,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "huatuogpt_3_32b",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.376,
+            "standard_error": 0.0328,
+            "critical_error_rate": 0.1767,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.5226,
+            "standard_error": 0.0374,
+            "critical_error_rate": 0.15,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.5747,
+            "standard_error": 0.0535,
+            "critical_error_rate": 0.1318,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.7764,
+            "standard_error": 0.0643,
+            "critical_error_rate": 0.0983,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.6417,
+            "standard_error": 0.0737,
+            "critical_error_rate": 0.1303,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.4155,
+            "standard_error": 0.0954,
+            "critical_error_rate": 0.1691,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.7135,
+            "standard_error": 0.0907,
+            "critical_error_rate": 0.1042,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 3.3846,
+            "standard_error": 0.3032,
+            "critical_error_rate": 0.2692,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.0,
+            "standard_error": 0.2108,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 3.5,
+            "standard_error": 0.4677,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "huatuogpt_3_32b_reasoning",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.2367,
+            "standard_error": 0.0318,
+            "critical_error_rate": 0.2135,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.3148,
+            "standard_error": 0.0359,
+            "critical_error_rate": 0.2056,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.4605,
+            "standard_error": 0.0504,
+            "critical_error_rate": 0.1511,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.5971,
+            "standard_error": 0.0616,
+            "critical_error_rate": 0.1302,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.3192,
+            "standard_error": 0.0752,
+            "critical_error_rate": 0.1987,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.3237,
+            "standard_error": 0.0916,
+            "critical_error_rate": 0.1981,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.4271,
+            "standard_error": 0.0882,
+            "critical_error_rate": 0.1615,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 3.6154,
+            "standard_error": 0.2613,
+            "critical_error_rate": 0.0769,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 3.9333,
+            "standard_error": 0.1993,
+            "critical_error_rate": 0.0667,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 3.75,
+            "standard_error": 0.3853,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "mm_ministral_3_14b_instruct_2512",
+        "judge_source": "judge/mm_ministral_3_14b_instruct_2512_task2_judge_v4_images_20260816/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.3952,
+            "standard_error": 0.0334,
+            "critical_error_rate": 0.1586,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.559,
+            "standard_error": 0.0376,
+            "critical_error_rate": 0.1359,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.7065,
+            "standard_error": 0.0542,
+            "critical_error_rate": 0.1019,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.8501,
+            "standard_error": 0.0656,
+            "critical_error_rate": 0.1032,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.7329,
+            "standard_error": 0.0758,
+            "critical_error_rate": 0.1173,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.3382,
+            "standard_error": 0.1011,
+            "critical_error_rate": 0.1884,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.776,
+            "standard_error": 0.0962,
+            "critical_error_rate": 0.099,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 3.6923,
+            "standard_error": 0.2652,
+            "critical_error_rate": 0.1154,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.2667,
+            "standard_error": 0.305,
+            "critical_error_rate": 0.1333,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.125,
+            "standard_error": 0.4485,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "medreason_8b",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4843,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1765,
+            "clinical_equivalence_mean": 2.2861,
+            "standard_error": 0.0347,
+            "critical_error_rate": 0.4782,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 2.3615,
+            "standard_error": 0.0407,
+            "critical_error_rate": 0.4573,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 2.6186,
+            "standard_error": 0.0632,
+            "critical_error_rate": 0.3779,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 2.941,
+            "standard_error": 0.0776,
+            "critical_error_rate": 0.2973,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 2.4593,
+            "standard_error": 0.088,
+            "critical_error_rate": 0.443,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 2.2754,
+            "standard_error": 0.1051,
+            "critical_error_rate": 0.4879,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 2.5312,
+            "standard_error": 0.1077,
+            "critical_error_rate": 0.401,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 2.2692,
+            "standard_error": 0.2957,
+            "critical_error_rate": 0.5385,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 1.8,
+            "standard_error": 0.3155,
+            "critical_error_rate": 0.6667,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 2.625,
+            "standard_error": 0.6108,
+            "critical_error_rate": 0.5,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "mm_gemma4_31b_it",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.3403,
+            "standard_error": 0.0377,
+            "critical_error_rate": 0.2327,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.464,
+            "standard_error": 0.0418,
+            "critical_error_rate": 0.1774,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.7188,
+            "standard_error": 0.0603,
+            "critical_error_rate": 0.1424,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.8428,
+            "standard_error": 0.0735,
+            "critical_error_rate": 0.1425,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.4007,
+            "standard_error": 0.0913,
+            "critical_error_rate": 0.2085,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.5749,
+            "standard_error": 0.1012,
+            "critical_error_rate": 0.1304,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.6875,
+            "standard_error": 0.1104,
+            "critical_error_rate": 0.1823,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 3.8846,
+            "standard_error": 0.2683,
+            "critical_error_rate": 0.1154,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.2667,
+            "standard_error": 0.1755,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.125,
+            "standard_error": 0.4485,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "mm_gemma4_31b_it_reasoning",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.4711,
+            "standard_error": 0.037,
+            "critical_error_rate": 0.2163,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.614,
+            "standard_error": 0.0412,
+            "critical_error_rate": 0.1611,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.8963,
+            "standard_error": 0.058,
+            "critical_error_rate": 0.1125,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 4.0,
+            "standard_error": 0.0684,
+            "critical_error_rate": 0.1179,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.5407,
+            "standard_error": 0.0881,
+            "critical_error_rate": 0.1792,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.6522,
+            "standard_error": 0.1039,
+            "critical_error_rate": 0.1594,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.7969,
+            "standard_error": 0.1081,
+            "critical_error_rate": 0.1667,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.1923,
+            "standard_error": 0.2244,
+            "critical_error_rate": 0.0385,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.0667,
+            "standard_error": 0.2743,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.25,
+            "standard_error": 0.4593,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "mm_medgemma_27b_it",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.2565,
+            "standard_error": 0.0349,
+            "critical_error_rate": 0.1988,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.3942,
+            "standard_error": 0.0387,
+            "critical_error_rate": 0.1633,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.5062,
+            "standard_error": 0.0573,
+            "critical_error_rate": 0.1388,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.7789,
+            "standard_error": 0.0668,
+            "critical_error_rate": 0.113,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.5472,
+            "standard_error": 0.0795,
+            "critical_error_rate": 0.1433,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.2367,
+            "standard_error": 0.1049,
+            "critical_error_rate": 0.2174,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.5833,
+            "standard_error": 0.1003,
+            "critical_error_rate": 0.1094,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 3.5,
+            "standard_error": 0.2942,
+            "critical_error_rate": 0.2308,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 3.8,
+            "standard_error": 0.215,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 3.75,
+            "standard_error": 0.3853,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "nemotron_3_5_lightning",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.389,
+            "standard_error": 0.0335,
+            "critical_error_rate": 0.1653,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.5167,
+            "standard_error": 0.0375,
+            "critical_error_rate": 0.1381,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.5694,
+            "standard_error": 0.0571,
+            "critical_error_rate": 0.1318,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.8501,
+            "standard_error": 0.0624,
+            "critical_error_rate": 0.086,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.5342,
+            "standard_error": 0.082,
+            "critical_error_rate": 0.1661,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.5845,
+            "standard_error": 0.0935,
+            "critical_error_rate": 0.1256,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.7188,
+            "standard_error": 0.095,
+            "critical_error_rate": 0.125,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.1538,
+            "standard_error": 0.2155,
+            "critical_error_rate": 0.0385,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.0,
+            "standard_error": 0.1886,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.25,
+            "standard_error": 0.4593,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "nemotron_3_5_lightning_reasoning",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4842,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1765,
+            "clinical_equivalence_mean": 3.3507,
+            "standard_error": 0.0359,
+            "critical_error_rate": 0.1938,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1346,
+            "clinical_equivalence_mean": 3.5817,
+            "standard_error": 0.0388,
+            "critical_error_rate": 0.1516,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.7241,
+            "standard_error": 0.0564,
+            "critical_error_rate": 0.1195,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.8993,
+            "standard_error": 0.066,
+            "critical_error_rate": 0.0983,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.5179,
+            "standard_error": 0.089,
+            "critical_error_rate": 0.1922,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.6618,
+            "standard_error": 0.0997,
+            "critical_error_rate": 0.1256,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.7708,
+            "standard_error": 0.1018,
+            "critical_error_rate": 0.1146,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.2308,
+            "standard_error": 0.2263,
+            "critical_error_rate": 0.0385,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.0667,
+            "standard_error": 0.1993,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 3.5,
+            "standard_error": 0.559,
+            "critical_error_rate": 0.25,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "meditron3_70b",
+        "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.4264,
+            "standard_error": 0.0322,
+            "critical_error_rate": 0.1359,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.5189,
+            "standard_error": 0.0371,
+            "critical_error_rate": 0.1284,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.6274,
+            "standard_error": 0.0533,
+            "critical_error_rate": 0.1002,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 3.8477,
+            "standard_error": 0.0613,
+            "critical_error_rate": 0.0786,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.5537,
+            "standard_error": 0.0736,
+            "critical_error_rate": 0.101,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.3333,
+            "standard_error": 0.099,
+            "critical_error_rate": 0.1594,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 3.8021,
+            "standard_error": 0.09,
+            "critical_error_rate": 0.0781,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 3.8846,
+            "standard_error": 0.2512,
+            "critical_error_rate": 0.0769,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 3.9333,
+            "standard_error": 0.1993,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 3.5,
+            "standard_error": 0.4677,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "deepseek_v4_pro",
+        "judge_source": "judge/deepseek_v4_pro_task2_judge_v4_images_20260815/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.8924,
+            "standard_error": 0.0312,
+            "critical_error_rate": 0.1002,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 4.0156,
+            "standard_error": 0.0347,
+            "critical_error_rate": 0.0861,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 4.1054,
+            "standard_error": 0.0483,
+            "critical_error_rate": 0.0562,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 4.2752,
+            "standard_error": 0.0546,
+            "critical_error_rate": 0.0516,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 4.0586,
+            "standard_error": 0.0717,
+            "critical_error_rate": 0.0814,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.8454,
+            "standard_error": 0.0955,
+            "critical_error_rate": 0.1159,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 4.2135,
+            "standard_error": 0.0863,
+            "critical_error_rate": 0.0677,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.1538,
+            "standard_error": 0.2474,
+            "critical_error_rate": 0.0385,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.4,
+            "standard_error": 0.2066,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.5,
+            "standard_error": 0.3536,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "deepseek_v4_pro_reasoning",
+        "judge_source": "judge/deepseek_v4_pro_task2_judge_v4_images_20260815/results/summary.json",
+        "scored_records": 4841,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1765,
+            "clinical_equivalence_mean": 4.0408,
+            "standard_error": 0.0305,
+            "critical_error_rate": 0.0918,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1345,
+            "clinical_equivalence_mean": 4.2112,
+            "standard_error": 0.0321,
+            "critical_error_rate": 0.0714,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 4.283,
+            "standard_error": 0.0449,
+            "critical_error_rate": 0.0527,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 4.4496,
+            "standard_error": 0.0488,
+            "critical_error_rate": 0.0418,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 4.1889,
+            "standard_error": 0.0675,
+            "critical_error_rate": 0.0717,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 4.1256,
+            "standard_error": 0.0881,
+            "critical_error_rate": 0.0821,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 4.3802,
+            "standard_error": 0.0753,
+            "critical_error_rate": 0.0469,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.2692,
+            "standard_error": 0.2405,
+            "critical_error_rate": 0.0769,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.7333,
+            "standard_error": 0.1481,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.625,
+            "standard_error": 0.3508,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "deepseek_v4_flash_api",
+        "judge_source": "judge/deepseek_v4_flash_api_task2_judge_v4_images_20260815/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.7514,
+            "standard_error": 0.0321,
+            "critical_error_rate": 0.1212,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.8627,
+            "standard_error": 0.0349,
+            "critical_error_rate": 0.0965,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 3.9824,
+            "standard_error": 0.0512,
+            "critical_error_rate": 0.0791,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 4.1351,
+            "standard_error": 0.0597,
+            "critical_error_rate": 0.0786,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.8013,
+            "standard_error": 0.0785,
+            "critical_error_rate": 0.127,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.7585,
+            "standard_error": 0.0942,
+            "critical_error_rate": 0.1063,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 4.151,
+            "standard_error": 0.0745,
+            "critical_error_rate": 0.0469,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.0,
+            "standard_error": 0.2665,
+            "critical_error_rate": 0.0385,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.2,
+            "standard_error": 0.253,
+            "critical_error_rate": 0.0667,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.25,
+            "standard_error": 0.4593,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "deepseek_v4_flash_api_reasoning",
+        "judge_source": "judge/deepseek_v4_flash_api_task2_judge_v4_images_20260815/results/summary.json",
+        "scored_records": 4839,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1763,
+            "clinical_equivalence_mean": 3.8939,
+            "standard_error": 0.0313,
+            "critical_error_rate": 0.1032,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1346,
+            "clinical_equivalence_mean": 4.0201,
+            "standard_error": 0.0346,
+            "critical_error_rate": 0.0914,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 568,
+            "clinical_equivalence_mean": 4.0863,
+            "standard_error": 0.0498,
+            "critical_error_rate": 0.0669,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 4.2973,
+            "standard_error": 0.0531,
+            "critical_error_rate": 0.0393,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 3.9837,
+            "standard_error": 0.0748,
+            "critical_error_rate": 0.101,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 4.0,
+            "standard_error": 0.0888,
+            "critical_error_rate": 0.0918,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 4.3177,
+            "standard_error": 0.0772,
+            "critical_error_rate": 0.0417,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.3077,
+            "standard_error": 0.2293,
+            "critical_error_rate": 0.0385,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.4667,
+            "standard_error": 0.2284,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.75,
+            "standard_error": 0.1531,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "mm_qwen3_8_27b",
+        "judge_source": "judge/qwen3_8_task2_judge_v4_images_20260815/results/summary.json",
+        "scored_records": 4844,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1766,
+            "clinical_equivalence_mean": 3.7435,
+            "standard_error": 0.0345,
+            "critical_error_rate": 0.1546,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1347,
+            "clinical_equivalence_mean": 3.8849,
+            "standard_error": 0.038,
+            "critical_error_rate": 0.1232,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 569,
+            "clinical_equivalence_mean": 4.0685,
+            "standard_error": 0.0529,
+            "critical_error_rate": 0.0861,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 4.1818,
+            "standard_error": 0.0612,
+            "critical_error_rate": 0.0713,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 4.0717,
+            "standard_error": 0.072,
+            "critical_error_rate": 0.0977,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 3.7536,
+            "standard_error": 0.0993,
+            "critical_error_rate": 0.1546,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 4.1771,
+            "standard_error": 0.0899,
+            "critical_error_rate": 0.0833,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.2308,
+            "standard_error": 0.2682,
+            "critical_error_rate": 0.1154,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.4667,
+            "standard_error": 0.208,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.5,
+            "standard_error": 0.4677,
+            "critical_error_rate": 0.125,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      },
+      {
+        "model_key": "mm_qwen3_8_27b_reasoning",
+        "judge_source": "judge/qwen3_8_task2_judge_v4_images_20260815/results/summary.json",
+        "scored_records": 4839,
+        "by_role": [
+          {
+            "role": "surgeon",
+            "n": 1764,
+            "clinical_equivalence_mean": 4.1026,
+            "standard_error": 0.0308,
+            "critical_error_rate": 0.0975,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "medical oncologist",
+            "n": 1345,
+            "clinical_equivalence_mean": 4.2022,
+            "standard_error": 0.0344,
+            "critical_error_rate": 0.0937,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiation oncologist",
+            "n": 568,
+            "clinical_equivalence_mean": 4.3327,
+            "standard_error": 0.0466,
+            "critical_error_rate": 0.0546,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "radiologist",
+            "n": 407,
+            "clinical_equivalence_mean": 4.4251,
+            "standard_error": 0.0531,
+            "critical_error_rate": 0.0565,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "other",
+            "n": 307,
+            "clinical_equivalence_mean": 4.241,
+            "standard_error": 0.0664,
+            "critical_error_rate": 0.0749,
+            "underpowered": false,
+            "is_specialist": false
+          },
+          {
+            "role": "molecular pathologist",
+            "n": 207,
+            "clinical_equivalence_mean": 4.256,
+            "standard_error": 0.0781,
+            "critical_error_rate": 0.0628,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "pathologist",
+            "n": 192,
+            "clinical_equivalence_mean": 4.3333,
+            "standard_error": 0.0828,
+            "critical_error_rate": 0.0729,
+            "underpowered": false,
+            "is_specialist": true
+          },
+          {
+            "role": "genetic counselor",
+            "n": 26,
+            "clinical_equivalence_mean": 4.3846,
+            "standard_error": 0.2497,
+            "critical_error_rate": 0.1154,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "nurse navigator",
+            "n": 15,
+            "clinical_equivalence_mean": 4.6,
+            "standard_error": 0.1578,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          },
+          {
+            "role": "clinical trial specialist",
+            "n": 8,
+            "clinical_equivalence_mean": 4.5,
+            "standard_error": 0.4677,
+            "critical_error_rate": 0.0,
+            "underpowered": true,
+            "is_specialist": true
+          }
+        ]
+      }
+    ]
+  }
+}

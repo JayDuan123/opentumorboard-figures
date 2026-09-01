@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-17T17:52:26.170415+00:00",
+  "metric": "generation_cost",
+  "task": "task1",
+  "cost_axis": "output_tokens.mean",
+  "responses_per_configuration": [
+    184
+  ],
+  "prompt_tokens_mean_spread": 0.0,
+  "results": [
+    {
+      "model_key": "mm_qwen3_8_27b_reasoning",
+      "task": "task1",
+      "responses": 184,
+      "responses_without_usage": 0,
+      "output_tokens": {
+        "mean": 8216.7,
+        "median": 7924.0,
+        "p90": 10875.0,
+        "max": 16991,
+        "total": 1511867
+      },
+      "prompt_tokens_mean": 12373.9,
+      "serving_latency_seconds": {
+        "mean": null,
+        "median": null,
+        "note": "measured under this project's serving conditions; not a model property"
+      },
+      "responses_path": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/qwen3_8_27b_reasoning_task1_test_v3_xsfixed_multimodal_20260817_max24576/responses.jsonl",
+      "responses_sha256": "577bf3a11168c9963eaa6e02624f703adbf0fb098e41f340817a8a20a0599897"
+    }
+  ]
+}

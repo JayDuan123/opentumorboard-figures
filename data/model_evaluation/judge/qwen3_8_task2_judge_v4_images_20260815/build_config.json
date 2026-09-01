@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "protocol_version": "llm_judge_task1_v14_task2_v4",
+  "task_protocol_versions": {
+    "task1": "v14",
+    "task2": "v4"
+  },
+  "created_utc": "2026-08-15T16:25:55.567110+00:00",
+  "scope": "test_only",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": "medium",
+  "selection_seed": "judge_qwen3_8_v4_images",
+  "task1_cases": 0,
+  "task2_per_type": 0,
+  "split": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/splits/video_split_60_10_30_v3_20260808.json",
+  "split_sha256": "7a6bc0a9a788c0f1563abc60233a551df4685749bd7cfbd2a7136ad4eae865c9",
+  "model_registry": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/model_registry.json",
+  "model_registry_sha256": "4ce173dce12f69771fd3c18aacdebda6ea8c05c3101c75b6ca5f45dc0c55356a",
+  "prompts": {
+    "task1": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/prompts/judge/task1_judge_v14.txt",
+      "sha256": "ea9494ea0866777319859a939160c96e5463c24b9bff601466149aa677cd3713"
+    },
+    "task2": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/prompts/judge/task2_judge_v4.txt",
+      "sha256": "1e2e73ee0db798387e6c4a3bf4676bbe9833fa7dcc95a99b8ede971038b173c3"
+    }
+  },
+  "schemas": {
+    "task1": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/schemas/judge/task1_judge_v14.json",
+      "sha256": "8928bba33d8ca4f56dce0655b279e765ed641d50c2f3d852222ded2314e39e9a"
+    },
+    "task2": {
+      "path": "/rhf-wq8/al318/OpenTumorBoard_workspace/OpenTumorBoard/evaluation/schemas/judge/task2_judge_v4.json",
+      "sha256": "d829ff4a90bd1f41bc851cabeb52c7d09b6816f2f225dfed34d6859f4180cb6a"
+    }
+  },
+  "slide_images": {
+    "task2": {
+      "manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.sharegpt_multimodal_v1.jsonl",
+      "manifest_sha256": "4a1400d634dc516f921a392c632cbf7b21b0db4628c6c78e3271c345c4cef6df",
+      "cases": 184,
+      "images": 1341
+    }
+  },
+  "candidate_runs": {
+    "task2:mm_qwen3_8_27b": {
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_8_27b_task2_test_v3_xsfixed_multimodal_20260815_max16384_judgeinput_slidealigned/responses.jsonl",
+      "responses_sha256": "3bbb716f60110aa67d74f5fef0f4fae4dd7b38c998ffe864235fbdee88d5264b",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_8_27b_task2_test_v3_xsfixed_multimodal_20260815_max16384_judgeinput_slidealigned/run_config.json",
+      "run_config_sha256": "68dda7fedfce702896da1f2fd2c360e7d354dfbfa00f64118855f77044176fae"
+    },
+    "task2:mm_qwen3_8_27b_reasoning": {
+      "responses": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_8_27b_reasoning_task2_test_v3_xsfixed_multimodal_20260815_max16384_judgeinput_slidealigned/responses.jsonl",
+      "responses_sha256": "68af39fba24889afaa19f06f4cb5571b51696eecd00895cb9239a16a29c6e611",
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/runs/mm_qwen3_8_27b_reasoning_task2_test_v3_xsfixed_multimodal_20260815_max16384_judgeinput_slidealigned/run_config.json",
+      "run_config_sha256": "f4aedb9fc368e9107eed57eb89ce94f5fc0beab6121588400dca44079e4e4a4a"
+    }
+  },
+  "outputs": {
+    "task2": {
+      "selected_source_records": 4844,
+      "batch_requests": 9683,
+      "manifest_records": 9688,
+      "candidate_format_failures": 5,
+      "batch": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/qwen3_8_task2_judge_v4_images_20260815/task2.batch.jsonl",
+      "batch_sha256": "465ded69d8cd4252196ec123b45d8737dfa1927523827a545ceb5a28c2a60a66",
+      "judge_manifest": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/qwen3_8_task2_judge_v4_images_20260815/task2.judge_manifest.jsonl",
+      "judge_manifest_sha256": "9e96faf79ce481c67219bdb2b998cc905c267799b7a09a10096dcb817b39ddd4"
+    }
+  }
+}

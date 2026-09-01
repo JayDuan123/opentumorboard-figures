@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-08-19T21:26:14.245504+00:00",
+  "scope": "test_only",
+  "protocol_version": "llm_judge_task1_v22_task2_v4",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "reasoning_effort": null,
+  "batch_template_reasoning_effort": "medium",
+  "execution": {
+    "task1": {
+      "run_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/qwen3_8_27b_v2v4_repaired_task1_judge_v22_images_20260819/task1.output.local_run_config.json",
+      "run_config_sha256": "9fc271f6c9150768663ca5db78e06530013a6277686f565d9e9ba2e667ccf1e4",
+      "base_url": "http://127.0.0.1:8095/v1",
+      "endpoint": "/chat/completions",
+      "resolved_model": "Qwen/Qwen3.6-27B",
+      "model_revision": "6a9e13bd6fc8f0983b9b99948120bc37f49c13e9",
+      "generation": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "seed": 0,
+        "thinking": "disabled",
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "max_output_tokens": [
+          1200
+        ],
+        "structured_output": "strict_json_schema",
+        "structured_output_whitespace": "disabled"
+      },
+      "wire_translation": {
+        "source": "frozen Responses Batch request",
+        "target": "local vLLM chat completions",
+        "messages_changed": false,
+        "json_schema_changed": false,
+        "source_reasoning_field_ignored": true
+      }
+    }
+  },
+  "build_config": "/rhf-wq8/al318/OpenTumorBoard_workspace/model_evaluation/judge/qwen3_8_27b_v2v4_repaired_task1_judge_v22_images_20260819/build_config.json",
+  "build_config_sha256": "0945d832b3ed9b87c0a13b0bef01b52861ad2cb09bb7e5110bd3793893f7659f",
+  "validation": {
+    "task1": {
+      "response_rows": 184,
+      "scored": 183,
+      "candidate_format_failures": 1,
+      "api_errors": 0,
+      "invalid_judge_outputs": 0,
+      "missing_ids": [],
+      "extra_ids": [],
+      "duplicate_response_ids": []
+    }
+  },
+  "results": {
+    "task1": [
+      {
+        "model_key": "qwen3_8_27b",
+        "test_records": 184,
+        "scored_records": 183,
+        "judge_coverage": 0.9945652173913043,
+        "candidate_format_failures": 1,
+        "judge_failures": 0,
+        "dimensions": {
+          "conclusion_alignment": 2.6830601092896176
+        },
+        "dimensions_all_responses": {
+          "conclusion_alignment": 2.6739130434782608
+        },
+        "candidate_format_failure_score": 1,
+        "major_error_rate": 0.06557377049180328
+      }
+    ],
+    "task2": []
+  }
+}
