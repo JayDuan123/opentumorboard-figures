@@ -7,7 +7,8 @@ time; nothing is typed in.
 | | Figure | Script |
 |---|---|---|
 | ![Fig 1](figures/fig1_overview.png) | **Fig 1** benchmark overview | `figure1_overview.py` |
-| ![Fig 2b](figures/fig2b_statistics.png) | **Fig 2b** dataset statistics | `figure2b_statistics.py` |
+| ![Fig 2b](figures/fig2b_sunburst.png) | **Fig 2b** dataset statistics — nested rings | `figure2b_sunburst.py` |
+| ![Fig 2b bars](figures/fig2b_statistics.png) | **Fig 2b** same data as bars | `figure2b_statistics.py` |
 | ![Fig 3](figures/fig3_task2_heatmap.png) | **Fig 3** expert QA heatmap (Task 2) | `figure3_task2_heatmap.py` |
 | ![Fig 4a](figures/fig4a_scores.png) | **Fig 4a** simulation scores (Task 1) | `figure4_task1_results.py` |
 | ![Fig 4b](figures/fig4b_tokens.png) | **Fig 4b** tokens vs score | " |
@@ -126,6 +127,20 @@ heuristic; note that "shortest QA" selects vacuous pairs, so it targets a substa
 answer that still fits two lines.
 
 ### Fig 2b — statistics
+
+Two interchangeable versions of the same four distributions:
+
+- `figure2b_sunburst.py` — nested rings, one large figure
+- `figure2b_statistics.py` — horizontal bars
+
+The sunburst's inner rings **regroup** the published leaf labels; they do not
+reclassify anything. Cancer sites roll up to organ system, target roles to what the
+specialist does in a board. Verified: the two versions emit byte-identical counts for
+all 17 sites, 10 roles, 9 question types and every scale number, so either can be used
+and they cannot disagree.
+
+Discussion length stays a histogram in both. It is a distribution over a continuous
+variable, and a ring would have to bin it into categories the data does not define.
 
 Four panels: question types, target specialist, primary cancer site, discussion length.
 
