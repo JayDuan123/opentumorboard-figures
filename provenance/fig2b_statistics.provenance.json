@@ -1,0 +1,108 @@
+{
+  "figure": "2b",
+  "sources": {
+    "expert_qa_trainval_video_split_60_10_30_v4_qascreened_xsfixed_20260809.jsonl": {
+      "path": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_trainval_video_split_60_10_30_v4_qascreened_xsfixed_20260809.jsonl",
+      "sha256": "c529872f74cc1a26ad1c47e83620d3cd32a6fb4a30e0f5183e9338adb38b80eb"
+    },
+    "expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_slidealigned_20260814.jsonl": {
+      "path": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_slidealigned_20260814.jsonl",
+      "sha256": "c03444ba7f36ed7dbddc2bfa4761acd3009906366f7555a7d5246c8e4be0ebbe"
+    },
+    "tumor_board_simulation_full_video_split_60_10_30_v4_deleaked_xsfixed_reanchored_20260808.jsonl": {
+      "path": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_full_video_split_60_10_30_v4_deleaked_xsfixed_reanchored_20260808.jsonl",
+      "sha256": "edb9f88c345f632959e37b457ff2564da524700aa8b95ea0b28f152a29ad9ba1"
+    }
+  },
+  "font": {
+    "family": "Arial",
+    "file": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/figures/fonts/Arial.ttf",
+    "registered": [
+      "Arial Black.ttf",
+      "Arial Bold Italic.ttf",
+      "Arial Bold.ttf",
+      "Arial Italic.ttf",
+      "Arial Narrow Bold Italic.ttf",
+      "Arial Narrow Bold.ttf",
+      "Arial Narrow Italic.ttf",
+      "Arial Narrow.ttf",
+      "Arial Rounded Bold.ttf",
+      "Arial Unicode.ttf",
+      "Arial.ttf",
+      "ArialHB.ttc"
+    ]
+  },
+  "scale": {
+    "videos": 219,
+    "cases": 611,
+    "questions": 16215,
+    "qa_types": 9,
+    "roles": 10,
+    "sites": 17,
+    "slides": 4977,
+    "slides_median": 7,
+    "slides_max": 39,
+    "hours": 187.02166222222237,
+    "case_minutes_median": 16.88563333333333,
+    "utterances": 19157,
+    "turns_median": 28,
+    "turns_mean": 31.353518821603927,
+    "turns_min": 1,
+    "turns_max": 165,
+    "roles_per_case_median": 4
+  },
+  "qa_types": {
+    "findings_interpretation": 4436,
+    "treatment_recommendation": 3818,
+    "evidence_discussion": 2208,
+    "next_action_suggestion": 2136,
+    "uncertainty": 1161,
+    "eligibility_assessment": 1102,
+    "agreement_or_support": 574,
+    "clarification_question": 571,
+    "clinical_trial_suggestion": 209
+  },
+  "roles": {
+    "surgeon": 5879,
+    "medical oncologist": 5215,
+    "radiation oncologist": 1316,
+    "radiologist": 1165,
+    "other": 1006,
+    "molecular pathologist": 831,
+    "pathologist": 685,
+    "genetic counselor": 62,
+    "clinical trial specialist": 28,
+    "nurse navigator": 28
+  },
+  "sites": {
+    "Thyroid / parathyroid": 126,
+    "Genitourinary": 84,
+    "Head & neck": 68,
+    "Thoracic / lung": 59,
+    "Breast": 54,
+    "CNS / brain & spine": 49,
+    "Hepatobiliary / pancreas": 33,
+    "Gynecologic": 32,
+    "Hematologic": 24,
+    "Colorectal / anal": 20,
+    "Skin / melanoma": 16,
+    "Upper GI": 14,
+    "Sarcoma (bone / soft tissue)": 12,
+    "Skull base": 8,
+    "Neuroendocrine (site NOS)": 5,
+    "Peritoneum": 4,
+    "Unknown primary": 3
+  },
+  "sites_method": {
+    "source_field": "case_summary [ diagnosis ] free text",
+    "method": "ordered keyword rules over the diagnosis with metastasis/extension clauses removed first, so the site of origin is counted rather than the site of spread; see scripts/paper/cancer_sites.py",
+    "unmatched": 0,
+    "caveat": "derived by keyword mapping, not labelled by a clinician; cases with synchronous multiple primaries receive a single first-match label"
+  },
+  "caption": "Benchmark statistics. 219 tumor-board recordings (187.0 hours) yield 611 cases and 16,215 atomic questions across 9 question types and 10 specialist roles. Question and role distributions are over all 16,215 questions (train, validation and test; the splits are video-level and disjoint). Discussion length is the number of transcribed utterances per case (median 28, mean 31.4, range 1-165); the final bin is 90+. Primary cancer site spans 17 categories and is counted over cases, not questions; the dataset carries no categorical site field, so the label is derived from the free-text diagnosis by an ordered keyword mapping that first removes clauses describing metastatic spread, and every per-case assignment is released with the figure.",
+  "outputs": [
+    "fig2b_out/fig2b_statistics.pdf",
+    "fig2b_out/fig2b_statistics.svg",
+    "fig2b_out/fig2b_statistics.png"
+  ]
+}

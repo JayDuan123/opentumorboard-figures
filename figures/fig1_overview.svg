@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="504pt" height="313.2pt" viewBox="0 0 504 313.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-29T22:51:36.819497</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 313.2 
+L 504 313.2 
+L 504 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 14.616 176.958 
+L 107.352 176.958 
+Q 113.904 176.958 113.904 172.8864 
+L 113.904 62.0136 
+Q 113.904 57.942 107.352 57.942 
+L 14.616 57.942 
+Q 8.064 57.942 8.064 62.0136 
+L 8.064 172.8864 
+Q 8.064 176.958 14.616 176.958 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #f7f7f7; stroke: #cab2d6; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 20.16 90.828 
+L 101.808 90.828 
+Q 106.848 90.828 106.848 87.696 
+L 106.848 67.0248 
+Q 106.848 63.8928 101.808 63.8928 
+L 20.16 63.8928 
+Q 15.12 63.8928 15.12 67.0248 
+L 15.12 87.696 
+Q 15.12 90.828 20.16 90.828 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #e8e2f0; stroke: #cab2d6; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 8.064 189.7992 
+L 113.904 189.7992 
+" clip-path="url(#pad64b617d7)" style="fill: none; stroke: #d8d8d8; stroke-width: 0.6; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 145.656 117.1368 
+L 238.392 117.1368 
+Q 244.944 117.1368 244.944 113.0652 
+L 244.944 71.0964 
+Q 244.944 67.0248 238.392 67.0248 
+L 145.656 67.0248 
+Q 139.104 67.0248 139.104 71.0964 
+L 139.104 113.0652 
+Q 139.104 117.1368 145.656 117.1368 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #ffffff; stroke: #8c8c8c; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 145.656 174.1392 
+L 238.392 174.1392 
+Q 244.944 174.1392 244.944 170.0676 
+L 244.944 128.0988 
+Q 244.944 124.0272 238.392 124.0272 
+L 145.656 124.0272 
+Q 139.104 124.0272 139.104 128.0988 
+L 139.104 170.0676 
+Q 139.104 174.1392 145.656 174.1392 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #ffffff; stroke: #8c8c8c; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 276.696 133.11 
+L 489.384 133.11 
+Q 495.936 133.11 495.936 129.0384 
+L 495.936 38.5236 
+Q 495.936 34.452 489.384 34.452 
+L 276.696 34.452 
+Q 270.144 34.452 270.144 38.5236 
+L 270.144 129.0384 
+Q 270.144 133.11 276.696 133.11 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #ffffff; stroke: #1f78b4; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 276.696 51.0516 
+L 489.384 51.0516 
+Q 495.936 51.0516 495.936 46.98 
+L 495.936 38.5236 
+Q 495.936 34.452 489.384 34.452 
+L 276.696 34.452 
+Q 270.144 34.452 270.144 38.5236 
+L 270.144 46.98 
+Q 270.144 51.0516 276.696 51.0516 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #1f78b4; stroke: #1f78b4; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 276.696 297.54 
+L 489.384 297.54 
+Q 495.936 297.54 495.936 293.4684 
+L 495.936 149.7096 
+Q 495.936 145.638 489.384 145.638 
+L 276.696 145.638 
+Q 270.144 145.638 270.144 149.7096 
+L 270.144 293.4684 
+Q 270.144 297.54 276.696 297.54 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #ffffff; stroke: #33a02c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 276.696 162.2376 
+L 489.384 162.2376 
+Q 495.936 162.2376 495.936 158.166 
+L 495.936 149.7096 
+Q 495.936 145.638 489.384 145.638 
+L 276.696 145.638 
+Q 270.144 145.638 270.144 149.7096 
+L 270.144 158.166 
+Q 270.144 162.2376 276.696 162.2376 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #33a02c; stroke: #33a02c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 284.256 284.3856 
+L 481.824 284.3856 
+Q 488.376 284.3856 488.376 280.314 
+L 488.376 214.542 
+Q 488.376 210.4704 481.824 210.4704 
+L 284.256 210.4704 
+Q 277.704 210.4704 277.704 214.542 
+L 277.704 280.314 
+Q 277.704 284.3856 284.256 284.3856 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #f4faf3; stroke: #b2df8a; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 11.5px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="8.064" y="17.141241" transform="rotate(-0 8.064 17.141241)">OpenTumorBoard</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 5.9px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="8.064" y="30.531909" transform="rotate(-0 8.064 30.531909)">Real multidisciplinary tumor boards, scored as two tasks</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 5.2px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="21.168" y="203.543662" transform="rotate(-0 21.168 203.543662)">219</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 4.5px; font-family: 'Arial'; text-anchor: middle; fill: #646464" x="21.168" y="214.631016" transform="rotate(-0 21.168 214.631016)">videos</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 5.2px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="48.384" y="203.543662" transform="rotate(-0 48.384 203.543662)">187</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 4.5px; font-family: 'Arial'; text-anchor: middle; fill: #646464" x="48.384" y="214.631016" transform="rotate(-0 48.384 214.631016)">hours</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 5.2px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="75.6" y="203.543662" transform="rotate(-0 75.6 203.543662)">611</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 4.5px; font-family: 'Arial'; text-anchor: middle; fill: #646464" x="75.6" y="214.631016" transform="rotate(-0 75.6 214.631016)">cases</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 5.2px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="102.816" y="203.543662" transform="rotate(-0 102.816 203.543662)">16,215</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 4.5px; font-family: 'Arial'; text-anchor: middle; fill: #646464" x="102.816" y="214.631016" transform="rotate(-0 102.816 214.631016)">questions</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="139.104" y="62.94375" transform="rotate(-0 139.104 62.94375)">identical for both tasks</text>
+   </g>
+   <g id="text_12">
+    <text style="font-style: italic; font-size: 4.5px; font-family: 'Arial'; text-anchor: middle; fill: #646464" x="192.024" y="186.184659" transform="rotate(-0 192.024 186.184659)">no reference answer, no transcript, no tools</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 118.44 117.45 
+Q 126.252 104.7654 133.536339 92.937581 
+" clip-path="url(#pad64b617d7)" style="fill: none; stroke: #6a3d9a; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 131.065996 94.469706 
+L 133.536339 92.937581 
+L 133.279833 95.83313 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #6a3d9a; stroke: #6a3d9a; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 118.44 117.45 
+Q 126.252 133.2666 133.6184 148.181014 
+" clip-path="url(#pad64b617d7)" style="fill: none; stroke: #6a3d9a; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 133.632593 145.27416 
+L 133.6184 148.181014 
+L 131.301433 146.425547 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #6a3d9a; stroke: #6a3d9a; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 249.48 92.0808 
+Q 256.788 83.6244 263.438063 75.929327 
+" clip-path="url(#pad64b617d7)" style="fill: none; stroke: #646464; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 260.754422 77.046499 
+L 263.438063 75.929327 
+L 262.721616 78.746543 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #646464; stroke: #646464; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 249.48 149.0832 
+Q 256.788 181.0296 263.871613 211.995107 
+" clip-path="url(#pad64b617d7)" style="fill: none; stroke: #646464; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 264.559083 209.170681 
+L 263.871613 211.995107 
+L 262.024554 209.750475 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #646464; stroke: #646464; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 284.76 67.6512 
+L 342.103104 67.6512 
+Q 349.159104 67.6512 349.159104 63.2664 
+L 349.159104 62.64 
+Q 349.159104 58.2552 342.103104 58.2552 
+L 284.76 58.2552 
+Q 277.704 58.2552 277.704 62.64 
+L 277.704 63.2664 
+Q 277.704 67.6512 284.76 67.6512 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #a6cee3; stroke: #1f78b4; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 363.271104 67.6512 
+L 418.119912 67.6512 
+Q 425.175912 67.6512 425.175912 63.2664 
+L 425.175912 62.64 
+Q 425.175912 58.2552 418.119912 58.2552 
+L 363.271104 58.2552 
+Q 356.215104 58.2552 356.215104 62.64 
+L 356.215104 63.2664 
+Q 356.215104 67.6512 363.271104 67.6512 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #eef4f9; stroke: #a6cee3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 277.704 91.7676 
+L 488.376 91.7676 
+" clip-path="url(#pad64b617d7)" style="fill: none; stroke: #d8d8d8; stroke-width: 0.5; stroke-linecap: square"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 284.76 191.3652 
+L 304.688664 191.3652 
+Q 311.744664 191.3652 311.744664 186.9804 
+L 311.744664 186.354 
+Q 311.744664 181.9692 304.688664 181.9692 
+L 284.76 181.9692 
+Q 277.704 181.9692 277.704 186.354 
+L 277.704 186.9804 
+Q 277.704 191.3652 284.76 191.3652 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #b2df8a; stroke: #33a02c; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 324.848664 191.3652 
+L 349.76592 191.3652 
+Q 356.82192 191.3652 356.82192 186.9804 
+L 356.82192 186.354 
+Q 356.82192 181.9692 349.76592 181.9692 
+L 324.848664 181.9692 
+Q 317.792664 181.9692 317.792664 186.354 
+L 317.792664 186.9804 
+Q 317.792664 191.3652 324.848664 191.3652 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #b2df8a; stroke: #33a02c; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 369.92592 191.3652 
+L 394.843176 191.3652 
+Q 401.899176 191.3652 401.899176 186.9804 
+L 401.899176 186.354 
+Q 401.899176 181.9692 394.843176 181.9692 
+L 369.92592 181.9692 
+Q 362.86992 181.9692 362.86992 186.354 
+L 362.86992 186.9804 
+Q 362.86992 191.3652 369.92592 191.3652 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #b2df8a; stroke: #33a02c; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 415.003176 191.3652 
+L 457.380504 191.3652 
+Q 464.436504 191.3652 464.436504 186.9804 
+L 464.436504 186.354 
+Q 464.436504 181.9692 457.380504 181.9692 
+L 415.003176 181.9692 
+Q 407.947176 181.9692 407.947176 186.354 
+L 407.947176 186.9804 
+Q 407.947176 191.3652 415.003176 191.3652 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #b2df8a; stroke: #33a02c; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 284.76 204.2064 
+L 299.700072 204.2064 
+Q 306.756072 204.2064 306.756072 199.8216 
+L 306.756072 199.1952 
+Q 306.756072 194.8104 299.700072 194.8104 
+L 284.76 194.8104 
+Q 277.704 194.8104 277.704 199.1952 
+L 277.704 199.8216 
+Q 277.704 204.2064 284.76 204.2064 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #b2df8a; stroke: #33a02c; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 319.860072 204.2064 
+L 367.225992 204.2064 
+Q 374.281992 204.2064 374.281992 199.8216 
+L 374.281992 199.1952 
+Q 374.281992 194.8104 367.225992 194.8104 
+L 319.860072 194.8104 
+Q 312.804072 194.8104 312.804072 199.1952 
+L 312.804072 199.8216 
+Q 312.804072 204.2064 319.860072 204.2064 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #b2df8a; stroke: #33a02c; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 6.6px; font-family: 'Arial'; text-anchor: start; fill: #6a3d9a" x="8.064" y="51.704156" transform="rotate(-0 8.064 51.704156)">REAL TUMOR BOARD</text>
+   </g>
+   <g id="patch_23">
+    <path d="M 52.92 83.3112 
+L 52.92 71.4096 
+L 69.552 77.3604 
+z
+" clip-path="url(#pad64b617d7)" style="fill: #6a3d9a"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: middle; fill: #646464" x="60.984" y="102.40695" transform="rotate(-0 60.984 102.40695)">16 min of recorded discussion</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 5.3px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="15.12" y="114.055775" transform="rotate(-0 15.12 114.055775)">52-year-old man.</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="15.12" y="123.23475" transform="rotate(-0 15.12 123.23475)">Gross hematuria and increased</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="15.12" y="130.28175" transform="rotate(-0 15.12 130.28175)">lower urinary tract symptoms at</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="15.12" y="137.32875" transform="rotate(-0 15.12 137.32875)">initial presentation.</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 4.5px; font-family: 'Arial'; text-anchor: start; fill: #6a3d9a" x="15.12" y="148.559175" transform="rotate(-0 15.12 148.559175)">8 turns  ·  6 specialists  ·  13 questions</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="8.064" y="237.727153" transform="rotate(-0 8.064 237.727153)">HOW IT IS BUILT</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="8.064" y="248.98455" transform="rotate(-0 8.064 248.98455)">ASR  ·  diarization  ·  case</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="8.064" y="256.18815" transform="rotate(-0 8.064 256.18815)">segmentation  ·  slide extraction</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="8.064" y="263.45025" transform="rotate(-0 8.064 263.45025)">·  role inference  ·  alignment  ·</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="8.064" y="270.65685" transform="rotate(-0 8.064 270.65685)">QA generation</text>
+   </g>
+   <g id="text_25">
+    <text style="font-style: italic; font-size: 4.5px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="8.064" y="283.235175" transform="rotate(-0 8.064 283.235175)">nine stages, detailed in Fig. 2a</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 6.6px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="139.104" y="51.704156" transform="rotate(-0 139.104 51.704156)">WHAT THE MODEL IS GIVEN</text>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="145.656" y="76.78305" transform="rotate(-0 145.656 76.78305)">Case summary</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="145.656" y="87.37335" transform="rotate(-0 145.656 87.37335)">High-risk localized prostate cancer.</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="145.656" y="94.47885" transform="rotate(-0 145.656 94.47885)">Initial biopsy demonstrated Gleason</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="145.656" y="101.52585" transform="rotate(-0 145.656 101.52585)">score 5+5=10, Grade Group 5</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="145.656" y="108.51435" transform="rotate(-0 145.656 108.51435)">adenocarcinoma. Subs…</text>
+   </g>
+   <g id="text_32">
+    <text style="font-weight: 700; font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="145.656" y="132.1752" transform="rotate(-0 145.656 132.1752)">8 slide captions</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="145.656" y="144.43425" transform="rotate(-0 145.656 144.43425)">Slide summarizing Case #1, a</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="145.656" y="151.458" transform="rotate(-0 145.656 151.458)">52-year-old man’s presentation,</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="145.656" y="158.52825" transform="rotate(-0 145.656 158.52825)">workup findings, imaging, biopsy</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="145.656" y="165.51675" transform="rotate(-0 145.656 165.51675)">results, and relevant medic…</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 4.9px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="313.431552" y="64.191216" transform="rotate(-0 313.431552 64.191216)">role: medical oncologist</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 4.9px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="390.695508" y="64.221075" transform="rotate(-0 390.695508 64.221075)">findings interpretation</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 5.3px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="277.704" y="77.150347" transform="rotate(-0 277.704 77.150347)">Q  What was the clinical significance of a Ki-67 of about 80% despite negative</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 5.3px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="277.704" y="84.977034" transform="rotate(-0 277.704 84.977034)">neuroendocrine marker staining?</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="277.704" y="100.58625" transform="rotate(-0 277.704 100.58625)">Reference  An approximately 80% Ki-67 raised concern that the patient had micrometastatic</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="277.704" y="107.88795" transform="rotate(-0 277.704 107.88795)">disease, even though neuroendocrine marker staining was negative.</text>
+   </g>
+   <g id="text_43">
+    <text style="font-style: italic; font-size: 4.4px; font-family: 'Arial'; text-anchor: start; fill: #1f78b4" x="277.704" y="118.147462" transform="rotate(-0 277.704 118.147462)">verbatim from the real expert  ·  scored by clinical equivalence</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #646464" x="277.704" y="175.44105" transform="rotate(-0 277.704 175.44105)">Generate the multi-specialist discussion, then the plan</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 4.9px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="294.724332" y="187.933927" transform="rotate(-0 294.724332 187.933927)">moderator</text>
+   </g>
+   <g id="text_46">
+    <text style="font-size: 4.9px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="337.307292" y="187.905216" transform="rotate(-0 337.307292 187.905216)">pathologist</text>
+   </g>
+   <g id="text_47">
+    <text style="font-size: 4.9px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="382.384548" y="187.905216" transform="rotate(-0 382.384548 187.905216)">radiologist</text>
+   </g>
+   <g id="text_48">
+    <text style="font-size: 4.9px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="436.19184" y="187.905216" transform="rotate(-0 436.19184 187.905216)">medical oncologist</text>
+   </g>
+   <g id="text_49">
+    <text style="font-size: 4.9px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="292.230036" y="200.717705" transform="rotate(-0 292.230036 200.717705)">surgeon</text>
+   </g>
+   <g id="text_50">
+    <text style="font-size: 4.9px; font-family: 'Arial'; text-anchor: middle; fill: #1b1b1b" x="343.543032" y="200.746416" transform="rotate(-0 343.543032 200.746416)">radiation oncologist</text>
+   </g>
+   <g id="text_51">
+    <text style="font-size: 4.4px; font-family: 'Arial'; text-anchor: end; fill: #646464" x="488.376" y="175.096237" transform="rotate(-0 488.376 175.096237)">real board: 6 roles over 8 turns</text>
+   </g>
+   <g id="text_52">
+    <text style="font-weight: 700; font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #33a02c" x="284.256" y="218.91735" transform="rotate(-0 284.256 218.91735)">Reference conclusion</text>
+   </g>
+   <g id="text_53">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="284.256" y="229.62465" transform="rotate(-0 284.256 229.62465)">The multidisciplinary review supported continuation of androgen deprivation therapy and</text>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="284.256" y="236.82825" transform="rotate(-0 284.256 236.82825)">radiation therapy, with the addition of platinum-etoposide chemotherapy because of the</text>
+   </g>
+   <g id="text_55">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="284.256" y="244.03185" transform="rotate(-0 284.256 244.03185)">biopsy findings concerning for small cell/neuroendocrine features. Four cycles of</text>
+   </g>
+   <g id="text_56">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="284.256" y="251.23545" transform="rotate(-0 284.256 251.23545)">cisplatin and etoposide were administered from December through March. Given persistent</text>
+   </g>
+   <g id="text_57">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="284.256" y="258.43905" transform="rotate(-0 284.256 258.43905)">significant lower urinary tract symptoms, absence of metastatic disease, and negative</text>
+   </g>
+   <g id="text_58">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="284.256" y="265.64265" transform="rotate(-0 284.256 265.64265)">cystoscopy for trigonal involvement, the subsequent course included direction toward</text>
+   </g>
+   <g id="text_59">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: start; fill: #1b1b1b" x="284.256" y="272.78775" transform="rotate(-0 284.256 272.78775)">surgical management.</text>
+   </g>
+   <g id="text_60">
+    <text style="font-style: italic; font-size: 4.4px; font-family: 'Arial'; text-anchor: start; fill: #33a02c" x="277.704" y="291.602737" transform="rotate(-0 277.704 291.602737)">distilled from the real board's decision  ·  scored on role coverage, clinical accuracy and conclusion alignment</text>
+   </g>
+   <g id="text_61">
+    <text style="font-weight: 700; font-size: 6.6px; font-family: 'Arial'; text-anchor: start; fill: #ffffff" x="277.704" y="44.502862" transform="rotate(-0 277.704 44.502862)">TASK 2   Expert QA</text>
+   </g>
+   <g id="text_62">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: end; fill: #dbeaf5" x="488.376" y="43.992675" transform="rotate(-0 488.376 43.992675)">answer as the named specialist</text>
+   </g>
+   <g id="text_63">
+    <text style="font-weight: 700; font-size: 6.6px; font-family: 'Arial'; text-anchor: start; fill: #ffffff" x="277.704" y="155.648644" transform="rotate(-0 277.704 155.648644)">TASK 1   Tumor Board Simulation</text>
+   </g>
+   <g id="text_64">
+    <text style="font-size: 4.8px; font-family: 'Arial'; text-anchor: end; fill: #dff0dc" x="488.376" y="155.178675" transform="rotate(-0 488.376 155.178675)">run the whole board</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pad64b617d7">
+   <rect x="0" y="0" width="504" height="313.2"/>
+  </clipPath>
+ </defs>
+</svg>

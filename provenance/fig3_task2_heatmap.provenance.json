@@ -1,0 +1,415 @@
+{
+  "figure": "3",
+  "task": "task2",
+  "metric": "llm_judge clinical_equivalence (1-5), task2_judge_v4",
+  "judge_model": "Qwen/Qwen3.6-27B",
+  "records_per_arm": [
+    4839,
+    4841,
+    4842,
+    4843,
+    4844
+  ],
+  "results_catalog_sha256": "04cd88d35d476990c85fffaf15d86fcd76cedde44ada70c189a385cce7e971c8",
+  "row_order": "QA-type frequency in the test manifest (same order as Fig 2b)",
+  "qa_type_counts": {
+    "findings_interpretation": 1284,
+    "treatment_recommendation": 1139,
+    "evidence_discussion": 677,
+    "next_action_suggestion": 654,
+    "uncertainty": 339,
+    "eligibility_assessment": 322,
+    "agreement_or_support": 178,
+    "clarification_question": 178,
+    "clinical_trial_suggestion": 73
+  },
+  "arms": [
+    {
+      "model_key": "llama4_scout",
+      "judged_key": "mm_llama4_scout",
+      "condition": "multimodal",
+      "display": "Llama 4 Scout 17B-16E Instruct",
+      "short": "Llama 4 Scout",
+      "overall": 3.528075970272502,
+      "scored": 4844,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "huatuogpt_3_32b",
+      "judged_key": "huatuogpt_3_32b",
+      "condition": "caption_only",
+      "display": "HuatuoGPT-3-32B",
+      "short": "HuatuoGPT-3-32B",
+      "overall": 3.5078447563996695,
+      "scored": 4844,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "huatuogpt_3_32b_reasoning",
+      "judged_key": "huatuogpt_3_32b_reasoning",
+      "condition": "caption_only",
+      "display": "HuatuoGPT-3-32B",
+      "short": "HuatuoGPT-3-32B",
+      "overall": 3.3364987613542527,
+      "scored": 4844,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "ministral_3_14b_instruct_2512",
+      "judged_key": "mm_ministral_3_14b_instruct_2512",
+      "condition": "multimodal",
+      "display": "Ministral 3 14B Instruct 2512",
+      "short": "Ministral 3 14B",
+      "overall": 3.5551197357555737,
+      "scored": 4844,
+      "judge_source": "judge/mm_ministral_3_14b_instruct_2512_task2_judge_v4_images_20260816/results/summary.json"
+    },
+    {
+      "model_key": "medreason_8b",
+      "judged_key": "medreason_8b",
+      "condition": "caption_only",
+      "display": "MedReason-8B",
+      "short": "MedReason-8B",
+      "overall": 2.420400578154037,
+      "scored": 4843,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "gemma4_31b_it",
+      "judged_key": "mm_gemma4_31b_it",
+      "condition": "multimodal",
+      "display": "Gemma 4 31B IT",
+      "short": "Gemma 4 31B",
+      "overall": 3.4960776218001652,
+      "scored": 4844,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "gemma4_31b_it_reasoning",
+      "judged_key": "mm_gemma4_31b_it_reasoning",
+      "condition": "multimodal",
+      "display": "Gemma 4 31B IT",
+      "short": "Gemma 4 31B",
+      "overall": 3.63728323699422,
+      "scored": 4844,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "medgemma_27b_it",
+      "judged_key": "mm_medgemma_27b_it",
+      "condition": "multimodal",
+      "display": "MedGemma 27B IT",
+      "short": "MedGemma-27B",
+      "overall": 3.402353426919901,
+      "scored": 4844,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "nemotron_3_5_lightning",
+      "judged_key": "nemotron_3_5_lightning",
+      "condition": "caption_only",
+      "display": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+      "short": "Nemotron 3.5",
+      "overall": 3.522502064409579,
+      "scored": 4844,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "nemotron_3_5_lightning_reasoning",
+      "judged_key": "nemotron_3_5_lightning_reasoning",
+      "condition": "caption_only",
+      "display": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
+      "short": "Nemotron 3.5",
+      "overall": 3.5526641883519208,
+      "scored": 4842,
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+    },
+    {
+      "model_key": "meditron3_70b",
+      "judged_key": "meditron3_70b",
+      "condition": "caption_only",
+      "display": "Meditron3 70B",
+      "short": "Meditron-3-70B",
+      "overall": 3.541081750619323,
+      "scored": 4844,
+      "judge_source": "judge/meditron3_70b_task2_judge_v4_images_20260817_max8192/results/summary.json"
+    },
+    {
+      "model_key": "deepseek_v4_pro",
+      "judged_key": "deepseek_v4_pro",
+      "condition": "caption_only",
+      "display": "DeepSeek-V4-Pro",
+      "short": "DeepSeek-V4-Pro",
+      "overall": 4.009083402146986,
+      "scored": 4844,
+      "judge_source": "judge/deepseek_v4_pro_task2_judge_v4_images_20260815/results/summary.json"
+    },
+    {
+      "model_key": "deepseek_v4_pro_reasoning",
+      "judged_key": "deepseek_v4_pro_reasoning",
+      "condition": "caption_only",
+      "display": "DeepSeek-V4-Pro",
+      "short": "DeepSeek-V4-Pro",
+      "overall": 4.18178062383805,
+      "scored": 4841,
+      "judge_source": "judge/deepseek_v4_pro_task2_judge_v4_images_20260815/results/summary.json"
+    },
+    {
+      "model_key": "deepseek_v4_flash_api",
+      "judged_key": "deepseek_v4_flash_api",
+      "condition": "caption_only",
+      "display": "DeepSeek-V4-Flash",
+      "short": "DeepSeek-V4-Flash",
+      "overall": 3.864574731626755,
+      "scored": 4844,
+      "judge_source": "judge/deepseek_v4_flash_api_task2_judge_v4_images_20260815/results/summary.json"
+    },
+    {
+      "model_key": "deepseek_v4_flash_api_reasoning",
+      "judged_key": "deepseek_v4_flash_api_reasoning",
+      "condition": "caption_only",
+      "display": "DeepSeek-V4-Flash",
+      "short": "DeepSeek-V4-Flash",
+      "overall": 4.017978921264724,
+      "scored": 4839,
+      "judge_source": "judge/deepseek_v4_flash_api_task2_judge_v4_images_20260815/results/summary.json"
+    },
+    {
+      "model_key": "qwen3_8_27b",
+      "judged_key": "mm_qwen3_8_27b",
+      "condition": "multimodal",
+      "display": "Qwen3.8-27B",
+      "short": "Qwen3.8-27B",
+      "overall": 3.902353426919901,
+      "scored": 4844,
+      "judge_source": "judge/qwen3_8_task2_judge_v4_images_20260815/results/summary.json"
+    },
+    {
+      "model_key": "qwen3_8_27b_reasoning",
+      "judged_key": "mm_qwen3_8_27b_reasoning",
+      "condition": "multimodal",
+      "display": "Qwen3.8-27B",
+      "short": "Qwen3.8-27B",
+      "overall": 4.208918249380677,
+      "scored": 4844,
+      "judge_source": "judge/mm_qwen3_8_27b_reasoning_task2_judge_v4_images_20260817/results/summary.json"
+    }
+  ],
+  "matrix": {
+    "llama4_scout": {
+      "agreement_or_support": 3.707865168539326,
+      "clarification_question": 3.7865168539325844,
+      "clinical_trial_suggestion": 3.191780821917808,
+      "eligibility_assessment": 3.599378881987578,
+      "evidence_discussion": 3.3042836041358936,
+      "findings_interpretation": 3.8154205607476634,
+      "next_action_suggestion": 3.5596330275229358,
+      "treatment_recommendation": 3.2300263388937664,
+      "uncertainty": 3.601769911504425
+    },
+    "huatuogpt_3_32b": {
+      "agreement_or_support": 3.7191011235955056,
+      "clarification_question": 3.831460674157303,
+      "clinical_trial_suggestion": 3.3698630136986303,
+      "eligibility_assessment": 3.5,
+      "evidence_discussion": 3.2998522895125553,
+      "findings_interpretation": 3.8286604361370715,
+      "next_action_suggestion": 3.50611620795107,
+      "treatment_recommendation": 3.1659350307287095,
+      "uncertainty": 3.616519174041298
+    },
+    "huatuogpt_3_32b_reasoning": {
+      "agreement_or_support": 3.5786516853932584,
+      "clarification_question": 3.8202247191011236,
+      "clinical_trial_suggestion": 3.1506849315068495,
+      "eligibility_assessment": 3.2639751552795033,
+      "evidence_discussion": 3.171344165435746,
+      "findings_interpretation": 3.5366043613707165,
+      "next_action_suggestion": 3.3211009174311927,
+      "treatment_recommendation": 3.0913081650570677,
+      "uncertainty": 3.489675516224189
+    },
+    "ministral_3_14b_instruct_2512": {
+      "agreement_or_support": 3.865168539325843,
+      "clarification_question": 3.831460674157303,
+      "clinical_trial_suggestion": 3.315068493150685,
+      "eligibility_assessment": 3.531055900621118,
+      "evidence_discussion": 3.3146233382570163,
+      "findings_interpretation": 3.8738317757009346,
+      "next_action_suggestion": 3.5137614678899083,
+      "treatment_recommendation": 3.2914837576821774,
+      "uncertainty": 3.56047197640118
+    },
+    "medreason_8b": {
+      "agreement_or_support": 2.1853932584269664,
+      "clarification_question": 2.9831460674157304,
+      "clinical_trial_suggestion": 2.452054794520548,
+      "eligibility_assessment": 2.3198757763975157,
+      "evidence_discussion": 2.2392909896602657,
+      "findings_interpretation": 2.851246105919003,
+      "next_action_suggestion": 2.31651376146789,
+      "treatment_recommendation": 1.9754170324846356,
+      "uncertainty": 2.7633136094674557
+    },
+    "gemma4_31b_it": {
+      "agreement_or_support": 3.859550561797753,
+      "clarification_question": 3.8258426966292136,
+      "clinical_trial_suggestion": 2.9452054794520546,
+      "eligibility_assessment": 3.4658385093167703,
+      "evidence_discussion": 3.082717872968981,
+      "findings_interpretation": 3.857476635514019,
+      "next_action_suggestion": 3.4984709480122325,
+      "treatment_recommendation": 3.283582089552239,
+      "uncertainty": 3.4454277286135695
+    },
+    "gemma4_31b_it_reasoning": {
+      "agreement_or_support": 3.898876404494382,
+      "clarification_question": 3.9831460674157304,
+      "clinical_trial_suggestion": 3.0547945205479454,
+      "eligibility_assessment": 3.652173913043478,
+      "evidence_discussion": 3.317577548005908,
+      "findings_interpretation": 3.999221183800623,
+      "next_action_suggestion": 3.6376146788990824,
+      "treatment_recommendation": 3.394205443371378,
+      "uncertainty": 3.5132743362831858
+    },
+    "medgemma_27b_it": {
+      "agreement_or_support": 3.668539325842697,
+      "clarification_question": 3.735955056179775,
+      "clinical_trial_suggestion": 3.3972602739726026,
+      "eligibility_assessment": 3.3322981366459627,
+      "evidence_discussion": 3.0797636632200884,
+      "findings_interpretation": 3.7336448598130842,
+      "next_action_suggestion": 3.3730886850152904,
+      "treatment_recommendation": 3.1194029850746268,
+      "uncertainty": 3.551622418879056
+    },
+    "nemotron_3_5_lightning": {
+      "agreement_or_support": 3.808988764044944,
+      "clarification_question": 3.769662921348315,
+      "clinical_trial_suggestion": 3.3835616438356166,
+      "eligibility_assessment": 3.5838509316770186,
+      "evidence_discussion": 3.277695716395864,
+      "findings_interpretation": 3.8146417445482865,
+      "next_action_suggestion": 3.521406727828746,
+      "treatment_recommendation": 3.2203687445127303,
+      "uncertainty": 3.6135693215339235
+    },
+    "nemotron_3_5_lightning_reasoning": {
+      "agreement_or_support": 3.707865168539326,
+      "clarification_question": 3.831460674157303,
+      "clinical_trial_suggestion": 3.287671232876712,
+      "eligibility_assessment": 3.642857142857143,
+      "evidence_discussion": 3.2525849335302808,
+      "findings_interpretation": 3.880841121495327,
+      "next_action_suggestion": 3.4831804281345566,
+      "treatment_recommendation": 3.29287598944591,
+      "uncertainty": 3.657817109144543
+    },
+    "meditron3_70b": {
+      "agreement_or_support": 3.842696629213483,
+      "clarification_question": 3.702247191011236,
+      "clinical_trial_suggestion": 3.452054794520548,
+      "eligibility_assessment": 3.549689440993789,
+      "evidence_discussion": 3.293943870014771,
+      "findings_interpretation": 3.764018691588785,
+      "next_action_suggestion": 3.573394495412844,
+      "treatment_recommendation": 3.3327480245829677,
+      "uncertainty": 3.5958702064896757
+    },
+    "deepseek_v4_pro": {
+      "agreement_or_support": 4.207865168539326,
+      "clarification_question": 4.112359550561798,
+      "clinical_trial_suggestion": 3.8219178082191783,
+      "eligibility_assessment": 3.9440993788819876,
+      "evidence_discussion": 3.828655834564254,
+      "findings_interpretation": 4.270249221183801,
+      "next_action_suggestion": 4.019877675840979,
+      "treatment_recommendation": 3.7963125548726953,
+      "uncertainty": 4.017699115044247
+    },
+    "deepseek_v4_pro_reasoning": {
+      "agreement_or_support": 4.123595505617978,
+      "clarification_question": 4.247191011235955,
+      "clinical_trial_suggestion": 4.0,
+      "eligibility_assessment": 4.192546583850931,
+      "evidence_discussion": 4.084319526627219,
+      "findings_interpretation": 4.426677067082683,
+      "next_action_suggestion": 4.159021406727828,
+      "treatment_recommendation": 3.9543459174714664,
+      "uncertainty": 4.283185840707965
+    },
+    "deepseek_v4_flash_api": {
+      "agreement_or_support": 3.99438202247191,
+      "clarification_question": 4.01685393258427,
+      "clinical_trial_suggestion": 3.6027397260273974,
+      "eligibility_assessment": 3.8664596273291925,
+      "evidence_discussion": 3.655834564254062,
+      "findings_interpretation": 4.139408099688474,
+      "next_action_suggestion": 3.8914373088685017,
+      "treatment_recommendation": 3.6128182616330116,
+      "uncertainty": 3.9410029498525074
+    },
+    "deepseek_v4_flash_api_reasoning": {
+      "agreement_or_support": 4.196629213483146,
+      "clarification_question": 4.146892655367232,
+      "clinical_trial_suggestion": 3.7916666666666665,
+      "eligibility_assessment": 4.027950310559007,
+      "evidence_discussion": 3.8755555555555556,
+      "findings_interpretation": 4.2725856697819315,
+      "next_action_suggestion": 4.032159264931087,
+      "treatment_recommendation": 3.7541703248463563,
+      "uncertainty": 4.073746312684365
+    },
+    "qwen3_8_27b": {
+      "agreement_or_support": 4.067415730337078,
+      "clarification_question": 4.174157303370786,
+      "clinical_trial_suggestion": 3.4657534246575343,
+      "eligibility_assessment": 3.857142857142857,
+      "evidence_discussion": 3.7163958641063517,
+      "findings_interpretation": 4.2087227414330215,
+      "next_action_suggestion": 3.845565749235474,
+      "treatment_recommendation": 3.655838454784899,
+      "uncertainty": 3.9587020648967552
+    },
+    "qwen3_8_27b_reasoning": {
+      "agreement_or_support": 4.314606741573034,
+      "clarification_question": 4.370786516853933,
+      "clinical_trial_suggestion": 3.643835616438356,
+      "eligibility_assessment": 4.211180124223603,
+      "evidence_discussion": 4.059084194977843,
+      "findings_interpretation": 4.492211838006231,
+      "next_action_suggestion": 4.159021406727828,
+      "treatment_recommendation": 3.9631255487269534,
+      "uncertainty": 4.336283185840708
+    }
+  },
+  "absent": {
+    "closed_source_frontier": "No Claude, GPT, Gemini or Grok row exists. The model registry holds only open-weight vendors; the block is drawn as an explicit gap."
+  },
+  "caption": "Expert QA (Task 2) by question type. Cells are the LLM judge's mean clinical equivalence on a 1-5 scale over all 4,844 test questions, under task2_judge_v4 with Qwen/Qwen3.6-27B as judge; the colour scale is shared across all three panels. Rows are ordered by question-type frequency in the corpus. A blue column label marks an arm answering from the slide images and their captions; a black label marks a text-only arm answering from captions alone, so columns do not share an input and MM and caption-only arms are not one ranking. '.R' denotes reasoning mode. Closed-source frontier models have not been run.",
+  "caption_note": "The figure carries no legend text; this caption holds what the panels no longer state on the canvas, and must be used with them.",
+  "font": {
+    "family": "Arial",
+    "file": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/figures/fonts/Arial.ttf",
+    "registered": [
+      "Arial Black.ttf",
+      "Arial Bold Italic.ttf",
+      "Arial Bold.ttf",
+      "Arial Italic.ttf",
+      "Arial Narrow Bold Italic.ttf",
+      "Arial Narrow Bold.ttf",
+      "Arial Narrow Italic.ttf",
+      "Arial Narrow.ttf",
+      "Arial Rounded Bold.ttf",
+      "Arial Unicode.ttf",
+      "Arial.ttf",
+      "ArialHB.ttc"
+    ]
+  },
+  "outputs": [
+    "fig3_out/fig3_task2_heatmap.pdf",
+    "fig3_out/fig3_task2_heatmap.svg",
+    "fig3_out/fig3_task2_heatmap.png"
+  ]
+}

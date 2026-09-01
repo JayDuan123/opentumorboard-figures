@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+# The extracted benchmark inputs (~148 MB) are not committed; see README.
+otb_inputs/
+otb_inputs.tgz
+# Local renders. The committed copies in figures/ are the reviewed ones.
+fig1_out/
+fig2b_out/
+fig3_out/
+fig4_out/
