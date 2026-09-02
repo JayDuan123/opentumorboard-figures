@@ -277,7 +277,7 @@ def draw(data: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
                two_col=True, prettify=False)
     hist_panel(fig.add_subplot(gs[2, :]), data["turns"], scale)
 
-    fig.suptitle("Benchmark statistics", fontsize=FS_TITLE, fontweight="bold",
+    fig.suptitle("OpenTumorBoard statistics", fontsize=FS_TITLE, fontweight="bold",
                  x=0.012, y=0.985, ha="left")
     fig.text(0.012, 0.028,
              f"{scale['videos']} videos  ·  {scale['hours']:.1f} hours  ·  "

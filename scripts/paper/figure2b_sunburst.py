@@ -396,7 +396,7 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
                  fontsize=FS_PANEL, fontweight="bold", pad=2)
     ax.set_position([0.60, 0.155, 0.33, 0.245])
 
-    fig.suptitle("Benchmark statistics", fontsize=FS_TITLE, fontweight="bold",
+    fig.suptitle("OpenTumorBoard statistics", fontsize=FS_TITLE, fontweight="bold",
                  x=0.045, y=0.972, ha="left")
     fig.text(0.045, 0.030,
              f"{sc['videos']} videos  ·  {sc['hours']:.0f} hours  ·  {sc['cases']} cases  ·  "

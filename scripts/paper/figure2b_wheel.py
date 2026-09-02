@@ -306,7 +306,7 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
             outside += quadrant(ax, start, c1, c2, c3, head, sub, nested, total, lab)
     place_outside(ax, outside, r=R3 + 0.05, gap=0.075)
 
-    fig.suptitle("OpenTumorBoard at a glance", fontsize=FS_TITLE, fontweight="bold",
+    fig.suptitle("OpenTumorBoard statistics", fontsize=FS_TITLE, fontweight="bold",
                  x=0.5, y=0.982, ha="center")
 
     out_dir.mkdir(parents=True, exist_ok=True)
