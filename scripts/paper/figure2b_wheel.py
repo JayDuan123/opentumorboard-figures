@@ -98,6 +98,11 @@ def shade(hexcolor: str, factor: float) -> tuple:
     return tuple(1 - (1 - v) * factor for v in c)
 
 
+def darken(hexcolor: str, factor: float = 0.82) -> tuple:
+    c = matplotlib.colors.to_rgb(hexcolor)
+    return tuple(v * factor for v in c)
+
+
 def gather(md: Path) -> dict:
     qa = load(md / TRAINVAL) + load(md / TEST)
     cases = load(md / TASK1)
@@ -209,6 +214,11 @@ def quadrant(ax, start, c1, c2, c3, head, sub, nested, total, label=str):
     that the benchmark defines, and inventing one to fill the ring would be a
     taxonomy drawn for the picture rather than for the data.
     """
+    # The hub carries the quadrant's colour too, one shade deeper than ring 1, so
+    # each facet reads as one continuous block from the centre outwards instead of
+    # four coloured arcs floating around a white disc.
+    ax.add_patch(Wedge((0, 0), R0, start, start + 90,
+                       facecolor=darken(c1), edgecolor="white", lw=1.1, zorder=3))
     ax.add_patch(Wedge((0, 0), R1, start, start + 90, width=R1 - R0,
                        facecolor=c1, edgecolor="white", lw=1.1, zorder=3))
     mid = start + 45
