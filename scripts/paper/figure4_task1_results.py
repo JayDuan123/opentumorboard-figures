@@ -213,47 +213,54 @@ def save(fig, out_dir: Path, stem: str) -> list[Path]:
 
 
 def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
-    """Bars in two groups. No global sort: the groups are not one league table."""
-    nrow = len(d["arms"]) + 1                      # +1 for the gap between groups
-    fig_h = 0.235 * nrow + 0.95
-    fig = plt.figure(figsize=(style.A4_W, fig_h))
-    ax = fig.add_axes([0.335, 0.115, 0.625, 0.80])
+    """The multimodal arms only, as a single ranking.
 
-    y, ticks, labels = 0.0, [], []
-    for gi, (name, group) in enumerate(reversed(d["groups"])):
-        colour = MM_C if name.startswith("Slides") else CAP_C
-        for a in group:
-            ax.barh(y, a["score"], height=0.72, color=colour, zorder=3)
-            note = ""
-            if a["scored"] != a["test"]:
-                note = f"   {a['scored']}/{a['test']} concluded"
-            ax.text(a["score"] + 0.03, y, f"{a['score']:.2f}{note}", va="center",
-                    ha="left", fontsize=FS_VALUE, color=MUTED, zorder=4)
-            ticks.append(y); labels.append(a["label"]); y += 1
-        ax.text(-0.335, y - len(group) / 2 - 0.5, name, fontsize=FS_LABEL, color=INK,
-                rotation=90, va="center", ha="center", fontweight="bold",
-                transform=ax.get_yaxis_transform(which="grid"), clip_on=False)
-        if gi == 0:
-            ax.axhline(y - 0.5 + 0.0, color=INK, lw=0.8, zorder=5)
-            y += 1
+    Restricting the panel to one input condition is what makes a single ranking legal
+    here: the caption-only arms answer from captions alone, which the catalog files as
+    an ablation of Task 1, and since 2026-08-30 they also run a different output
+    contract. Ranking the two together compared model with input.
+
+    The cost is that the text-only arms leave the panel entirely - DeepSeek-V4-Pro and
+    DeepSeek-V4-Flash among them, which the figure plan names. They cannot take slide
+    images, so there is no version of this panel that ranks them fairly beside a
+    vision model; they are in fig4b and fig4c, and their scores are in the provenance.
+    """
+    group = dict(d["groups"])["Slides + captions"]
+    dropped = dict(d["groups"])["Captions only"]
+    nrow = len(group)
+    fig_h = 0.30 * nrow + 1.35
+    fig = plt.figure(figsize=(style.A4_W, fig_h))
+    ax = fig.add_axes([0.175, 0.215, 0.795, 0.60])
+
+    ticks, labels = [], []
+    for y, a in enumerate(group):
+        ax.barh(y, a["score"], height=0.72, color=MM_C, zorder=3)
+        note = "" if a["scored"] == a["test"] else f"   {a['scored']}/{a['test']} concluded"
+        ax.text(a["score"] + 0.03, y, f"{a['score']:.2f}{note}", va="center", ha="left",
+                fontsize=FS_VALUE, color=MUTED, zorder=4)
+        ticks.append(y); labels.append(a["label"])
 
     ax.set_yticks(ticks); ax.set_yticklabels(labels, fontsize=FS_TICK)
-    ax.set_ylim(-0.8, y - 0.2)
-    ax.set_xlim(0, 3.0)
-    ax.set_xticks([0, 1, 2, 3])
-    ax.set_xlabel("Conclusion alignment  (1–5)", fontsize=FS_LABEL)
+    ax.set_ylim(-0.8, nrow - 0.2)
+    ax.set_xlim(0, 3.0); ax.set_xticks([0, 1, 2, 3])
+    ax.set_xlabel("Conclusion alignment  (1\u20135)", fontsize=FS_LABEL)
     ax.tick_params(labelsize=FS_TICK, length=2)
     ax.xaxis.grid(True, color=GRID, lw=0.5, zorder=0); ax.set_axisbelow(True)
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
-    for s in ("left", "bottom"):
-        ax.spines[s].set_linewidth(0.6)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    for sp in ("left", "bottom"):
+        ax.spines[sp].set_linewidth(0.6)
 
     fig.suptitle("Tumor board simulation", fontsize=FS_TITLE, fontweight="bold",
-                 x=0.012, y=0.995, ha="left")
-    fig.text(0.012, 0.955,
-             f"{d['n_cases']} cases  ·  no arm reaches 3 of 5",
+                 x=0.012, y=0.982, ha="left")
+    fig.text(0.012, 0.905,
+             f"{d['n_cases']} cases  \u00b7  slides + captions  \u00b7  no arm reaches 3 of 5",
              fontsize=FS_NOTE, color=MUTED, ha="left", va="top")
+    fig.text(0.012, 0.022,
+             f"{len(dropped)} text-only arms are not shown: they cannot take the slide "
+             f"images and answer from captions alone, which the benchmark files as an "
+             f"ablation of Task 1.",
+             fontsize=FS_NOTE - 0.4, color=MUTED, ha="left", va="bottom")
     return save(fig, out_dir, stem)
 
 
@@ -338,7 +345,14 @@ def main() -> int:
             "on every case it was given rather than on the ones it chose to answer",
         "judge_model": d["judge"], "judge_batch": d["judge_batch"],
         "cases": d["n_cases"], "results_catalog_sha256": d["catalog_sha256"],
-        "grouping": "input condition; the two groups are not one ranking",
+        "panel_a_scope": {
+            "shown": "multimodal arms only",
+            "excluded": [a["key"] for a in d["arms"]
+                         if a["condition"] != "multimodal"],
+            "reason": "text-only arms cannot take the slide images; ranking "
+                      "them beside vision arms would compare model with input",
+        },
+        "grouping": "fig4b and fig4c still cover all arms, both conditions",
         "arms": d["arms"],
         "absent": {
             "closed_source_frontier": "no Claude, GPT, Gemini or Grok arm exists",

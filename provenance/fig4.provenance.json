@@ -8,7 +8,23 @@
   "judge_batch": "judge/board17_transcript3_task1_judge_v31_images_20260830/results/summary.json",
   "cases": 184,
   "results_catalog_sha256": "f382ac71cc62976dc1a2db8a63dce10cdee3f3c4fc8f8f6e93054520f96d5e1b",
-  "grouping": "input condition; the two groups are not one ranking",
+  "panel_a_scope": {
+    "shown": "multimodal arms only",
+    "excluded": [
+      "deepseek_v4_flash_api_reasoning",
+      "deepseek_v4_flash_api",
+      "deepseek_v4_pro_reasoning",
+      "deepseek_v4_pro",
+      "huatuogpt_3_32b_reasoning",
+      "huatuogpt_3_32b",
+      "meditron3_70b",
+      "medreason_8b",
+      "nemotron_3_5_lightning_reasoning",
+      "nemotron_3_5_lightning"
+    ],
+    "reason": "text-only arms cannot take the slide images; ranking them beside vision arms would compare model with input"
+  },
+  "grouping": "fig4b and fig4c still cover all arms, both conditions",
   "arms": [
     {
       "key": "deepseek_v4_flash_api_reasoning",
