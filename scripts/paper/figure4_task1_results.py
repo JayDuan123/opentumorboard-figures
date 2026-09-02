@@ -235,8 +235,7 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
     ticks, labels = [], []
     for y, a in enumerate(group):
         ax.barh(y, a["score"], height=0.72, color=MM_C, zorder=3)
-        note = "" if a["scored"] == a["test"] else f"   {a['scored']}/{a['test']} concluded"
-        ax.text(a["score"] + 0.03, y, f"{a['score']:.2f}{note}", va="center", ha="left",
+        ax.text(a["score"] + 0.03, y, f"{a['score']:.2f}", va="center", ha="left",
                 fontsize=FS_VALUE, color=MUTED, zorder=4)
         ticks.append(y); labels.append(a["label"])
 
@@ -252,15 +251,7 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
         ax.spines[sp].set_linewidth(0.6)
 
     fig.suptitle("Tumor board simulation", fontsize=FS_TITLE, fontweight="bold",
-                 x=0.012, y=0.982, ha="left")
-    fig.text(0.012, 0.905,
-             f"{d['n_cases']} cases  \u00b7  slides + captions  \u00b7  no arm reaches 3 of 5",
-             fontsize=FS_NOTE, color=MUTED, ha="left", va="top")
-    fig.text(0.012, 0.022,
-             f"{len(dropped)} text-only arms are not shown: they cannot take the slide "
-             f"images and answer from captions alone, which the benchmark files as an "
-             f"ablation of Task 1.",
-             fontsize=FS_NOTE - 0.4, color=MUTED, ha="left", va="bottom")
+                 x=0.012, y=0.972, ha="left")
     return save(fig, out_dir, stem)
 
 
@@ -364,6 +355,15 @@ def main() -> int:
                                "not an active aggregate source and drops difference_rates; "
                                "it moves every arm down 0.07-0.24 and reorders some",
         },
+        "panel_a_uncaptioned": (
+            "fig4a carries no subtitle, footnote or per-bar coverage note. Everything "
+            "it no longer says is here and must go in the LaTeX caption: the scale, the "
+            "ten excluded text-only arms, and the arms that did not conclude every case."
+        ),
+        "panel_a_incomplete_coverage": {
+            a["key"]: f"{a['scored']}/{a['test']} concluded"
+            for a in d["arms"] if a["condition"] == "multimodal"
+            and a["scored"] != a["test"]},
         "caption": (
             f"Tumor board simulation. Each arm generates a multi-specialist discussion and a "
             f"treatment conclusion from the case summary and its slides; the conclusion is "

@@ -288,6 +288,10 @@
     "cost_panel": "no price data anywhere; generation_cost declares cost_axis=output_tokens.mean, so a cost plot would be the token plot relabelled",
     "task1_judge_v31": "a clean full-board v31 batch exists (2026-08-25) but is not an active aggregate source and drops difference_rates; it moves every arm down 0.07-0.24 and reorders some"
   },
+  "panel_a_uncaptioned": "fig4a carries no subtitle, footnote or per-bar coverage note. Everything it no longer says is here and must go in the LaTeX caption: the scale, the ten excluded text-only arms, and the arms that did not conclude every case.",
+  "panel_a_incomplete_coverage": {
+    "qwen3_8_27b": "183/184 concluded"
+  },
   "caption": "Tumor board simulation. Each arm generates a multi-specialist discussion and a treatment conclusion from the case summary and its slides; the conclusion is scored against the real board's decision on a 1-5 alignment rubric (llm_judge_task1_v31_task2_v4, judge Qwen/Qwen3.6-27B) over 184 test cases. Bars are grouped by input condition and are not a single ranking: text-only arms cannot take the slide images and answer from captions alone, which the benchmark files as an ablation of Task 1 rather than a second way of running it. Scores grade every case the arm was given, with cases it never concluded entering at the rubric floor of 1. The strongest arm, Gemma 4 31B, reaches 2.54 of 5; no arm reaches 3.",
   "font": {
     "family": "DejaVu Sans",
