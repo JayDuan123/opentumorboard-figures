@@ -54,6 +54,13 @@
     "clarification_question": 571,
     "clinical_trial_suggestion": 209
   },
+  "video_analysed_minutes": {
+    "under 20 min": 21,
+    "20–40 min": 40,
+    "40–60 min": 101,
+    "60–90 min": 46,
+    "over 90 min": 11
+  },
   "sites": {
     "Thyroid / parathyroid": 126,
     "Genitourinary": 84,

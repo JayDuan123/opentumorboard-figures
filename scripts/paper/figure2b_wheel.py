@@ -83,12 +83,32 @@ def gather(md: Path) -> dict:
          for r in cases])
     roles = collections.Counter(r["target_specialist_role"] for r in qa)
     qa_types = collections.Counter(r["qa_type"] for r in qa)
+    # Per video, the minutes the benchmark actually covers - the sum of its cases'
+    # spans. There is no true runtime field anywhere in the manifests, and the gap
+    # between the two is real (intros, breaks, cases that were cut), so the ring is
+    # labelled "analysed" rather than being passed off as video length.
+    per_video = collections.defaultdict(float)
+    for r in cases:
+        per_video[r["video_uid"]] += r["case_end_sec"] - r["case_start_sec"]
+    BINS = [(0, 20, "under 20 min"), (20, 40, "20\u201340 min"), (40, 60, "40\u201360 min"),
+            (60, 90, "60\u201390 min"), (90, float("inf"), "over 90 min")]
+    lengths = collections.Counter()
+    for v in per_video.values():
+        m = v / 60.0
+        for lo, hi, lab in BINS:
+            if lo <= m < hi:
+                lengths[lab] += 1
+                break
+    if sum(lengths.values()) != len(per_video):
+        refuse("video length bins do not cover every video")
+
     turns = [len(r["reference_discussion"]) for r in cases]
     slides = [str(r.get("slides") or "").count("<image>") for r in cases]
     dur = [r["case_end_sec"] - r["case_start_sec"] for r in cases]
     import statistics
     return {
         "qa_types": qa_types, "sites": sites, "roles": roles,
+        "lengths": [(lab, lengths[lab]) for _, _, lab in BINS if lengths[lab]],
         "scale": {
             "videos": len({r["video_uid"] for r in cases}), "cases": len(cases),
             "questions": len(qa), "slides": sum(slides),
@@ -229,9 +249,6 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
 
     # A one-wedge "grouping" so the corpus quadrant keeps the same ring structure
     # without claiming a proportion between a slide count and an utterance count.
-    corpus_leaf = (f"median {sc['slides_median']:.0f} slides per case (max "
-                   f"{sc['slides_max']})\nmedian {sc['turns_median']:.0f} utterances "
-                   f"per case")
     content = {
         "questions": (f"{sc['questions']:,}\nQuestions", f"{len(d['qa_types'])} question types",
                       None, sc["questions"], pretty, d["qa_types"].most_common()),
@@ -240,8 +257,8 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
         "specialists": (f"{len(d['roles'])}\nSpecialist roles", "",
                         nest(d["roles"], ROLE_GROUP), sc["questions"], cap, None),
         "corpus": (f"{sc['videos']}\nVideos",
-                   f"{sc['hours']:.0f} hours  ·  {sc['slides']:,} slides",
-                   None, 1, keep, [(corpus_leaf, 1)]),
+                   f"{sc['hours']:.0f} h analysed  ·  {sc['slides']:,} slides",
+                   None, sc["videos"], keep, d["lengths"]),
     }
     outside = []
     for key, start, c1, c2, c3 in QUADS:
@@ -253,6 +270,12 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
             outside += quadrant(ax, start, c1, c2, c3, head, sub, nested, total, lab)
     place_outside(ax, outside, r=R3 + 0.05, gap=0.075)
 
+    fig.text(0.5, 0.022,
+             f"median {sc['slides_median']:.0f} slides per case (max {sc['slides_max']})"
+             f"   ·   median {sc['turns_median']:.0f} utterances per case   ·   "
+             f"outer ring of the corpus quadrant bins videos by the minutes the "
+             f"benchmark covers, not by their full runtime",
+             fontsize=FS_NOTE - 0.4, color=MUTED, ha="center", va="bottom")
     fig.suptitle("OpenTumorBoard at a glance", fontsize=FS_TITLE, fontweight="bold",
                  x=0.5, y=0.982, ha="center")
     fig.text(0.5, 0.948,
@@ -287,6 +310,7 @@ def main() -> int:
         "figure": "2b (wheel)", "sources": d["sources"], "font": font,
         "scale": d["scale"],
         "qa_types": dict(d["qa_types"].most_common()),
+        "video_analysed_minutes": dict(d["lengths"]),
         "sites": dict(d["sites"].most_common()),
         "roles": dict(d["roles"].most_common()),
         "reading_note":

@@ -141,6 +141,12 @@ the leaves. The nine question types get a plain descriptor band instead of a gro
 — they have no level above them that the benchmark defines, and inventing one to fill
 the ring would be a taxonomy drawn for the picture rather than for the data.
 
+The corpus quadrant's outer ring bins the 219 videos by **analysed** minutes — the
+sum of each video's case spans, which is what the 187-hour headline counts. No
+manifest carries a true runtime, and the gap between the two is real (intros, breaks,
+cases that were cut), so the ring is labelled analysed rather than passed off as
+video length.
+
 Each quadrant gets an equal quarter of the circle. The quarters
 are *not* proportional to one another and must not be read that way — 611 cases and
 16,215 questions are different units, and sizing them against each other would claim a
