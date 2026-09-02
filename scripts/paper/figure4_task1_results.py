@@ -259,25 +259,32 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
 
 
 def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
-    """Tokens against score. Log x because the arms span an order of magnitude."""
-    fig = plt.figure(figsize=(0.66 * style.A4_W, 0.30 * style.A4_H))
-    ax = fig.add_axes([0.135, 0.145, 0.835, 0.755])
-    for name, group in d["groups"]:
-        colour = MM_C if name.startswith("Slides") else CAP_C
-        ax.scatter([a["tokens"] for a in group], [a["score"] for a in group], s=26,
-                   c=colour, edgecolors="white", linewidths=0.6, zorder=3, label=name)
-    for a in d["arms"]:
+    """Tokens against score, multimodal arms only. Log x: they span an order of magnitude.
+
+    THE TITLE IS NOT "MORE OUTPUT IS NOT BETTER" ANY MORE. Over all seventeen arms the
+    rank correlation between output length and score is -0.125, and the clearest
+    evidence for it was Nemotron 3.5 - 12,000 tokens for 1.61 - which is caption-only
+    and no longer on this panel. Over the seven that remain it is +0.286. Neither is
+    significant at n=7, so the panel is titled for what it plots rather than for a
+    trend, and both coefficients go in the provenance.
+    """
+    group = dict(d["groups"])["Slides + captions"]
+    fig = plt.figure(figsize=(0.66 * style.A4_W, 0.66 * style.A4_W))
+    ax = fig.add_axes([0.155, 0.115, 0.815, 0.775])
+    ax.scatter([a["tokens"] for a in group], [a["score"] for a in group], s=30,
+               c=MM_C, edgecolors="white", linewidths=0.6, zorder=3)
+    for a in group:
         ax.annotate(a["label"], (a["tokens"], a["score"]), textcoords="offset points",
-                    xytext=(4.5, 3.0), fontsize=FS_NOTE - 0.6, color=MUTED, zorder=4)
+                    xytext=(5.0, 3.5), fontsize=FS_NOTE - 0.4, color=MUTED, zorder=4)
     ax.set_xscale("log")
     ax.set_xlabel("Mean output tokens per case  (log)", fontsize=FS_LABEL)
-    ax.set_ylabel("Conclusion alignment  (1–5)", fontsize=FS_LABEL)
+    ax.set_ylabel("Conclusion alignment  (1\u20135)", fontsize=FS_LABEL)
     ax.tick_params(labelsize=FS_TICK, length=2)
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
-    ax.legend(fontsize=FS_NOTE, frameon=False, loc="lower right")
-    fig.suptitle("More output is not better", fontsize=FS_TITLE - 0.5,
-                 fontweight="bold", x=0.012, y=0.985, ha="left")
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    box = ax.get_position()
+    fig.suptitle("Score against output length", fontsize=FS_TITLE - 0.5,
+                 fontweight="bold", x=(box.x0 + box.x1) / 2, y=0.975, ha="center")
     return save(fig, out_dir, stem)
 
 
@@ -337,6 +344,15 @@ def main() -> int:
             "on every case it was given rather than on the ones it chose to answer",
         "judge_model": d["judge"], "judge_batch": d["judge_batch"],
         "cases": d["n_cases"], "results_catalog_sha256": d["catalog_sha256"],
+        "panel_b_scope": {
+            "shown": "multimodal arms only, matching panel a",
+            "spearman_tokens_vs_score_all_17": -0.125,
+            "spearman_tokens_vs_score_multimodal_7": 0.286,
+            "note": "dropping the caption-only arms flips the sign. The -0.125 rested "
+                    "largely on nemotron_3_5_lightning, 12k tokens for 1.61, which is "
+                    "caption-only. Neither coefficient is significant at n=7, which is "
+                    "why the panel is titled for what it plots.",
+        },
         "panel_a_scope": {
             "shown": "multimodal arms only",
             "excluded": [a["key"] for a in d["arms"]

@@ -8,6 +8,12 @@
   "judge_batch": "judge/board17_transcript3_task1_judge_v31_images_20260830/results/summary.json",
   "cases": 184,
   "results_catalog_sha256": "f382ac71cc62976dc1a2db8a63dce10cdee3f3c4fc8f8f6e93054520f96d5e1b",
+  "panel_b_scope": {
+    "shown": "multimodal arms only, matching panel a",
+    "spearman_tokens_vs_score_all_17": -0.125,
+    "spearman_tokens_vs_score_multimodal_7": 0.286,
+    "note": "dropping the caption-only arms flips the sign. The -0.125 rested largely on nemotron_3_5_lightning, 12k tokens for 1.61, which is caption-only. Neither coefficient is significant at n=7, which is why the panel is titled for what it plots."
+  },
   "panel_a_scope": {
     "shown": "multimodal arms only",
     "excluded": [
