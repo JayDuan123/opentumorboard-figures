@@ -29,6 +29,13 @@ from matplotlib import font_manager as fm
 # fraction, so `figsize=(A4_W, 0.42 * A4_H)`.
 A4_W, A4_H = 210 / 25.4, 297 / 25.4          # 8.27 x 11.69 in
 
+# One column of a two-column paper (ICML / CVPR \columnwidth). A figure meant for a
+# column is drawn AT this width, never drawn wide and scaled down by
+# \includegraphics: scaling shrinks the type with it, and 8 pt set on an A4-wide
+# canvas arrives at about 3 pt in a 3.25 in column.
+COL_W = 3.25
+TEXT_W_SINGLE_COL = 5.5                      # ICLR / NeurIPS \textwidth
+
 LARGE_SIZE = 10
 MEDIUM_SIZE = 8
 SMALLER_SIZE = 8

@@ -306,18 +306,8 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
             outside += quadrant(ax, start, c1, c2, c3, head, sub, nested, total, lab)
     place_outside(ax, outside, r=R3 + 0.05, gap=0.075)
 
-    fig.text(0.5, 0.022,
-             f"median {sc['slides_median']:.0f} slides per case (max {sc['slides_max']})"
-             f"   ·   median {sc['turns_median']:.0f} utterances per case   ·   "
-             f"outer ring of the corpus quadrant bins videos by the minutes the "
-             f"benchmark covers, not by their full runtime",
-             fontsize=FS_NOTE - 0.4, color=MUTED, ha="center", va="bottom")
     fig.suptitle("OpenTumorBoard at a glance", fontsize=FS_TITLE, fontweight="bold",
                  x=0.5, y=0.982, ha="center")
-    fig.text(0.5, 0.948,
-             "each quadrant is one quarter of the wheel; only the outer ring is "
-             "proportional, and only within its own quadrant",
-             fontsize=FS_NOTE, color=MUTED, ha="center", va="top", style="italic")
 
     out_dir.mkdir(parents=True, exist_ok=True)
     written = []
@@ -353,12 +343,24 @@ def main() -> int:
                             "groups": {k.replace("\n", " "): v
                                        for k, v in SHORT_GROUP.items()},
                             "note": "shortened on the wheel only; counts and the canonical labels are unchanged"},
+        "uncaptioned":
+            "The wheel carries no subtitle and no footer. Everything it no longer says "
+            "is here and must go in the LaTeX caption - above all that the quadrants "
+            "are not proportional to one another, and that the corpus ring counts "
+            "analysed minutes rather than runtime.",
+        "footer_text_removed":
+            "median {sl:.0f} slides per case (max {mx}) - median {tu:.0f} utterances "
+            "per case - the corpus quadrant's outer ring bins videos by the minutes the "
+            "benchmark covers, not by their full runtime",
         "reading_note":
             "Quadrants are equal quarters, not proportional to one another - cases, "
             "questions, roles and videos are different units. Proportion is only "
             "meaningful along the outer ring within a single quadrant.",
         "outputs": [str(p) for p in written],
     }
+    prov["footer_text_removed"] = prov["footer_text_removed"].format(
+        sl=d["scale"]["slides_median"], mx=d["scale"]["slides_max"],
+        tu=d["scale"]["turns_median"])
     (a.output_dir / f"{a.stem}.provenance.json").write_text(
         json.dumps(prov, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({"outputs": [str(p) for p in written], "scale": d["scale"]},

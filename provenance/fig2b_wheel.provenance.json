@@ -15,9 +15,22 @@
     }
   },
   "font": {
-    "family": "DejaVu Sans",
-    "file": "/rhf/allocations/wq8/dhi-rhf/al318/miniconda3/envs/medmix-env-local/lib/python3.11/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf",
-    "registered": []
+    "family": "Arial",
+    "file": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/figures/fonts/Arial.ttf",
+    "registered": [
+      "Arial Black.ttf",
+      "Arial Bold Italic.ttf",
+      "Arial Bold.ttf",
+      "Arial Italic.ttf",
+      "Arial Narrow Bold Italic.ttf",
+      "Arial Narrow Bold.ttf",
+      "Arial Narrow Italic.ttf",
+      "Arial Narrow.ttf",
+      "Arial Rounded Bold.ttf",
+      "Arial Unicode.ttf",
+      "Arial.ttf",
+      "ArialHB.ttc"
+    ]
   },
   "scale": {
     "videos": 219,
@@ -97,6 +110,8 @@
     },
     "note": "shortened on the wheel only; counts and the canonical labels are unchanged"
   },
+  "uncaptioned": "The wheel carries no subtitle and no footer. Everything it no longer says is here and must go in the LaTeX caption - above all that the quadrants are not proportional to one another, and that the corpus ring counts analysed minutes rather than runtime.",
+  "footer_text_removed": "median 7 slides per case (max 39) - median 28 utterances per case - the corpus quadrant's outer ring bins videos by the minutes the benchmark covers, not by their full runtime",
   "reading_note": "Quadrants are equal quarters, not proportional to one another - cases, questions, roles and videos are different units. Proportion is only meaningful along the outer ring within a single quadrant.",
   "outputs": [
     "fig2b_out/fig2b_wheel.pdf",
