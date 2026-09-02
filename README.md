@@ -7,7 +7,8 @@ time; nothing is typed in.
 | | Figure | Script |
 |---|---|---|
 | ![Fig 1](figures/fig1_overview.png) | **Fig 1** benchmark overview | `figure1_overview.py` |
-| ![Fig 2b](figures/fig2b_sunburst.png) | **Fig 2b** dataset statistics — nested rings | `figure2b_sunburst.py` |
+| ![Fig 2b wheel](figures/fig2b_wheel.png) | **Fig 2b** the whole benchmark as one wheel | `figure2b_wheel.py` |
+| ![Fig 2b](figures/fig2b_sunburst.png) | **Fig 2b** four nested-ring panels | `figure2b_sunburst.py` |
 | ![Fig 2b bars](figures/fig2b_statistics.png) | **Fig 2b** same data as bars | `figure2b_statistics.py` |
 | ![Fig 3](figures/fig3_task2_heatmap.png) | **Fig 3** expert QA heatmap (Task 2) | `figure3_task2_heatmap.py` |
 | ![Fig 4a](figures/fig4a_scores.png) | **Fig 4a** simulation scores (Task 1) | `figure4_task1_results.py` |
@@ -128,10 +129,18 @@ answer that still fits two lines.
 
 ### Fig 2b — statistics
 
-Two interchangeable versions of the same four distributions:
+Three interchangeable versions of the same four distributions:
 
-- `figure2b_sunburst.py` — nested rings, one large figure
+- `figure2b_wheel.py` — one wheel, four quadrants, for a teaser or a slide
+- `figure2b_sunburst.py` — four nested-ring panels
 - `figure2b_statistics.py` — horizontal bars
+
+**Reading the wheel.** Each quadrant gets an equal quarter of the circle. The quarters
+are *not* proportional to one another and must not be read that way — 611 cases and
+16,215 questions are different units, and sizing them against each other would claim a
+ratio that does not exist. Proportion is meaningful only along the outer ring, within
+one quadrant. The corpus quadrant's outer ring is a single wedge for the same reason:
+splitting it would imply a proportion between a slide count and an utterance count.
 
 The sunburst's inner rings **regroup** the published leaf labels; they do not
 reclassify anything. Cancer sites roll up to organ system, target roles to what the
