@@ -228,19 +228,22 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
     group = dict(d["groups"])["Slides + captions"]
     dropped = dict(d["groups"])["Captions only"]
     nrow = len(group)
-    fig_h = 0.30 * nrow + 1.35
-    fig = plt.figure(figsize=(style.A4_W, fig_h))
-    ax = fig.add_axes([0.175, 0.215, 0.795, 0.60])
+    # Square, at two thirds of the A4 width. Seven bars across a full A4 width left
+    # the panel long and thin, and the bar lengths span only 1.95 to 2.54 - a wide
+    # canvas spends its width on the part of the axis where nothing happens.
+    side = 0.66 * style.A4_W
+    fig = plt.figure(figsize=(side, side))
+    ax = fig.add_axes([0.30, 0.115, 0.665, 0.775])
 
     ticks, labels = [], []
     for y, a in enumerate(group):
-        ax.barh(y, a["score"], height=0.72, color=MM_C, zorder=3)
+        ax.barh(y, a["score"], height=0.58, color=MM_C, zorder=3)
         ax.text(a["score"] + 0.03, y, f"{a['score']:.2f}", va="center", ha="left",
                 fontsize=FS_VALUE, color=MUTED, zorder=4)
         ticks.append(y); labels.append(a["label"])
 
     ax.set_yticks(ticks); ax.set_yticklabels(labels, fontsize=FS_TICK)
-    ax.set_ylim(-0.8, nrow - 0.2)
+    ax.set_ylim(-0.65, nrow - 0.35)
     ax.set_xlim(0, 3.0); ax.set_xticks([0, 1, 2, 3])
     ax.set_xlabel("Conclusion alignment  (1\u20135)", fontsize=FS_LABEL)
     ax.tick_params(labelsize=FS_TICK, length=2)
