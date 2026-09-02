@@ -250,8 +250,9 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
     for sp in ("left", "bottom"):
         ax.spines[sp].set_linewidth(0.6)
 
+    ax_box = ax.get_position()
     fig.suptitle("Tumor board simulation", fontsize=FS_TITLE, fontweight="bold",
-                 x=0.012, y=0.972, ha="left")
+                 x=(ax_box.x0 + ax_box.x1) / 2, y=0.972, ha="center")
     return save(fig, out_dir, stem)
 
 
