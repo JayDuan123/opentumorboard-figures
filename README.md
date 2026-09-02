@@ -160,6 +160,16 @@ specialist does in a board. Verified: the two versions emit byte-identical count
 all 17 sites, 10 roles, 9 question types and every scale number, so either can be used
 and they cannot disagree.
 
+`figures/comparison/fig2b_circos.png` is the same four panels drawn with
+[pyCirclize](https://github.com/moshi4/pyCirclize) rather than raw matplotlib — a
+library comparison, not a published figure, kept so the answer can be rechecked when
+the taxonomy grows. It needs `pip install pycirclize`, which no published figure does.
+The library owns the sector/track geometry and its `Track.annotate()` spreads
+crowded leader labels on its own, which is worth having: nine of the seventeen sites
+are under 3% and land at nearly the same angle. It does not do radial label fitting,
+so long names are squeezed onto one line there and wrapped in the published version,
+and single-leaf groups still have to be de-duplicated by hand.
+
 Discussion length stays a histogram in both. It is a distribution over a continuous
 variable, and a ring would have to bin it into categories the data does not define.
 
