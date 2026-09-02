@@ -147,6 +147,13 @@ manifest carries a true runtime, and the gap between the two is real (intros, br
 cases that were cut), so the ring is labelled analysed rather than passed off as
 video length.
 
+Site names are shortened on the wheel only — "Thyroid / parathyroid" reads "Thyroid",
+"Thoracic / lung" reads "Lung". The compound labels are what crowd the ring, and the
+second half is what a reader drops anyway. The canonical labels are untouched: the bar
+and nested-ring versions still print them in full, the audited per-case file still
+records them, and every count is identical. The full mapping is in the wheel's
+provenance under `display_aliases`.
+
 Each quadrant gets an equal quarter of the circle. The quarters
 are *not* proportional to one another and must not be read that way — 611 cases and
 16,215 questions are different units, and sizing them against each other would claim a

@@ -67,6 +67,32 @@ QUADS = [
 ]
 
 
+# Display-only short names. The compound "A / B" labels are the ones that crowd the
+# ring, and on a wheel the second half is what a reader drops anyway. This does NOT
+# touch the canonical labels in cancer_sites.py: those are what the audited
+# per-case file records, and the bar and nested-ring versions still print them in
+# full. Only the wheel's ink changes; every count is untouched.
+SHORT_SITE = {
+    "Thyroid / parathyroid": "Thyroid",
+    "Thoracic / lung": "Lung",
+    "CNS / brain & spine": "CNS",
+    "Hepatobiliary / pancreas": "Hepatobiliary",
+    "Colorectal / anal": "Colorectal",
+    "Skin / melanoma": "Skin",
+    "Sarcoma (bone / soft tissue)": "Sarcoma",
+    "Neuroendocrine (site NOS)": "Neuroendocrine",
+}
+SHORT_GROUP = {
+    "Head & neck\n& endocrine": "Head & neck",
+    "Neuro &\nskull base": "Neuro",
+    "Skin &\nsarcoma": "Skin & sarcoma",
+}
+
+
+def short_site(name: str) -> str:
+    return SHORT_SITE.get(name, name)
+
+
 def shade(hexcolor: str, factor: float) -> tuple:
     c = matplotlib.colors.to_rgb(hexcolor)
     return tuple(1 - (1 - v) * factor for v in c)
@@ -201,7 +227,7 @@ def quadrant(ax, start, c1, c2, c3, head, sub, nested, total, label=str):
                            facecolor=shade(c2, 0.72 + 0.14 * (gi % 2)),
                            edgecolor="white", lw=1.0, zorder=3))
         gmid = a - gspan / 2
-        gname = group.replace("\n", " ")
+        gname = SHORT_GROUP.get(group, group.replace("\n", " "))
         if len(leaves) == 1:
             gname = ""            # the leaf ring names it; two labels for one thing
         if gname and gspan >= 4.0:
@@ -253,7 +279,7 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
         "questions": (f"{sc['questions']:,}\nQuestions", f"{len(d['qa_types'])} question types",
                       None, sc["questions"], pretty, d["qa_types"].most_common()),
         "cases": (f"{sc['cases']}\nCases", "", nest(d["sites"], SITE_SYSTEM),
-                  sc["cases"], keep, None),
+                  sc["cases"], short_site, None),
         "specialists": (f"{len(d['roles'])}\nSpecialist roles", "",
                         nest(d["roles"], ROLE_GROUP), sc["questions"], cap, None),
         "corpus": (f"{sc['videos']}\nVideos",
@@ -313,6 +339,10 @@ def main() -> int:
         "video_analysed_minutes": dict(d["lengths"]),
         "sites": dict(d["sites"].most_common()),
         "roles": dict(d["roles"].most_common()),
+        "display_aliases": {"sites": SHORT_SITE,
+                            "groups": {k.replace("\n", " "): v
+                                       for k, v in SHORT_GROUP.items()},
+                            "note": "shortened on the wheel only; counts and the canonical labels are unchanged"},
         "reading_note":
             "Quadrants are equal quarters, not proportional to one another - cases, "
             "questions, roles and videos are different units. Proportion is only "

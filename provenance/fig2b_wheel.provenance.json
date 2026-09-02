@@ -92,6 +92,24 @@
     "clinical trial specialist": 28,
     "nurse navigator": 28
   },
+  "display_aliases": {
+    "sites": {
+      "Thyroid / parathyroid": "Thyroid",
+      "Thoracic / lung": "Lung",
+      "CNS / brain & spine": "CNS",
+      "Hepatobiliary / pancreas": "Hepatobiliary",
+      "Colorectal / anal": "Colorectal",
+      "Skin / melanoma": "Skin",
+      "Sarcoma (bone / soft tissue)": "Sarcoma",
+      "Neuroendocrine (site NOS)": "Neuroendocrine"
+    },
+    "groups": {
+      "Head & neck & endocrine": "Head & neck",
+      "Neuro & skull base": "Neuro",
+      "Skin & sarcoma": "Skin & sarcoma"
+    },
+    "note": "shortened on the wheel only; counts and the canonical labels are unchanged"
+  },
   "reading_note": "Quadrants are equal quarters, not proportional to one another - cases, questions, roles and videos are different units. Proportion is only meaningful along the outer ring within a single quadrant.",
   "outputs": [
     "fig2b_out/fig2b_wheel.pdf",
