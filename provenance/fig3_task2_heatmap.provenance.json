@@ -10,7 +10,7 @@
     4843,
     4844
   ],
-  "results_catalog_sha256": "04cd88d35d476990c85fffaf15d86fcd76cedde44ada70c189a385cce7e971c8",
+  "results_catalog_sha256": "f382ac71cc62976dc1a2db8a63dce10cdee3f3c4fc8f8f6e93054520f96d5e1b",
   "row_order": "QA-type frequency in the test manifest (same order as Fig 2b)",
   "qa_type_counts": {
     "findings_interpretation": 1284,

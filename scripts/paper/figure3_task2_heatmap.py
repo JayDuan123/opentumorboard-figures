@@ -219,83 +219,83 @@ def order(d: dict) -> list[dict]:
 
 
 def _ink_on(rgba) -> str:
-    """Cell text must survive both ends of plasma: near-black violet and near-white
-    yellow. Pick by relative luminance rather than by a value threshold."""
+    """Cell text must survive both ends of the ramp: near-white at the low end and
+    near-black at the high. Pick by relative luminance, not by a value threshold, so
+    the choice stays correct if the colour map is swapped or reversed."""
     r, g, b = rgba[:3]
     lum = 0.2126 * r + 0.7152 * g + 0.0722 * b
     return "#ffffff" if lum < 0.50 else "#101010"
 
 
 def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
-    """Models on rows, question types on columns, groups drawn as black boxes."""
+    """Question types on rows, model arms on columns, groups drawn as black boxes.
+
+    This is the orientation the figure plan asks for. It also puts the nine types on
+    the axis a reader scans first, which is what the panel is about: the spread across
+    question types is larger than the spread across most models.
+    """
     plt.rcParams.update({"font.family": family, "text.color": INK,
                          "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none"})
     blocks = [(t, g) for t, g in order(d) if g]
     types = d["types"]
-    rows = [(t, a) for t, g in blocks for a in g]
-    nrow, ncol = len(rows), len(types)
+    cols = [(t, a) for t, g in blocks for a in g]
+    nrow, ncol = len(types), len(cols)
 
-    GAP = 0.34                       # gap before the all-questions column
-    width_units = ncol + GAP + 1
-    cell_in, row_in = 0.44, 0.245
-    label_in, right_in = 1.72, 0.95
-    grid_w, grid_h = width_units * cell_in, nrow * row_in
-    col_rise_in = max(len(pretty(t)) for t in types) * FS_COL * 0.52 * math.sin(
-        math.radians(45)) / 72.0
+    GAP = 0.34                       # gap above the all-questions row
+    height_units = nrow + GAP + 1
+    cell_w, cell_h = 0.385, 0.335
+    label_in, right_in = 1.52, 0.92
+    grid_w, grid_h = ncol * cell_w, height_units * cell_h
+    longest = max(len(a["short"]) + (3 if a["model_key"].endswith("_reasoning") else 0)
+                  for _, a in cols)
+    rise_in = longest * FS_COL * 0.52 * math.sin(math.radians(45)) / 72.0
     fig_w = label_in + grid_w + right_in
-    fig_h = 0.46 + grid_h + col_rise_in + 0.34
+    fig_h = 0.72 + grid_h + rise_in + 0.26
 
     fig = plt.figure(figsize=(fig_w, fig_h))
-    ax = fig.add_axes([label_in / fig_w, (col_rise_in + 0.30) / fig_h,
+    ax = fig.add_axes([label_in / fig_w, (rise_in + 0.22) / fig_h,
                        grid_w / fig_w, grid_h / fig_h])
-    ax.set_xlim(0, width_units); ax.set_ylim(nrow, 0); ax.axis("off")
+    ax.set_xlim(0, ncol); ax.set_ylim(height_units, 0); ax.axis("off")
 
-    vals = [a["per_qa_type"][t] for _, a in rows for t in types]
-    vals += [a["overall"] for _, a in rows]
+    vals = [a["per_qa_type"][t] for _, a in cols for t in types]
+    vals += [a["overall"] for _, a in cols]
     norm = Normalize(vmin=min(vals), vmax=max(vals))
 
-    for r, (_, a) in enumerate(rows):
-        for c, t in enumerate(types):
+    for c, (_, a) in enumerate(cols):
+        for r, t in enumerate(types):
             v = a["per_qa_type"][t]
             col = CMAP(norm(v))
             ax.add_patch(Rectangle((c, r), 1, 1, fc=col, ec="white", lw=0.4, zorder=2))
             ax.text(c + 0.5, r + 0.5, f"{v:.2f}", fontsize=FS_CELL, ha="center",
                     va="center", color=_ink_on(col), zorder=3)
         col = CMAP(norm(a["overall"]))
-        ax.add_patch(Rectangle((ncol + GAP, r), 1, 1, fc=col, ec="white", lw=0.4, zorder=2))
-        ax.text(ncol + GAP + 0.5, r + 0.5, f"{a['overall']:.2f}", fontsize=FS_CELL,
+        ax.add_patch(Rectangle((c, nrow + GAP), 1, 1, fc=col, ec="white", lw=0.4, zorder=2))
+        ax.text(c + 0.5, nrow + GAP + 0.5, f"{a['overall']:.2f}", fontsize=FS_CELL,
                 ha="center", va="center", color=_ink_on(col), fontweight="bold", zorder=3)
-        mm = a["condition"] == "multimodal"
         lab = a["short"] + ("  \u00b7R" if a["model_key"].endswith("_reasoning") else "")
-        ax.text(-0.55, r + 0.5, lab, fontsize=FS_ROW, ha="right", va="center")
-        if mm:
-            ax.plot([-0.30], [r + 0.5], marker="o", ms=2.4, mfc=INK, mec="none",
-                    zorder=4, clip_on=False)
+        ax.text(c + 0.5, height_units + 0.30, lab, fontsize=FS_COL, rotation=45,
+                ha="right", va="top", rotation_mode="anchor", clip_on=False)
+        if a["condition"] == "multimodal":
+            ax.plot([c + 0.5], [height_units + 0.12], marker="o", ms=2.4, mfc=INK,
+                    mec="none", zorder=4, clip_on=False)
 
-    # Black boxes group the models; this is what replaced hue-per-category.
-    top = 0
+    left = 0
     for title, group in blocks:
-        ax.add_patch(Rectangle((0, top), ncol, len(group), fill=False, ec="black",
+        ax.add_patch(Rectangle((left, 0), len(group), nrow, fill=False, ec="black",
                                lw=1.15, zorder=5))
-        ax.add_patch(Rectangle((ncol + GAP, top), 1, len(group), fill=False, ec="black",
+        ax.add_patch(Rectangle((left, nrow + GAP), len(group), 1, fill=False, ec="black",
                                lw=1.15, zorder=5))
-        ax.text(-label_in / cell_in + 0.15, top + len(group) / 2, title,
-                fontsize=FS_NOTE + 0.3, color=INK, ha="left", va="center",
-                rotation=90, fontweight="bold", clip_on=False)
-        top += len(group)
+        ax.text(left + len(group) / 2, -0.30, title, fontsize=FS_BLOCK, color=INK,
+                ha="center", va="bottom", fontweight="bold", clip_on=False)
+        left += len(group)
 
-    for c, t in enumerate(types):
-        ax.text(c + 0.5, nrow + 0.28, pretty(t), fontsize=FS_COL, rotation=45,
-                ha="right", va="top", rotation_mode="anchor")
-    ax.text(ncol + GAP + 0.5, nrow + 0.28, "All questions", fontsize=FS_COL, rotation=45,
-            ha="right", va="top", rotation_mode="anchor", fontweight="bold")
+    for r, t in enumerate(types):
+        ax.text(-0.22, r + 0.5, pretty(t), fontsize=FS_ROW, ha="right", va="center")
+    ax.text(-0.22, nrow + GAP + 0.5, "All questions", fontsize=FS_ROW, ha="right",
+            va="center", fontweight="bold")
 
-    fig.suptitle("Expert QA by question type", fontsize=FS_TITLE, fontweight="bold",
-                 x=(label_in + grid_w / 2) / fig_w, y=1 - 0.10 / fig_h, ha="center",
-                 va="top")
-
-    cax = fig.add_axes([(label_in + grid_w + 0.16) / fig_w,
-                        (col_rise_in + 0.30) / fig_h, 0.16 / fig_w, grid_h / fig_h])
+    cax = fig.add_axes([(label_in + grid_w + 0.16) / fig_w, (rise_in + 0.22) / fig_h,
+                        0.15 / fig_w, grid_h / fig_h])
     cax.imshow([[i] for i in range(255, -1, -1)], aspect="auto", cmap=CMAP,
                extent=(0, 1, norm.vmin, norm.vmax))
     cax.set_xticks([]); cax.yaxis.tick_right(); cax.yaxis.set_label_position("right")
@@ -303,6 +303,10 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
     cax.set_ylabel("Clinical equivalence  (1\u20135)", fontsize=FS_NOTE + 0.3, labelpad=3)
     for sp in cax.spines.values():
         sp.set_linewidth(0.5); sp.set_color(INK)
+
+    fig.suptitle("Expert QA by question type", fontsize=FS_TITLE, fontweight="bold",
+                 x=(label_in + grid_w / 2) / fig_w, y=1 - 0.10 / fig_h, ha="center",
+                 va="top")
 
     out_dir.mkdir(parents=True, exist_ok=True)
     written = []
