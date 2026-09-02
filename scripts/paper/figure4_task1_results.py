@@ -270,7 +270,6 @@ def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
     ax.set_xlabel("Mean output tokens per case  (log)", fontsize=FS_LABEL)
     ax.set_ylabel("Conclusion alignment  (1–5)", fontsize=FS_LABEL)
     ax.tick_params(labelsize=FS_TICK, length=2)
-    ax.grid(True, color=GRID, lw=0.5, zorder=0); ax.set_axisbelow(True)
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)
     ax.legend(fontsize=FS_NOTE, frameon=False, loc="lower right")
@@ -299,7 +298,6 @@ def panel_c(d: dict, out_dir: Path, stem: str) -> list[Path]:
         ax.set_xlim(lo, max(a[key] for a in order) * 1.30)
         ax.set_title(title, fontsize=FS_LABEL, fontweight="bold", loc="left")
         ax.tick_params(labelsize=FS_TICK, length=2)
-        ax.xaxis.grid(True, color=GRID, lw=0.5, zorder=0); ax.set_axisbelow(True)
         for s in ("top", "right"):
             ax.spines[s].set_visible(False)
     fig.suptitle("Lexical overlap, ordered by judge score", fontsize=FS_TITLE - 0.5,
