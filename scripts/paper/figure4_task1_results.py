@@ -201,12 +201,15 @@ def resolve_font(family: str, font_dir: Path | None) -> dict:
     return {"family": family, "file": found, "registered": registered}
 
 
-def save(fig, out_dir: Path, stem: str) -> list[Path]:
+def save(fig, out_dir: Path, stem: str, tight: bool = True) -> list[Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     written = []
     for suffix in ("pdf", "svg", "png"):
         p = out_dir / f"{stem}.{suffix}"
-        fig.savefig(p, dpi=DPI, facecolor="white", bbox_inches="tight")
+        # bbox_inches="tight" crops to the ink, so it cannot coexist with an exact
+        # page size; a panel that wants A4 has to give it up.
+        fig.savefig(p, dpi=DPI, facecolor="white",
+                    **({"bbox_inches": "tight"} if tight else {}))
         written.append(p)
     plt.close(fig)
     return written
@@ -231,9 +234,15 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
     # Square, at two thirds of the A4 width. Seven bars across a full A4 width left
     # the panel long and thin, and the bar lengths span only 1.95 to 2.54 - a wide
     # canvas spends its width on the part of the axis where nothing happens.
-    side = 0.66 * style.A4_W
-    fig = plt.figure(figsize=(side, side))
-    ax = fig.add_axes([0.30, 0.115, 0.665, 0.775])
+    # An exact A4 page, with the square plot sitting in its upper half. The chart
+    # keeps the square shape asked for; the canvas is the page it will be dropped on.
+    fig = plt.figure(figsize=(style.A4_W, style.A4_H))
+    side_frac_w = 0.66                       # of the page width
+    side_in = side_frac_w * style.A4_W
+    left = (1 - side_frac_w) / 2
+    bottom = 1 - (0.10 * style.A4_H + side_in) / style.A4_H
+    ax = fig.add_axes([left + 0.085, bottom, side_frac_w - 0.085,
+                       side_in / style.A4_H])
 
     ticks, labels = [], []
     for y, a in enumerate(group):
@@ -255,7 +264,7 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
     ax_box = ax.get_position()
     fig.suptitle("Tumor board simulation", fontsize=FS_TITLE, fontweight="bold",
                  x=(ax_box.x0 + ax_box.x1) / 2, y=0.972, ha="center")
-    return save(fig, out_dir, stem)
+    return save(fig, out_dir, stem, tight=False)
 
 
 def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
