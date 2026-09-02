@@ -15,22 +15,9 @@
     }
   },
   "font": {
-    "family": "Arial",
-    "file": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/figures/fonts/Arial.ttf",
-    "registered": [
-      "Arial Black.ttf",
-      "Arial Bold Italic.ttf",
-      "Arial Bold.ttf",
-      "Arial Italic.ttf",
-      "Arial Narrow Bold Italic.ttf",
-      "Arial Narrow Bold.ttf",
-      "Arial Narrow Italic.ttf",
-      "Arial Narrow.ttf",
-      "Arial Rounded Bold.ttf",
-      "Arial Unicode.ttf",
-      "Arial.ttf",
-      "ArialHB.ttc"
-    ]
+    "family": "DejaVu Sans",
+    "file": "/rhf/allocations/wq8/dhi-rhf/al318/miniconda3/envs/medmix-env-local/lib/python3.11/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf",
+    "registered": []
   },
   "scale": {
     "videos": 219,

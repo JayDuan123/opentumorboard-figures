@@ -47,6 +47,8 @@ matplotlib.use("Agg")
 from matplotlib import font_manager as fm  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 
+from scripts.paper import style  # noqa: E402
+
 DPI = 600
 FS_TITLE = 11.0
 FS_LABEL = 6.4
@@ -214,7 +216,7 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
     """Bars in two groups. No global sort: the groups are not one league table."""
     nrow = len(d["arms"]) + 1                      # +1 for the gap between groups
     fig_h = 0.235 * nrow + 0.95
-    fig = plt.figure(figsize=(6.4, fig_h))
+    fig = plt.figure(figsize=(style.A4_W, fig_h))
     ax = fig.add_axes([0.335, 0.115, 0.625, 0.80])
 
     y, ticks, labels = 0.0, [], []
@@ -257,7 +259,7 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
 
 def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
     """Tokens against score. Log x because the arms span an order of magnitude."""
-    fig = plt.figure(figsize=(5.0, 3.5))
+    fig = plt.figure(figsize=(0.66 * style.A4_W, 0.30 * style.A4_H))
     ax = fig.add_axes([0.135, 0.145, 0.835, 0.755])
     for name, group in d["groups"]:
         colour = MM_C if name.startswith("Slides") else CAP_C
@@ -282,7 +284,7 @@ def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
 def panel_c(d: dict, out_dir: Path, stem: str) -> list[Path]:
     """The lexical metrics, for the appendix: do they order the arms as the judge does?"""
     order = sorted(d["arms"], key=lambda a: a["score"])
-    fig = plt.figure(figsize=(6.4, 0.235 * len(order) + 1.0))
+    fig = plt.figure(figsize=(style.A4_W, 0.235 * len(order) + 1.0))
     gs = fig.add_gridspec(1, 2, left=0.30, right=0.975, top=0.88, bottom=0.115, wspace=0.16)
     for ax, key, title, lo in ((fig.add_subplot(gs[0, 0]), "rouge_l_f1", "ROUGE-L F1", 0.0),
                                (fig.add_subplot(gs[0, 1]), "bertscore_f1", "BERTScore F1", 0.0)):
@@ -317,10 +319,9 @@ def main() -> int:
     a = ap.parse_args()
 
     font = resolve_font(a.font_family, a.font_dir)
-    plt.rcParams.update({"font.family": a.font_family, "text.color": INK,
-                         "axes.edgecolor": INK, "axes.labelcolor": INK,
-                         "xtick.color": INK, "ytick.color": INK,
-                         "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none"})
+    style.apply()
+    plt.rcParams.update({"text.color": INK, "axes.edgecolor": INK,
+                         "axes.labelcolor": INK, "xtick.color": INK, "ytick.color": INK})
     d = gather(a.workspace)
     written = (panel_a(d, a.output_dir, f"{a.stem}a_scores")
                + panel_b(d, a.output_dir, f"{a.stem}b_tokens")

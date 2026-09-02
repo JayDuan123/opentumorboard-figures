@@ -390,22 +390,9 @@
   "caption": "Expert QA (Task 2) by question type. Cells are the LLM judge's mean clinical equivalence on a 1-5 scale over all 4,844 test questions, under task2_judge_v4 with Qwen/Qwen3.6-27B as judge; the colour scale is shared across all three panels. Rows are ordered by question-type frequency in the corpus. A blue column label marks an arm answering from the slide images and their captions; a black label marks a text-only arm answering from captions alone, so columns do not share an input and MM and caption-only arms are not one ranking. '.R' denotes reasoning mode. Closed-source frontier models have not been run.",
   "caption_note": "The figure carries no legend text; this caption holds what the panels no longer state on the canvas, and must be used with them.",
   "font": {
-    "family": "Arial",
-    "file": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/figures/fonts/Arial.ttf",
-    "registered": [
-      "Arial Black.ttf",
-      "Arial Bold Italic.ttf",
-      "Arial Bold.ttf",
-      "Arial Italic.ttf",
-      "Arial Narrow Bold Italic.ttf",
-      "Arial Narrow Bold.ttf",
-      "Arial Narrow Italic.ttf",
-      "Arial Narrow.ttf",
-      "Arial Rounded Bold.ttf",
-      "Arial Unicode.ttf",
-      "Arial.ttf",
-      "ArialHB.ttc"
-    ]
+    "family": "DejaVu Sans",
+    "file": "/rhf/allocations/wq8/dhi-rhf/al318/miniconda3/envs/medmix-env-local/lib/python3.11/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf",
+    "registered": []
   },
   "outputs": [
     "fig3_out/fig3_task2_heatmap.pdf",

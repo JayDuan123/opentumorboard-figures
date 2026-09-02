@@ -32,9 +32,11 @@ from matplotlib import font_manager as fm  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.patches import Wedge  # noqa: E402
 
+from scripts.paper import style  # noqa: E402
+
 from scripts.paper import cancer_sites  # noqa: E402
 
-FIG_W_IN, FIG_H_IN = 7.6, 7.9
+FIG_W_IN, FIG_H_IN = style.A4_W, 0.86 * style.A4_H
 DPI = 600
 
 FS_TITLE = 12.0
@@ -366,8 +368,8 @@ def resolve_font(family: str, font_dir: Path | None) -> dict:
 
 
 def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
-    plt.rcParams.update({"font.family": family, "text.color": INK,
-                         "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none"})
+    style.apply()
+    plt.rcParams.update({"text.color": INK})
     sc = d["scale"]
     fig = plt.figure(figsize=(FIG_W_IN, FIG_H_IN))
     gs = fig.add_gridspec(2, 2, left=0.045, right=0.955, top=0.905, bottom=0.085,

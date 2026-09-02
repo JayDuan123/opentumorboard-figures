@@ -33,8 +33,10 @@ from matplotlib import font_manager as fm  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Polygon  # noqa: E402
 
-FIG_W_IN = 7.0
-FIG_H_IN = 4.35
+from scripts.paper import style  # noqa: E402
+
+FIG_W_IN = style.A4_W
+FIG_H_IN = 0.44 * style.A4_H
 DPI = 600
 
 FS_TITLE = 11.5
@@ -229,8 +231,8 @@ def arrow(ax, x0, y0, x1, y1, color=LINE, lw=0.9, z=3):
 
 
 def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
-    plt.rcParams.update({"font.family": family, "text.color": INK,
-                         "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none"})
+    style.apply()
+    plt.rcParams.update({"text.color": INK})
     fig = plt.figure(figsize=(FIG_W_IN, FIG_H_IN))
     ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, 100); ax.set_ylim(0, 100); ax.axis("off")
     case, qa, sc = d["case"], d["qa"], d["scale"]

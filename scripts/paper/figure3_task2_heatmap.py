@@ -43,6 +43,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.colors import LinearSegmentedColormap, Normalize  # noqa: E402
 from matplotlib.patches import Rectangle  # noqa: E402
 
+from scripts.paper import style  # noqa: E402
+
 FIG_W_IN = 7.4
 DPI = 600
 
@@ -234,8 +236,8 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
     the axis a reader scans first, which is what the panel is about: the spread across
     question types is larger than the spread across most models.
     """
-    plt.rcParams.update({"font.family": family, "text.color": INK,
-                         "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none"})
+    style.apply()
+    plt.rcParams.update({"text.color": INK})
     blocks = [(t, g) for t, g in order(d) if g]
     types = d["types"]
     cols = [(t, a) for t, g in blocks for a in g]
@@ -243,8 +245,11 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
 
     GAP = 0.34                       # gap above the all-questions row
     height_units = nrow + GAP + 1
-    cell_w, cell_h = 0.385, 0.335
     label_in, right_in = 1.52, 0.92
+    # Pin the grid to the A4 text width and let the cell size follow from the column
+    # count, rather than fixing the cell and letting the page width drift.
+    cell_w = (style.A4_W - label_in - right_in) / ncol
+    cell_h = 0.335
     grid_w, grid_h = ncol * cell_w, height_units * cell_h
     longest = max(len(a["short"]) + (3 if a["model_key"].endswith("_reasoning") else 0)
                   for _, a in cols)

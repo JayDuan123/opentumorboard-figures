@@ -44,8 +44,10 @@ matplotlib.use("Agg")
 from matplotlib import font_manager as fm  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 
-FIG_W_IN = 7.0
-FIG_H_IN = 7.9
+from scripts.paper import style  # noqa: E402
+
+FIG_W_IN = style.A4_W
+FIG_H_IN = 0.80 * style.A4_H
 DPI = 600
 
 FS_TICK = 10.0
@@ -256,18 +258,10 @@ def hist_panel(ax, turns: list[int], scale: dict) -> None:
 
 
 def draw(data: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
-    plt.rcParams.update({
-        "font.family": family,
-        "font.size": FS_TICK,
-        "text.color": INK,
-        "axes.edgecolor": INK,
-        "axes.labelcolor": INK,
-        "xtick.color": INK,
-        "ytick.color": INK,
-        "pdf.fonttype": 42,
-        "ps.fonttype": 42,
-        "svg.fonttype": "none",
-    })
+    style.apply()
+    plt.rcParams.update({"text.color": INK, "axes.edgecolor": INK,
+                         "axes.labelcolor": INK, "xtick.color": INK,
+                         "ytick.color": INK})
     scale = data["scale"]
     fig = plt.figure(figsize=(FIG_W_IN, FIG_H_IN))
     gs = fig.add_gridspec(3, 2, height_ratios=[1.0, 1.85, 0.80],

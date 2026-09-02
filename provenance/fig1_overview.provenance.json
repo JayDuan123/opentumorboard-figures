@@ -2,39 +2,26 @@
   "figure": "1",
   "sources": {
     "tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl": {
-      "path": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
+      "path": "/rhf/allocations/wq8/yd68/otb-figures-repo/data/model_evaluation/manifests/tumor_board_simulation_test_video_split_60_10_30_v3_deleaked_repaired_xsfixed_reanchored_20260808.jsonl",
       "sha256": "0d9db276a5b442cf9c003a1be8cff876988e7986dcdf6f5a1ff8cfafaba32402"
     },
     "expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_slidealigned_20260814.jsonl": {
-      "path": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_slidealigned_20260814.jsonl",
+      "path": "/rhf/allocations/wq8/yd68/otb-figures-repo/data/model_evaluation/manifests/expert_qa_test_video_split_60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_slidealigned_20260814.jsonl",
       "sha256": "c03444ba7f36ed7dbddc2bfa4761acd3009906366f7555a7d5246c8e4be0ebbe"
     },
     "tumor_board_simulation_full_video_split_60_10_30_v4_deleaked_xsfixed_reanchored_20260808.jsonl": {
-      "path": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/manifests/tumor_board_simulation_full_video_split_60_10_30_v4_deleaked_xsfixed_reanchored_20260808.jsonl",
+      "path": "/rhf/allocations/wq8/yd68/otb-figures-repo/data/model_evaluation/manifests/tumor_board_simulation_full_video_split_60_10_30_v4_deleaked_xsfixed_reanchored_20260808.jsonl",
       "sha256": "edb9f88c345f632959e37b457ff2564da524700aa8b95ea0b28f152a29ad9ba1"
     },
     "expert_qa_trainval_video_split_60_10_30_v4_qascreened_xsfixed_20260809.jsonl": {
-      "path": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/manifests/expert_qa_trainval_video_split_60_10_30_v4_qascreened_xsfixed_20260809.jsonl",
+      "path": "/rhf/allocations/wq8/yd68/otb-figures-repo/data/model_evaluation/manifests/expert_qa_trainval_video_split_60_10_30_v4_qascreened_xsfixed_20260809.jsonl",
       "sha256": "c529872f74cc1a26ad1c47e83620d3cd32a6fb4a30e0f5183e9338adb38b80eb"
     }
   },
   "font": {
-    "family": "Arial",
-    "file": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/figures/fonts/Arial.ttf",
-    "registered": [
-      "Arial Black.ttf",
-      "Arial Bold Italic.ttf",
-      "Arial Bold.ttf",
-      "Arial Italic.ttf",
-      "Arial Narrow Bold Italic.ttf",
-      "Arial Narrow Bold.ttf",
-      "Arial Narrow Italic.ttf",
-      "Arial Narrow.ttf",
-      "Arial Rounded Bold.ttf",
-      "Arial Unicode.ttf",
-      "Arial.ttf",
-      "ArialHB.ttc"
-    ]
+    "family": "DejaVu Sans",
+    "file": "/rhf/allocations/wq8/dhi-rhf/al318/miniconda3/envs/medmix-env-local/lib/python3.11/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf",
+    "registered": []
   },
   "example_case": {
     "video_uid": "video_cc76d189e9e7967f",

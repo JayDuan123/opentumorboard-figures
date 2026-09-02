@@ -37,13 +37,13 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.patches import Wedge  # noqa: E402
 
-from scripts.paper import cancer_sites  # noqa: E402
+from scripts.paper import cancer_sites, style  # noqa: E402
 from scripts.paper.figure2b_sunburst import (  # noqa: E402
     ROLE_GROUP, SITE_SYSTEM, TRAINVAL, TEST, TASK1, fit_radial, load, nest,
     pretty, refuse, resolve_font, sha256,
 )
 
-FIG_IN = 8.4
+FIG_IN = style.A4_W
 DPI = 600
 
 FS_TITLE = 13.0
@@ -272,8 +272,8 @@ def quadrant(ax, start, c1, c2, c3, head, sub, nested, total, label=str):
 
 def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
     from scripts.paper.figure2b_sunburst import place_outside
-    plt.rcParams.update({"font.family": family, "text.color": INK,
-                         "pdf.fonttype": 42, "ps.fonttype": 42, "svg.fonttype": "none"})
+    style.apply()
+    plt.rcParams.update({"text.color": INK})
     sc = d["scale"]
     fig = plt.figure(figsize=(FIG_IN, FIG_IN))
     ax = fig.add_axes([0.02, 0.02, 0.96, 0.92])

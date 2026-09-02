@@ -99,16 +99,34 @@ Verified on Python 3.11.15 / matplotlib 3.10.9 / numpy 2.4.6.
 
 All four have been run against a fresh extract on the default font and reproduce.
 
-### Fonts
+### Style and fonts
 
-The published figures use Arial, which is **not** required. Omit `--font-family` and
-the scripts use DejaVu Sans, which ships with matplotlib. To match the published look,
-copy `model_evaluation/figures/fonts/` from the old workspace and add:
+`scripts/paper/style.py` holds the house style — A4 canvas, Helvetica, 8/10 pt — and
+every figure calls it. Figures are sized as a fraction of the A4 page, so `figsize`
+is `(A4_W, 0.44 * A4_H)` rather than a bare number of inches.
 
-    --font-family Arial --font-dir /path/to/fonts
+There is no Helvetica file in this repo. The usual recipe converts macOS's
+`Helvetica.dfont` with `fondu`; that file does not exist on Linux and Helvetica is
+licensed, so the substitute is chosen per format:
 
-A named family that is not installed is an error, not a silent substitution: matplotlib
-falls back without telling you, and a paper figure must not change typeface quietly.
+- **PDF** — `pdf.use14corefonts` writes `/BaseFont /Helvetica` and lets the viewer
+  supply it. Verified: the PDFs really do reference `Helvetica` / `Helvetica-Bold`,
+  and the middle dot and en dash used as separators survive and extract correctly.
+- **PNG** — falls back to **Nimbus Sans**, URW's metrically exact Helvetica clone,
+  already present on most Linux boxes at `/usr/share/fonts/urw-base35`. Same metrics,
+  so a PNG and its PDF lay out identically.
+
+`style.resolved_sans()` refuses if none of Helvetica / Nimbus Sans / Arial /
+Liberation Sans is installed rather than letting matplotlib fall back silently.
+
+Note that `pdf.fonttype = 42` and `pdf.use14corefonts = True` do not combine: with
+core fonts on nothing is embedded, only the base 14 are available, and any other
+family silently becomes Helvetica. Both are set because 42 applies if core fonts are
+switched off; the behaviour above is what ships.
+
+The 8 pt size applies to chrome — ticks, axis labels, titles, legends. Dense in-cell
+annotation keeps its own smaller sizes: seventeen columns of 8 pt numbers do not fit
+across an A4 width.
 
 ---
 

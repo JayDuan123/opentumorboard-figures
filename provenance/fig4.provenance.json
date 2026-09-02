@@ -274,22 +274,9 @@
   },
   "caption": "Tumor board simulation. Each arm generates a multi-specialist discussion and a treatment conclusion from the case summary and its slides; the conclusion is scored against the real board's decision on a 1-5 alignment rubric (llm_judge_task1_v31_task2_v4, judge Qwen/Qwen3.6-27B) over 184 test cases. Bars are grouped by input condition and are not a single ranking: text-only arms cannot take the slide images and answer from captions alone, which the benchmark files as an ablation of Task 1 rather than a second way of running it. Scores grade every case the arm was given, with cases it never concluded entering at the rubric floor of 1. The strongest arm, Gemma 4 31B, reaches 2.54 of 5; no arm reaches 3.",
   "font": {
-    "family": "Arial",
-    "file": "/rhf/allocations/wq8/dhi-rhf/al318/OpenTumorBoard_workspace/model_evaluation/figures/fonts/Arial.ttf",
-    "registered": [
-      "Arial Black.ttf",
-      "Arial Bold Italic.ttf",
-      "Arial Bold.ttf",
-      "Arial Italic.ttf",
-      "Arial Narrow Bold Italic.ttf",
-      "Arial Narrow Bold.ttf",
-      "Arial Narrow Italic.ttf",
-      "Arial Narrow.ttf",
-      "Arial Rounded Bold.ttf",
-      "Arial Unicode.ttf",
-      "Arial.ttf",
-      "ArialHB.ttc"
-    ]
+    "family": "DejaVu Sans",
+    "file": "/rhf/allocations/wq8/dhi-rhf/al318/miniconda3/envs/medmix-env-local/lib/python3.11/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf",
+    "registered": []
   },
   "outputs": [
     "fig4_out/fig4a_scores.pdf",
