@@ -244,7 +244,6 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
     ax.set_xlim(0, 3.0); ax.set_xticks([0, 1, 2, 3])
     ax.set_xlabel("Conclusion alignment  (1\u20135)", fontsize=FS_LABEL)
     ax.tick_params(labelsize=FS_TICK, length=2)
-    ax.xaxis.grid(True, color=GRID, lw=0.5, zorder=0); ax.set_axisbelow(True)
     for sp in ("top", "right"):
         ax.spines[sp].set_visible(False)
     for sp in ("left", "bottom"):
