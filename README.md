@@ -7,7 +7,7 @@ time; nothing is typed in.
 | | Figure | Script |
 |---|---|---|
 | ![Fig 1](figures/fig1_overview.png) | **Fig 1** benchmark overview | `figure1_overview.py` |
-| ![Fig 2b wheel](figures/fig2b_wheel.png) | **Fig 2b** the whole benchmark as one wheel | `figure2b_wheel.py` |
+| ![Fig 2b wheel](figures/fig2b_wheel.png) | **Fig 2b** the whole benchmark as one three-ring wheel | `figure2b_wheel.py` |
 | ![Fig 2b](figures/fig2b_sunburst.png) | **Fig 2b** four nested-ring panels | `figure2b_sunburst.py` |
 | ![Fig 2b bars](figures/fig2b_statistics.png) | **Fig 2b** same data as bars | `figure2b_statistics.py` |
 | ![Fig 3](figures/fig3_task2_heatmap.png) | **Fig 3** expert QA heatmap (Task 2) | `figure3_task2_heatmap.py` |
@@ -135,7 +135,13 @@ Three interchangeable versions of the same four distributions:
 - `figure2b_sunburst.py` — four nested-ring panels
 - `figure2b_statistics.py` — horizontal bars
 
-**Reading the wheel.** Each quadrant gets an equal quarter of the circle. The quarters
+**Reading the wheel.** Three data rings: the facet, a grouping where the benchmark
+defines one (organ system for cancer sites, board function for specialist roles), and
+the leaves. The nine question types get a plain descriptor band instead of a grouping
+— they have no level above them that the benchmark defines, and inventing one to fill
+the ring would be a taxonomy drawn for the picture rather than for the data.
+
+Each quadrant gets an equal quarter of the circle. The quarters
 are *not* proportional to one another and must not be read that way — 611 cases and
 16,215 questions are different units, and sizing them against each other would claim a
 ratio that does not exist. Proportion is meaningful only along the outer ring, within

@@ -39,7 +39,8 @@ from matplotlib.patches import Wedge  # noqa: E402
 
 from scripts.paper import cancer_sites  # noqa: E402
 from scripts.paper.figure2b_sunburst import (  # noqa: E402
-    TRAINVAL, TEST, TASK1, fit_radial, load, pretty, refuse, resolve_font, sha256,
+    ROLE_GROUP, SITE_SYSTEM, TRAINVAL, TEST, TASK1, fit_radial, load, nest,
+    pretty, refuse, resolve_font, sha256,
 )
 
 FIG_IN = 8.4
@@ -54,7 +55,7 @@ FS_NOTE = 6.2
 INK = "#1b1b1b"
 MUTED = "#5f5f5f"
 
-R0, R1, R2, R3 = 0.30, 0.56, 0.76, 1.06
+R0, R1, R2, R3 = 0.24, 0.48, 0.70, 1.04
 
 # One hue per quadrant, given as (ring1, ring2, ring3 base). Inner is the saturated
 # end so the eye lands on the headline number first.
@@ -119,6 +120,10 @@ def ring_text(ax, mid, r_lo, r_hi, text, fs, weight="normal", color=INK,
                 fontsize=fs, fontweight=weight, color=color, linespacing=1.25, zorder=6)
         return
     txt, fitted = fit_radial(text, band, fs)
+    # fit_radial can drop a long single word to the floor while a short one keeps the
+    # maximum, and a ring set in two visibly different sizes reads as a mistake. Hold
+    # the spread to 18 per cent and let a long word run marginally into the gutter.
+    fitted = max(fitted, fs * 0.82)
     rot = mid + 180 if 90 < mid % 360 < 270 else mid
     rr = (r_lo + r_hi) / 2
     ax.text(rr * math.cos(math.radians(mid)), rr * math.sin(math.radians(mid)), txt,
@@ -126,31 +131,19 @@ def ring_text(ax, mid, r_lo, r_hi, text, fs, weight="normal", color=INK,
             fontsize=fitted, fontweight=weight, color=color, linespacing=0.94, zorder=6)
 
 
-def quadrant(ax, start, c1, c2, c3, head, sub, leaves, total, label=str):
-    """One 90-degree facet: headline, descriptor, then its own proportional leaves."""
-    ax.add_patch(Wedge((0, 0), R1, start, start + 90, width=R1 - R0,
-                       facecolor=c1, edgecolor="white", lw=1.1, zorder=3))
-    ax.add_patch(Wedge((0, 0), R2, start, start + 90, width=R2 - R1,
-                       facecolor=c2, edgecolor="white", lw=1.1, zorder=3))
-    mid = start + 45
-    ring_text(ax, mid, R0, R1, head, FS_HEAD, weight="bold")
-    ring_text(ax, mid, R1, R2, sub, FS_SUB, color=INK)
 
-    if not leaves:
-        ax.add_patch(Wedge((0, 0), R3, start, start + 90, width=R3 - R2,
-                           facecolor=shade(c3, 0.45), edgecolor="white", lw=1.1, zorder=3))
-        return []
-
+def leaf_ring(ax, start, c3, leaves, total, label=str):
+    """Outer ring for a facet with no grouping level above it."""
     outside, a = [], start + 90.0
     for i, (name, n) in enumerate(leaves):
         span = 90.0 * n / total
         ax.add_patch(Wedge((0, 0), R3, a - span, a, width=R3 - R2,
-                           facecolor=shade(c3, 0.62 + 0.13 * (i % 3)),
+                           facecolor=shade(c3, 0.58 + 0.13 * (i % 3)),
                            edgecolor="white", lw=0.8, zorder=3))
         lmid = a - span / 2
-        if span >= 80.0:      # a whole-quadrant summary, not a category
+        if span >= 80.0:            # a whole-quadrant summary, not a category
             ring_text(ax, lmid, R2, R3, label(name), FS_LEAF, tangential=True)
-        elif span >= 3.6:
+        elif span >= 2.8:
             ring_text(ax, lmid, R2, R3, label(name), FS_LEAF)
         else:
             rad = math.radians(lmid)
@@ -158,6 +151,66 @@ def quadrant(ax, start, c1, c2, c3, head, sub, leaves, total, label=str):
                             "side": 1 if math.cos(rad) >= 0 else -1,
                             "text": f"{label(name)}  {n}"})
         a -= span
+    return outside
+
+
+def quadrant(ax, start, c1, c2, c3, head, sub, nested, total, label=str):
+    """One 90-degree facet, three data rings deep.
+
+    Ring 1 is the headline. Ring 2 is a grouping where the facet has one - organ
+    system for cancer sites, board function for specialist roles - and a plain
+    descriptor where it does not: the nine question types have no level above them
+    that the benchmark defines, and inventing one to fill the ring would be a
+    taxonomy drawn for the picture rather than for the data.
+    """
+    ax.add_patch(Wedge((0, 0), R1, start, start + 90, width=R1 - R0,
+                       facecolor=c1, edgecolor="white", lw=1.1, zorder=3))
+    mid = start + 45
+    ring_text(ax, mid, R0, R1, head, FS_HEAD, weight="bold")
+
+    if nested is None:                      # no grouping: one descriptor band
+        ax.add_patch(Wedge((0, 0), R2, start, start + 90, width=R2 - R1,
+                           facecolor=c2, edgecolor="white", lw=1.1, zorder=3))
+        ring_text(ax, mid, R1, R2, sub, FS_SUB, tangential=len(sub) > 24)
+        return []
+
+    outside, a = [], start + 90.0
+    for gi, (group, gtot, leaves) in enumerate(nested):
+        gspan = 90.0 * gtot / total
+        ax.add_patch(Wedge((0, 0), R2, a - gspan, a, width=R2 - R1,
+                           facecolor=shade(c2, 0.72 + 0.14 * (gi % 2)),
+                           edgecolor="white", lw=1.0, zorder=3))
+        gmid = a - gspan / 2
+        gname = group.replace("\n", " ")
+        if len(leaves) == 1:
+            gname = ""            # the leaf ring names it; two labels for one thing
+        if gname and gspan >= 4.0:
+            ring_text(ax, gmid, R1, R2, gname, FS_SUB - 0.4, weight="bold")
+        elif gname:
+            rad = math.radians(gmid)
+            outside.append({"angle": rad, "r0": R3, "y": (R3 + 0.05) * math.sin(rad),
+                            "side": 1 if math.cos(rad) >= 0 else -1,
+                            "text": f"{gname}  {gtot}"})
+        b = a
+        for li, (name, n) in enumerate(leaves):
+            lspan = 90.0 * n / total
+            ax.add_patch(Wedge((0, 0), R3, b - lspan, b, width=R3 - R2,
+                               facecolor=shade(c3, 0.58 + 0.13 * (li % 3)),
+                               edgecolor="white", lw=0.8, zorder=3))
+            lmid = b - lspan / 2
+            if lspan >= 80.0:
+                ring_text(ax, lmid, R2, R3, label(name), FS_LEAF,
+                          tangential=True)
+            elif lspan >= 2.8:
+                ring_text(ax, lmid, R2, R3, label(name), FS_LEAF)
+            else:
+                rad = math.radians(lmid)
+                outside.append({"angle": rad, "r0": R3,
+                                "y": (R3 + 0.05) * math.sin(rad),
+                                "side": 1 if math.cos(rad) >= 0 else -1,
+                                "text": f"{label(name)}  {n}"})
+            b -= lspan
+        a -= gspan
     return outside
 
 
@@ -173,26 +226,31 @@ def draw(d: dict, out_dir: Path, stem: str, family: str) -> list[Path]:
 
     keep = str                                  # already cased in the source data
     cap = lambda s_: s_[:1].upper() + s_[1:]     # roles are lowercase prose
+
+    # A one-wedge "grouping" so the corpus quadrant keeps the same ring structure
+    # without claiming a proportion between a slide count and an utterance count.
+    corpus_leaf = (f"median {sc['slides_median']:.0f} slides per case (max "
+                   f"{sc['slides_max']})\nmedian {sc['turns_median']:.0f} utterances "
+                   f"per case")
     content = {
         "questions": (f"{sc['questions']:,}\nQuestions", f"{len(d['qa_types'])} question types",
-                      d["qa_types"].most_common(), sc["questions"], pretty),
-        "cases": (f"{sc['cases']}\nCases", f"{len(d['sites'])} cancer sites",
-                  d["sites"].most_common(), sc["cases"], keep),
-        "specialists": (f"{len(d['roles'])}\nSpecialist roles",
-                        f"{sc['utterances']:,} utterances", d["roles"].most_common(),
-                        sc["questions"], cap),
-        # One wedge, not a subdivision: these are summary statistics, and splitting the
-        # ring would claim a proportion between a slide count and an utterance count.
-        "corpus": (f"{sc['videos']}\nVideos", f"{sc['hours']:.0f} hours  ·  "
-                   f"{sc['slides']:,} slides",
-                   [(f"median {sc['slides_median']:.0f} slides per case (max "
-                     f"{sc['slides_max']})\nmedian {sc['turns_median']:.0f} utterances "
-                     f"per case", 1)], 1, keep),
+                      None, sc["questions"], pretty, d["qa_types"].most_common()),
+        "cases": (f"{sc['cases']}\nCases", "", nest(d["sites"], SITE_SYSTEM),
+                  sc["cases"], keep, None),
+        "specialists": (f"{len(d['roles'])}\nSpecialist roles", "",
+                        nest(d["roles"], ROLE_GROUP), sc["questions"], cap, None),
+        "corpus": (f"{sc['videos']}\nVideos",
+                   f"{sc['hours']:.0f} hours  ·  {sc['slides']:,} slides",
+                   None, 1, keep, [(corpus_leaf, 1)]),
     }
     outside = []
     for key, start, c1, c2, c3 in QUADS:
-        head, sub, leaves, total, lab = content[key]
-        outside += quadrant(ax, start, c1, c2, c3, head, sub, leaves, total, lab)
+        head, sub, nested, total, lab, flat = content[key]
+        if nested is None:                       # flat facet: descriptor ring, then leaves
+            outside += quadrant(ax, start, c1, c2, c3, head, sub, None, total, lab)
+            outside += leaf_ring(ax, start, c3, flat, total, lab)
+        else:
+            outside += quadrant(ax, start, c1, c2, c3, head, sub, nested, total, lab)
     place_outside(ax, outside, r=R3 + 0.05, gap=0.075)
 
     fig.suptitle("OpenTumorBoard at a glance", fontsize=FS_TITLE, fontweight="bold",
