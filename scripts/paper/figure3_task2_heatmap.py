@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import csv
 import hashlib
 import math
 import json
@@ -74,7 +75,6 @@ CMAP = LinearSegmentedColormap.from_list(
 SHORT = {
     "deepseek_v4_pro": "DeepSeek-V4-Pro",
     "deepseek_v4_flash_api": "DeepSeek-V4-Flash",
-    "qwen3_8_27b": "Qwen3.8-27B",
     "medgemma_27b_it": "MedGemma-27B",
     "huatuogpt_3_32b": "HuatuoGPT-3-32B",
     "meditron3_70b": "Meditron-3-70B",
@@ -87,7 +87,7 @@ SHORT = {
 
 BLOCKS = [
     ("Closed-source frontier", []),
-    ("Open-source frontier", ["deepseek_v4_pro", "deepseek_v4_flash_api", "qwen3_8_27b"]),
+    ("Open-source frontier", ["deepseek_v4_pro", "deepseek_v4_flash_api"]),
     ("Medical-purpose", ["medgemma_27b_it", "huatuogpt_3_32b", "meditron3_70b", "medreason_8b"]),
     ("Other open general", ["llama4_scout", "gemma4_31b_it", "ministral_3_14b_instruct_2512",
                             "nemotron_3_5_lightning"]),
@@ -102,62 +102,68 @@ def sha256(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
+BOARD_CSV = "model_evaluation/board_results_20260902/board_results.csv"
+
+
 def gather(ws: Path) -> dict:
-    cat_path = ws / "OpenTumorBoard/evaluation/results_catalog.json"
-    reg_path = ws / "OpenTumorBoard/evaluation/model_registry.json"
-    if not cat_path.exists():
-        refuse(f"missing {cat_path}")
-    cat = json.loads(cat_path.read_text(encoding="utf-8"))
-    reg = json.loads(reg_path.read_text(encoding="utf-8"))["models"]
+    """Roster from the board's export; per-type numbers from the batch it names.
 
-    # The catalog's own precedence rule, applied rather than restated.
-    if "Later aggregate sources override earlier" not in cat["policy"]["source_priority"]:
-        refuse("policy.source_priority is no longer last-one-wins; the resolution "
-               "below encodes that rule and must be revisited")
-    resolved, source_of = {}, {}
-    for rel in cat["active"]["aggregate_sources"]["judge"]:
-        p = ws / "model_evaluation" / rel
-        if not p.exists():
-            refuse(f"aggregate source missing on disk: {rel}")
-        d = json.loads(p.read_text(encoding="utf-8"))
-        for r in d.get("results", {}).get("task2", []) or []:
-            resolved[r["model_key"]] = r
-            source_of[r["model_key"]] = (rel, d.get("protocol_version", ""))
+    The export is the authority on WHICH arms are on the board and which judge batch
+    each one resolves to - it applies the catalog's last-wins rule once, and this file
+    used to re-implement it. What the export does not carry is the per-question-type
+    breakdown, which is the substance of this panel, so that is still read from the
+    batch summary the export points at.
+    """
+    csv_p = ws / BOARD_CSV
+    if not csv_p.exists():
+        refuse(f"missing board export: {csv_p}")
+    with csv_p.open(encoding="utf-8") as fh:
+        board = [r for r in csv.DictReader(fh) if r["code_task"] == "task2"]
+    if not board:
+        refuse("the board export has no task2 rows")
 
-    arms = []
-    for m in cat["active"]["models"]:
-        if "task2" not in m["runs"]:
-            continue
-        key, cond = m["model_key"], m["runs"]["task2"]["condition"]
-        # The condition decides the key, not whichever spelling happens to resolve
-        # first: a multimodal arm publishes as mm_<key>, and several bare keys still
-        # resolve to superseded v3 batches that are not board rows.
-        want = ("mm_" + key) if cond == "multimodal" else key
-        if want not in resolved:
-            refuse(f"active arm {key} ({cond}) expects judged key {want}, which no "
-                   "aggregate judge source provides")
-        jk = want
-        rel, proto = source_of[jk]
-        if "task2_v4" not in proto:
-            refuse(f"{key} resolves to {proto}, not task2_v4; the column would mix rubrics")
-        row = resolved[jk]
+    reg = json.loads((ws / "OpenTumorBoard/evaluation/model_registry.json")
+                     .read_text(encoding="utf-8"))["models"]
+
+    arms, judges = [], set()
+    for r in board:
+        key, batch = r["model_key"], r["judge_batch"]
+        sp = ws / "model_evaluation" / batch / "results" / "summary.json"
+        if not sp.exists():
+            refuse(f"{key}: the export names judge batch {batch}, which is not on disk")
+        jd = json.loads(sp.read_text(encoding="utf-8"))
+        if "task2_v4" not in jd.get("protocol_version", ""):
+            refuse(f"{batch} is {jd.get('protocol_version')}, not task2_v4; the column "
+                   "would mix rubrics")
+        judges.add(jd.get("judge_model"))
+        # Multimodal rows are USUALLY keyed with an mm_ prefix inside the judge
+        # summary, but not always: ministral_3_14b_instruct_2512 is multimodal and
+        # keyed bare in board13. Try both and let the batch decide, rather than
+        # deriving the key from the condition and being wrong for one arm.
+        bykey = {x["model_key"]: x for x in jd["results"]["task2"]}
+        cands = (["mm_" + key, key] if r["condition"] == "multimodal" else [key])
+        want = next((c for c in cands if c in bykey), None)
+        if want is None:
+            refuse(f"{batch} has no row for board model {key} under any of {cands}")
+        row = bykey[want]
         if not row.get("per_qa_type"):
-            refuse(f"{key} has no per_qa_type; there is nothing to put in the rows")
-        if SHORT.get(key.replace("_reasoning", "")) is None:
-            refuse(f"no short column label for {key}; add one to SHORT rather than "
-                   "letting a 30-character registry name run off the panel")
+            refuse(f"{want} has no per_qa_type; there is nothing to put in the rows")
+        base = key.replace("_reasoning", "")
+        if base not in SHORT:
+            refuse(f"no short column label for {key}; add one to SHORT")
         arms.append({
-            "model_key": key, "judged_key": jk, "condition": cond,
+            "model_key": key, "judged_key": want, "condition": r["condition"],
             "display": reg.get(key, {}).get("display_name", key),
-            "short": SHORT.get(key.replace("_reasoning", "")),
-            "overall": row["item_macro_clinical_equivalence"],
-            "scored": row["scored_records"],
-            "per_qa_type": {t: v["clinical_equivalence"] for t, v in row["per_qa_type"].items()},
-            "judge_source": rel,
+            "short": SHORT[base],
+            "overall": float(r["clinical_equivalence"]),
+            "scored": int(r["scored_records"]),
+            "per_qa_type": {t: v["clinical_equivalence"]
+                            for t, v in row["per_qa_type"].items()},
+            "judge_source": batch,
         })
+    if len(judges) != 1:
+        refuse(f"columns were scored by different judges: {judges}")
 
-    # Row order = corpus frequency, so Fig 3 and Fig 2b tell the same story in the
-    # same order rather than two orderings of one distribution.
     man = ws / ("OpenTumorBoard_data/benchmark/task2/test/expert_qa_test_video_split_"
                 "60_10_30_v3_qascreened_xsfixed_reanchored_rescreened_slidealigned_20260814.jsonl")
     counts = collections.Counter(
@@ -165,15 +171,12 @@ def gather(ws: Path) -> dict:
     types = [t for t, _ in counts.most_common()]
     for a in arms:
         if set(a["per_qa_type"]) != set(types):
-            refuse(f"{a['model_key']} covers {len(a['per_qa_type'])} QA types, manifest has {len(types)}")
-
-    judges = {json.loads((ws / "model_evaluation" / a["judge_source"]).read_text(
-        encoding="utf-8")).get("judge_model") for a in arms}
-    if len(judges) != 1:
-        refuse(f"columns were scored by different judges: {judges}")
+            refuse(f"{a['model_key']} covers {len(a['per_qa_type'])} QA types, "
+                   f"manifest has {len(types)}")
 
     return {"arms": arms, "types": types, "type_counts": counts, "judge": judges.pop(),
-            "catalog_sha256": sha256(cat_path),
+            "board_export": csv_p.name,
+            "board_sha256": sha256(csv_p),
             "n_records": {a["scored"] for a in arms}}
 
 
@@ -342,7 +345,9 @@ def main() -> int:
         "metric": "llm_judge clinical_equivalence (1-5), task2_judge_v4",
         "judge_model": d["judge"],
         "records_per_arm": sorted(d["n_records"]),
-        "results_catalog_sha256": d["catalog_sha256"],
+        "source": {"file": d["board_export"], "sha256": d["board_sha256"],
+                   "note": "board export supplies the roster and the judge batch "
+                           "per arm; per_qa_type is read from that batch"},
         "row_order": "QA-type frequency in the test manifest (same order as Fig 2b)",
         "qa_type_counts": dict(d["type_counts"].most_common()),
         "arms": [{k: v for k, v in a_.items() if k != "per_qa_type"} for a_ in d["arms"]],

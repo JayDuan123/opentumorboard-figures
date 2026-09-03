@@ -10,7 +10,11 @@
     4843,
     4844
   ],
-  "results_catalog_sha256": "f382ac71cc62976dc1a2db8a63dce10cdee3f3c4fc8f8f6e93054520f96d5e1b",
+  "source": {
+    "file": "board_results.csv",
+    "sha256": "da8834ea585499c9563476a0721b92ef57067fd8ef9cbdf5db9ab3b9b13f3581",
+    "note": "board export supplies the roster and the judge batch per arm; per_qa_type is read from that batch"
+  },
   "row_order": "QA-type frequency in the test manifest (same order as Fig 2b)",
   "qa_type_counts": {
     "findings_interpretation": 1284,
@@ -32,7 +36,7 @@
       "short": "Llama 4 Scout",
       "overall": 3.528075970272502,
       "scored": 4844,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "huatuogpt_3_32b",
@@ -42,7 +46,7 @@
       "short": "HuatuoGPT-3-32B",
       "overall": 3.5078447563996695,
       "scored": 4844,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "huatuogpt_3_32b_reasoning",
@@ -52,17 +56,17 @@
       "short": "HuatuoGPT-3-32B",
       "overall": 3.3364987613542527,
       "scored": 4844,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "ministral_3_14b_instruct_2512",
-      "judged_key": "mm_ministral_3_14b_instruct_2512",
+      "judged_key": "ministral_3_14b_instruct_2512",
       "condition": "multimodal",
       "display": "Ministral 3 14B Instruct 2512",
       "short": "Ministral 3 14B",
-      "overall": 3.5551197357555737,
+      "overall": 3.4616019818331956,
       "scored": 4844,
-      "judge_source": "judge/mm_ministral_3_14b_instruct_2512_task2_judge_v4_images_20260816/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "medreason_8b",
@@ -70,9 +74,9 @@
       "condition": "caption_only",
       "display": "MedReason-8B",
       "short": "MedReason-8B",
-      "overall": 2.420400578154037,
+      "overall": 2.420107349298101,
       "scored": 4843,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "gemma4_31b_it",
@@ -82,7 +86,7 @@
       "short": "Gemma 4 31B",
       "overall": 3.4960776218001652,
       "scored": 4844,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "gemma4_31b_it_reasoning",
@@ -92,7 +96,7 @@
       "short": "Gemma 4 31B",
       "overall": 3.63728323699422,
       "scored": 4844,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "medgemma_27b_it",
@@ -102,7 +106,7 @@
       "short": "MedGemma-27B",
       "overall": 3.402353426919901,
       "scored": 4844,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "nemotron_3_5_lightning",
@@ -112,7 +116,7 @@
       "short": "Nemotron 3.5",
       "overall": 3.522502064409579,
       "scored": 4844,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "nemotron_3_5_lightning_reasoning",
@@ -120,9 +124,9 @@
       "condition": "caption_only",
       "display": "NVIDIA Nemotron 3.5 Lightning 30B-A3B",
       "short": "Nemotron 3.5",
-      "overall": 3.5526641883519208,
+      "overall": 3.551610239471511,
       "scored": 4842,
-      "judge_source": "judge/board13_task2_judge_v4_images_20260814/results/summary.json"
+      "judge_source": "judge/board13_task2_judge_v4_images_20260814"
     },
     {
       "model_key": "meditron3_70b",
@@ -132,7 +136,7 @@
       "short": "Meditron-3-70B",
       "overall": 3.541081750619323,
       "scored": 4844,
-      "judge_source": "judge/meditron3_70b_task2_judge_v4_images_20260817_max8192/results/summary.json"
+      "judge_source": "judge/meditron3_70b_task2_judge_v4_images_20260817_max8192"
     },
     {
       "model_key": "deepseek_v4_pro",
@@ -142,7 +146,7 @@
       "short": "DeepSeek-V4-Pro",
       "overall": 4.009083402146986,
       "scored": 4844,
-      "judge_source": "judge/deepseek_v4_pro_task2_judge_v4_images_20260815/results/summary.json"
+      "judge_source": "judge/deepseek_v4_pro_task2_judge_v4_images_20260815"
     },
     {
       "model_key": "deepseek_v4_pro_reasoning",
@@ -150,9 +154,9 @@
       "condition": "caption_only",
       "display": "DeepSeek-V4-Pro",
       "short": "DeepSeek-V4-Pro",
-      "overall": 4.18178062383805,
+      "overall": 4.179810074318745,
       "scored": 4841,
-      "judge_source": "judge/deepseek_v4_pro_task2_judge_v4_images_20260815/results/summary.json"
+      "judge_source": "judge/deepseek_v4_pro_task2_judge_v4_images_20260815"
     },
     {
       "model_key": "deepseek_v4_flash_api",
@@ -162,7 +166,7 @@
       "short": "DeepSeek-V4-Flash",
       "overall": 3.864574731626755,
       "scored": 4844,
-      "judge_source": "judge/deepseek_v4_flash_api_task2_judge_v4_images_20260815/results/summary.json"
+      "judge_source": "judge/deepseek_v4_flash_api_task2_judge_v4_images_20260815"
     },
     {
       "model_key": "deepseek_v4_flash_api_reasoning",
@@ -170,29 +174,9 @@
       "condition": "caption_only",
       "display": "DeepSeek-V4-Flash",
       "short": "DeepSeek-V4-Flash",
-      "overall": 4.017978921264724,
+      "overall": 4.014863748967795,
       "scored": 4839,
-      "judge_source": "judge/deepseek_v4_flash_api_task2_judge_v4_images_20260815/results/summary.json"
-    },
-    {
-      "model_key": "qwen3_8_27b",
-      "judged_key": "mm_qwen3_8_27b",
-      "condition": "multimodal",
-      "display": "Qwen3.8-27B",
-      "short": "Qwen3.8-27B",
-      "overall": 3.902353426919901,
-      "scored": 4844,
-      "judge_source": "judge/qwen3_8_task2_judge_v4_images_20260815/results/summary.json"
-    },
-    {
-      "model_key": "qwen3_8_27b_reasoning",
-      "judged_key": "mm_qwen3_8_27b_reasoning",
-      "condition": "multimodal",
-      "display": "Qwen3.8-27B",
-      "short": "Qwen3.8-27B",
-      "overall": 4.208918249380677,
-      "scored": 4844,
-      "judge_source": "judge/mm_qwen3_8_27b_reasoning_task2_judge_v4_images_20260817/results/summary.json"
+      "judge_source": "judge/deepseek_v4_flash_api_task2_judge_v4_images_20260815"
     }
   ],
   "matrix": {
@@ -230,15 +214,15 @@
       "uncertainty": 3.489675516224189
     },
     "ministral_3_14b_instruct_2512": {
-      "agreement_or_support": 3.865168539325843,
-      "clarification_question": 3.831460674157303,
-      "clinical_trial_suggestion": 3.315068493150685,
-      "eligibility_assessment": 3.531055900621118,
-      "evidence_discussion": 3.3146233382570163,
-      "findings_interpretation": 3.8738317757009346,
-      "next_action_suggestion": 3.5137614678899083,
-      "treatment_recommendation": 3.2914837576821774,
-      "uncertainty": 3.56047197640118
+      "agreement_or_support": 3.735955056179775,
+      "clarification_question": 3.7808988764044944,
+      "clinical_trial_suggestion": 3.164383561643836,
+      "eligibility_assessment": 3.472049689440994,
+      "evidence_discussion": 3.208271787296898,
+      "findings_interpretation": 3.7982866043613708,
+      "next_action_suggestion": 3.4159021406727827,
+      "treatment_recommendation": 3.1624231782265144,
+      "uncertainty": 3.528023598820059
     },
     "medreason_8b": {
       "agreement_or_support": 2.1853932584269664,
@@ -360,28 +344,6 @@
       "next_action_suggestion": 4.032159264931087,
       "treatment_recommendation": 3.7541703248463563,
       "uncertainty": 4.073746312684365
-    },
-    "qwen3_8_27b": {
-      "agreement_or_support": 4.067415730337078,
-      "clarification_question": 4.174157303370786,
-      "clinical_trial_suggestion": 3.4657534246575343,
-      "eligibility_assessment": 3.857142857142857,
-      "evidence_discussion": 3.7163958641063517,
-      "findings_interpretation": 4.2087227414330215,
-      "next_action_suggestion": 3.845565749235474,
-      "treatment_recommendation": 3.655838454784899,
-      "uncertainty": 3.9587020648967552
-    },
-    "qwen3_8_27b_reasoning": {
-      "agreement_or_support": 4.314606741573034,
-      "clarification_question": 4.370786516853933,
-      "clinical_trial_suggestion": 3.643835616438356,
-      "eligibility_assessment": 4.211180124223603,
-      "evidence_discussion": 4.059084194977843,
-      "findings_interpretation": 4.492211838006231,
-      "next_action_suggestion": 4.159021406727828,
-      "treatment_recommendation": 3.9631255487269534,
-      "uncertainty": 4.336283185840708
     }
   },
   "absent": {
