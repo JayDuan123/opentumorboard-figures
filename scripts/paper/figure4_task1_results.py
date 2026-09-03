@@ -271,9 +271,6 @@ def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
     ax.tick_params(labelsize=FS_TICK, length=2)
     for sp in ("top", "right"):
         ax.spines[sp].set_visible(False)
-    box = ax.get_position()
-    fig.suptitle("Score against output length", fontsize=FS_TITLE - 0.5,
-                 fontweight="bold", x=(box.x0 + box.x1) / 2, y=0.975, ha="center")
     return save(fig, out_dir, stem)
 
 
