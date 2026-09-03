@@ -35,6 +35,7 @@ usage:
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import math
@@ -61,16 +62,30 @@ MUTED = "#646464"
 LINE = "#8c8c8c"
 GRID = "#dcdcdc"
 
-MM_C, CAP_C = "#1f78b4", "#a6cee3"        # vision-capable vs caption-only
-SCORE_FIELD = "dimensions_all_responses"
+CLOSED_C, OPEN_C = "#1f4e79", "#4a98cf"    # closed frontier vs open weights
+MM_C, CAP_C = "#1f78b4", "#a6cee3"         # vision-capable vs caption-only
+# The board's own consolidated export (2026-09-02). It resolves the catalog's
+# last-wins rule once and records, per row, the judge batch and metric file each
+# number came from - so this figure no longer re-implements that resolution and
+# cannot drift from the board by getting it subtly wrong.
+BOARD_CSV = "model_evaluation/board_results_20260902/board_results.csv"
+
+# `conclusion_alignment` is the published column: format failures stay in the
+# denominator at the rubric floor of 1. `_scored_only` averages the judged responses
+# alone and is explicitly NOT what the board shows.
+SCORE_COL = "conclusion_alignment"
+
+CLOSED = {"claude_opus_5", "gemini_3_7_flash", "qwen3_8_max", "grok_4_6", "gpt_5_6_sol"}
 
 SHORT = {
     "deepseek_v4_pro": "DeepSeek-V4-Pro", "deepseek_v4_flash_api": "DeepSeek-V4-Flash",
-    "qwen3_8_27b": "Qwen3.8-27B", "medgemma_27b_it": "MedGemma-27B",
-    "huatuogpt_3_32b": "HuatuoGPT-3-32B", "meditron3_70b": "Meditron-3-70B",
-    "medreason_8b": "MedReason-8B", "llama4_scout": "Llama 4 Scout",
-    "gemma4_31b_it": "Gemma 4 31B", "ministral_3_14b_instruct_2512": "Ministral 3 14B",
+    "medgemma_27b_it": "MedGemma-27B", "huatuogpt_3_32b": "HuatuoGPT-3-32B",
+    "meditron3_70b": "Meditron-3-70B", "medreason_8b": "MedReason-8B",
+    "llama4_scout": "Llama 4 Scout", "gemma4_31b_it": "Gemma 4 31B",
+    "ministral_3_14b_instruct_2512": "Ministral 3 14B",
     "nemotron_3_5_lightning": "Nemotron 3.5",
+    "claude_opus_5": "Claude Opus 5", "gemini_3_7_flash": "Gemini 3.7 Flash",
+    "qwen3_8_max": "Qwen3.8-Max", "grok_4_6": "Grok 4.6", "gpt_5_6_sol": "GPT-5.6 Sol",
 }
 
 
@@ -86,89 +101,51 @@ def label_of(key: str) -> str:
 
 
 def gather(ws: Path) -> dict:
-    cat_p = ws / "OpenTumorBoard/evaluation/results_catalog.json"
-    cat = json.loads(cat_p.read_text(encoding="utf-8"))
-    cond = {m["model_key"]: m["runs"]["task1"]["condition"]
-            for m in cat["active"]["models"] if "task1" in m["runs"]}
+    csv_p = ws / BOARD_CSV
+    if not csv_p.exists():
+        refuse(f"missing board export: {csv_p}")
+    with csv_p.open(encoding="utf-8") as fh:
+        rows = [r for r in csv.DictReader(fh) if r["code_task"] == "task1"]
+    if not rows:
+        refuse("the board export has no task1 rows")
 
-    # Resolve through the catalog's own last-one-wins rule rather than naming a
-    # batch. Naming one is how this figure first got written, and it pointed at v25
-    # a week after v25 left aggregate_sources; the guard below caught it, but the
-    # guard should not have been the only thing standing between a stale rubric and
-    # a published figure.
-    if "Later aggregate sources override earlier" not in cat["policy"]["source_priority"]:
-        refuse("policy.source_priority is no longer last-one-wins; this resolution "
-               "encodes that rule and must be revisited")
-    rows, batch_of, proto_of = {}, {}, {}
-    for rel in cat["active"]["aggregate_sources"]["judge"]:
-        p = ws / "model_evaluation" / rel
-        if not p.exists():
-            refuse(f"aggregate judge source missing on disk: {rel}")
-        jd = json.loads(p.read_text(encoding="utf-8"))
-        for r in jd.get("results", {}).get("task1", []) or []:
-            rows[r["model_key"]] = r
-            batch_of[r["model_key"]] = rel
-            proto_of[r["model_key"]] = jd.get("protocol_version", "")
+    need = (SCORE_COL, "mean_output_tokens", "rouge_l_f1", "bertscore_f1",
+            "condition", "model_key", "scored_records", "test_records", "judge_batch")
+    for col in need:
+        if col not in rows[0]:
+            refuse(f"the board export has no {col!r} column")
 
-    board = {k: v for k, v in batch_of.items() if k in cond}
-    if len(set(board.values())) != 1:
-        refuse(f"the {len(cond)} board arms resolve to {len(set(board.values()))} different "
-               "judge batches; a bar chart across them would mix protocols")
-    judge_batch = next(iter(set(board.values())))
-    protos = {proto_of[k] for k in cond if k in proto_of}
-    if len(protos) != 1:
-        refuse(f"arms span protocols {protos}")
-    protocol = protos.pop()
-
-    jb = json.loads((ws / "model_evaluation" / judge_batch.replace(
-        "results/summary.json", "build_config.json")).read_text(encoding="utf-8"))
-    judged_run = {k.split(":", 1)[1]: os.path.basename(os.path.dirname(v["responses"]))
-                  for k, v in jb["candidate_runs"].items() if k.startswith("task1:")}
-
-    def metric(kind, task, pick):
-        out = {}
-        for rel in cat["active"]["aggregate_sources"][kind]:
-            p = ws / "model_evaluation" / rel
-            if not p.exists():
-                continue
-            for e in (json.loads(p.read_text(encoding="utf-8")).get("results") or []):
-                if e.get("task") != task:
-                    continue
-                key = e["model"]["key"] if "model" in e else e["model_key"]
-                src = e.get("responses_path") or e.get("response_file") or e.get("responses") or ""
-                out[key] = (pick(e), os.path.basename(os.path.dirname(src)))
-        return out
-
-    tokens = metric("generation_cost", "task1", lambda e: e["output_tokens"]["mean"])
-    rouge = metric("rouge", "task1", lambda e: e["item_macro"]["rouge_l"]["f1"]["mean"])
-    bert = metric("bertscore", "task1", lambda e: e["item_macro"]["raw"]["f1"]["mean"])
+    batches = {r["judge_batch"] for r in rows}
+    off = sorted(b for b in batches if "task1_judge_v31" not in b)
+    if off:
+        refuse(f"these judge batches are not task1_judge_v31: {off}. Mixing rubrics "
+               "across the bars would compare scores that are not on one scale.")
 
     arms = []
-    for k_, r in rows.items():
-        k = r["model_key"]
-        if k not in cond:
-            continue
-        for src, name in ((tokens, "output tokens"), (rouge, "ROUGE-L"), (bert, "BERTScore")):
-            if k not in src:
-                refuse(f"{k} has no {name}; the panels would cover different arms")
-            # The output contract changed on 2026-08-30 and every arm was regenerated.
-            # A metric still computed over the superseded run would pair a new score
-            # with an old response, which no panel would reveal.
-            if k in judged_run and src[k][1] != judged_run[k]:
-                refuse(f"{k}: {name} was computed over run {src[k][1]!r} but the judge "
-                       f"scored {judged_run[k]!r}; the panels would mix generations")
+    for r in rows:
+        key = r["model_key"]
+        base = key.replace("_reasoning", "")
+        if base not in SHORT:
+            refuse(f"no short label for {key}; add it to SHORT rather than letting a "
+                   "long registry name run off the panel")
+        for col in (SCORE_COL, "mean_output_tokens", "rouge_l_f1", "bertscore_f1"):
+            if not r[col].strip():
+                refuse(f"{key} has an empty {col}; the panels would cover different arms")
         arms.append({
-            "key": k, "label": label_of(k), "condition": cond[k],
-            "score": r[SCORE_FIELD]["conclusion_alignment"],
-            "score_scored_only": r["dimensions"]["conclusion_alignment"],
-            "scored": r["scored_records"], "test": r["test_records"],
-            "format_failures": r["candidate_format_failures"],
-            "tokens": tokens[k][0], "rouge_l_f1": rouge[k][0], "bertscore_f1": bert[k][0],
-            "run": judged_run.get(k),
-            "difference_rates": r.get("difference_rates"),
+            "key": key,
+            "label": SHORT[base] + ("  \u00b7R" if key.endswith("_reasoning") else ""),
+            "display": r["display_name"],
+            "condition": r["condition"],
+            "closed": key in CLOSED,
+            "score": float(r[SCORE_COL]),
+            "score_scored_only": float(r["conclusion_alignment_scored_only"] or "nan"),
+            "scored": int(r["scored_records"]), "test": int(r["test_records"]),
+            "format_failures": int(r["format_failures"] or 0),
+            "tokens": float(r["mean_output_tokens"]),
+            "rouge_l_f1": float(r["rouge_l_f1"]),
+            "bertscore_f1": float(r["bertscore_f1"]),
+            "judge_batch": r["judge_batch"], "run": r["run"],
         })
-    if len(arms) != len(cond):
-        refuse(f"judge batch covers {len(arms)} of the {len(cond)} active Task 1 arms")
 
     groups = [("Slides + captions", [a for a in arms if a["condition"] == "multimodal"]),
               ("Captions only", [a for a in arms if a["condition"] != "multimodal"])]
@@ -177,11 +154,15 @@ def gather(ws: Path) -> dict:
             refuse(f"group {name!r} is empty")
         g.sort(key=lambda a: a["score"])
 
-    return {"arms": arms, "groups": groups, "n_cases": arms[0]["test"],
-            "protocol": protocol, "judge_batch": judge_batch,
-            "judge": json.loads((ws / "model_evaluation" / judge_batch).read_text(
-                encoding="utf-8")).get("judge_model"),
-            "catalog_sha256": hashlib.sha256(cat_p.read_bytes()).hexdigest()}
+    tests = {a["test"] for a in arms}
+    if len(tests) != 1:
+        refuse(f"arms were scored over different case counts: {sorted(tests)}")
+
+    return {"arms": arms, "groups": groups, "n_cases": tests.pop(),
+            "protocol": "task1_judge_v31", "judge": "Qwen/Qwen3.6-27B",
+            "judge_batches": sorted(batches),
+            "board_export": str(csv_p.name),
+            "board_sha256": hashlib.sha256(csv_p.read_bytes()).hexdigest()}
 
 
 def resolve_font(family: str, font_dir: Path | None) -> dict:
@@ -241,7 +222,10 @@ def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
 
     ticks, labels = [], []
     for y, a in enumerate(group):
-        ax.barh(y, a["score"], height=0.58, color=MM_C, zorder=3)
+        # Closed frontier darker than open weights: the gap between them is the
+        # panel's main comparison and colour carries it without a legend line.
+        ax.barh(y, a["score"], height=0.62,
+                color=CLOSED_C if a["closed"] else OPEN_C, zorder=3)
         ax.text(a["score"] + 0.03, y, f"{a['score']:.2f}", va="center", ha="left",
                 fontsize=FS_VALUE, color=MUTED, zorder=4)
         ticks.append(y); labels.append(a["label"])
@@ -275,8 +259,9 @@ def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
     group = dict(d["groups"])["Slides + captions"]
     fig = plt.figure(figsize=(style.COL_W, 0.95 * style.COL_W))
     ax = fig.add_axes([0.185, 0.135, 0.70, 0.735])
-    ax.scatter([a["tokens"] for a in group], [a["score"] for a in group], s=30,
-               c=MM_C, edgecolors="white", linewidths=0.6, zorder=3)
+    ax.scatter([a["tokens"] for a in group], [a["score"] for a in group], s=26,
+               c=[CLOSED_C if a["closed"] else OPEN_C for a in group],
+               edgecolors="white", linewidths=0.5, zorder=3)
     for a in group:
         ax.annotate(a["label"], (a["tokens"], a["score"]), textcoords="offset points",
                     xytext=(5.0, 3.5), fontsize=FS_NOTE - 0.4, color=MUTED, zorder=4)
@@ -341,21 +326,25 @@ def main() -> int:
     prov = {
         "figure": "4", "task": "task1",
         "metric": "conclusion_alignment (1-5), " + d["protocol"],
-        "score_field": SCORE_FIELD,
-        "score_field_rationale":
+        "score_column": SCORE_COL,
+        "score_column_rationale":
             "the leaderboard convention in server/benchmark_results.py: cases with no "
             "extractable conclusion enter at the rubric floor of 1, so an arm is graded "
             "on every case it was given rather than on the ones it chose to answer",
-        "judge_model": d["judge"], "judge_batch": d["judge_batch"],
-        "cases": d["n_cases"], "results_catalog_sha256": d["catalog_sha256"],
+        "judge_model": d["judge"], "judge_batches": d["judge_batches"],
+        "cases": d["n_cases"],
+        "source": {"file": d["board_export"], "sha256": d["board_sha256"],
+                   "note": "the board's consolidated export; it resolves the catalog last-wins rule once, so this figure does not"},
         "panel_b_scope": {
             "shown": "multimodal arms only, matching panel a",
-            "spearman_tokens_vs_score_all_17": -0.125,
-            "spearman_tokens_vs_score_multimodal_7": 0.286,
-            "note": "dropping the caption-only arms flips the sign. The -0.125 rested "
-                    "largely on nemotron_3_5_lightning, 12k tokens for 1.61, which is "
-                    "caption-only. Neither coefficient is significant at n=7, which is "
-                    "why the panel is titled for what it plots.",
+            "spearman_tokens_vs_score_all_20": 0.111,
+            "spearman_tokens_vs_score_multimodal_10": 0.564,
+            "note": "the sign has moved twice as the board changed - -0.125 over the "
+                    "seventeen arms of 2026-08-30, +0.286 over the seven multimodal ones, "
+                    "+0.564 now that five frontier arms run at high reasoning effort and "
+                    "produce long outputs. At n=10 that is about p=0.09. The panel stays "
+                    "titled for what it plots rather than for a trend that has not held "
+                    "still, and Gemma 4 31B remains the counterexample: 2.54 at 713 tokens.",
         },
         "panel_a_scope": {
             "shown": "multimodal arms only",

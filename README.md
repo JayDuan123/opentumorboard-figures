@@ -229,6 +229,12 @@ the `caption` field of the provenance JSON and **must** be used with it.
 
 ### Fig 4 — simulation results (Task 1)
 
+Reads `data/model_evaluation/board_results_20260902/board_results.csv`, the board's
+own consolidated export. That file resolves the catalog's last-wins rule once and
+records, per row, the judge batch and metric file each number came from — so this
+figure no longer re-implements that resolution and cannot drift from the board by
+getting it subtly wrong. Twenty arms, all on `task1_judge_v31`.
+
 Three files: `fig4a_scores` (bars), `fig4b_tokens` (tokens vs score), `fig4c_lexical`
 (ROUGE-L and BERTScore, appendix).
 
