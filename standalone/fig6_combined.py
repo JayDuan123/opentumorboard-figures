@@ -118,7 +118,10 @@ def main():
     a = ap.parse_args()
     resolve_font(a.font_family, a.font_dir)
 
-    fig = plt.figure(figsize=(7.6, 2.7))
+    # figsize matches fig5's native page dimensions so that when the paper
+    # renders both at width=\linewidth, the 8pt Helvetica source prints
+    # at the same on-paper size in each figure (~6.2pt effective).
+    fig = plt.figure(figsize=(8.4, 3.0))
     gs = fig.add_gridspec(1, 2, width_ratios=[4.4, 2.6], wspace=0.30)
     ax_a = fig.add_subplot(gs[0, 0])
     ax_b = fig.add_subplot(gs[0, 1])
