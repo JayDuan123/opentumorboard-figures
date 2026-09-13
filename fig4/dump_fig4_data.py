@@ -2,10 +2,10 @@
 """Dump fig4's hard-coded 9x9 clinical-equivalence grid as a CSV.
 
 Reads the GENERAL / MEDICAL constants straight out of
-standalone/fig4_heatmap.py so the CSV can never drift from the plot,
-and writes:
+../standalone/fig4_heatmap.py so the CSV can never drift from the plot,
+and writes it next to this script:
 
-    figures_paper/fig4_data.csv
+    fig4/fig4_data.csv
 
 Layout: one row per question type (plus a final 'All questions' row of
 per-arm overall means); one column per arm.  Column headers carry an
@@ -25,8 +25,7 @@ from fig4_heatmap import TYPES, GENERAL, MEDICAL, BLOCKS  # noqa: E402
 def main() -> int:
     arms = [a for _, group in BLOCKS for a in group]
 
-    out = HERE.parent / "figures_paper" / "fig4_data.csv"
-    out.parent.mkdir(parents=True, exist_ok=True)
+    out = HERE / "fig4_data.csv"
 
     headers = ["question_type", "block"] + [
         f"{arm['name']} [{arm['cond']}]" for arm in arms
