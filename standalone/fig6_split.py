@@ -45,21 +45,24 @@ def main() -> int:
 
     INK = "#1b1b1b"
 
-    def _label(ax, tag):
-        ax.text(-0.14, 1.02, tag, transform=ax.transAxes,
-                fontsize=10, color=INK, ha="left", va="bottom",
-                fontweight="bold")
+    def _label_after_layout(fig, ax, tag):
+        pos = ax.get_position()
+        fig.text(pos.x0 - 0.015, pos.y1 + 0.015, tag,
+                 fontsize=10, color=INK, ha="left", va="bottom",
+                 fontweight="bold")
 
     # panel A — bars
     fig_a, ax_a = plt.subplots(figsize=(4.4, 2.7))
-    draw_bars(ax_a); _label(ax_a, "A")
+    draw_bars(ax_a)
     fig_a.tight_layout()
+    _label_after_layout(fig_a, ax_a, "A")
     _save(fig_a, a.output_dir, "fig6a")
 
     # panel B — val reward curve
     fig_b, ax_b = plt.subplots(figsize=(2.6, 2.7))
-    draw_val_curve(ax_b, a.curves_csv); _label(ax_b, "B")
+    draw_val_curve(ax_b, a.curves_csv)
     fig_b.tight_layout()
+    _label_after_layout(fig_b, ax_b, "B")
     _save(fig_b, a.output_dir, "fig6b")
 
     print(f"wrote fig6a.{{pdf,png,svg}} and fig6b.{{pdf,png,svg}} in {a.output_dir}")

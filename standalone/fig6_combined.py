@@ -130,15 +130,17 @@ def main():
     draw_bars(ax_a)
     draw_val_curve(ax_b, a.curves_csv)
 
-    # Panel labels A, B — Helvetica Bold 12pt (real Bold; the .ttc's Bold
-    # face has been extracted to Helvetica-Bold.ttf so resolve_font()
-    # registers it and fontweight="bold" no longer silently falls back).
-    for ax, tag in [(ax_a, "A"), (ax_b, "B")]:
-        ax.text(-0.14, 1.02, tag, transform=ax.transAxes,
-                fontsize=10, color=INK, ha="left", va="bottom",
-                fontweight="bold")
-
     fig.tight_layout()
+
+    # Panel labels A, B in FIGURE coordinates so both sit at the same
+    # horizontal band above the axes. Panel A's legend and panel B's plot
+    # area have different vertical extents, so anchoring in axes-fractions
+    # would put A and B at visibly different heights.
+    y_label = max(ax_a.get_position().y1, ax_b.get_position().y1) + 0.015
+    for ax, tag in [(ax_a, "A"), (ax_b, "B")]:
+        x_label = ax.get_position().x0 - 0.015
+        fig.text(x_label, y_label, tag, fontsize=10, color=INK,
+                 ha="left", va="bottom", fontweight="bold")
     a.output_dir.mkdir(parents=True, exist_ok=True)
     for suf in ("pdf", "png", "svg"):
         fig.savefig(a.output_dir / f"{a.stem}.{suf}", dpi=300,
