@@ -1,0 +1,43 @@
+{
+  "figure": "4 (paper draft, dual-panel)",
+  "task": "task2 clinical_equivalence (left) + task1 conclusion_alignment (right)",
+  "judge_model": "Qwen/Qwen3.8-27B",
+  "n_t2_arms": 15,
+  "n_t1_arms": 20,
+  "shared_arms": [
+    "deepseek_v4_flash_api",
+    "deepseek_v4_flash_api_reasoning",
+    "deepseek_v4_pro",
+    "deepseek_v4_pro_reasoning",
+    "gemma4_31b_it",
+    "gemma4_31b_it_reasoning",
+    "huatuogpt_3_32b",
+    "huatuogpt_3_32b_reasoning",
+    "llama4_scout",
+    "medgemma_27b_it",
+    "meditron3_70b",
+    "medreason_8b",
+    "ministral_3_14b_instruct_2512",
+    "nemotron_3_5_lightning",
+    "nemotron_3_5_lightning_reasoning"
+  ],
+  "task1_only": [
+    "claude_opus_5",
+    "gemini_3_7_flash",
+    "gpt_5_6_sol",
+    "grok_4_6",
+    "qwen3_8_max"
+  ],
+  "source_csv": "board_results.csv",
+  "caption": "Task 2 (Specialist Turn, clinical equivalence, 4,844 questions) on the left and Task 1 (Board Simulation, conclusion alignment, 184 cases, format failures at 1) on the right, both scored by Qwen3.8-27B. Each panel is sorted by its own score, so an arrow that crosses another arrow is a configuration whose rank between the two tasks changed. Closed-frontier arms (starred) ran Task 1 only and get no arrow.",
+  "font": {
+    "family": "DejaVu Sans",
+    "file": "/home/jay/miniconda3/envs/tumorboard/lib/python3.11/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf",
+    "registered": []
+  },
+  "outputs": [
+    "/workspace/yd68/opentumorboard/figures_qwen38_20260903/fig4_paper/fig4_paper_dual.pdf",
+    "/workspace/yd68/opentumorboard/figures_qwen38_20260903/fig4_paper/fig4_paper_dual.svg",
+    "/workspace/yd68/opentumorboard/figures_qwen38_20260903/fig4_paper/fig4_paper_dual.png"
+  ]
+}
