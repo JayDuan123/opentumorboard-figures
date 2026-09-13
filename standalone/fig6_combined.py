@@ -136,9 +136,9 @@ def main():
     # horizontal band above the axes. Panel A's legend and panel B's plot
     # area have different vertical extents, so anchoring in axes-fractions
     # would put A and B at visibly different heights.
-    y_label = max(ax_a.get_position().y1, ax_b.get_position().y1) + 0.015
+    y_label = max(ax_a.get_position().y1, ax_b.get_position().y1) + 0.035
     for ax, tag in [(ax_a, "A"), (ax_b, "B")]:
-        x_label = ax.get_position().x0 - 0.015
+        x_label = ax.get_position().x0 - 0.030
         fig.text(x_label, y_label, tag, fontsize=10, color=INK,
                  ha="left", va="bottom", fontweight="bold")
     a.output_dir.mkdir(parents=True, exist_ok=True)
