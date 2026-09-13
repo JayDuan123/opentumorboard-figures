@@ -131,7 +131,7 @@ def main():
     # registers it and fontweight="bold" no longer silently falls back).
     for ax, tag in [(ax_a, "A"), (ax_b, "B")]:
         ax.text(-0.14, 1.02, tag, transform=ax.transAxes,
-                fontsize=12, color=INK, ha="left", va="bottom",
+                fontsize=10, color=INK, ha="left", va="bottom",
                 fontweight="bold")
 
     fig.tight_layout()
