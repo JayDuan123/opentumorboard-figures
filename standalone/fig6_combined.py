@@ -98,7 +98,8 @@ def draw_val_curve(ax, csv_path):
 
     ax.set_xlabel("Training step", fontsize=FS)
     ax.set_ylabel("Validation reward", fontsize=FS, labelpad=3)
-    ax.set_xlim(0, X_MAX)
+    # small right margin so the marker at step X_MAX is not clipped.
+    ax.set_xlim(-6, X_MAX + 14)
     ax.set_ylim(0, ymax * 1.10)
     ax.tick_params(labelsize=FS, length=2, color=INK)
     for s in ("top", "right"): ax.spines[s].set_visible(False)
