@@ -118,10 +118,10 @@ def main():
     a = ap.parse_args()
     resolve_font(a.font_family, a.font_dir)
 
-    # figsize matches fig5's native page dimensions so that when the paper
-    # renders both at width=\linewidth, the 8pt Helvetica source prints
-    # at the same on-paper size in each figure (~6.2pt effective).
-    fig = plt.figure(figsize=(8.4, 3.0))
+    # figsize sized so the tight-bboxed native PDF ends up ~606 pt wide,
+    # matching fig5.pdf; when the paper renders both at width=\linewidth
+    # the 8pt Helvetica source prints at the same ~6.2pt on paper.
+    fig = plt.figure(figsize=(9.6, 3.5))
     gs = fig.add_gridspec(1, 2, width_ratios=[4.4, 2.6], wspace=0.30)
     ax_a = fig.add_subplot(gs[0, 0])
     ax_b = fig.add_subplot(gs[0, 1])
