@@ -1,0 +1,12 @@
+question_type,block,DeepSeek-V4-Pro [cap],DeepSeek-V4-Flash [cap],Llama 4 Scout [mm],Gemma 4 31B [mm],Ministral 3 14B [mm],MedGemma-27B [mm],HuatuoGPT-3-32B [cap],Meditron-3-70B [cap],MedReason-8B [cap]
+Findings interpretation,,3.66,3.52,3.19,3.37,3.25,3.15,2.80,3.20,2.42
+Treatment recommendation,,3.26,3.15,2.75,2.89,2.84,2.70,2.55,2.85,1.77
+Evidence discussion,,3.23,3.12,2.73,2.73,2.75,2.56,2.41,2.75,1.95
+Next action suggestion,,3.46,3.39,3.05,3.13,3.03,2.88,2.77,3.07,2.00
+Uncertainty,,3.38,3.30,2.97,2.91,2.95,2.95,2.68,3.05,2.33
+Eligibility assessment,,3.48,3.37,3.02,3.12,3.02,2.80,2.63,3.05,2.04
+Agreement or support,,3.42,3.46,3.08,3.35,3.28,3.08,2.79,3.25,1.88
+Clarification question,,3.65,3.61,3.32,3.50,3.38,3.24,3.16,3.25,2.57
+Clinical trial suggestion,,3.14,2.98,2.63,2.64,2.71,2.81,2.49,2.81,2.01
+All questions,,3.43,3.33,2.97,3.08,3.02,2.88,2.67,3.01,2.09
+_arm_block,,General purpose,General purpose,General purpose,General purpose,General purpose,Medical purpose,Medical purpose,Medical purpose,Medical purpose

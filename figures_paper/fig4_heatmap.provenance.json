@@ -1,0 +1,751 @@
+{
+  "figure": "3",
+  "task": "task2",
+  "metric": "llm_judge clinical_equivalence (1-5), task2_judge_v4",
+  "judge_model": "Qwen/Qwen3.8-27B",
+  "records_per_arm": [
+    4839,
+    4841,
+    4843,
+    4844
+  ],
+  "source": {
+    "file": "board_results.csv",
+    "sha256": "9228524e61a49baa6584f72c3c16830f5435da9717e02957c0431d60c566a723",
+    "note": "board export supplies the roster and the judge batch per arm; per_qa_type is read from that batch"
+  },
+  "row_order": "QA-type frequency in the test manifest (same order as Fig 2b)",
+  "qa_type_counts": {
+    "findings_interpretation": 1284,
+    "treatment_recommendation": 1139,
+    "evidence_discussion": 677,
+    "next_action_suggestion": 654,
+    "uncertainty": 339,
+    "eligibility_assessment": 322,
+    "agreement_or_support": 178,
+    "clarification_question": 178,
+    "clinical_trial_suggestion": 73
+  },
+  "arms": [
+    {
+      "model_key": "llama4_scout",
+      "judged_key": "mm_llama4_scout",
+      "condition": "multimodal",
+      "display": "Llama 4 Scout 17B-16E Instruct",
+      "short": "Llama 4 Scout",
+      "overall": 2.97,
+      "scored": 4844,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 3.08,
+          "critical_error_rate": 0.12,
+          "unsupported_claim_rate": 0.1
+        },
+        "clarification_question": {
+          "count": 178,
+          "clinical_equivalence": 3.32,
+          "critical_error_rate": 0.1,
+          "unsupported_claim_rate": 0.13
+        },
+        "clinical_trial_suggestion": {
+          "count": 73,
+          "clinical_equivalence": 2.63,
+          "critical_error_rate": 0.08,
+          "unsupported_claim_rate": 0.25
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 3.02,
+          "critical_error_rate": 0.1,
+          "unsupported_claim_rate": 0.12
+        },
+        "evidence_discussion": {
+          "count": 677,
+          "clinical_equivalence": 2.73,
+          "critical_error_rate": 0.11,
+          "unsupported_claim_rate": 0.22
+        },
+        "findings_interpretation": {
+          "count": 1284,
+          "clinical_equivalence": 3.19,
+          "critical_error_rate": 0.08,
+          "unsupported_claim_rate": 0.14
+        },
+        "next_action_suggestion": {
+          "count": 654,
+          "clinical_equivalence": 3.05,
+          "critical_error_rate": 0.09,
+          "unsupported_claim_rate": 0.1
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 2.75,
+          "critical_error_rate": 0.14,
+          "unsupported_claim_rate": 0.16
+        },
+        "uncertainty": {
+          "count": 339,
+          "clinical_equivalence": 2.97,
+          "critical_error_rate": 0.08,
+          "unsupported_claim_rate": 0.15
+        }
+      },
+      "judge_source": "judge/mm_llama4_scout_task2_judge_v4_images_qwen38_20260903"
+    },
+    {
+      "model_key": "huatuogpt_3_32b_reasoning",
+      "judged_key": "huatuogpt_3_32b_reasoning",
+      "condition": "caption_only",
+      "display": "HuatuoGPT-3-32B",
+      "short": "HuatuoGPT-3-32B",
+      "overall": 2.67,
+      "scored": 4844,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 2.79,
+          "critical_error_rate": 0.21,
+          "unsupported_claim_rate": 0.75
+        },
+        "clarification_question": {
+          "count": 178,
+          "clinical_equivalence": 3.16,
+          "critical_error_rate": 0.12,
+          "unsupported_claim_rate": 0.44
+        },
+        "clinical_trial_suggestion": {
+          "count": 73,
+          "clinical_equivalence": 2.49,
+          "critical_error_rate": 0.29,
+          "unsupported_claim_rate": 0.82
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 2.63,
+          "critical_error_rate": 0.23,
+          "unsupported_claim_rate": 0.76
+        },
+        "evidence_discussion": {
+          "count": 677,
+          "clinical_equivalence": 2.41,
+          "critical_error_rate": 0.32,
+          "unsupported_claim_rate": 0.87
+        },
+        "findings_interpretation": {
+          "count": 1284,
+          "clinical_equivalence": 2.8,
+          "critical_error_rate": 0.21,
+          "unsupported_claim_rate": 0.76
+        },
+        "next_action_suggestion": {
+          "count": 654,
+          "clinical_equivalence": 2.77,
+          "critical_error_rate": 0.14,
+          "unsupported_claim_rate": 0.59
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 2.55,
+          "critical_error_rate": 0.3,
+          "unsupported_claim_rate": 0.79
+        },
+        "uncertainty": {
+          "count": 339,
+          "clinical_equivalence": 2.68,
+          "critical_error_rate": 0.12,
+          "unsupported_claim_rate": 0.68
+        }
+      },
+      "judge_source": "judge/huatuogpt_3_32b_reasoning_task2_judge_v4_images_qwen38_20260903"
+    },
+    {
+      "model_key": "ministral_3_14b_instruct_2512",
+      "judged_key": "mm_ministral_3_14b_instruct_2512",
+      "condition": "multimodal",
+      "display": "Ministral 3 14B Instruct 2512",
+      "short": "Ministral 3 14B",
+      "overall": 3.02,
+      "scored": 4844,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 3.28,
+          "critical_error_rate": 0.09,
+          "unsupported_claim_rate": 0.19
+        },
+        "clarification_question": {
+          "count": 178,
+          "clinical_equivalence": 3.38,
+          "critical_error_rate": 0.1,
+          "unsupported_claim_rate": 0.18
+        },
+        "clinical_trial_suggestion": {
+          "count": 73,
+          "clinical_equivalence": 2.71,
+          "critical_error_rate": 0.12,
+          "unsupported_claim_rate": 0.49
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 3.02,
+          "critical_error_rate": 0.14,
+          "unsupported_claim_rate": 0.26
+        },
+        "evidence_discussion": {
+          "count": 677,
+          "clinical_equivalence": 2.75,
+          "critical_error_rate": 0.15,
+          "unsupported_claim_rate": 0.43
+        },
+        "findings_interpretation": {
+          "count": 1284,
+          "clinical_equivalence": 3.25,
+          "critical_error_rate": 0.09,
+          "unsupported_claim_rate": 0.27
+        },
+        "next_action_suggestion": {
+          "count": 654,
+          "clinical_equivalence": 3.03,
+          "critical_error_rate": 0.1,
+          "unsupported_claim_rate": 0.21
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 2.84,
+          "critical_error_rate": 0.16,
+          "unsupported_claim_rate": 0.3
+        },
+        "uncertainty": {
+          "count": 339,
+          "clinical_equivalence": 2.95,
+          "critical_error_rate": 0.07,
+          "unsupported_claim_rate": 0.24
+        }
+      },
+      "judge_source": "judge/mm_ministral_3_14b_instruct_2512_task2_judge_v4_images_qwen38_20260903"
+    },
+    {
+      "model_key": "medreason_8b",
+      "judged_key": "medreason_8b",
+      "condition": "caption_only",
+      "display": "MedReason-8B",
+      "short": "MedReason-8B",
+      "overall": 2.09,
+      "scored": 4843,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 1.88,
+          "critical_error_rate": 0.6,
+          "unsupported_claim_rate": 0.61
+        },
+        "clarification_question": {
+          "count": 178,
+          "clinical_equivalence": 2.57,
+          "critical_error_rate": 0.22,
+          "unsupported_claim_rate": 0.28
+        },
+        "clinical_trial_suggestion": {
+          "count": 73,
+          "clinical_equivalence": 2.01,
+          "critical_error_rate": 0.42,
+          "unsupported_claim_rate": 0.51
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 2.04,
+          "critical_error_rate": 0.49,
+          "unsupported_claim_rate": 0.53
+        },
+        "evidence_discussion": {
+          "count": 677,
+          "clinical_equivalence": 1.95,
+          "critical_error_rate": 0.48,
+          "unsupported_claim_rate": 0.59
+        },
+        "findings_interpretation": {
+          "count": 1284,
+          "clinical_equivalence": 2.42,
+          "critical_error_rate": 0.32,
+          "unsupported_claim_rate": 0.43
+        },
+        "next_action_suggestion": {
+          "count": 654,
+          "clinical_equivalence": 2.0,
+          "critical_error_rate": 0.44,
+          "unsupported_claim_rate": 0.49
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 1.77,
+          "critical_error_rate": 0.59,
+          "unsupported_claim_rate": 0.66
+        },
+        "uncertainty": {
+          "count": 338,
+          "clinical_equivalence": 2.33,
+          "critical_error_rate": 0.24,
+          "unsupported_claim_rate": 0.36
+        }
+      },
+      "judge_source": "judge/medreason_8b_task2_judge_v4_images_qwen38_20260903"
+    },
+    {
+      "model_key": "gemma4_31b_it_reasoning",
+      "judged_key": "mm_gemma4_31b_it_reasoning",
+      "condition": "multimodal",
+      "display": "Gemma 4 31B IT",
+      "short": "Gemma 4 31B",
+      "overall": 3.08,
+      "scored": 4844,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 3.35,
+          "critical_error_rate": 0.09,
+          "unsupported_claim_rate": 0.08
+        },
+        "clarification_question": {
+          "count": 178,
+          "clinical_equivalence": 3.5,
+          "critical_error_rate": 0.05,
+          "unsupported_claim_rate": 0.08
+        },
+        "clinical_trial_suggestion": {
+          "count": 73,
+          "clinical_equivalence": 2.64,
+          "critical_error_rate": 0.01,
+          "unsupported_claim_rate": 0.11
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 3.12,
+          "critical_error_rate": 0.09,
+          "unsupported_claim_rate": 0.08
+        },
+        "evidence_discussion": {
+          "count": 677,
+          "clinical_equivalence": 2.73,
+          "critical_error_rate": 0.05,
+          "unsupported_claim_rate": 0.13
+        },
+        "findings_interpretation": {
+          "count": 1284,
+          "clinical_equivalence": 3.37,
+          "critical_error_rate": 0.04,
+          "unsupported_claim_rate": 0.1
+        },
+        "next_action_suggestion": {
+          "count": 654,
+          "clinical_equivalence": 3.13,
+          "critical_error_rate": 0.05,
+          "unsupported_claim_rate": 0.06
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 2.89,
+          "critical_error_rate": 0.11,
+          "unsupported_claim_rate": 0.13
+        },
+        "uncertainty": {
+          "count": 339,
+          "clinical_equivalence": 2.91,
+          "critical_error_rate": 0.03,
+          "unsupported_claim_rate": 0.06
+        }
+      },
+      "judge_source": "judge/mm_gemma4_31b_it_reasoning_task2_judge_v4_images_qwen38_20260903"
+    },
+    {
+      "model_key": "medgemma_27b_it",
+      "judged_key": "mm_medgemma_27b_it",
+      "condition": "multimodal",
+      "display": "MedGemma 27B IT",
+      "short": "MedGemma-27B",
+      "overall": 2.88,
+      "scored": 4844,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 3.08,
+          "critical_error_rate": 0.16,
+          "unsupported_claim_rate": 0.16
+        },
+        "clarification_question": {
+          "count": 178,
+          "clinical_equivalence": 3.24,
+          "critical_error_rate": 0.11,
+          "unsupported_claim_rate": 0.16
+        },
+        "clinical_trial_suggestion": {
+          "count": 73,
+          "clinical_equivalence": 2.81,
+          "critical_error_rate": 0.08,
+          "unsupported_claim_rate": 0.19
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 2.8,
+          "critical_error_rate": 0.19,
+          "unsupported_claim_rate": 0.25
+        },
+        "evidence_discussion": {
+          "count": 677,
+          "clinical_equivalence": 2.56,
+          "critical_error_rate": 0.15,
+          "unsupported_claim_rate": 0.34
+        },
+        "findings_interpretation": {
+          "count": 1284,
+          "clinical_equivalence": 3.15,
+          "critical_error_rate": 0.11,
+          "unsupported_claim_rate": 0.23
+        },
+        "next_action_suggestion": {
+          "count": 654,
+          "clinical_equivalence": 2.88,
+          "critical_error_rate": 0.12,
+          "unsupported_claim_rate": 0.15
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 2.7,
+          "critical_error_rate": 0.18,
+          "unsupported_claim_rate": 0.25
+        },
+        "uncertainty": {
+          "count": 339,
+          "clinical_equivalence": 2.95,
+          "critical_error_rate": 0.06,
+          "unsupported_claim_rate": 0.17
+        }
+      },
+      "judge_source": "judge/mm_medgemma_27b_it_task2_judge_v4_images_qwen38_20260903"
+    },
+    {
+      "model_key": "meditron3_70b",
+      "judged_key": "meditron3_70b",
+      "condition": "caption_only",
+      "display": "Meditron3 70B",
+      "short": "Meditron-3-70B",
+      "overall": 3.01,
+      "scored": 4844,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 3.25,
+          "critical_error_rate": 0.12,
+          "unsupported_claim_rate": 0.23
+        },
+        "clarification_question": {
+          "count": 178,
+          "clinical_equivalence": 3.25,
+          "critical_error_rate": 0.12,
+          "unsupported_claim_rate": 0.09
+        },
+        "clinical_trial_suggestion": {
+          "count": 73,
+          "clinical_equivalence": 2.81,
+          "critical_error_rate": 0.14,
+          "unsupported_claim_rate": 0.33
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 3.05,
+          "critical_error_rate": 0.14,
+          "unsupported_claim_rate": 0.2
+        },
+        "evidence_discussion": {
+          "count": 677,
+          "clinical_equivalence": 2.75,
+          "critical_error_rate": 0.14,
+          "unsupported_claim_rate": 0.31
+        },
+        "findings_interpretation": {
+          "count": 1284,
+          "clinical_equivalence": 3.2,
+          "critical_error_rate": 0.08,
+          "unsupported_claim_rate": 0.18
+        },
+        "next_action_suggestion": {
+          "count": 654,
+          "clinical_equivalence": 3.07,
+          "critical_error_rate": 0.08,
+          "unsupported_claim_rate": 0.13
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 2.85,
+          "critical_error_rate": 0.15,
+          "unsupported_claim_rate": 0.25
+        },
+        "uncertainty": {
+          "count": 339,
+          "clinical_equivalence": 3.05,
+          "critical_error_rate": 0.06,
+          "unsupported_claim_rate": 0.15
+        }
+      },
+      "judge_source": "judge/meditron3_70b_task2_judge_v4_images_qwen38_20260903"
+    },
+    {
+      "model_key": "deepseek_v4_pro_reasoning",
+      "judged_key": "deepseek_v4_pro_reasoning",
+      "condition": "caption_only",
+      "display": "DeepSeek-V4-Pro",
+      "short": "DeepSeek-V4-Pro",
+      "overall": 3.43,
+      "scored": 4841,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 3.42,
+          "critical_error_rate": 0.11,
+          "unsupported_claim_rate": 0.08
+        },
+        "clarification_question": {
+          "count": 178,
+          "clinical_equivalence": 3.65,
+          "critical_error_rate": 0.05,
+          "unsupported_claim_rate": 0.08
+        },
+        "clinical_trial_suggestion": {
+          "count": 73,
+          "clinical_equivalence": 3.14,
+          "critical_error_rate": 0.07,
+          "unsupported_claim_rate": 0.32
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 3.48,
+          "critical_error_rate": 0.07,
+          "unsupported_claim_rate": 0.1
+        },
+        "evidence_discussion": {
+          "count": 676,
+          "clinical_equivalence": 3.23,
+          "critical_error_rate": 0.07,
+          "unsupported_claim_rate": 0.24
+        },
+        "findings_interpretation": {
+          "count": 1282,
+          "clinical_equivalence": 3.66,
+          "critical_error_rate": 0.03,
+          "unsupported_claim_rate": 0.1
+        },
+        "next_action_suggestion": {
+          "count": 654,
+          "clinical_equivalence": 3.46,
+          "critical_error_rate": 0.03,
+          "unsupported_claim_rate": 0.06
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 3.26,
+          "critical_error_rate": 0.09,
+          "unsupported_claim_rate": 0.11
+        },
+        "uncertainty": {
+          "count": 339,
+          "clinical_equivalence": 3.38,
+          "critical_error_rate": 0.02,
+          "unsupported_claim_rate": 0.1
+        }
+      },
+      "judge_source": "judge/deepseek_v4_pro_reasoning_task2_judge_v4_images_qwen38_20260903"
+    },
+    {
+      "model_key": "deepseek_v4_flash_api_reasoning",
+      "judged_key": "deepseek_v4_flash_api_reasoning",
+      "condition": "caption_only",
+      "display": "DeepSeek-V4-Flash",
+      "short": "DeepSeek-V4-Flash",
+      "overall": 3.33,
+      "scored": 4839,
+      "per_qa_type_raw": {
+        "agreement_or_support": {
+          "count": 178,
+          "clinical_equivalence": 3.46,
+          "critical_error_rate": 0.08,
+          "unsupported_claim_rate": 0.1
+        },
+        "clarification_question": {
+          "count": 177,
+          "clinical_equivalence": 3.62,
+          "critical_error_rate": 0.06,
+          "unsupported_claim_rate": 0.1
+        },
+        "clinical_trial_suggestion": {
+          "count": 72,
+          "clinical_equivalence": 3.01,
+          "critical_error_rate": 0.07,
+          "unsupported_claim_rate": 0.32
+        },
+        "eligibility_assessment": {
+          "count": 322,
+          "clinical_equivalence": 3.37,
+          "critical_error_rate": 0.08,
+          "unsupported_claim_rate": 0.12
+        },
+        "evidence_discussion": {
+          "count": 675,
+          "clinical_equivalence": 3.13,
+          "critical_error_rate": 0.09,
+          "unsupported_claim_rate": 0.25
+        },
+        "findings_interpretation": {
+          "count": 1284,
+          "clinical_equivalence": 3.52,
+          "critical_error_rate": 0.05,
+          "unsupported_claim_rate": 0.14
+        },
+        "next_action_suggestion": {
+          "count": 653,
+          "clinical_equivalence": 3.39,
+          "critical_error_rate": 0.05,
+          "unsupported_claim_rate": 0.06
+        },
+        "treatment_recommendation": {
+          "count": 1139,
+          "clinical_equivalence": 3.15,
+          "critical_error_rate": 0.09,
+          "unsupported_claim_rate": 0.12
+        },
+        "uncertainty": {
+          "count": 339,
+          "clinical_equivalence": 3.3,
+          "critical_error_rate": 0.02,
+          "unsupported_claim_rate": 0.11
+        }
+      },
+      "judge_source": "judge/deepseek_v4_flash_api_reasoning_task2_judge_v4_images_qwen38_20260903"
+    }
+  ],
+  "matrix": {
+    "llama4_scout": {
+      "agreement_or_support": 3.08,
+      "clarification_question": 3.32,
+      "clinical_trial_suggestion": 2.63,
+      "eligibility_assessment": 3.02,
+      "evidence_discussion": 2.73,
+      "findings_interpretation": 3.19,
+      "next_action_suggestion": 3.05,
+      "treatment_recommendation": 2.75,
+      "uncertainty": 2.97
+    },
+    "huatuogpt_3_32b_reasoning": {
+      "agreement_or_support": 2.79,
+      "clarification_question": 3.16,
+      "clinical_trial_suggestion": 2.49,
+      "eligibility_assessment": 2.63,
+      "evidence_discussion": 2.41,
+      "findings_interpretation": 2.8,
+      "next_action_suggestion": 2.77,
+      "treatment_recommendation": 2.55,
+      "uncertainty": 2.68
+    },
+    "ministral_3_14b_instruct_2512": {
+      "agreement_or_support": 3.28,
+      "clarification_question": 3.38,
+      "clinical_trial_suggestion": 2.71,
+      "eligibility_assessment": 3.02,
+      "evidence_discussion": 2.75,
+      "findings_interpretation": 3.25,
+      "next_action_suggestion": 3.03,
+      "treatment_recommendation": 2.84,
+      "uncertainty": 2.95
+    },
+    "medreason_8b": {
+      "agreement_or_support": 1.88,
+      "clarification_question": 2.57,
+      "clinical_trial_suggestion": 2.01,
+      "eligibility_assessment": 2.04,
+      "evidence_discussion": 1.95,
+      "findings_interpretation": 2.42,
+      "next_action_suggestion": 2.0,
+      "treatment_recommendation": 1.77,
+      "uncertainty": 2.32
+    },
+    "gemma4_31b_it_reasoning": {
+      "agreement_or_support": 3.35,
+      "clarification_question": 3.5,
+      "clinical_trial_suggestion": 2.64,
+      "eligibility_assessment": 3.12,
+      "evidence_discussion": 2.73,
+      "findings_interpretation": 3.37,
+      "next_action_suggestion": 3.13,
+      "treatment_recommendation": 2.89,
+      "uncertainty": 2.91
+    },
+    "medgemma_27b_it": {
+      "agreement_or_support": 3.08,
+      "clarification_question": 3.24,
+      "clinical_trial_suggestion": 2.81,
+      "eligibility_assessment": 2.8,
+      "evidence_discussion": 2.56,
+      "findings_interpretation": 3.15,
+      "next_action_suggestion": 2.88,
+      "treatment_recommendation": 2.7,
+      "uncertainty": 2.95
+    },
+    "meditron3_70b": {
+      "agreement_or_support": 3.25,
+      "clarification_question": 3.25,
+      "clinical_trial_suggestion": 2.81,
+      "eligibility_assessment": 3.05,
+      "evidence_discussion": 2.75,
+      "findings_interpretation": 3.2,
+      "next_action_suggestion": 3.07,
+      "treatment_recommendation": 2.85,
+      "uncertainty": 3.05
+    },
+    "deepseek_v4_pro_reasoning": {
+      "agreement_or_support": 3.42,
+      "clarification_question": 3.65,
+      "clinical_trial_suggestion": 3.14,
+      "eligibility_assessment": 3.48,
+      "evidence_discussion": 3.22,
+      "findings_interpretation": 3.65,
+      "next_action_suggestion": 3.46,
+      "treatment_recommendation": 3.26,
+      "uncertainty": 3.38
+    },
+    "deepseek_v4_flash_api_reasoning": {
+      "agreement_or_support": 3.46,
+      "clarification_question": 3.6,
+      "clinical_trial_suggestion": 2.99,
+      "eligibility_assessment": 3.37,
+      "evidence_discussion": 3.12,
+      "findings_interpretation": 3.52,
+      "next_action_suggestion": 3.38,
+      "treatment_recommendation": 3.15,
+      "uncertainty": 3.3
+    }
+  },
+  "absent": {
+    "closed_source_frontier": "No Claude, GPT, Gemini or Grok row exists. The model registry holds only open-weight vendors; the block is drawn as an explicit gap."
+  },
+  "caption": "Expert QA (Task 2) by question type. Cells are the LLM judge's mean clinical equivalence on a 1-5 scale over all 4,844 test questions, under task2_judge_v4 with Qwen/Qwen3.8-27B as judge; the colour scale is shared across all three panels. Rows are ordered by question-type frequency in the corpus. A blue column label marks an arm answering from the slide images and their captions; a black label marks a text-only arm answering from captions alone, so columns do not share an input and MM and caption-only arms are not one ranking. '.R' denotes reasoning mode. Closed-source frontier models have not been run.",
+  "caption_note": "The figure carries no legend text; this caption holds what the panels no longer state on the canvas, and must be used with them.",
+  "font": {
+    "family": "Helvetica",
+    "file": "/home/jay/.fonts/Helvetica.ttc",
+    "registered": [
+      "Arimo-Bold.ttf",
+      "Arimo-BoldItalic.ttf",
+      "Arimo-Italic.ttf",
+      "Arimo-Regular.ttf",
+      "Helvetica.ttc",
+      "NimbusSans-Bold.otf",
+      "NimbusSans-BoldItalic.otf",
+      "NimbusSans-Italic.otf",
+      "NimbusSans-Regular.otf"
+    ]
+  },
+  "outputs": [
+    "figures_paper/fig4_heatmap.pdf",
+    "figures_paper/fig4_heatmap.svg",
+    "figures_paper/fig4_heatmap.png"
+  ]
+}
