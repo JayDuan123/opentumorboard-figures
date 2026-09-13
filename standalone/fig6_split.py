@@ -47,7 +47,7 @@ def main() -> int:
 
     def _label_after_layout(fig, ax, tag):
         pos = ax.get_position()
-        fig.text(pos.x0 - 0.030, pos.y1 + 0.035, tag,
+        fig.text(pos.x0 - 0.045, pos.y1 + 0.055, tag,
                  fontsize=10, color=INK, ha="left", va="bottom",
                  fontweight="bold")
 
