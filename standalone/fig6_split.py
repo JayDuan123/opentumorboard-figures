@@ -43,15 +43,22 @@ def main() -> int:
     a = ap.parse_args()
     resolve_font(a.font_family, a.font_dir)
 
-    # panel a — bars
+    INK = "#1b1b1b"
+
+    def _label(ax, tag):
+        ax.text(-0.14, 1.02, tag, transform=ax.transAxes,
+                fontsize=12, color=INK, ha="left", va="bottom",
+                fontweight="bold")
+
+    # panel A — bars
     fig_a, ax_a = plt.subplots(figsize=(4.4, 2.7))
-    draw_bars(ax_a)
+    draw_bars(ax_a); _label(ax_a, "A")
     fig_a.tight_layout()
     _save(fig_a, a.output_dir, "fig6a")
 
-    # panel b — val reward curve
+    # panel B — val reward curve
     fig_b, ax_b = plt.subplots(figsize=(2.6, 2.7))
-    draw_val_curve(ax_b, a.curves_csv)
+    draw_val_curve(ax_b, a.curves_csv); _label(ax_b, "B")
     fig_b.tight_layout()
     _save(fig_b, a.output_dir, "fig6b")
 
