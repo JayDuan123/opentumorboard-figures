@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-09-03T11:18:55.993850+00:00",
+  "scope": "test_only",
+  "protocol_version": "llm_judge_task1_v31_task2_v4",
+  "judge_model": "Qwen/Qwen3.8-27B",
+  "reasoning_effort": "medium",
+  "batch_template_reasoning_effort": "medium",
+  "execution": {},
+  "build_config": "/scratch/al318/otb_qwen38_rejudge/task2_meditron3_70b_qwen38/build_config.json",
+  "build_config_sha256": "0a9b53b80930971f0b1db836bd06805c61a319da0cca156c81ba81c67299ba10",
+  "validation": {
+    "task2": {
+      "response_rows": 4844,
+      "scored": 4844,
+      "candidate_format_failures": 0,
+      "api_errors": 0,
+      "invalid_judge_outputs": 0,
+      "missing_ids": [],
+      "extra_ids": [],
+      "duplicate_response_ids": []
+    }
+  },
+  "results": {
+    "task1": [],
+    "task2": [
+      {
+        "model_key": "meditron3_70b",
+        "test_records": 4844,
+        "scored_records": 4844,
+        "judge_coverage": 1.0,
+        "candidate_format_failures": 0,
+        "judge_failures": 0,
+        "item_macro_clinical_equivalence": 3.014244426094137,
+        "item_macro_clinical_equivalence_all_responses": 3.014244426094137,
+        "candidate_format_failure_score": 1,
+        "type_macro_clinical_equivalence": 3.030347443695946,
+        "critical_error_rate": 0.11209744013212221,
+        "unsupported_claim_rate": 0.20912469033856318,
+        "per_qa_type": {
+          "agreement_or_support": {
+            "count": 178,
+            "clinical_equivalence": 3.252808988764045,
+            "critical_error_rate": 0.12359550561797752,
+            "unsupported_claim_rate": 0.2303370786516854
+          },
+          "clarification_question": {
+            "count": 178,
+            "clinical_equivalence": 3.247191011235955,
+            "critical_error_rate": 0.12359550561797752,
+            "unsupported_claim_rate": 0.0898876404494382
+          },
+          "clinical_trial_suggestion": {
+            "count": 73,
+            "clinical_equivalence": 2.808219178082192,
+            "critical_error_rate": 0.136986301369863,
+            "unsupported_claim_rate": 0.3287671232876712
+          },
+          "eligibility_assessment": {
+            "count": 322,
+            "clinical_equivalence": 3.046583850931677,
+            "critical_error_rate": 0.14285714285714285,
+            "unsupported_claim_rate": 0.19875776397515527
+          },
+          "evidence_discussion": {
+            "count": 677,
+            "clinical_equivalence": 2.7503692762186116,
+            "critical_error_rate": 0.1358936484490399,
+            "unsupported_claim_rate": 0.31314623338257014
+          },
+          "findings_interpretation": {
+            "count": 1284,
+            "clinical_equivalence": 3.1970404984423677,
+            "critical_error_rate": 0.08411214953271028,
+            "unsupported_claim_rate": 0.1791277258566978
+          },
+          "next_action_suggestion": {
+            "count": 654,
+            "clinical_equivalence": 3.070336391437309,
+            "critical_error_rate": 0.0779816513761468,
+            "unsupported_claim_rate": 0.1345565749235474
+          },
+          "treatment_recommendation": {
+            "count": 1139,
+            "clinical_equivalence": 2.8533801580333624,
+            "critical_error_rate": 0.15013169446883232,
+            "unsupported_claim_rate": 0.25197541703248466
+          },
+          "uncertainty": {
+            "count": 339,
+            "clinical_equivalence": 3.0471976401179943,
+            "critical_error_rate": 0.061946902654867256,
+            "unsupported_claim_rate": 0.1504424778761062
+          }
+        }
+      }
+    ]
+  }
+}
