@@ -137,8 +137,10 @@ def main():
     # area have different vertical extents, so anchoring in axes-fractions
     # would put A and B at visibly different heights.
     y_label = max(ax_a.get_position().y1, ax_b.get_position().y1) + 0.055
-    for ax, tag in [(ax_a, "A"), (ax_b, "B")]:
-        x_label = ax.get_position().x0 - 0.045
+    # per-panel extra x offset: B gets nudged further left so it clears
+    # panel B's y-axis label / tick-values gutter.
+    for ax, tag, extra_x in [(ax_a, "A", 0.0), (ax_b, "B", 0.030)]:
+        x_label = ax.get_position().x0 - 0.045 - extra_x
         fig.text(x_label, y_label, tag, fontsize=10, color=INK,
                  ha="left", va="bottom", fontweight="bold")
     a.output_dir.mkdir(parents=True, exist_ok=True)
