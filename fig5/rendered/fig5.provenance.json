@@ -382,20 +382,20 @@
     ]
   },
   "outputs": [
-    "/tmp/fig5_out/fig5a_scores.pdf",
-    "/tmp/fig5_out/fig5a_scores.svg",
-    "/tmp/fig5_out/fig5a_scores.png",
-    "/tmp/fig5_out/fig5b_tokens.pdf",
-    "/tmp/fig5_out/fig5b_tokens.svg",
-    "/tmp/fig5_out/fig5b_tokens.png",
-    "/tmp/fig5_out/fig5b2_tokens_labelled.pdf",
-    "/tmp/fig5_out/fig5b2_tokens_labelled.svg",
-    "/tmp/fig5_out/fig5b2_tokens_labelled.png",
-    "/tmp/fig5_out/fig5_ab2_combined.pdf",
-    "/tmp/fig5_out/fig5_ab2_combined.svg",
-    "/tmp/fig5_out/fig5_ab2_combined.png",
-    "/tmp/fig5_out/fig5c_lexical.pdf",
-    "/tmp/fig5_out/fig5c_lexical.svg",
-    "/tmp/fig5_out/fig5c_lexical.png"
+    "/tmp/fig5_out2/fig5a_scores.pdf",
+    "/tmp/fig5_out2/fig5a_scores.svg",
+    "/tmp/fig5_out2/fig5a_scores.png",
+    "/tmp/fig5_out2/fig5b_tokens.pdf",
+    "/tmp/fig5_out2/fig5b_tokens.svg",
+    "/tmp/fig5_out2/fig5b_tokens.png",
+    "/tmp/fig5_out2/fig5b2_tokens_labelled.pdf",
+    "/tmp/fig5_out2/fig5b2_tokens_labelled.svg",
+    "/tmp/fig5_out2/fig5b2_tokens_labelled.png",
+    "/tmp/fig5_out2/fig5_ab2_combined.pdf",
+    "/tmp/fig5_out2/fig5_ab2_combined.svg",
+    "/tmp/fig5_out2/fig5_ab2_combined.png",
+    "/tmp/fig5_out2/fig5c_lexical.pdf",
+    "/tmp/fig5_out2/fig5c_lexical.svg",
+    "/tmp/fig5_out2/fig5c_lexical.png"
   ]
 }

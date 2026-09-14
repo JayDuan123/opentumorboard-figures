@@ -410,9 +410,10 @@ def panel_ab2(d: dict, out_dir: Path, stem: str) -> list[Path]:
         "medreason_8b":                  "#a67f4f",
     }
 
-    # A4 page width (210 mm ≈ 8.27 in). Height picked to hold 14 y-tick labels
-    # on the left panel + the labelled scatter on the right without crowding.
-    fig = plt.figure(figsize=(style.A4_W, 4.5))
+    # A4 page width (210 mm ≈ 8.27 in). Height bumped 4.5 -> 4.60 so
+    # that after bbox_inches="tight" trims the caption/legend padding the
+    # native PDF lands on exactly 210 x 110 mm.
+    fig = plt.figure(figsize=(style.A4_W, 4.60))
     gs = fig.add_gridspec(1, 2, width_ratios=[1.0, 1.15], wspace=0.16,
                           left=0.13, right=0.985, top=0.93, bottom=0.17)
     axA = fig.add_subplot(gs[0])

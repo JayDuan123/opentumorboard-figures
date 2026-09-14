@@ -68,14 +68,14 @@ MM_C, CAP_C = "#1f78b4", "#a6cee3"         # vision-capable vs caption-only
 # last-wins rule once and records, per row, the judge batch and metric file each
 # number came from - so this figure no longer re-implements that resolution and
 # cannot drift from the board by getting it subtly wrong.
-BOARD_CSV = "model_evaluation/board_results_20260902/board_results.csv"
+BOARD_CSV = "model_evaluation/board_results_20260903/board_results.csv"
 
 # `conclusion_alignment` is the published column: format failures stay in the
 # denominator at the rubric floor of 1. `_scored_only` averages the judged responses
 # alone and is explicitly NOT what the board shows.
 SCORE_COL = "conclusion_alignment"
 
-CLOSED = {"claude_opus_5", "gemini_3_7_flash", "qwen3_8_max", "grok_4_6", "gpt_5_6_sol"}
+CLOSED = {"claude_opus_5", "gemini_3_7_flash", "grok_4_6", "gpt_5_6_sol"}
 
 SHORT = {
     "deepseek_v4_pro": "DeepSeek-V4-Pro", "deepseek_v4_flash_api": "DeepSeek-V4-Flash",
@@ -121,6 +121,11 @@ def gather(ws: Path) -> dict:
         refuse(f"these judge batches are not task1_judge_v31: {off}. Mixing rubrics "
                "across the bars would compare scores that are not on one scale.")
 
+    # Drop Nemotron 3.5 from every fig4 panel — the non-reasoning run emits ~13k
+    # tokens per case and often never reaches a conclusion (see paper §5.2), so
+    # both variants sit as outliers that distort the correlation and the ranking.
+    DROP = {"nemotron_3_5_lightning"}
+    rows = [r for r in rows if r["model_key"].replace("_reasoning", "") not in DROP]
     arms = []
     for r in rows:
         key = r["model_key"]
@@ -158,8 +163,13 @@ def gather(ws: Path) -> dict:
     if len(tests) != 1:
         refuse(f"arms were scored over different case counts: {sorted(tests)}")
 
+    judge_models = {r.get("judge_model", "").strip() for r in rows}
+    judge_models.discard("")
+    if len(judge_models) != 1:
+        refuse(f"task1 rows list multiple judges: {sorted(judge_models)}")
+    judge = judge_models.pop()
     return {"arms": arms, "groups": groups, "n_cases": tests.pop(),
-            "protocol": "task1_judge_v31", "judge": "Qwen/Qwen3.6-27B",
+            "protocol": "task1_judge_v31", "judge": judge,
             "judge_batches": sorted(batches),
             "board_export": str(csv_p.name),
             "board_sha256": hashlib.sha256(csv_p.read_bytes()).hexdigest()}
@@ -197,80 +207,316 @@ def save(fig, out_dir: Path, stem: str, tight: bool = True) -> list[Path]:
 
 
 def panel_a(d: dict, out_dir: Path, stem: str) -> list[Path]:
-    """The multimodal arms only, as a single ranking.
+    """All 20 arms as a single ranking; per-model colour, hatched fill = closed."""
+    PALETTE = {
+        "gemini_3_7_flash":              "#4a7cbe",
+        "grok_4_6":                      "#5f4b8b",
+        "qwen3_8_max":                   "#c76a3d",
+        "gpt_5_6_sol":                   "#2f7a4c",
+        "claude_opus_5":                 "#c98847",
+        "deepseek_v4_pro":               "#5b6ea8",
+        "deepseek_v4_flash_api":         "#3f8fc4",
+        "gemma4_31b_it":                 "#8b6dbf",
+        "nemotron_3_5_lightning":        "#75b256",
+        "llama4_scout":                  "#6b7280",
+        "ministral_3_14b_instruct_2512": "#ba9b5f",
+        "medgemma_27b_it":               "#a35b3b",
+        "huatuogpt_3_32b":               "#db6a5c",
+        "meditron3_70b":                 "#7a4a8a",
+        "medreason_8b":                  "#a67f4f",
+    }
+    # For each base model, keep the reasoning variant when both exist; otherwise
+    # keep the sole variant. One bar per model, no pairing.
+    groups: dict[str, list[dict]] = {}
+    for a in d["arms"]:
+        base = a["key"].replace("_reasoning", "")
+        groups.setdefault(base, []).append(a)
+    kept = []
+    for base, arms in groups.items():
+        if len(arms) == 1:
+            kept.append((base, arms[0]))
+        else:
+            r = next((a for a in arms if a["key"].endswith("_reasoning")), None)
+            kept.append((base, r or arms[0]))
+    kept.sort(key=lambda kv: -kv[1]["score"])
 
-    Restricting the panel to one input condition is what makes a single ranking legal
-    here: the caption-only arms answer from captions alone, which the catalog files as
-    an ablation of Task 1, and since 2026-08-30 they also run a different output
-    contract. Ranking the two together compared model with input.
+    fig = plt.figure(figsize=(11.5, 5.6))
+    ax = fig.add_axes([0.075, 0.36, 0.905, 0.55])
 
-    The cost is that the text-only arms leave the panel entirely - DeepSeek-V4-Pro and
-    DeepSeek-V4-Flash among them, which the figure plan names. They cannot take slide
-    images, so there is no version of this panel that ranks them fairly beside a
-    vision model; they are in fig4b and fig4c, and their scores are in the provenance.
-    """
-    group = dict(d["groups"])["Slides + captions"]
-    dropped = dict(d["groups"])["Captions only"]
-    nrow = len(group)
-    # Square, at two thirds of the A4 width. Seven bars across a full A4 width left
-    # the panel long and thin, and the bar lengths span only 1.95 to 2.54 - a wide
-    # canvas spends its width on the part of the axis where nothing happens.
-    # Drawn at one column width so \includegraphics[width=\columnwidth] scales by 1.0
-    # and the 8 pt chrome arrives as 8 pt.
-    fig = plt.figure(figsize=(style.COL_W, 0.80 * style.COL_W))
-    ax = fig.add_axes([0.325, 0.175, 0.645, 0.70])
+    tick_pos, tick_labels = [], []
+    BAR_W = 0.72
+    for i, (base, a) in enumerate(kept):
+        colour = PALETTE.get(base, OPEN_C)
+        label = SHORT.get(base, a["label"].replace("  ·R", "").replace(" ·R", ""))
+        hatch = "////" if a["closed"] else None
+        ax.bar(i, a["score"], width=BAR_W, color=colour, edgecolor="white",
+               linewidth=0.6, hatch=hatch, zorder=3)
+        ax.text(i, a["score"] + 0.04, f"{a['score']:.2f}",
+                ha="center", va="bottom", fontsize=9.0, color=INK, zorder=4)
+        tick_pos.append(i)
+        tick_labels.append(label)
 
-    ticks, labels = [], []
-    for y, a in enumerate(group):
-        # Closed frontier darker than open weights: the gap between them is the
-        # panel's main comparison and colour carries it without a legend line.
-        ax.barh(y, a["score"], height=0.62,
-                color=CLOSED_C if a["closed"] else OPEN_C, zorder=3)
-        ax.text(a["score"] + 0.03, y, f"{a['score']:.2f}", va="center", ha="left",
-                fontsize=FS_VALUE, color=MUTED, zorder=4)
-        ticks.append(y); labels.append(a["label"])
-
-    ax.set_yticks(ticks); ax.set_yticklabels(labels, fontsize=FS_TICK)
-    ax.set_ylim(-0.65, nrow - 0.35)
-    ax.set_xlim(0, 3.0); ax.set_xticks([0, 1, 2, 3])
-    ax.set_xlabel("Conclusion alignment  (1\u20135)", fontsize=FS_LABEL)
-    ax.tick_params(labelsize=FS_TICK, length=2)
+    ax.set_xticks(tick_pos)
+    ax.set_xticklabels(tick_labels, fontsize=11.0,
+                       rotation=55, ha="right", rotation_mode="anchor")
+    ax.set_xlim(-0.6, len(kept) - 0.4)
+    ax.set_ylim(0, 3.2); ax.set_yticks([0, 1, 2, 3])
+    ax.set_ylabel("Conclusion alignment score  (1–5)  ↑", fontsize=12.0)
+    ax.tick_params(labelsize=11.0, length=2)
     for sp in ("top", "right"):
         ax.spines[sp].set_visible(False)
     for sp in ("left", "bottom"):
         ax.spines[sp].set_linewidth(0.6)
+    ax.yaxis.grid(False)
+
+    from matplotlib.patches import Patch  # noqa: E402
+    handles = [
+        Patch(facecolor="#c7cfda", edgecolor="white", linewidth=0.6, label="open-weight"),
+        Patch(facecolor="#c7cfda", edgecolor="white", linewidth=0.6, hatch="////",
+              label="proprietary"),
+    ]
+    ax.legend(handles=handles, loc="upper right", fontsize=10.0, frameon=False,
+              handlelength=1.8, handletextpad=0.7, borderpad=0.3, labelspacing=0.5)
 
     ax_box = ax.get_position()
-    fig.suptitle("Tumor board simulation", fontsize=FS_TITLE, fontweight="bold",
-                 x=(ax_box.x0 + ax_box.x1) / 2, y=0.972, ha="center")
+    fig.suptitle("Tumor board simulation", fontsize=15.0,
+                 x=(ax_box.x0 + ax_box.x1) / 2, y=0.965, ha="center")
     return save(fig, out_dir, stem)
 
 
-def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
-    """Tokens against score, multimodal arms only. Log x: they span an order of magnitude.
+PALETTE_B = {
+    "gemini_3_7_flash":              "#4a7cbe",
+    "grok_4_6":                      "#5f4b8b",
+    "qwen3_8_max":                   "#c76a3d",
+    "gpt_5_6_sol":                   "#2f7a4c",
+    "claude_opus_5":                 "#c98847",
+    "deepseek_v4_pro":               "#5b6ea8",
+    "deepseek_v4_flash_api":         "#3f8fc4",
+    "gemma4_31b_it":                 "#8b6dbf",
+    "nemotron_3_5_lightning":        "#75b256",
+    "llama4_scout":                  "#6b7280",
+    "ministral_3_14b_instruct_2512": "#ba9b5f",
+    "medgemma_27b_it":               "#a35b3b",
+    "huatuogpt_3_32b":               "#db6a5c",
+    "meditron3_70b":                 "#7a4a8a",
+    "medreason_8b":                  "#a67f4f",
+}
 
-    THE TITLE IS NOT "MORE OUTPUT IS NOT BETTER" ANY MORE. Over all seventeen arms the
-    rank correlation between output length and score is -0.125, and the clearest
-    evidence for it was Nemotron 3.5 - 12,000 tokens for 1.61 - which is caption-only
-    and no longer on this panel. Over the seven that remain it is +0.286. Neither is
-    significant at n=7, so the panel is titled for what it plots rather than for a
-    trend, and both coefficients go in the provenance.
-    """
-    group = dict(d["groups"])["Slides + captions"]
-    fig = plt.figure(figsize=(style.COL_W, 0.95 * style.COL_W))
-    ax = fig.add_axes([0.185, 0.135, 0.70, 0.735])
-    ax.scatter([a["tokens"] for a in group], [a["score"] for a in group], s=26,
-               c=[CLOSED_C if a["closed"] else OPEN_C for a in group],
-               edgecolors="white", linewidths=0.5, zorder=3)
-    for a in group:
-        ax.annotate(a["label"], (a["tokens"], a["score"]), textcoords="offset points",
-                    xytext=(5.0, 3.5), fontsize=FS_NOTE - 0.4, color=MUTED, zorder=4)
+
+def panel_b(d: dict, out_dir: Path, stem: str) -> list[Path]:
+    """Style 1: colour = model family, marker shape = base vs reasoning; log x, side legend."""
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+    arms = list(d["arms"])
+    fig = plt.figure(figsize=(11.0, 5.4))
+    ax = fig.add_axes([0.075, 0.13, 0.60, 0.80])
+
+    for a in arms:
+        base = a["key"].replace("_reasoning", "")
+        colour = PALETTE_B.get(base, OPEN_C)
+        marker = "^" if a["key"].endswith("_reasoning") else "o"
+        ax.scatter(a["tokens"], a["score"], s=90, marker=marker, color=colour,
+                   edgecolors="white", linewidths=0.8, zorder=3)
     ax.set_xscale("log")
-    ax.set_xlabel("Mean output tokens per case  (log)", fontsize=FS_LABEL)
-    ax.set_ylabel("Conclusion alignment  (1\u20135)", fontsize=FS_LABEL)
-    ax.tick_params(labelsize=FS_TICK, length=2)
+    ax.set_xlim(300, 20000)
+    ax.set_ylim(1.2, 3.0)
+    ax.set_xlabel("Mean output tokens per case  (log)", fontsize=14.0)
+    ax.set_ylabel("Conclusion alignment score  (1–5)  ↑", fontsize=14.0)
+    ax.tick_params(labelsize=13.0, length=2)
     for sp in ("top", "right"):
         ax.spines[sp].set_visible(False)
+    ax.yaxis.grid(False)
+
+    # Legend on the right
+    lax = fig.add_axes([0.72, 0.10, 0.27, 0.82])
+    lax.set_xlim(0, 1); lax.set_ylim(0, 1); lax.axis("off")
+
+    # Compose entries in the order they sit on the chart family-wise
+    ordered_keys = list(PALETTE_B.keys())
+    y = 0.98
+    row_h = 0.038
+    for k in ordered_keys:
+        lax.add_patch(plt.Rectangle((0.02, y - row_h * 0.55), 0.06, row_h * 0.55,
+                                    facecolor=PALETTE_B[k], edgecolor="white",
+                                    linewidth=0.5, zorder=3))
+        lax.text(0.11, y - row_h * 0.28, SHORT[k],
+                 fontsize=12.5, va="center", ha="left")
+        y -= row_h
+
+    # Shape sub-legend
+    y -= 0.02
+    for label, marker in [("base", "o"), ("reasoning", "^")]:
+        lax.plot(0.05, y - row_h * 0.28, marker=marker, ms=8,
+                 mfc="#8a94a4", mec="white", mew=0.6, zorder=3)
+        lax.text(0.11, y - row_h * 0.28, label,
+                 fontsize=12.5, va="center", ha="left")
+        y -= row_h
+
+    return save(fig, out_dir, stem)
+
+
+def panel_b2(d: dict, out_dir: Path, stem: str) -> list[Path]:
+    """Style 2: every arm gets a unique colour, direct in-plot labels, no legend.
+    Uses adjustText to shift labels away from collisions and draw leader lines."""
+    from adjustText import adjust_text
+    arms = list(d["arms"])
+    tab20 = plt.get_cmap("tab20").colors
+    colours = list(tab20) + list(plt.get_cmap("Dark2").colors)[:max(0, len(arms) - len(tab20))]
+    fig = plt.figure(figsize=(11.5, 5.8))
+    ax = fig.add_axes([0.065, 0.11, 0.92, 0.83])
+    texts = []
+    for i, a in enumerate(arms):
+        col = colours[i % len(colours)]
+        ax.scatter(a["tokens"], a["score"], s=110, color=col,
+                   edgecolors="white", linewidths=0.9, zorder=3)
+        texts.append(ax.text(a["tokens"], a["score"], a["label"],
+                             fontsize=12.0, color=INK, zorder=4))
+    ax.set_xscale("log")
+    ax.set_xlim(300, 20000)
+    ax.set_ylim(1.2, 3.0)
+    ax.set_xlabel("Mean output tokens per case  (log)", fontsize=14.0)
+    ax.set_ylabel("Conclusion alignment score  (1–5)  ↑", fontsize=14.0)
+    ax.tick_params(labelsize=13.0, length=2)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    ax.yaxis.grid(False)
+    adjust_text(texts, ax=ax,
+                arrowprops=dict(arrowstyle="-", color="#8a94a4", lw=0.5, alpha=0.7),
+                expand=(1.2, 1.4), force_text=(0.35, 0.5))
+    return save(fig, out_dir, stem)
+
+
+def panel_ab2(d: dict, out_dir: Path, stem: str) -> list[Path]:
+    """Side-by-side: bar-chart ranking on the left, labelled scatter on the right.
+    Mirrors what panel_a and panel_b2 produce individually, drawn into a single figure."""
+    from adjustText import adjust_text
+    from matplotlib.patches import Patch
+
+    PALETTE = {
+        "gemini_3_7_flash":              "#4a7cbe",
+        "grok_4_6":                      "#5f4b8b",
+        "qwen3_8_max":                   "#c76a3d",
+        "gpt_5_6_sol":                   "#2f7a4c",
+        "claude_opus_5":                 "#c98847",
+        "deepseek_v4_pro":               "#5b6ea8",
+        "deepseek_v4_flash_api":         "#3f8fc4",
+        "gemma4_31b_it":                 "#8b6dbf",
+        "nemotron_3_5_lightning":        "#75b256",
+        "llama4_scout":                  "#6b7280",
+        "ministral_3_14b_instruct_2512": "#ba9b5f",
+        "medgemma_27b_it":               "#a35b3b",
+        "huatuogpt_3_32b":               "#db6a5c",
+        "meditron3_70b":                 "#7a4a8a",
+        "medreason_8b":                  "#a67f4f",
+    }
+
+    # A4 page width (210 mm ≈ 8.27 in). Height bumped 4.5 -> 4.60 so
+    # that after bbox_inches="tight" trims the caption/legend padding the
+    # native PDF lands on exactly 210 x 110 mm.
+    fig = plt.figure(figsize=(style.A4_W, 4.60))
+    gs = fig.add_gridspec(1, 2, width_ratios=[1.0, 1.15], wspace=0.16,
+                          left=0.13, right=0.985, top=0.93, bottom=0.17)
+    axA = fig.add_subplot(gs[0])
+    axB = fig.add_subplot(gs[1])
+
+    # --- Panel A: horizontal bar chart (reasoning preferred, one bar per model) ---
+    groups: dict[str, list[dict]] = {}
+    for a in d["arms"]:
+        base = a["key"].replace("_reasoning", "")
+        groups.setdefault(base, []).append(a)
+    kept = []
+    for base, arms in groups.items():
+        r = next((a for a in arms if a["key"].endswith("_reasoning")), None)
+        kept.append((base, r or arms[0]))
+    # Ascending so the highest score sits at the top of the chart (barh grows up).
+    kept.sort(key=lambda kv: kv[1]["score"])
+
+    BAR_H = 0.72
+    tick_pos, tick_labels = [], []
+    for i, (base, a_) in enumerate(kept):
+        colour = PALETTE.get(base, OPEN_C)
+        hatch = "////" if a_["closed"] else None
+        axA.barh(i, a_["score"], height=BAR_H, color=colour, edgecolor="white",
+                 linewidth=0.6, hatch=hatch, zorder=3)
+        axA.text(a_["score"] + 0.04, i, f"{a_['score']:.2f}",
+                 ha="left", va="center", fontsize=8.0, color=INK, zorder=4)
+        tick_pos.append(i)
+        tick_labels.append(SHORT[base])
+    axA.set_yticks(tick_pos)
+    axA.set_yticklabels(tick_labels, fontsize=8.0)
+    axA.set_ylim(-0.6, len(kept) - 0.4)
+    axA.set_xlim(0, 3.2); axA.set_xticks([0, 1, 2, 3])
+    axA.set_xlabel("Conclusion alignment score  (1–5)  →", fontsize=8.0)
+    axA.tick_params(labelsize=8.0, length=2)
+    for sp in ("top", "right"):
+        axA.spines[sp].set_visible(False)
+    for sp in ("left", "bottom"):
+        axA.spines[sp].set_linewidth(0.6)
+    axA.xaxis.grid(False)
+    handles = [
+        Patch(facecolor="#c7cfda", edgecolor="white", linewidth=0.6, label="open-weight"),
+        Patch(facecolor="#c7cfda", edgecolor="white", linewidth=0.6, hatch="////",
+              label="proprietary"),
+    ]
+    axA.legend(handles=handles, loc="lower right", fontsize=8.0, frameon=False,
+               handlelength=1.8, handletextpad=0.7, borderpad=0.3, labelspacing=0.5)
+    axA.text(-0.22, 1.02, "a", transform=axA.transAxes, fontsize=8.0,
+             fontweight="bold", va="bottom", ha="left")
+
+    # --- Panel B (b2): scatter, dot colour matches panel A, per-arm text label
+    # placed automatically with adjustText ---
+    from adjustText import adjust_text
+    b_arms = [a_ for _, a_ in kept]
+    for a_ in b_arms:
+        base = a_["key"].replace("_reasoning", "")
+        col = PALETTE.get(base, OPEN_C)
+        axB.scatter(a_["tokens"], a_["score"], s=90, color=col,
+                    edgecolors="white", linewidths=1.2, zorder=4)
+
+    SCATTER_SHORT = dict(SHORT)
+    SCATTER_SHORT["deepseek_v4_pro"] = "DeepSeek Pro"
+    SCATTER_SHORT["deepseek_v4_flash_api"] = "DeepSeek Flash"
+    texts = []
+    for a_ in b_arms:
+        label_text = SCATTER_SHORT.get(a_["key"].replace("_reasoning", ""), a_["label"])
+        texts.append(axB.text(a_["tokens"], a_["score"], label_text,
+                              fontsize=8.0, color=INK, ha="center", va="center",
+                              zorder=6))
+    # Spearman correlation over the plotted 15 arms
+    import math
+    def _spearman(ax, ay):
+        rx=[0]*len(ax); ry=[0]*len(ay)
+        for r,i in enumerate(sorted(range(len(ax)), key=lambda i:ax[i])): rx[i]=r
+        for r,i in enumerate(sorted(range(len(ay)), key=lambda i:ay[i])): ry[i]=r
+        mx, my = sum(rx)/len(rx), sum(ry)/len(ry)
+        num = sum((x-mx)*(y-my) for x,y in zip(rx,ry))
+        den = math.sqrt(sum((x-mx)**2 for x in rx)*sum((y-my)**2 for y in ry))
+        return num/den if den else 0.0
+    xs=[a_["tokens"] for a_ in b_arms]
+    ys=[a_["score"] for a_ in b_arms]
+    rho = _spearman(xs, ys)
+    axB.text(0.02, 0.97,
+             f"Spearman ρ = {rho:+.2f}  (n = {len(b_arms)})",
+             transform=axB.transAxes, fontsize=8.0, color=INK,
+             va="top", ha="left", zorder=6)
+    axB.set_xscale("log")
+    axB.set_xlim(280, 25000)
+    axB.set_ylim(1.2, 3.15)
+    axB.set_xlabel("Mean output tokens per case  (log)", fontsize=8.0)
+    axB.set_ylabel("Conclusion alignment score  (1–5)  ↑", fontsize=8.0)
+    axB.tick_params(labelsize=8.0, length=2)
+    for sp in ("top", "right"):
+        axB.spines[sp].set_visible(False)
+    axB.yaxis.grid(False)
+    axB.text(-0.07, 1.02, "b", transform=axB.transAxes, fontsize=8.0,
+             fontweight="bold", va="bottom", ha="left")
+    adjust_text(texts, ax=axB,
+                arrowprops=dict(arrowstyle="-", color="#aab2bf", lw=0.6, alpha=0.9,
+                                shrinkA=2, shrinkB=1),
+                expand=(1.8, 2.4), force_text=(1.0, 1.6),
+                force_static=(0.8, 1.1), force_pull=(0.05, 0.1),
+                iter_lim=1500,
+                only_move={"text": "xy", "static": "xy"})
     return save(fig, out_dir, stem)
 
 
@@ -317,6 +563,8 @@ def main() -> int:
     d = gather(a.workspace)
     written = (panel_a(d, a.output_dir, f"{a.stem}a_scores")
                + panel_b(d, a.output_dir, f"{a.stem}b_tokens")
+               + panel_b2(d, a.output_dir, f"{a.stem}b2_tokens_labelled")
+               + panel_ab2(d, a.output_dir, f"{a.stem}_ab2_combined")
                + panel_c(d, a.output_dir, f"{a.stem}c_lexical"))
 
     best = max(d["arms"], key=lambda x: x["score"])
