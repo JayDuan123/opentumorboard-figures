@@ -119,10 +119,9 @@ def main():
     a = ap.parse_args()
     resolve_font(a.font_family, a.font_dir)
 
-    # figsize sized so the tight-bboxed native PDF ends up ~606 pt wide,
-    # matching fig5.pdf; when the paper renders both at width=\linewidth
-    # the 8pt Helvetica source prints at the same ~6.2pt on paper.
-    fig = plt.figure(figsize=(9.6, 3.5))
+    # figsize chosen so bbox_inches="tight" lands the native PDF on ~210x110mm,
+    # matching fig5's target canvas so both figures print at identical scale.
+    fig = plt.figure(figsize=(9.82, 4.45))
     gs = fig.add_gridspec(1, 2, width_ratios=[4.4, 2.6], wspace=0.30)
     ax_a = fig.add_subplot(gs[0, 0])
     ax_b = fig.add_subplot(gs[0, 1])
@@ -141,7 +140,7 @@ def main():
     # panel B's y-axis label / tick-values gutter.
     for ax, tag, extra_x in [(ax_a, "A", 0.0), (ax_b, "B", 0.030)]:
         x_label = ax.get_position().x0 - 0.045 - extra_x
-        fig.text(x_label, y_label, tag, fontsize=10, color=INK,
+        fig.text(x_label, y_label, tag, fontsize=FS, color=INK,
                  ha="left", va="bottom", fontweight="bold")
     a.output_dir.mkdir(parents=True, exist_ok=True)
     for suf in ("pdf", "png", "svg"):
