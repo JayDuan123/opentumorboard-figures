@@ -140,7 +140,7 @@ def main():
     # panel B's y-axis label / tick-values gutter.
     for ax, tag, extra_x in [(ax_a, "A", 0.0), (ax_b, "B", 0.030)]:
         x_label = ax.get_position().x0 - 0.045 - extra_x
-        fig.text(x_label, y_label, tag, fontsize=FS, color=INK,
+        fig.text(x_label, y_label, tag, fontsize=10, color=INK,
                  ha="left", va="bottom", fontweight="bold")
     a.output_dir.mkdir(parents=True, exist_ok=True)
     for suf in ("pdf", "png", "svg"):
